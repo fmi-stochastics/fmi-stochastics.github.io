@@ -1,0 +1,47 @@
+site_name: Вероятности СУ
+site_url: https://fmi-stochastics.github.io/
+nav:
+  - Начало: index.md
+  - Вероятности и статистика:
+      - Преглед: prob-stat/index.md
+      - Компютърни науки, поток 2: prob-stat/computer-science-2.md
+      - Софтуерно инженерство: prob-stat/software-engineering.md
+      - Приложна математика: prob-stat/applied-math.md
+
+theme:
+  name: material
+  language: bg
+  logo: assets/images/logo.svg
+  favicon: assets/images/logo.svg
+  palette:
+    scheme: default
+    primary: indigo
+    accent: amber
+  font:
+    text: Roboto
+    code: Roboto Mono
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.sections
+    - navigation.top
+    - toc.follow
+    - search.suggest
+    - search.highlight
+
+plugins:
+  - search
+
+markdown_extensions:
+  - attr_list
+  - md_in_html
+  - tables
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+
+extra_css:
+  - assets/stylesheets/custom.css
+
+extra:
+  generator: false
