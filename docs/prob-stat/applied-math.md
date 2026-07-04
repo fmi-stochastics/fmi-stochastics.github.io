@@ -26,6 +26,5 @@
 |---|---|
 | Ръководство | <a class="pdf-link" href="/files/prob-stat/shared/materials/prob-stat-guide.pdf" target="_blank" rel="noopener">PDF</a> |
 | Задачи | <a class="pdf-link" href="/files/prob-stat/shared/materials/prob-stat-problems.pdf" target="_blank" rel="noopener">PDF</a> |
-| Примерни теоретични въпроси | <a class="pdf-link" href="/files/prob-stat/shared/materials/prob-stat-theory-sample-problems.pdf" target="_blank" rel="noopener">PDF</a> |
 
-<div class="page-stats">Публикувани файлове в страницата: 17</div>
+<div class="page-stats">16 файла</div>

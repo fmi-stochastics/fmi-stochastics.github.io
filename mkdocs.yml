@@ -3,7 +3,6 @@ site_url: https://fmi-stochastics.github.io/
 nav:
   - Начало: index.md
   - Вероятности и статистика:
-      - Преглед: prob-stat/index.md
       - Компютърни науки, поток 2: prob-stat/computer-science-2.md
       - Софтуерно инженерство: prob-stat/software-engineering.md
       - Приложна математика: prob-stat/applied-math.md
@@ -22,6 +21,7 @@ theme:
     code: Roboto Mono
   features:
     - navigation.instant
+    - navigation.tabs
     - navigation.tracking
     - navigation.sections
     - navigation.top

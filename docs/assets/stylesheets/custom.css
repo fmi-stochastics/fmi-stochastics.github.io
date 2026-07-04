@@ -1,62 +1,214 @@
 
 :root {
+  --archive-bg: #f7f8fb;
+  --archive-paper: #ffffff;
+  --archive-ink: #172033;
+  --archive-muted: #667085;
+  --archive-line: #e5e7eb;
+  --archive-brand: #1f3a8a;
+  --archive-brand-2: #2563eb;
+  --archive-accent: #f3c623;
+  --archive-soft: #eef2ff;
+  --archive-shadow: 0 18px 60px rgba(23,32,51,.08);
+  --archive-radius: 18px;
+
   --md-primary-fg-color: #1f3a8a;
   --md-accent-fg-color: #b7791f;
 }
 
-.md-header__title { font-weight: 700; }
-.md-typeset h1 { font-weight: 700; letter-spacing: -0.02em; }
-.md-typeset h2 { margin-top: 2rem; }
+body {
+  background: radial-gradient(circle at top left, #eef2ff 0, transparent 32rem), var(--archive-bg);
+}
+
+.md-header {
+  backdrop-filter: blur(16px);
+  background: rgba(31,58,138,.94);
+  box-shadow: none;
+}
+
+.md-tabs {
+  background: rgba(31,58,138,.94);
+}
+
+.md-main__inner {
+  margin-top: 1.3rem;
+}
+
+.md-content__inner {
+  padding-bottom: 3rem;
+}
+
+.md-typeset h1 {
+  font-size: clamp(2.0rem, 4vw, 3.45rem);
+  line-height: 1.02;
+  letter-spacing: -.045em;
+  font-weight: 800;
+  margin-bottom: .75rem;
+}
+
+.md-typeset h2 {
+  margin-top: 2.2rem;
+  font-weight: 760;
+  letter-spacing: -.025em;
+}
+
+.md-typeset h3 {
+  letter-spacing: -.02em;
+}
+
+.archive-hero {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 1.1rem;
+  align-items: stretch;
+  margin: 1.1rem 0 1.45rem;
+}
+
+.hero-panel,
+.stats-panel,
+.archive-section {
+  background: rgba(255,255,255,.88);
+  border: 1px solid rgba(229,231,235,.92);
+  border-radius: var(--archive-radius);
+  box-shadow: var(--archive-shadow);
+}
+
+.hero-panel {
+  padding: 1.45rem 1.55rem;
+}
+
+.hero-panel .eyebrow {
+  margin: 0 0 .75rem;
+  color: var(--archive-brand);
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  font-size: .66rem;
+  font-weight: 800;
+}
+
+.hero-panel h1 {
+  margin: 0 !important;
+}
+
+.hero-panel p {
+  max-width: 63ch;
+  margin: .85rem 0 0;
+  color: var(--archive-muted);
+  font-size: .92rem;
+}
+
+.stats-panel {
+  padding: 1.1rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: .6rem;
+}
+
+.stat-mini {
+  background: #f8fafc;
+  border: 1px solid var(--archive-line);
+  border-radius: 14px;
+  padding: .8rem .9rem;
+}
+
+.stat-mini strong {
+  display: block;
+  font-size: 1.55rem;
+  line-height: 1;
+  color: var(--archive-brand);
+}
+
+.stat-mini span {
+  display: block;
+  margin-top: .28rem;
+  color: var(--archive-muted);
+  font-size: .72rem;
+}
 
 .course-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1rem;
-  margin: 1.2rem 0 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: .9rem;
+  margin: 1.2rem 0 1.7rem;
 }
 
 .course-card {
+  position: relative;
+  overflow: hidden;
   display: block;
-  padding: 1.1rem 1.2rem;
-  border: 1px solid var(--md-default-fg-color--lightest);
-  border-radius: 14px;
-  background: var(--md-default-bg-color);
-  color: inherit !important;
+  min-height: 9.2rem;
+  padding: 1.15rem 1.2rem;
+  border: 1px solid var(--archive-line);
+  border-radius: var(--archive-radius);
+  background: linear-gradient(180deg, #fff, #f8fafc);
+  color: var(--archive-ink) !important;
   text-decoration: none !important;
-  box-shadow: 0 2px 16px rgba(0,0,0,.035);
+  box-shadow: 0 2px 16px rgba(23,32,51,.035);
+  transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+}
+
+.course-card::after {
+  content: "";
+  position: absolute;
+  right: -2.2rem;
+  bottom: -2.2rem;
+  width: 7rem;
+  height: 7rem;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(243,198,35,.34), rgba(37,99,235,.08) 55%, transparent 70%);
 }
 
 .course-card:hover {
-  border-color: var(--md-accent-fg-color);
-  box-shadow: 0 4px 22px rgba(0,0,0,.07);
+  transform: translateY(-2px);
+  border-color: #c7d2fe;
+  box-shadow: 0 16px 40px rgba(23,32,51,.10);
+}
+
+.course-card .card-kicker,
+.card-kicker {
+  display: block;
+  color: var(--archive-brand);
+  font-size: .68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  margin-bottom: .65rem;
 }
 
 .course-card strong {
+  position: relative;
+  z-index: 1;
   display: block;
   font-size: 1.05rem;
-  margin-bottom: .25rem;
+  line-height: 1.24;
+  margin-bottom: .45rem;
 }
 
-.course-card span {
-  color: var(--md-default-fg-color--light);
-  font-size: .74rem;
+.course-card span:not(.card-kicker) {
+  position: relative;
+  z-index: 1;
+  color: var(--archive-muted);
+  font-size: .76rem;
 }
 
 .pdf-link {
-  display: inline-block;
-  min-width: 3.2rem;
-  text-align: center;
-  padding: .18rem .48rem;
-  border: 1px solid var(--md-default-fg-color--lightest);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 3.4rem;
+  padding: .24rem .55rem;
+  border: 1px solid #dbe3f0;
   border-radius: 999px;
+  background: var(--archive-soft);
+  color: var(--archive-brand-2) !important;
   font-size: .72rem;
-  font-weight: 600;
+  font-weight: 800;
   text-decoration: none !important;
 }
 
 .pdf-link:hover {
-  border-color: var(--md-accent-fg-color);
-  background: rgba(183, 121, 31, .08);
+  border-color: #c7d2fe;
+  background: #dbeafe;
 }
 
 .empty {
@@ -64,24 +216,55 @@
 }
 
 .md-typeset table:not([class]) {
-  font-size: .78rem;
+  display: table;
+  width: 100%;
+  font-size: .76rem;
+  background: #fff;
+  box-shadow: 0 8px 28px rgba(23,32,51,.045);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.md-typeset table:not([class]) th {
+  background: #f8fafc;
+  color: #344054;
+  font-weight: 800;
 }
 
 .md-typeset table:not([class]) th,
 .md-typeset table:not([class]) td {
   vertical-align: middle;
+  border-color: var(--archive-line);
+  padding: .62rem .72rem;
 }
 
-.page-stats {
-  margin-top: 2.5rem;
-  padding-top: .7rem;
-  border-top: 1px solid var(--md-default-fg-color--lightest);
-  color: var(--md-default-fg-color--light);
-  font-size: .68rem;
+.md-typeset table:not([class]) tr:hover td {
+  background: #fcfcfd;
 }
 
+.page-stats,
 .home-stats {
-  margin-top: 2rem;
-  color: var(--md-default-fg-color--light);
-  font-size: .72rem;
+  margin-top: 2.4rem;
+  padding-top: .75rem;
+  border-top: 1px solid var(--archive-line);
+  color: var(--archive-muted);
+  font-size: .66rem;
+}
+
+.md-nav__title,
+.md-nav__item .md-nav__link--active {
+  font-weight: 800;
+}
+
+.md-footer {
+  background: transparent;
+}
+
+@media (max-width: 860px) {
+  .archive-hero {
+    grid-template-columns: 1fr;
+  }
+  .course-card {
+    min-height: auto;
+  }
 }
