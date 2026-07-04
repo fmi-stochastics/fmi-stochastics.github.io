@@ -3,7 +3,6 @@ site_url: https://fmi-stochastics.github.io/
 use_directory_urls: true
 
 nav:
-  - Начало: index.md
   - Вероятности и статистика:
       - Компютърни науки, поток 2: prob-stat/computer-science-2.md
       - Софтуерно инженерство: prob-stat/software-engineering.md
