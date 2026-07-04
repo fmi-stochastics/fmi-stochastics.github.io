@@ -4,35 +4,29 @@ hide:
   - toc
 ---
 
-<div class="archive-hero">
-  <div class="hero-panel">
+<div class="landing">
+  <section class="landing-hero">
     <p class="eyebrow">ФМИ · Софийски университет</p>
     <h1>Вероятности СУ</h1>
-    <p>Контролни, изпити, решения, домашни и помощни материали по вероятности и статистика.</p>
-  </div>
-  <div class="stats-panel">
-    <div class="stat-mini"><strong>3</strong><span>направления</span></div>
-    <div class="stat-mini"><strong>80</strong><span>публикувани файла</span></div>
-    <div class="stat-mini"><strong>PDF</strong><span>директно отваряне в браузъра</span></div>
-  </div>
-</div>
+  </section>
 
-<div class="course-grid">
-  <a class="course-card" href="prob-stat/computer-science-2/">
-    <span class="card-kicker">Вероятности и статистика</span>
-    <strong>Компютърни науки, поток 2</strong>
-    <span>контролни · изпити · решения · домашни</span>
-  </a>
-  <a class="course-card" href="prob-stat/software-engineering/">
-    <span class="card-kicker">Вероятности и статистика</span>
-    <strong>Софтуерно инженерство</strong>
-    <span>контролни · изпити · решения · домашни</span>
-  </a>
-  <a class="course-card" href="prob-stat/applied-math/">
-    <span class="card-kicker">Вероятности и статистика</span>
-    <strong>Приложна математика</strong>
-    <span>контролни · изпити · решения · домашни</span>
-  </a>
-</div>
+  <section class="track-grid" aria-label="Направления">
+    <a class="track-card" href="prob-stat/computer-science-2/">
+      <span>КН · поток 2</span>
+      <strong>Компютърни науки</strong>
+    </a>
+    <a class="track-card" href="prob-stat/software-engineering/">
+      <span>СЕМ</span>
+      <strong>Софтуерно инженерство</strong>
+    </a>
+    <a class="track-card" href="prob-stat/applied-math/">
+      <span>ПМ</span>
+      <strong>Приложна математика</strong>
+    </a>
+  </section>
 
-<div class="home-stats">Архивът съдържа само публични учебни материали.</div>
+  <section class="resource-strip" aria-label="Общи материали">
+    <a class="resource-button" href="/files/prob-stat/shared/materials/prob-stat-guide.pdf" target="_blank" rel="noopener">Ръководство</a>
+    <a class="resource-button" href="/files/prob-stat/shared/materials/prob-stat-problems.pdf" target="_blank" rel="noopener">Задачи</a>
+  </section>
+</div>

@@ -1,20 +1,22 @@
+---
+hide:
+  - toc
+---
+
 # Вероятности и статистика
 
-<div class="course-grid">
-  <a class="course-card" href="computer-science-2/">
-    <span class="card-kicker">ВиС</span>
-    <strong>Компютърни науки, поток 2</strong>
-    <span>контролни · изпити · решения</span>
+<div class="track-grid compact" aria-label="Направления">
+  <a class="track-card" href="computer-science-2/">
+    <span>КН · поток 2</span>
+    <strong>Компютърни науки</strong>
   </a>
-  <a class="course-card" href="software-engineering/">
-    <span class="card-kicker">СЕМ</span>
+  <a class="track-card" href="software-engineering/">
+    <span>СЕМ</span>
     <strong>Софтуерно инженерство</strong>
-    <span>контролни · изпити · решения</span>
   </a>
-  <a class="course-card" href="applied-math/">
-    <span class="card-kicker">ПМ</span>
+  <a class="track-card" href="applied-math/">
+    <span>ПМ</span>
     <strong>Приложна математика</strong>
-    <span>контролни · изпити · домашни</span>
   </a>
 </div>
 
@@ -24,5 +26,3 @@
 |---|---|
 | Ръководство | <a class="pdf-link" href="/files/prob-stat/shared/materials/prob-stat-guide.pdf" target="_blank" rel="noopener">PDF</a> |
 | Задачи | <a class="pdf-link" href="/files/prob-stat/shared/materials/prob-stat-problems.pdf" target="_blank" rel="noopener">PDF</a> |
-
-<div class="page-stats">2 файла</div>
