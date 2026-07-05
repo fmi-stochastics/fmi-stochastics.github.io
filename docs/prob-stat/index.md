@@ -11,7 +11,7 @@ hide:
     <strong>Компютърни науки</strong>
   </a>
   <a class="track-card" href="software-engineering/">
-    <span>СЕМ</span>
+    <span>СИ</span>
     <strong>Софтуерно инженерство</strong>
   </a>
   <a class="track-card" href="applied-math/">

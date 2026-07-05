@@ -6,8 +6,8 @@ hide:
 
 <div class="landing">
   <section class="landing-hero">
-    <p class="eyebrow">ФМИ · Софийски университет</p>
-    <h1>Вероятности СУ</h1>
+    <p class="eyebrow">Учебен архив</p>
+    <h1>Вероятности</h1>
   </section>
 
   <section class="track-grid" aria-label="Направления">
@@ -16,7 +16,7 @@ hide:
       <strong>Компютърни науки</strong>
     </a>
     <a class="track-card" href="prob-stat/software-engineering/">
-      <span>СЕМ</span>
+      <span>СИ</span>
       <strong>Софтуерно инженерство</strong>
     </a>
     <a class="track-card" href="prob-stat/applied-math/">

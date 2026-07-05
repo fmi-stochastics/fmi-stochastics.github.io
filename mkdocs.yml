@@ -3,13 +3,11 @@ site_url: https://fmi-stochastics.github.io/
 use_directory_urls: true
 
 nav:
+  - Начало: index.md
   - Вероятности и статистика:
       - Компютърни науки, поток 2: prob-stat/computer-science-2.md
       - Софтуерно инженерство: prob-stat/software-engineering.md
       - Приложна математика: prob-stat/applied-math.md
-
-repo_url: https://github.com/fmi-stochastics/fmi-stochastics.github.io
-repo_name: fmi-stochastics.github.io
 
 theme:
   name: material
@@ -30,11 +28,8 @@ theme:
     - navigation.sections
     - navigation.top
     - toc.follow
-    - search.suggest
-    - search.highlight
 
-plugins:
-  - search
+plugins: []
 
 markdown_extensions:
   - attr_list
