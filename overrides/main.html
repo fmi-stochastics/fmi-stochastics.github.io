@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block extrahead %}
+  {{ super() }}
+  <script
+    defer
+    src="https://cloud.umami.is/script.js"
+    data-website-id="28eade76-b709-49c2-94b6-b99dc7837223"
+    data-domains="fmi-stochastics.github.io"
+    data-exclude-search="true"
+    data-exclude-hash="true"
+  ></script>
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  <script>
+    document.addEventListener("click", function (event) {
+      if (!(event.target instanceof Element)) return
+
+      const link = event.target.closest("a[href]")
+      if (!link || !window.umami) return
+
+      const url = new URL(link.href, window.location.href)
+      if (!url.pathname.toLowerCase().endsWith(".pdf")) return
+
+      window.umami.track("PDF download", { file: url.pathname })
+    })
+  </script>
+{% endblock %}
