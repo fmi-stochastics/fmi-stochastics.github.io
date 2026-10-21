@@ -234,6 +234,20 @@ body {
   margin: -.25rem 0 1.5rem;
 }
 
+/* Keep course materials and section links together in one compact row. */
+.course-menu {
+  flex-wrap: nowrap;
+  max-width: 100%;
+  margin: 0 0 1.5rem;
+  padding: .15rem 0 .4rem;
+  overflow-x: auto;
+}
+
+.course-menu a {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
 .section-menu a {
   display: inline-flex;
   align-items: center;
