@@ -1,0 +1,96 @@
+\documentclass[a4paper]{article}
+\input{tex/en/preamble.tex}
+\setlength{\emergencystretch}{3em}
+\pagenumbering{arabic}
+\begin{document}
+\begin{center}\Large Probability and Statistics, Computer Science\par\large Test 1, 13 May 2023: solutions\end{center}
+\noindent\textit{English transcription of the supplied handwritten workings. The notation and derivations follow the notes, including inconsistencies identified below.}
+\section*{Problem 1}
+\begin{enumerate}
+\item Number the prize boxes from 0 to 4. The reached box number is $Y\sim Bin(4,1/2)$. For the payout $X$,
+\[\begin{array}{c|ccccc}X&1000&100&700&250&500\\\hline\P&1/16&4/16&6/16&4/16&1/16\end{array}\]
+\[\E X=\frac{1000+400+4200+1000+500}{16}=\frac{7100}{16}=443.75.\]
+\item Let $X_1$ be the number of balls until the first 1000-lev prize. Then $X_1\sim Ge(1/16)$ and $\E X_1=16$. Let $X_2$ be the total payout until then. Informally, the final 1000 leva are preceded by an average of 15 other payouts. Their conditional law is
+\[\begin{array}{c|cccc}X\mid X\ne1000&100&700&250&500\\\hline\P&4/15&6/15&4/15&1/15\end{array}\]
+so $\E[X\mid X\ne1000]=6100/15=406\frac23$, yielding $1000+6100=7100$.
+Formally,
+\begin{align*}
+\E X_2&=\sum_{k\ge1}\P(X_1=k)\E[X_2\mid X_1=k]\\
+&=\sum_{k\ge1}\left(\frac{15}{16}\right)^{k-1}\frac1{16}\left[(k-1)\frac{6100}{15}+1000\right].
+\end{align*}
+Use
+\[\sum_{k=1}^\infty\left(\frac{15}{16}\right)^{k-1}(k-1)=\sum_{j=0}^\infty j\left(\frac{15}{16}\right)^j=\frac{15/16}{(1/16)^2}=15\cdot16\]
+and $\sum_{k\ge1}(15/16)^{k-1}/16=1$. Hence $\E X_2=7100$.
+\item Let $Z_i$ be the randomly assigned prize in box $i$. Each is uniform on $\{1000,100,700,250,500\}$, so $\E Z_i=2550/5=510$. Then
+\[\E[\text{payout}]=\E\sum_{i=0}^4Z_i\binom4i(1/2)^4=510.\]
+The proposed best arrangement in the notes is $100,700,1000,500,250$.
+\item The probability of hitting the 100-lev prize on each of three drops is
+\[f(p)=(4p(1-p)^3)^3=64p^3(1-p)^9.\]
+\[f'(p)=192p^2(1-p)^9-576p^3(1-p)^8.\]
+The interior critical point satisfies $192(1-p)=576p$, giving $p=1/4$.
+\item Bayes' rule gives
+\[\frac{(3/8)^2}{(3/8)^2+(8/27)^2}\approx62\%.\]
+\end{enumerate}
+\section*{Problem 2}
+Let $Y_1=X_1+X_2$ and $Y_2=X_1X_2$, with parameters indexed by 1 or 2 as appropriate.
+\subsection*{1. Bernoulli variables}
+For iid $X_i\sim Ber(p)$, the sum takes values in $\{0,1,2\}$ and is not Bernoulli. Since $\P(X_1X_2=1)=p^2$, the product is $Ber(p^2)$.
+\subsection*{2. Binomial variables}
+For iid $X_i\sim Bin(n,p)$, the sum of the two independent sums of $n$ Bernoulli variables is $Bin(2n,p)$.
+If $X_1X_2\sim Bin(n_2,p_2)$, its largest possible value forces $n_2=n^2$. Its expectation gives
+\[\E X_1X_2=n^2p^2=n_2p_2,\qquad p_2=p^2.\]
+The probability of its maximum would have to satisfy
+\[p^{2n}=\P(X_1X_2=n^2)=p_2^{n_2}=p^{2n^2}.\]
+The notes conclude a contradiction except for the degenerate $p=1$ case, where $X_1X_2\sim Bin(n^2,1)$. (The $n=1$ Bernoulli case is treated separately above.)
+\subsection*{3. Geometric variables}
+The notes use the geometric convention with mean $1/p$. If $X_1+X_2\sim Ge(p_2)$, its mean would give $2/p=1/p_2$, hence $p_2=p/2$. Matching variances would require
+\[\frac{2(1-p)}{p^2}=\frac{1-p_2}{p_2^2}=\frac{4-2p}{p^2},\]
+which is impossible.
+If $X_1X_2\sim Ge(p_3)$, the mean gives $p_3=p^2$. On the other hand,
+\begin{align*}
+D(X_1X_2)&=\E X_1^2X_2^2-(\E X_1X_2)^2\\
+&=\left(\frac{1-p}{p^2}+\frac1{p^2}\right)^2-\left(\frac1{p^2}\right)^2
+=\frac{3-4p+p^2}{p^4}.
+\end{align*}
+Equating this with $(1-p^2)/p^4$ gives $2p^2-4p+2=0$, or $p=1$. Thus only the degenerate $Ge(1)$ case works.
+\subsection*{4. Poisson variables}
+For iid $X_i\sim Po(\lambda)$, $X_1+X_2\sim Po(2\lambda)$, for example by generating functions (see the exercises). If the product were $Po(\lambda_2)$, its mean would force $\lambda_2=\lambda^2$, but
+\[D(X_1X_2)=(\lambda+\lambda^2)^2-\lambda^4=\lambda^2+2\lambda^3.\]
+Matching mean and variance would give $2\lambda^3=0$, a contradiction for $\lambda>0$.
+\section*{Problem 3}
+Write
+\[f_\sigma=\tfrac14\bigl(f(X_1,X_2,X_3)+f(X_2,X_1,X_3)+f(X_3,X_2,X_1)+f(X_1,X_3,X_2)\bigr).\]
+\subsection*{1. Sum}
+For $f=X_1+X_2+X_3$, $\E f=3\mu$, $Df=3\sigma^2$, and $f_\sigma=f$. Thus both means and variances agree.
+\subsection*{2. Signed sum}
+For $f=X_1+X_2-X_3$,
+\[f_\sigma=\tfrac14\bigl(X_1+X_2-X_3+X_3+X_2-X_1+X_2+X_1-X_3+X_1+X_3-X_2\bigr)=\frac{X_1+X_2}{2}.\]
+Hence $\E f_\sigma=\E f=\mu$, while $Df=3\sigma^2$ and
+\[Df_\sigma=\tfrac14(DX_1+DX_2)=\sigma^2/2.\]
+The averaging has an effect: the expectation is unchanged and the variance is smaller.
+\subsection*{3. Product minus the third variable}
+The notes define
+\[Y_1=X_1X_2-X_3,\quad Y_2=X_3X_2-X_1,\quad Y_3=X_2X_3-X_1=Y_2,\quad Y_4=X_1X_3-X_2.\]
+For each, $\E Y_i=\mu^2-\mu$, and
+\begin{align*}
+Df=DY_1&=D(X_1X_2)+DX_3\\
+&=(\sigma^2+\mu^2)^2-\mu^4+\sigma^2
+=\sigma^2(\sigma^2+2\mu^2+1).
+\end{align*}
+The subsequent handwritten calculation is
+\begin{align*}
+Df_\sigma&=\tfrac1{16}D(Y_1+2Y_2+Y_4)\\
+&=\tfrac38DY_1+\tfrac58Cov(Y_1,Y_2),\\
+Df-Df_\sigma&=\tfrac58\bigl(DY_1-Cov(Y_1,Y_2)\bigr).
+\end{align*}
+If the latter is positive, $f_\sigma$ has smaller variance. Expanding the covariance gives
+\begin{align*}
+Cov(X_1X_2-X_3,X_3X_2-X_1)
+&=Cov(X_1X_2,X_2X_3)-2Cov(X_1,X_1X_2)\\
+&=\mu^2(\sigma^2+\mu^2)-\mu^4-2\bigl((\sigma^2+\mu^2)\mu-\mu^3\bigr)\\
+&=\sigma^2(\mu^2-2\mu).
+\end{align*}
+Therefore the displayed conclusion is
+\[Df-Df_\sigma=\tfrac58\sigma^2(\sigma^2+\mu^2+2\mu+1)>0.\]
+\noindent\textit{Transcription note: this part of the handwriting duplicates $Y_2$ as $Y_3$, although the preceding definition of $f_\sigma$ uses a different permutation. It also writes $\E f_\sigma=\mu$ on the following page, inconsistent with its earlier $\mu^2-\mu$. These source inconsistencies have not been silently replaced by a new solution.}
+\end{document}

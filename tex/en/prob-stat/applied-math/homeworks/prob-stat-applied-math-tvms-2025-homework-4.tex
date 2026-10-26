@@ -1,0 +1,423 @@
+\documentclass[a4paper]{report}
+\input{tex/en/preamble.tex}
+\usepackage{tcolorbox}
+\setcounter{section}{0}
+\renewcommand{\thesection}{\arabic{section}}
+\begin{document}
+\noindent Probability Theory and Mathematical Statistics, 2024/2025 \hfill Homework 4
+
+\hrulefill
+
+\begin{it}
+The maximum total across all homework assignments this semester is 50 points,
+corresponding to a bonus of 0.5 on the tutorial grade.
+
+
+This assignment is based on an entrance examination for
+the Centrale-Sup\'elec group of French universities. See
+\url{https://www.concours-centrale-supelec.fr/sujets-rapports}, under Math\'ematiques
+1 for 2018. It is therefore distributed under the same licence,
+CC BY-NC-SA 2.0: \url{https://creativecommons.org/licenses/by-nc-sa/2.0/}.
+
+\end{it}
+
+Notes:
+\begin{itemize}
+\item Throughout, \(N\), \(k\), and \(d\) are integers at least 2,
+and $t$ is a real number.
+\item For positive integers \(m,n\), \(\mathcal M_{m,n}(\mathbb R)\) denotes the real \(m\times n\) matrices.
+  \item 
+For brevity,
+we use
+  $[1,N]$,
+to mean
+  $\{1,\dots,N\}$.
+\item For a matrix \(A\), \(A^T\) denotes its transpose.
+\item All random objects are defined on the finite probability space \((\Omega,\mathcal A,\mathbb P)\).
+\item For a Euclidean space \(E\), such as $\mathbb R^n$, write \(\langle\cdot,\cdot\rangle\) and \(\|\cdot\|\) for its inner product and induced norm.
+\end{itemize}
+
+\section*{Problem statement and objective}
+
+What is the largest number of points in $\mathbb R^n$
+that can all be at equal distances from one another?
+In the plane ($n=2$) the answer is 3, forming an equilateral triangle;
+for $n=3$ it is 4, forming a regular tetrahedron. One can check that in $\mathbb R^n$ it is $n+1$.
+
+Thus, for example, 50 vectors in $\mathbb R^{100}$ can be mutually equidistant. The preceding observation shows that depicting their positions in two dimensions is impossible
+without changing the distances! This is a relatively simple manifestation of the \emph{curse of dimensionality}, a collective term for the often counterintuitive properties of high-dimensional spaces.
+
+This assignment asks:
+\begin{tcolorbox}[colframe=black, colback=white, boxrule=0.5mm, sharp corners]
+Can $N$ points in a high-dimensional Euclidean space be linearly projected into a lower-dimensional space without substantially distorting their pairwise distances?
+\end{tcolorbox}
+
+More precisely, let \(v_1,\ldots,v_N\in\mathbb R^d\) be distinct. For \(\varepsilon\in(0,1)\), call a linear map \(f:\mathbb R^d\to\mathbb R^k\) an \emph{\(\varepsilon\)-isometry} for these vectors if
+\[
+\forall (i,j)\in[ 1,N] ^2:\quad
+(1-\varepsilon)\,\|v_i-v_j\|\le \|f(v_i)-f(v_j)\|\le (1+\varepsilon)\,\|v_i-v_j\|.
+\]
+
+\medskip
+
+\textbf{Objective:} For which \(k\) does there exist a linear \(\varepsilon\)-isometry \(f:\mathbb R^d\to\mathbb R^k\) for \(v_1,\ldots,v_N\)?
+
+\medskip
+
+We will prove the following theorem, first established by William B. Johnson and Joram Lindenstrauss in 1984:
+\begin{tcolorbox}[colframe=black, colback=white, boxrule=0.5mm, sharp corners]
+\emph{There is an absolute constant \(c>0\) such that, for all integers \(N,d\geq2\) and every set of \(N\) distinct vectors in \(\mathbb R^d\), the condition}
+\[
+k\ge \frac{c\ln(N)}{\varepsilon^2},
+\]
+\emph{is sufficient for an \(\varepsilon\)-isometry \(f:\mathbb R^d\to\mathbb R^k\) for \(v_1,\ldots,v_N\) to exist.}
+\end{tcolorbox}
+
+The only known proofs of this theorem use probabilistic methods. Section \ref{sec:1} develops preliminary results on convexity and probability. Section \ref{sec:2} proves a concentration result of Talagrand, which Section \ref{sec:3} applies to the Johnson--Lindenstrauss theorem.
+\pagebreak
+
+\section{Preliminary results}\label{sec:1}
+
+\subsection{Projection onto a closed convex set}
+Let \(E\) be a Euclidean space.
+\begin{enumerate}
+\item Let \(a,b\in E\). Prove and geometrically interpret
+  \[
+  \|a+b\|^2+\|a-b\|^2 = 2\lbrb{\|a\|^2 + \|b\|^2}.
+  \]
+\item Deduce that if \(u,v,v'\in E\), \(v\ne v'\), and \(\|u-v\|=\|u-v'\|\), then
+  \[
+  \Bigl\|u-\frac{v+v'}{2}\Bigr\| < \|u-v\|.
+  \]
+\item Let \(F\subset E\) be nonempty and closed, and \(u\in E\). Prove that there exists \(v\in F\) such that
+  \[
+  \forall w\in F:\quad \|u-v\|\le \|u-w\|.
+  \]
+\item Deduce that if \(C\subset E\) is nonempty, closed and convex, then for every \(u\in E\) there is a unique \(v\in C\) such that
+  \[
+  \forall w\in C:\quad \|u-v\|\le \|u-w\|.
+  \]
+Call \(v\) the \emph{projection} of \(u\) onto \(C\), and write
+  \(\,d(u,C):=\|u-v\|\).
+\end{enumerate}
+
+\subsection{H\"older's inequality for expectations}
+Let \(p,q\) be positive real numbers satisfying
+\[
+\frac{1}{p} + \frac{1}{q} = 1.
+\]
+\begin{enumerate}
+\item Use concavity of the logarithm to prove, for positive \(a,b\),
+  \[
+  ab \le \frac{a^p}{p} + \frac{b^q}{q}.
+  \]
+\item Deduce that random variables \(X,Y\) on a finite probability space satisfy
+  \[
+  \Ebb{|XY|}\le \lbrb{\Ebb{|X|^p}}^{1/p}\,
+  \lbrb{\Ebb{|Y|^q}}^{1/q}.
+  \]
+(\emph{First consider $\Ebb{|X|^p}=\Ebb{|Y|^q}=1$.})
+\end{enumerate}
+
+
+\subsection{Random variables with sub-Gaussian tails}
+Let \(X:\Omega\to\mathbb R\) and suppose there are \(a,b>0\) such that, for all \(t>0\),
+\[
+\mathbb{P}(|X|\ge t)\le a\exp(-bt^2).
+\]
+\begin{enumerate}
+\item Prove that
+  \[
+  \Ebb{X^2}
+  = 2\int_{0}^{+\infty} t\,\mathbb{P}(|X|\ge t)\,\D t.
+  \]
+\item Show that \(\Ebb{X^2}\leq a/b\).
+\item For \(\delta\) with \(\delta^2\leq a/b\), prove
+  \[
+  \mathbb{P}(|X+\delta|\ge t)\le \mathbb{P}(|X|\ge t-|\delta|).
+  \]
+\item Prove that
+  \[
+  -b(t-|\delta|)^2 \le a - \frac12bt^2.
+  \]
+\item Deduce that for \(t\geq|\delta|\),
+  \[
+  \mathbb{P}(|X+\delta|\ge t)
+  \le a\exp(a)\exp\Bigl(-\frac12bt^2\Bigr).
+  \]
+\item Show that this inequality also holds for \(0\leq t<|\delta|\).
+\end{enumerate}
+
+\bigskip
+
+\section{Talagrand's inequality}
+\label{sec:2}
+Let \(E\) be an \(n\)-dimensional Euclidean space, \(n\geq1\), with orthonormal basis \((e_1,\ldots,e_n)\). Let \(\varepsilon_1,\ldots,\varepsilon_n\) be independent Rademacher variables, meaning
+$\P(\epsilon_1=1)=\P(\epsilon_1=-1)=1/2$, and set
+\[
+X:=\sum_{i=1}^n \varepsilon_i\,e_i.
+\]
+Our aim is to show that for every nonempty closed convex \(C\subset E\),
+\begin{equation}
+    \label{eq: Talagrand}
+\mathbb{P}\lbrb{X\in C}\,
+\Ebb{\exp\lbrb{\frac18\,d(X,C)^2}}\le1,
+\end{equation}
+and use this to establish Talagrand's inequality \eqref{eq:Talagrand2}.
+
+\subsection{Two special cases}
+\begin{enumerate}
+\item Consider the case where \(C\) does not intersect \[X(\Omega):=\{x\in E:X(\omega)=x
+\text{ for some }\omega\in\Omega\},\] that is, $C\cap X(\Omega)=\emptyset$.
+  
+For the remaining parts of this subsection, assume \(C\cap X(\Omega)\) consists of a single vector \(u\).
+\item Show that \(\frac14d(X,u)^2\sim\mathrm{Bin}(n,1/2)\).
+\item Find the expectation of \(\exp(\frac18d(X,u)^2)\) and show that it is at most \(2^n\).
+\item Prove \(d(X,C)\leq d(X,u)\), and establish
+  \eqref{eq: Talagrand}.
+\end{enumerate}
+
+\subsection{Induction}
+Now suppose \(C\subset E\) is closed and convex, with at least two elements in \(C\cap X(\Omega)\).
+Without loss of generality, assume two of those vectors differ in their last coordinate.
+We prove \eqref{eq: Talagrand} by induction on \(n=\dim E\).
+\begin{enumerate}
+\item Consider \(n=1\).
+\end{enumerate}
+
+\subsection{Properties of \(C_{+1}\) and \(C_{-1}\)}
+Let
+\[
+E':=\mathrm{span}(e_1,\dots,e_{n-1}),\quad
+\pi:E\to E'\text{ be the orthogonal projection},
+\quad
+X':=\pi(X)=\sum_{i=1}^{n-1}\varepsilon_i\,e_i.
+\]
+For \(t\in\{-1,1\}\), let
+\[
+H_t := E' + t\,e_n,\quad
+C_t := \pi\bigl(C\cap H_t\bigr).
+\]
+\begin{enumerate}
+\item Show that for every \(x'\in E'\) and \(t\in\{-1,1\}\),
+  \[
+  x'\in C_t \iff x' + t\,e_n\in C.
+  \]
+\item Prove that \(C_{+1},C_{-1}\) are nonempty closed convex subsets of \(E'\).
+\item For \(t\in\{-1,1\}\), let \(Y_t\) be the projection of \(X'\) onto \(C_t\).
+Show that
+  \[
+  \mathbb{P}(X\in C)
+  = \frac12\,\mathbb{P}(X'\in C_{+1})
+  + \frac12\,\mathbb{P}(X'\in C_{-1}).
+  \]
+\end{enumerate}
+
+\subsection{A key inequality}
+Let \(0\leq\lambda\leq1\).
+\begin{enumerate}
+\item Show that
+  \[
+  d(X,C)\le \Bigl\|\,(1-\lambda)\bigl(Y_{\varepsilon_n}+\varepsilon_n e_n\bigr)
+  +\lambda\bigl(Y_{-\varepsilon_n}-\varepsilon_n e_n\bigr)-X\Bigr\|.
+  \]
+\item Then prove that
+  \[
+  d(X,C)^2\le 4\lambda^2+\Bigl\|(1-\lambda)(Y_{\varepsilon_n}-X')
+  +\lambda(Y_{-\varepsilon_n}-X')\Bigr\|^2
+  \]
+and
+  \[
+  d(X,C)^2\le 4\lambda^2+(1-\lambda)\|Y_{\varepsilon_n}-X'\|^2
+  +\lambda\|Y_{-\varepsilon_n}-X'\|^2,
+  \]
+that is,
+  \[
+  d(X,C)^2\le 4\lambda^2+(1-\lambda)d(X',C_{\varepsilon_n})^2
+  +\lambda\,d(X',C_{-\varepsilon_n})^2.
+  \]
+\end{enumerate}
+
+\subsection{Conditional expectations}
+Let
+\[
+p_+ := \mathbb{P}(X'\in C_{+1}),\quad
+p_- := \mathbb{P}(X'\in C_{-1}),
+\]
+and assume without loss of generality that \(p_+\geq p_-\).
+\begin{enumerate}
+\item Show that \(p_->0\).
+\item Prove that for every \(\lambda\in[0,1]\),
+  \[
+  \begin{aligned}
+    &\Ebb{\exp\lbrb{\frac18\,d(X,C)^2}\mid \varepsilon_n=-1}\\
+    &\quad\le
+    \exp\lbrb{\frac{\lambda^2}{2}}
+    \;\Ebb{%
+      \lbrb{\exp\lbrb{\frac18\,d(X',C_{-1})^2}}^{1-\lambda}
+      \;\lbrb{\exp\lbrb{\frac18\,d(X',C_{+1})^2}}^{\lambda}
+    }.
+  \end{aligned}
+  \]
+\item Deduce that
+  \[
+    \Ebb{\exp\lbrb{\frac18\,d(X,C)^2}\mid \varepsilon_n=-1}
+    \le
+    \exp\lbrb{\frac{\lambda^2}{2}}
+    \;\Ebb{\exp\lbrb{\frac18\,d(X',C_{-1})^2}}^{1-\lambda}
+    \;\Ebb{\exp\lbrb{\frac18\,d(X',C_{+1})^2}}^{\lambda}.
+  \]
+\item Using the induction hypothesis, justify
+  \[
+    \Ebb{\exp\lbrb{\frac18\,d(X,C)^2}\mid \varepsilon_n=1}
+    \le \frac{1}{p_+}.
+  \]
+and then show that, for every \(\lambda\in[0,1]\),
+  \[
+    \Ebb{\exp\lbrb{\frac18\,d(X,C)^2}}
+    \le
+    \frac12\;\lbrb{
+      \frac1{p_+}
+      + \exp\lbrb{\frac{\lambda^2}{2}}
+        \;\frac1{(p_-)^{1-\lambda}}
+        \;\frac1{(p_+)^{\lambda}}
+    }.
+  \]
+\end{enumerate}
+
+\subsection{Optimization}
+\begin{enumerate}
+\item Let \(\lambda=1-p_-/p_+\). Show that
+  \[
+    \Ebb{\exp\lbrb{\frac18\,d(X,C)^2}}
+    \le
+    \frac{1}{2p_+}\;\lbrb{
+      1 + \exp\lbrb{\frac{\lambda^2}{2}}\,(1-\lambda)^{\lambda-1}
+    }.
+  \]
+\item Prove that for every \(x\in[0,1)\),
+  \[
+    \frac{x^2}{2} + (x-1)\,\ln\lbrb{1-x}
+    \;\le\;
+    \ln\lbrb{2+x} - \ln\lbrb{2-x}.
+  \]
+\item Deduce that for every \(x\in[0,1)\),
+  \[
+    1 + \exp\lbrb{\frac{x^2}{2}}\,(1-x)^{x-1}
+    \;\le\;
+    \frac{4}{2-x}.
+  \]
+\item Complete the proof of \eqref{eq: Talagrand}.
+\item Prove Talagrand's inequality:
+    \begin{tcolorbox}[colframe=black, colback=white, boxrule=0.5mm, sharp corners]
+\emph{For every nonempty closed convex \(C\subset E\) and every \(t>0\),
+    \begin{equation}\label{eq:Talagrand2}
+      \mathbb{P}(X\in C)\,\mathbb{P}(d(X,C)\ge t)
+      \;\le\;
+      \exp\lbrb{-\frac{t^2}{8}}.
+    \end{equation}}
+    \end{tcolorbox}
+\end{enumerate}
+
+
+\bigskip
+
+\section{The Johnson--Lindenstrauss theorem}\label{sec:3}
+In this section consider
+\[
+  E = \mathcal{M}_{k,d}(\mathbb{R}),
+\]
+equipped with the inner product
+\(\langle A, B\rangle_F := \mathrm{tr}(A^T B)\)
+and its induced (Frobenius) norm \(\|\cdot\|_F\). Identify \(\mathbb R^d\) with \(\mathcal M_{d,1}(\mathbb R)\), viewing vectors as column matrices. Let \(u\in\mathbb R^d\), \(\|u\|=1\), and define
+\[
+  g(M) := \|M\,u\|,
+  \quad
+  M\in\mathcal{M}_{k,d}(\mathbb{R}).
+\]
+Let
+\[
+  X = (\varepsilon_{ij})_{1\le i\le k,\;1\le j\le d}
+\]
+be a random matrix in \(\mathcal M_{k,d}(\mathbb R)\) whose entries \(\varepsilon_{ij}\) are independent Rademacher variables.
+
+\subsection{A concentration inequality}
+\begin{enumerate}
+\item Show that
+  \[
+    C = \{M \mid g(M)\le r\}
+  \]
+is a closed convex subset of \(\mathcal M_{k,d}(\mathbb R)\).
+\item Prove that every matrix \(M\) satisfies
+  \[
+    \|M\,u\| \le \|M\|_F.
+  \]
+\item Let \(r,t\in\mathbb R\), \(t>0\). Show that \(d(M,C)<t\) implies \(g(M)<r+t\).
+\item Deduce that
+  \[
+    \mathbb{P}(g(X)\le r)\,\mathbb{P}(g(X)\ge r+t)
+    \;\le\;
+    \exp\lbrb{-\frac{t^2}{8}}.
+  \]
+\end{enumerate}
+
+\subsection{Medians}
+\begin{enumerate}
+\item Explain why \(g(X)\) has at least one median.
+\item Prove that for every \(t>0\),
+  \[
+    \mathbb{P}\lbrb{|g(X)-m|\ge t}
+    \;\le\;
+    4\,\exp\lbrb{-\frac{t^2}{8}},
+  \]
+and that
+  \[
+    \Ebb{(g(X)-m)^2} \le 32.
+  \]
+\item Show that \(\Ebb{g(X)^2}=k\) and \(\Ebb{g(X)}\leq\sqrt k\).
+\item Deduce that
+  \[
+    (\sqrt{k}-m)^2 \le \Ebb{(g(X)-m)^2}.
+  \]
+\end{enumerate}
+
+\subsection{A key lemma}
+\begin{enumerate}
+\item Show that for every \(t>0\),
+  \[
+    \mathbb{P}\lbrb{|g(X)-\sqrt{k}|\ge t}
+    \;\le\;
+    4\,\exp(4)\,\exp\lbrb{-\frac{t^2}{16}}.
+  \]
+\item Define \(A_k=X/\sqrt k\), and let \(\varepsilon\in(0,1)\), \(\delta\in(0,1/2)\), with
+  \[
+    k \ge \frac{160\,\ln(1/\delta)}{\varepsilon^2}.
+  \]
+Prove that for every vector \(u\)
+of unit norm,
+  \[
+    \mathbb{P}\lbrb{\big|\,\|A_k\,u\|-1\big| > \varepsilon} < \delta.
+  \]
+\end{enumerate}
+
+\subsection{Conclusion}
+Let $v_1,\ldots,v_N$ be distinct vectors in $\mathbb R^d$. For \((i,j)\in[1,N]^2\), \(i<j\), define
+\[
+  E_{ij}
+  := \lbrb{%
+    (1-\varepsilon)\,\|v_i-v_j\|\le\|A_kv_i-A_kv_j\|\le(1+\varepsilon)\,\|v_i-v_j\|%
+  }.
+\]
+\begin{enumerate}
+\item Show that \(\mathbb P(E_{ij}^c)<\delta\), where \(E_{ij}^c=\Omega\setminus E_{ij}\).
+\item Deduce that
+  \[
+\mathbb{P}\lbrb{\bigcap_{i<j}E_{ij}}
+    \;\ge\;
+    1 - \frac{N(N-1)}{2}\,\delta.
+  \]
+\item Prove the Johnson--Lindenstrauss theorem.
+\end{enumerate}
+
+\end{document}
+

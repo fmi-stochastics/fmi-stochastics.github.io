@@ -1,0 +1,47 @@
+\documentclass[a4paper]{report}
+\input{tex/en/preamble.tex}
+\begin{document}
+\noindent Computer Science, 31 May 2026 \hfill Test 2
+\vspace{0.5cm}
+\begin{problem} (0.75 points)
+Let $(X,Y)$ have joint density
+\[f_{X,Y}(x,y)=\begin{cases}cxy,&0<y<\sqrt x<1,\\0,&\text{otherwise.}\end{cases}\]
+\begin{enumerate}
+\item (0.5 points) Find $c$, $\E[X]$ and $\E[X\mid Y=1/2]$.
+\item (0.25 points) Find the distribution (density) of $Z=Y/\sqrt X$.
+\end{enumerate}
+\end{problem}
+\begin{problem} (1 point)
+Let all $X_i,Y_i\sim U(0,1)$, $i\geq1$, be independent and identically distributed. Set $Z_i=\mathbbm1_{\{(X_i-1/2)^2+(Y_i-1/2)^2\leq1/4\}}$ and estimate $\pi$ by $\widehat\pi_n=\frac4n\sum_{i=1}^nZ_i$.
+\begin{enumerate}
+\item (0.25 points) Calculate $\E[Z_i]$, $D[Z_i]$, $\E[\widehat\pi_n]$ and $D[\widehat\pi_n]$.
+\item (0.25 points) Find the smallest $n$ for which $\P(|\widehat\pi_n-\pi|<0.01)\geq0.95$.
+\item (0.25 points) For $n=10^6$, find the smallest $\delta>0$ such that $\P(|\widehat\pi_n-\pi|<\delta)\geq0.95$.
+\item (0.25 points) By what factor must the number of trials in part 2 increase to reduce the error by a factor of 10 at the same 95\% confidence?
+\end{enumerate}
+\end{problem}
+\begin{problem} (1 point)
+Let $X,Y$ be independent $U(0,1)$ variables, and set $U=\max(X,Y)$ and $V=\min(X,Y)$.
+\begin{enumerate}
+\item (0.3 points) Find $f_{V,U}(v,u)$.
+\item (0.3 points) Find $f_{V\mid U}(v\mid u)$ and $\E[V\mid U]$. Interpret the result.
+\item (0.4 points) Define $Z=V/U$, the ratio of the smaller value to the larger. Find $f_{Z,U}(z,u)$. Are $Z,U$ independent? What is the marginal distribution of $Z$?
+\end{enumerate}
+\end{problem}
+\begin{problem} (1 point)
+Two systems monitor a server for incidents. Its load is $\Theta\sim U(0,1)$. The first monitoring system is new and its detection time depends on the load: $X\mid\Theta=\theta\sim\mathrm{Exp}(\theta)$. The second is old and calibrated, with detection time $Y\sim\mathrm{Exp}(1)$. Conditional on a fixed $\Theta$, $X,Y$ are independent. The new system detects the incident first, so $X<Y$.
+\begin{enumerate}
+\item (0.3 points) Find $\P(X<Y\mid\Theta=\theta)$.
+\item (0.4 points) Find the conditional density of $\Theta\mid X<Y$.
+\item (0.3 points) Find $\P(\Theta>1/2\mid X<Y)$.
+\end{enumerate}
+\end{problem}
+\begin{problem} (0.85 points)
+Let $X_1,X_2$ be independent $N(0,1)$ variables, and $Y_1=X_1/X_2$.
+\begin{enumerate}
+\item (0.25 points) Find $f_{Y_1}(y_1)$.
+\item (0.25 points) Find $\E[Y_1]$.
+\item (0.3 points) Show that $Z=1/Y_1$ has the same distribution as $Y_1$ and find $\P(Y_1>1)$.
+\end{enumerate}
+\end{problem}
+\end{document}

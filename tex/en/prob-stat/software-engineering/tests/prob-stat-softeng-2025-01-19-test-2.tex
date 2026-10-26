@@ -1,0 +1,176 @@
+\documentclass[a4paper]{report}
+\input{tex/en/preamble.tex}
+\setlength{\emergencystretch}{3em}
+\allowdisplaybreaks
+\begin{document}
+
+
+
+\vspace{1ex}
+\noindent Probability and Statistics, 19.01.2025 \hfill Test 2
+
+\hrulefill
+
+\begin{it}
+The exact grading formula depends on the results. As an approximation, use 2 plus the points earned. Time allowed: 210 minutes. Good luck.
+\end{it}
+\vspace{1ex}
+
+
+\begin{problem} (1.5 points)
+Let $\xi,\eta$ be independent random variables,
+$\xi\sim Exp(4)$ and $\eta\sim U(-1,1)$.
+\begin{enumerate}
+    \item (0.5 points) Find
+    $\Ebb{\xi \eta}, \Ebb{\xi|
+    \eta=0}$, $\mathrm{Corr}(\xi,\eta)$ and $P(\xi\leq0.25)$.
+    \item (0.5 points) Find the densities of $\xi^2+3$ and $\xi/
+\eta$.
+\item (0.5 points)
+Let $Y_1,Y_2,Y_3,Y_4\sim Exp(1)$ be independent. Let $Y_{(i)}$ be the $i$th smallest.
+Find the expectation and variance of $Y_{(3)}$.
+\end{enumerate}
+\end{problem}
+
+
+\begin{problem}
+(1 point)
+Two customers arrive simultaneously at a service system
+with two queues. If $T$
+is the service time,
+\[
+T \sim
+\begin{cases}
+Exp(1), &\text{(slow queue) with probability }0.3,\\
+Exp(3), &\text{(fast queue) with probability }0.7.
+\end{cases}
+\]
+\begin{enumerate}
+    \item (0.5 points) Let $T_i$ be customer $i$'s service time. Find the distribution of $T_1+T_2$.
+    \item (0.25 points) Find $E(T_1+T_2)$.
+    \item (0.25 points) For large $n$, estimate the probability that the sum of $n$ independent such service times
+    exceeds $5n$.
+\end{enumerate}
+\end{problem}
+
+
+\begin{problem}
+(1 point)
+Let $X_1,X_2,\dots$ be independent identically distributed random variables
+with density
+\[
+f_X(x) =
+\begin{cases}
+2x, &\text{if }0<x<1,\\
+0, &\text{otherwise}.
+\end{cases}
+\]
+\begin{enumerate}
+    \item (0.5 points) Approximately how many observations $n$ are needed for a 97\% probability
+    that the sample mean $\overline X_n:=(X_1+\dots+X_n)/n$ lies between 0.5 and 0.7?
+    \item (0.5 points) Approximately what value do you expect for $\max_{1\leq k\leq n}X_k$ when $n=10\,000$?
+\end{enumerate}
+\end{problem}
+
+
+\begin{problem}
+(0.75 points)
+Let $X,Y$ be independent, with $X\sim\mathcal N(2,4)$ and
+$Y \sim \mathcal{N}(2, 9)$.
+\begin{enumerate}
+    \item (0.25 points) Find their joint density and $P(X<Y)$.
+    \item (0.5 points) Calculate $E(|X-Y|)$ and $|E(X)-E(Y)|$.
+    Can you determine which is larger without computing their exact values?
+\end{enumerate}
+\end{problem}
+
+
+\begin{problem}
+(1 point)
+Let $ABC$ be a right triangle with legs $AC=BC=1$.
+Through a uniformly chosen point $P$ on $AC$, draw a line parallel to hypotenuse $AB$.
+Let $Q,R$ be its intersections with the legs.
+\begin{enumerate}
+    \item (0.25 points) Find the expected length of $QR$.
+    \item (0.5 points) Find the probability that two independently chosen random points inside $ABC$ lie on opposite sides of $QR$.
+    \item (0.25 points) Let $A,B$ be randomly chosen on
+    a circle with centre $O$ and radius 1. What is the expected area of $AOB$? What is the expectation of $AO\cdot AB\cdot\sin(OAB)/2$? Explain why the two quantities are or are not equal.
+\end{enumerate}
+\end{problem}
+\pagebreak
+\begin{problem}
+\textit{(Bonus: 1 point)}
+
+In classical (often called frequentist) statistics, to estimate an unknown parameter \(\lambda\),
+we usually use methods such as maximum likelihood or the method of moments,
+without modelling \(\lambda\) itself as random.
+In the \emph{Bayesian approach}, we instead assume a \emph{prior}
+distribution for \(\lambda\), such as \(\Gamma(\alpha,\beta)\), and combine observed data with this prior knowledge
+to obtain its \emph{posterior} distribution.
+We can then generate or predict new observations using a distribution that accounts for data already observed.
+
+\bigskip
+Models in which the posterior belongs to the same family as the prior, with updated parameters, are computationally convenient: the data
+have taught us parameter values that better describe reality. One such case is the exponential model
+$Exp(\lambda)$ with a gamma prior for the unknown $\lambda$: its posterior is also gamma.
+
+Let \(X_1,\dots,X_n\) be independent observations from an exponential distribution,
+\[
+X\mid\lambda \sim \mathrm{Exp}(\lambda),
+\]
+with unknown parameter \(\lambda>0\). In the Bayesian model, assume the prior \(\lambda\sim\Gamma(\alpha,\beta)\), with density
+\[
+f_\lambda(x) \;=\; \frac{\beta^\alpha}{\Gamma(\alpha)}\,x^{\alpha-1}\,\exp(-\beta x),
+\quad x>0.
+\]
+
+\begin{enumerate}
+    \item (0.25 points) Prove that, after observing \(X_1,\dots,X_n\), the posterior distribution of \(\lambda\) is
+    \[\lambda\mid X_1,\ldots,X_n\sim\mathrm{\Gamma}\Bigl(\alpha + n,\;\beta + \sum_{i=1}^n X_i\Bigr).\]
+
+    \item (0.25 points) Find the predictive distribution of a new observation \(X_{n+1}\)
+    (i.e. the conditional probability \(\mathbb P(X_{n+1}\in A|X_1,\dots,X_n)\))
+    and show that in certain cases it can be expressed using a \textit{Pareto} random variable $Y$:
+    \[
+    F_Y(x) = 1 - \lbrb{\frac{a}{x}}^\alpha,
+    \quad
+    x > a,
+    \]
+    for a parameter $a$. This is
+    a classical example of a heavy-tailed distribution.
+    (\textit{You may integrate with respect to \(x\) the distribution
+    \(\mathbb{P}(X_{n+1}\in A|\lambda=x)\times f_{\lambda\mid X_1,\dots,X_n}(x|X_1,\ldots,X_n)\).})
+
+    \item (0.5 points)
+    Find \(\mathrm E(\lambda|X_1,\dots,X_n)\) and \(\mathrm{Var}(\lambda|X_1,\dots,X_n)\).
+    Recall that the conditional variance of \(Y\) given \(X\) is defined as
+    \[
+       D(Y|X) \;=\; E\bigl[(Y - E(Y|X))^2 \,\big|\;X\bigr].
+    \]
+    Use this definition also to prove that
+    \[
+       D(Y) \;=\; E\bigl[D(Y|X)\bigr]\;+\; D\bigl(E[Y|X]\bigr).
+    \]
+
+    \item \textit{(Bonus to the bonus)}
+    How would you interpret the difference between a classical confidence interval and
+    a Bayesian highest-posterior-density interval for \(\lambda\) in this example?
+\end{enumerate}
+\end{problem}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

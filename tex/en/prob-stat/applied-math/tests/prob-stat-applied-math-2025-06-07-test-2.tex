@@ -1,0 +1,57 @@
+\documentclass[a4paper]{report}
+\input{tex/en/preamble.tex}
+\begin{document}
+\noindent Mathematics / Applied Mathematics, 7 June 2025 \hfill Test 2
+\hrulefill
+\begin{it}The exact grading formula will depend on the results. As an approximation, use 2 + the number of points. Time allowed: 4 hours. Good luck!\end{it}
+\begin{problem} (0.5 points)
+Information displays with $10\times100$ diodes are installed at public transport stops. Model their lifetimes as iid random variables with mean 10 years. Experience shows that when fewer than 75\% of the diodes work, the information is often unreadable and the display needs repair. Determine a condition under which the probability of needing repair after $k$ years is approximately 90\%, for $k=1$ or $5$.
+\end{problem}
+\begin{problem} (0.25 points)
+Let $\xi,\eta$ be independent, $\xi\sim\mathrm{Exp}(2)$ and $\eta\sim U(0,3)$, so
+\[f_\xi(x)=\begin{cases}2e^{-2x},&x>0,\\0,&\text{otherwise,}\end{cases}\qquad f_\eta(x)=\begin{cases}1/3,&0<x<3,\\0,&\text{otherwise.}\end{cases}\]
+Find their correlation, $\P(\xi<\eta)$ and the density of $\xi/\eta$.
+\end{problem}
+\begin{problem}
+\begin{enumerate}
+\item (0.25 points) Let $X\sim\mathcal N(\mu,\sigma^2)$ with both parameters unknown, with a sample of $n$ observations. Test $H_0:\mu=3.8$ against $H_1:\mu\neq3.8$ at significance level $\alpha=0.05$. Can $H_0$ be rejected for $n=16$, $\overline X=3.295$, $S^2=1.4641$? Derive the test using likelihood ratios.
+\item (0.5 points) Let $X\sim U(-\alpha,\alpha)$. Find method of moments and maximum likelihood estimators of $\alpha$. Determine whether they are unbiased and/or consistent.
+\end{enumerate}
+\end{problem}
+\begin{problem}
+Let $X_1,X_2,\ldots$ be identically distributed, and $\overline X_n=(X_1+\cdots+X_n)/n$.
+\begin{enumerate}
+\item (0.25 points) If $X_i\sim\mathcal N(\mu,\sigma^2)$, determine the distribution of $\overline X_n$. Calculate the moment generating function of $X_i$ and use it to find $\E[X_i^k]$ for $k\leq4$.
+\item (0.25 points) State the law of large numbers.
+\item (0.25 points) Can $D\overline X_n$ fail to tend to 0 as $n\to\infty$? Can the $X_i$ take finitely many values while $\overline X_n$ fails to converge to a constant?
+\item (0.5 points) If all $X_i$ have density $f_X(x)=1/[\pi(1+x^2)]$ for $x\in\mathbb R$, find the moment generating function $M_X(t)=\E[e^{tX_1}]$ and characteristic function $\varphi_X(t)=\E[e^{itX_1}]$. Calculate $\E[X_1]$ using $M_X$. Determine the distribution of $\overline X_n$ by a suitable theorem or calculation.
+\end{enumerate}
+\end{problem}
+\begin{problem}
+Let $X_1,\ldots,X_n$ be iid with density
+\[f_X(x)=\begin{cases}\alpha/(1+x)^{\alpha+1},&x>0,\\0,&\text{otherwise,}\end{cases}\qquad\alpha>0.\]
+Let $X_{(1)}\leq\cdots\leq X_{(n)}$ be the order statistics and $Y_k=\ln X_{(k)}$.
+\begin{enumerate}
+\item (0.25 points) Calculate $\E[X_i^k]$ for integer $k$. Find the density of $X_{(i)}$ and a closed expression for $\E[X_{(1)}]$.
+\item (0.5 points) Find explicit expressions for $\E[Y_k]$ and $D(Y_k)$. For which $k$ is $D(Y_k)$ minimized?
+\end{enumerate}
+\end{problem}
+\begin{problem}
+A vector $X=(X_1,\ldots,X_n)$ is normally distributed, or Gaussian, with mean $\mu=(\mu_1,\ldots,\mu_n)$ and covariance matrix $\Sigma_{ij}=\mathrm{Cov}(X_i,X_j)$ if every linear combination $\langle\lambda,X\rangle=\sum_i\lambda_iX_i$ has distribution $N(\langle\lambda,\mu\rangle,\sum_{i,j}\lambda_i\lambda_j\mathrm{Cov}(X_i,X_j))$.\footnote{The sum is the quadratic form $\lambda\Sigma\lambda^T$.}
+\begin{enumerate}
+\item (0.25 points) Find $M_Y(t)$ for $Y\sim N(\mu,\sigma^2)$. Using the fact that $M_Y(t_1)M_W(t_2)=M_{Y,W}(t_1,t_2)=\E[e^{t_1Y+t_2W}]$ in a nonempty neighbourhood of 0 implies independence, and the analogous result for more than two variables, prove that uncorrelated components of a Gaussian vector are jointly independent normally distributed variables.
+
+\textbf{For the rest of the problem, assume $X$ consists of independent $N(0,1)$ variables.}
+\item (0.25 points) Let $P$ be an $n\times n$ orthogonal matrix, $PP^T=I_n$. Prove that $PX$ also consists of independent $N(0,1)$ variables.
+\item (0.25 points) Let $V$ be a $k$-dimensional linear subspace of $\mathbb R^n$ and $V^\perp$ its orthogonal complement. Prove that the projections of $X$ onto these subspaces are independent Gaussian vectors, and that their lengths are independent and chi-squared distributed with parameters $k$ and $n-k$, respectively.
+
+\emph{Using the preceding part, explain why it suffices to consider $X_V=(X_1,\ldots,X_k,0,\ldots,0)$ and $X-X_V$.}
+\item (0.25 points) Take $V$ to be spanned by $(1,\ldots,1)$. Prove that
+\[\overline X=\frac{X_1+\cdots+X_n}{n}\qquad\text{and}\qquad(n-1)S^2=\sum_{i=1}^n(X_i-\overline X_n)^2\]
+are independent, and specify their distributions.
+\end{enumerate}
+\end{problem}
+\begin{problem} \emph{Bonus} (0.25 points)
+Find $\displaystyle\lim_{n\to\infty}e^{-n}\left(\frac n{1!}+\frac{n^2}{2!}+\cdots+\frac{n^n}{n!}\right)$.
+\end{problem}
+\end{document}

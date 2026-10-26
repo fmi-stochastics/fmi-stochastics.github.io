@@ -1,0 +1,165 @@
+% English translation of the Bulgarian source.
+\documentclass[a4paper]{report}
+\input{tex/en/preamble.tex}
+\begin{document}
+\noindent SEM, Software Engineering, Year 3, 2023/2024 \hfill Homework 1
+\hrulefill
+\begin{it}
+The maximum total score across the three homework assignments during the semester is 50 points, corresponding to a bonus of 0.5 toward the tutorial grade.
+Throughout, we work on a probability space $(\Omega,\mathcal A,\P)$. For convenience, define $\N_0=\N\cup\{0\}$.
+\end{it}
+\begin{problem} (5 points)
+\begin{enumerate}
+\item One card is drawn from each of 10 standard decks of 52 cards. Find the probability that the resulting hand of 10 cards:
+\begin{enumerate}
+\item contains no repeated cards;
+\item contains at least three aces;
+\item contains four clubs, three diamonds, two hearts and one spade;
+\item contains exactly four more black cards than red cards, given that there are more black cards than red cards.
+\end{enumerate}
+\item All items in one batch work properly, while $1/4$ of the items in another batch are defective. An item taken from a randomly chosen batch works properly. Calculate the probability that a second randomly selected item from the same batch is defective, if the first item was returned to its batch after inspection.
+\item What is the probability that the roots of the quadratic equation $x^2+ax+b=0$, $a,b\in[0,1]$, are real numbers?
+\end{enumerate}
+\end{problem}
+\begin{problem} (5 points)
+A child has four BGN 1 coins and three BGN 2 coins in the left pocket, and two BGN 1 coins and one BGN 2 coin in the right pocket. The child moves two coins from the left pocket to the right, then moves two coins from the right pocket back to the left. Finally, the child takes a coin from the right pocket. What is the probability that it is a BGN 1 coin?
+\end{problem}
+\begin{problem} (5 points)
+A fair die has two faces of each colour: white, green and red. We roll it twice. Let $X$ be the number of white results and $Y$ the number of red results. Find the joint distribution of $X$ and $Y$, determine whether they are independent, and find their covariance, $\P(X=1\mid Y=1)$ and $\P(X>Y)$.
+\end{problem}
+\begin{problem} (5 points)
+Let the random variable $X$ take values in $\N_0$, and let
+\[g_X(s):=\E s^X=\sum_{k=0}^{\infty}s^k\P(X=k)\]
+be its probability generating function.
+\begin{enumerate}
+\item Let $Y:=3X$ and $Z=X_1+X_2$, where $X_1,X_2\sim X$ are independent. Express the probability generating functions $g_Y$ and $g_Z$ in terms of $g_X$.
+\item Let $X\sim Ge(p)$, that is, $P(X=k)=p(1-p)^k$ for $k\in\N_0$. Calculate $g_X$ and use it to find $\E(X)$ and $D(X)$.
+\end{enumerate}
+\begin{problem}
+Let $X$ and $Y$ be independent random variables with
+\[\P(X=-1)=\P(X=1)=\P(Y=1)=2\P(Y=3)=2\P(Y=5)=\frac12.\]
+Let $Z_1:=2X+Y+1$, $Z_2:=XY$ and $Z_3=X^Y$. Find their expectations and variances.
+\end{problem}
+\end{problem}
+\begin{problem}[20 points, betting on heads/tails]
+Let $n\geq3$ and $p$ be natural numbers. Consider the following game with participants $A_1,\dots,A_n$:
+\begin{itemize}
+\item Each player writes down predictions for the outcomes of $2p+1$ tosses of a standard coin, with probability $1/2$ for heads and tails, writing H for heads and T for tails.
+\item The coin is tossed $2p+1$ times, and the players with the most correct predictions share a prize of BGN $n!$.
+\end{itemize}
+Example: $n=4$, $p=1$, predictions HTH, HHH, TTT, HHT. If the outcome is TTH, players 1 and 3 each have two correct predictions and share $4!$, receiving BGN 12 each.
+
+For the same $n=4$, $p=1$ and predictions HTH, HHH, TTT, HHT, if the outcome is TTT, player 3 has three correct predictions and wins BGN $4!=24$.
+
+For $i\in[n]$, define
+\begin{itemize}
+\item $X_i=$ ``the number of outcomes correctly predicted by $A_i$'';
+\item $G_i=$ ``the winnings of player $A_i$'';
+\item $q_k=\P(X_i=k)$, $r_k=\P(X_i\leq k)$.
+\end{itemize}
+Our aim is to calculate the expected winnings of $A_1$, that is, $\E(G_1)$, under two different strategies.
+
+\textbf{Part 1. Preliminary considerations.}
+\begin{enumerate}
+\item* As usual, we work on a probability space $(\Omega,\cF,\P)$. What set would you propose for $\Omega$?
+\item What is the distribution of $X_i$?
+\item Calculate $r_p$.
+\item Recall that $X(\Omega)$ denotes the set of all images of elements of $\Omega$ under the function $X$. For example, $X_1(\Omega)=\{0,1,\dots,2p+1\}$, because $A_1$ may predict from 0 to $2p+1$ outcomes correctly.
+
+If $\P(A)>0$, define the conditional expectation of $X$ given $A$ by
+\[\E(X\mid A)=\sum_{k\in X(\Omega)}k\P(X=k\mid A).\]
+Prove that if $B_1,\dots,B_s$ form a partition into events of nonzero probability, then
+\[\E X=\sum_{k=1}^s\E(X\mid B_k)\P(B_k).\]
+\textit{(Expand $\E X$ using its definition, apply the law of total probability, and interchange the order of summation.)}
+\end{enumerate}
+\textbf{Part 2. All players play randomly.}
+
+In this part, assume that all players choose heads/tails randomly with probability $1/2$, independently of one another.
+\begin{enumerate}
+\item What is $G_1(\Omega)$, that is, what winnings are possible for player $A_1$?
+\item For every $k\in X_1(\Omega)$ and $j\in[n]$, prove that
+\[\P\left(G_1=\frac{n!}{j}\;\middle\vert\;X_1=k\right)
+=\binom{n-1}{j-1}(r_k-r_{k-1})^{j-1}r_{k-1}^{n-j}.\]
+\item Prove that for $k>0$,
+\[\E(G_1\mid X_1=k)=\frac{(n-1)!(r_k^n-r_{k-1}^n)}{q_k}.\]
+Note that this formula also holds for $k=0$ if we define $r_{-1}=0$.
+
+\textit{(Expand using the previous subpart and apply the binomial theorem.)}
+\item Conclude that $\E(G_1)=(n-1)!$.
+
+\textit{(Consider the partition $\{X_1=k\}$, $k\in\{0,1,\dots,2p+1\}$.)}
+\item Is the conclusion of the previous subpart what you expected? We could also reach it another way: can we calculate $G_1+\dots+G_n$? Use linearity of expectation and symmetry to obtain $\E(G_1)$ again.
+\end{enumerate}
+\textbf{Part 3. $A_1$ and $A_2$ cooperate, while all other players play randomly.}
+
+In this part, assume that everyone except $A_2$ plays randomly. $A_2$ knows $A_1$ and predicts the opposite outcomes. For example, if $A_1$ predicts HHT, $A_2$ predicts TTH. If either of them wins, they split the winnings equally.
+
+Write
+\begin{itemize}
+\item $G',G'_1,G'_2$ for the total winnings of $A_1$ and $A_2$, and their individual winnings, respectively. Thus $G'=G'_1+G'_2$.
+\item $Y=$ ``the larger of the numbers of correct predictions by $A_1$ and $A_2$''. For predictions HHT and TTH and outcome HHH, $Y=2$.
+\item As before, for $k\in\{1,3,4,\dots,n\}$, $q_k=\P(X_i=k)$ and $r_k=\P(X_i\leq k)$.
+\end{itemize}
+\begin{enumerate}
+\item Prove that $Y(\Omega)=\{p+1,\dots,2p+1\}$.
+\item Prove that for $k\in\{p+1,\dots,2p+1\}$, $\P(Y=k)=2q_k$.
+\item Prove that for $k\in\{p+1,\dots,2p+1\}$ and $j\in\{0,\dots,n-2\}$,
+\[\P\left(G'=\frac{n!}{j+1}\;\middle\vert\;Y=k\right)
+=\binom{n-2}{j}(r_k-r_{k-1})^j r_{k-1}^{n-2-j},\]
+and, as a consequence using the binomial theorem, that
+\[\E(G'\mid Y=k)=n(n-2)!\frac{r_k^{n-1}-r_{k-1}^{n-1}}{q_k}.\]
+\item Conclude that
+\[\E(G')=2n(n-2)!\left(1-\frac1{2^{n-1}}\right),\]
+and verify that this strategy is better for $A_1$ and $A_2$ than the strategy in Part 2.
+\item Calculate $\E(G_i)$ for $i\in\{3,\dots,n\}$.
+\end{enumerate}
+\end{problem}
+\begin{problem}[15 points, simulating a random graph]
+Random graphs are an area of probability that has attracted particular interest in recent years, with connections to statistical mechanics and the modelling of large networks such as Facebook, Google searches and DNA. The problem with directly studying the Facebook friendship graph, for example, is that even if we had access to it, its incidence matrix would be too large to manipulate using today's hardware. A good probabilistic model may therefore allow us to make observations without checking them directly; for example, to prove that in every graph we simulate, any vertex can be reached from any other in at most $X$ steps, a so-called small-world network.
+
+Here we will explore empirically the simplest random graph model, introduced by Erd\H{o}s and R\'enyi in 1960.
+
+Let $n$ be the number of vertices of a graph $G$, and let $p\in[0,1]$ be a parameter. For each pair of vertices, toss a coin with probability $p$ of heads. If it shows heads, connect the vertices; otherwise, do not.
+
+Our aim is to analyse the probability that the graph is connected.
+\begin{enumerate}
+\item The parameters we will vary are $n$, $p$ and $N$, the number of simulations. For each choice of $n$ and $p$, simulate a large number of graphs: $N=10000$, $1000$, or $100$? Your choice of $N$ and $n$ will depend on how many simulations are feasible within a reasonable time. For fixed $n$ and $p$, this can be done by iterating over all pairs of vertices and drawing $Ber(p)$ each time, for example using \texttt{scipy.stats.bernoulli}.
+
+After choosing which of the $\binom n2$ pairs of vertices are connected by an edge, check whether the graph is connected. If the graph is connected in $M$ out of $N$ simulations, our estimate of its probability of being connected in general is $M/N$.
+
+Plot the proportion of connected graphs, $M/N$, against $p$: put the parameter $p$ on the $x$ axis and the resulting proportion on the $y$ axis. Explain why the function should be increasing.
+
+Try $n=100$, $1000$, $5000$, $10000$, or $100000$? $N=10000$? Consider values of $p$ from 0 to 1 in some step, for example $0.01$.
+
+You can calculate the number of operations for fixed $n,p,N$ to determine which parameter values you can use.
+
+Do you notice anything? Consider values of $p$ that are $o(\ln n/n)$, such as $\ln(\ln(n))/n$, and values that are $\omega(\ln n/n)$, such as $(n/2)/n=1/2$.
+\item* Repeat the experiment, but instead of estimating the proportion of connected graphs, measure the size of the largest connected component. In the first part, we considered only whether the largest connected component had size $n$. A result dating back to the earliest papers of Erd\H{o}s and R\'enyi states that, for large $n$, if $p=o(1/n)$ there is no connected component of size linear in $n$, whereas if $p=\omega(1/n)$, that is, $1/n=o(p)$, such a component exists. Can you observe this empirically?
+\end{enumerate}
+\end{problem}
+\begin{problem}[10 points, Markov's inequality and Chernoff bounds]
+Let $X$ be a positive random variable with finite expectation, and let $a>0$.
+\begin{enumerate}
+\item Using
+\[\E X=\P(X\geq a)\E(X\mid X\geq a)+\P(X<a)\E(X\mid X<A),\]
+prove Markov's inequality
+\[\P(X\geq a)\leq\frac{\E X}{a}.\]
+Use it to prove Chebyshev's inequality
+\[\P(|X-\E X|\geq a)\leq\frac{DX}{a^2}.\]
+\item Prove the Chernoff inequality: for every $t>0$,
+\[\P(X\geq a)\leq\frac{\E(e^{tX})}{e^{ta}}.\]
+\textit{(What is the relationship between $\{X\geq a\}$ and $\{e^{tX}\geq e^{ta}\}$?)}
+\item Let $X_1,\dots,X_n\sim Ber(1/2)$ be independent, and let $X=X_1+\dots+X_n$. What are the distribution, expectation and variance of $X$? Calculate $\E e^{tX}$.
+\item Assume without proof the following consequence of the Chernoff inequality: for $\delta\in(0,1)$ and $X$ as defined above,
+\[\P\left(|X-\E X|\geq\delta n/2\right)\leq2e^{-n\delta^2/6}.\]
+\textit{(*You can obtain the best bound for $\P(X\geq a)$ in the Chernoff inequality by minimizing $\E(e^{tX})/e^{ta}$ over $t>0$. If $a=(1+\delta)\E X$, differentiation can be used to check that this minimum is attained at $t=\ln(1+\delta)$. The bound above follows from this optimal inequality and symmetry.)}
+
+How should we choose $\delta$ to ensure that
+\[X\notin(\E X-\delta n/2,\E X+\delta n/2)\]
+with probability at most $4/n$, or equivalently, that $X\in[\E X-\delta n/2,\E X+\delta n/2]$ with probability at least $1-4/n$?
+
+What $a$ should we choose in Chebyshev's inequality to ensure that $X\notin[\E X-a;\E X+a]$ with probability at most $4/n$?
+Notice that the Chernoff inequality gives an interval of smaller order than the one obtained using Chebyshev's inequality. Compare the two intervals for $n=10000$.
+\end{enumerate}
+\end{problem}
+\end{document}

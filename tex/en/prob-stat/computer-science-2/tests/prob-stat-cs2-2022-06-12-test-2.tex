@@ -1,0 +1,41 @@
+\documentclass[a4paper]{report}
+\input{tex/en/preamble.tex}
+\begin{document}
+\noindent Probability and Statistics, 12 June 2022 \hfill Test 2
+\hrulefill
+\begin{it}Your grade is 2 + the number of points. Time allowed: 3 hours. Good luck! Throughout, work on $(\Omega,\mathcal F,\P)$, and let $X,Y$ denote random variables.\end{it}
+\begin{problem}
+Let $f_{X,Y}(x,y)=cx+1$ for $x,y\geq0$, $x+y\leq1$, and 0 otherwise. Find:
+\begin{enumerate}
+\item (0.75 points) $c$ and $\mathrm{Cov}(X,Y)$;
+\item (0.25 points) $\E[X\mid Y=1/2]$.
+\end{enumerate}
+\end{problem}
+\begin{problem}
+The weight of peas in a type of tin is modelled by $N(\mu,10^2)$ grams. Fifteen percent of tins contain less than 250 grams. Find:
+\begin{enumerate}
+\item (0.25 points) $\mu$;
+\item (0.25 points) the percentage containing more than 280 grams.
+\end{enumerate}
+After a change, the model is $N(250,\sigma^2)$.
+\begin{enumerate}[start=3]
+\item (0.5 points) Find $\sigma$ if 97\% of tins contain between 230 and 270 grams.
+\end{enumerate}
+\end{problem}
+\begin{problem}
+A Probability and Statistics test has four independent problems, solved with probabilities 80\%, 70\%, 60\% and 40\%. Each awards 10 points if solved and 0 otherwise; the grade is $2+\mathrm{points}/10$. For 100 students, calculate:
+\begin{enumerate}
+\item (0.25 points) the probability that the average score on problem 1 is below 8;
+\item (0.25 points) the expected average grade;
+\item (0.5 points) the probability that the average grade is at least 1\% above its expectation.
+\end{enumerate}
+\end{problem}
+\begin{problem}
+Insurer ``Ins 1'' models claims as independent exponential variables with mean 100 BGN.\footnote{Recall that $X\sim\mathrm{Exp}(\lambda)$ has density $\lambda e^{-\lambda x}\mathbbm1_{\{x>0\}}$.} It buys reinsurance for $x>0$ BGN from ``Ins 2'': if a claim exceeds 300 BGN, Ins 2 pays 200 BGN of it.
+\begin{enumerate}
+\item (0.25 points) What is the probability that Ins 1 pays less than 200 BGN from its own funds for one claim?
+\item (0.25 points) If Ins 2 wants mean profit 10 BGN per claim, what should $x$ be?
+\item (0.5 points) If Ins 1 wants mean profit 10 BGN per claim, what should its policy premium be? What would it be without reinsurance? Why buy reinsurance if the mean profit is unchanged?
+\end{enumerate}
+\end{problem}
+\end{document}

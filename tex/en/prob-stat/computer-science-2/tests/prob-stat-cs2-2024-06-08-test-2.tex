@@ -1,0 +1,40 @@
+\documentclass[a4paper]{report}
+\input{tex/en/preamble.tex}
+\begin{document}
+\noindent Computer Science, 8 June 2024 \hfill Test 2
+\hrulefill
+\begin{it}The exact grading formula depends on the results. As an approximation, use 2 + the number of points. Time allowed: 3 hours. Good luck!\end{it}
+\begin{problem}
+Based on previous games, Angel models his score with mean 5011 points and variance 4000. Approximately how many games are needed for him to be at least 99\% certain that:
+\begin{enumerate}
+\item (0.5 points) the total score is at least one million;
+\item (0.5 points) his highest score among those games is at least 10000?
+\end{enumerate}
+\end{problem}
+\begin{problem} (1 point)
+Let $\xi,\eta$ be independent, $\xi\sim\mathrm{Exp}(2)$ and $\eta\sim U(0,3)$, with densities
+\[f_\xi(x)=\begin{cases}2e^{-2x},&x>0,\\0,&\text{otherwise,}\end{cases}\quad f_\eta(x)=\begin{cases}1/3,&0<x<3,\\0,&\text{otherwise.}\end{cases}\]
+Find their correlation, $\P(\xi<\eta)$ and the density of $\xi/\eta$.
+\end{problem}
+\begin{problem}
+Let $X,Y$ be independent exponential variables with rates $1/\alpha$, $1/\beta$, respectively, and let $X_1,\ldots,X_n$ be independent observations of $X$.
+\begin{enumerate}
+\item (0.25 points) Let $\overline X=(X_1+\cdots+X_n)/n$. For large $n$, find $c$ with $\P(|\alpha-\overline X|>c)\leq1\%$.
+\end{enumerate}
+Let $Z=\sqrt{X/Y}$ and let $Z_1,\ldots,Z_n$ be independent observations of $Z$.
+\begin{enumerate}[start=2]
+\item (0.75 points) Is it true that
+\[\frac{Z_1+\cdots+Z_n}{n}\xrightarrow[n\to\infty]{\mathrm{a.s.}}\sqrt{\frac{\E[X]}{\E[Y]}}?\]
+If so, prove it; otherwise find the limit.
+\end{enumerate}
+\end{problem}
+\begin{problem}
+The aim is to find integer moments of $X\sim N(\mu,\sigma^2)$. Begin with $Z\sim N(0,1)$.
+\begin{enumerate}
+\item (0.25 points) Find $\E[e^{\lambda Z}]$ for $\lambda>0$ and $\E[Z^k]$ for $k\leq6$.
+\item (0.25 points) Prove $\E[f(Z)Z]=\E[f'(Z)]$ when both expectations are well defined.
+\item (0.25 points) Find $\E[Z^k]$ for every $k\geq0$. Can you obtain the corresponding result for $\E[X^k]$?
+\item (0.25 points) Find $\P(Z^k>Z^{k-1})$ for $k\geq5$.
+\end{enumerate}
+\end{problem}
+\end{document}

@@ -1,0 +1,51 @@
+% English translation of the Bulgarian source.
+\documentclass[a4paper]{report}
+\input{tex/en/preamble.tex}
+\begin{document}
+\noindent Probability and Statistics / SEM, 24 August 2025 \hfill Examination problems
+\hrulefill
+\begin{it}
+The exact grading formula will depend on the results. As an approximation, use 2 plus the number of points. Time allowed: 3 hours. Good luck.
+You may use $\sum_{k\geq1}\frac{x^k}{k}=-\ln(1-x)$ for $|x|<1$.
+\end{it}
+\begin{problem}
+\begin{enumerate}
+\item (0.25 points) An urn contains $n$ balls, and all possible numbers of white balls are equally likely. We add one white ball to the urn. What is the probability that a randomly selected ball from the urn is white?
+\item (0.25 points) An urn contains $n$ white and $m$ black balls. Two players draw alternately from the urn, replacing each drawn ball. The first to draw a white ball wins. What is the probability that the first player wins? What happens as $m\to\infty$?
+\item (0.25 points) We have two urns, 5 white balls and 5 black balls. How should we distribute the balls by number and colour between the urns to maximize the probability of drawing a white ball when we choose a random urn and then a random ball from it?
+\item (0.5 points) Ivan has only 10-stotinka coins. The price of every item in a shop, in stotinki, ends in a random digit from $\{0,1,2,\dots,9\}$, with all final digits equally likely and independent. Ivan buys $n\geq1$ items. What is the probability that he can pay exactly, without receiving change\footnote{That is, his bill in stotinki is a multiple of 10.}? What is the expected number of items he must take until he can pay exactly for the first time\footnote{That is, the expected number of items until the total price in stotinki first becomes a multiple of 10.}?
+\end{enumerate}
+\end{problem}
+\begin{problem}
+Consider a Bernoulli scheme $(n,p)$. Let $\mu_n$ be the number of successful trials. The number $\tilde p_n:=\mu_n/n$ is called the relative frequency of successes.
+\begin{enumerate}
+\item (0.25 points) If $p=0.4$ and $n=1500$, what is the probability that $\tilde p_n$ lies in $(0.4,0.44)$?
+\item (0.25 points) If $p=0.375$, how many independent trials are needed so that $\{|\tilde p_n-p|\leq0.01\}$ has probability at least $0.995$?
+\item (0.25 points) Let $p=2/3$ and $n=800$. What $\varepsilon$ should we choose so that $\{|\tilde p_n-p|<\varepsilon\}$ has probability at least $0.985$?
+\item (0.25 points) If $n=10000$, for what value of $p$ will the probability of $\{|\tilde p_n-p|\leq0.01\}$ be at least $0.99$?
+\end{enumerate}
+\end{problem}
+\begin{problem}
+Let $p_k=ba^k/k$ for $k\geq1$ and $0<a<1$.
+\begin{enumerate}
+\item (0.25 points) For what value of $b$ is $(p_k)_{k\geq1}$ a probability distribution?
+\item (0.25 points) Find its probability generating function, expectation and variance.
+\item (0.25 points) Let $X$ have the distribution above. Find the probability generating function of $2X+1$.
+\end{enumerate}
+\end{problem}
+\begin{problem}
+\begin{enumerate}
+\item (0.75 points) Three random points are chosen independently and uniformly on a circle of radius 1. Calculate the probability that the length $L$ of the longest side of the triangle with these vertices does not exceed $\sqrt3$.
+\item (0.25 points) Consider a generalization: how can we calculate $\Pbb{L<\varepsilon}$, where $\varepsilon\leq\sqrt3$?
+\end{enumerate}
+\end{problem}
+\begin{problem}
+Let $U\sim U(0,1)$ and $V\sim U(-\pi/2,\pi/2)$.
+\begin{enumerate}
+\item (0.25 points) One way to generate a pseudorandom number between 0 and 1 using $U$ is to choose a natural number $M$, usually large, and calculate the fractional part of $MU$: $X:=\{MU\}$. Find $\E X$, $DX$ and $Cor(U,X)$. What do you think of this method?
+\item (0.25 points) Let $U_1,\dots,U_{100}\sim U$ be iid. What is the expectation of each? What about the largest and smallest among them?
+\item (0.25 points) Find the density, expectation and variance of $Y:=\tan V$.
+\item (0.25 points) Let $Z\sim Cauchy(1)$, that is, $f_Z(x)=1/(\pi(1+x^2))$ for $x\in\R$. Prove that the random variables $1/Z$, $2Z/(1-Z^2)$ and $(3Z-Z^3)/(1-3Z^2)$ have the same distribution.
+\end{enumerate}
+\end{problem}
+\end{document}

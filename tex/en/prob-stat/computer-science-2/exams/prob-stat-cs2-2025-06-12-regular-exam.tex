@@ -1,0 +1,43 @@
+\documentclass[a4paper]{report}
+\input{tex/en/preamble.tex}
+\begin{document}
+\noindent Computer Science, 12 June 2025 \hfill Examination problems
+\hrulefill
+\begin{it}The exact grading formula depends on the results. As an approximation, use 2 + the number of points. Time allowed: 4 hours. Good luck!\end{it}
+\begin{problem}
+\begin{enumerate}
+\item Ten cards carry the letters of the Bulgarian word for probability, transliterated as V, E, R, O, YA, T, N, O, S, T. Here YA represents one Cyrillic letter and is a vowel.
+\begin{enumerate}
+\item (0.25 points) Find the probabilities of: $A$, drawing five letters without replacement from which the name STOYAN (S,T,O,YA,N) can be formed; $B$, drawing three consonants with/without replacement; $C$, drawing four letters without replacement with equal numbers of vowels and consonants.
+\item (0.25 points) Let $X,Y$ count vowels and consonants, respectively, in seven random draws with replacement. Find $\mathrm{Cor}(X,Y)$.
+\end{enumerate}
+\item (0.5 points) Three radio signals are sent successively and independently, with reception probabilities $1/2,1/3,1/4$. Let $X$ count received signals. Find the expectation and distribution of $\xi$. Communication succeeds with probability 0.2, 0.6 or 1 if one, two or three signals are received, respectively. What is its overall probability of success?
+\item (0.5 points) Repeatedly roll a standard die. Let $X$ count rolls until the first six and $Y$ rolls until all faces have appeared. Find their probability generating functions and expectations.
+\end{enumerate}
+\end{problem}
+\begin{problem}
+A battery's lifetime is normal with mean 300 hours and standard deviation 20.
+\begin{enumerate}
+\item (0.25 points) What lifetime will 98\% of batteries exceed?
+\item (0.25 points) A device with four batteries operates while at least one remains charged. What is the probability it works for at least 350 hours?
+\end{enumerate}
+\end{problem}
+\begin{problem} (0.5 points)
+Let $X$ be the age of a car involved in an accident and $Y$ the duration of its insurance before the accident, in years. Their joint density is $f(x,y)=c(10-xy^2)$ for $2\leq x\leq10$, $0\leq y\leq1$. What is the mean age of an accident-involved car? Find the probability that it was first insured less than half a year before the accident.
+\end{problem}
+\begin{problem}
+\begin{enumerate}
+\item (0.5 points) In a physics experiment, Galya sends a particle at constant speed around a circular groove of radius 1 and places a screen of length 2 at distance 1 from it, as shown. At a random time, the particle leaves tangentially. Find the probability that it hits the screen.
+\begin{figure}[h]\centering
+\includegraphics[scale=0.075]{tex/assets/prob-stat/computer-science-2/KN_IZPIT_1.png}
+\caption{Diagram for the particle-and-screen problem.}
+\end{figure}
+\item (0.5 points) Let $X,Y$ be independent $\mathcal N(0,1)$. For fixed $\theta$, set $U=X\cos\theta+Y\sin\theta$ and $V=-X\sin\theta+Y\cos\theta$. Show that $U,V$ are independent and find their distributions.
+\item (0.5 points) A shot at a circular target centred at the origin lands at independent $N(0,1)$ coordinates.
+\begin{enumerate}
+\item (0.5 points) Prove that its distance $R=\sqrt{X^2+Y^2}$ from the centre has density $f_R(r)=re^{-r^2/2}$, $r\geq0$.
+\item (0.5 points) Show that $\E[R]=\sqrt{\pi/2}$, its median is $\sqrt{\ln4}$, and its mode is 1.
+\end{enumerate}
+\end{enumerate}
+\end{problem}
+\end{document}

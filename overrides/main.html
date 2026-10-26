@@ -1,5 +1,15 @@
 {% extends "base.html" %}
 
+{% block content %}
+  {{ super() }}
+  {% if config.theme.language == 'en' %}
+  <aside class="translation-note" aria-label="Translation disclosure">
+    English translation prepared with ChatGPT (OpenAI, GPT-6), 26 October 2026, for translation of the Bulgarian text into English and LaTeX formatting.
+    The Bulgarian originals remain the reference; translation may contain errors.
+  </aside>
+  {% endif %}
+{% endblock %}
+
 {% block extrahead %}
   {{ super() }}
   <script
@@ -28,3 +38,4 @@
     })
   </script>
 {% endblock %}
+

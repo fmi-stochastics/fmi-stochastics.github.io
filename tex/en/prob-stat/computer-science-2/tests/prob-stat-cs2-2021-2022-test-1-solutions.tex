@@ -1,0 +1,43 @@
+\documentclass[a4paper]{article}
+\input{tex/en/preamble.tex}
+\setlength{\emergencystretch}{3em}
+\pagenumbering{arabic}
+\begin{document}
+\begin{center}\Large Probability and Statistics, Computer Science\par\large Test 1, 2021/2022: solutions\end{center}
+\noindent\textit{English transcription of the supplied handwritten solution notes. Only the workings present in the notes are reproduced.}
+\section*{Problem 1}
+Let I denote the ordinary six-sided die. For an announced value $k\le6$,
+\[\P(I\mid\text{announced }k)=\frac{\frac16\cdot\frac12}{\frac16\cdot\frac12+\frac12\cdot\frac18}=\frac1{1+3/4}=\frac47.\]
+The probability is zero otherwise.
+\section*{Problem 2}
+The attending students are represented by the counts
+\[\text{Year 1: }\frac45\cdot600=480,\qquad\text{Year 2: }\frac35\cdot400=240,\qquad\text{Year 3: }\frac14\cdot200=50.\]
+The first calculation in the notes uses
+\[\frac{50(480+240)}{480\cdot240+480\cdot50+240\cdot50}.\]
+A more formal approach conditions on attendance:
+\[\P(\text{Year 1}\mid\text{attends})=
+\frac{\frac45\frac{600}{1200}}{\frac45\frac{600}{1200}+\frac35\frac{400}{1200}+\frac14\frac{200}{1200}}=\frac{48}{77},\]
+\[\P(\text{Year 2}\mid\text{attends})=\frac{24}{77},\qquad
+\P(\text{Year 3}\mid\text{attends})=\frac5{77}.\]
+The desired conditional probability is that the higher-year student is in Year 3, given attendance and different years. The notes combine the Year 3 / Year 1 and Year 3 / Year 2 cases in the numerator, and add the Year 1 / Year 2 case in the denominator.
+\par\smallskip\noindent\textit{Transcription note: the handwritten final fraction is $15/103$. It does not agree with the displayed counts and conditional probabilities above; this discrepancy is already present in the source.}
+\section*{Problem 3}
+The handwritten notes give
+\[Y\sim Bin(10,1/4),\qquad X=10+Y.\]
+\section*{Problem 4}
+\subsection*{(a) Direct transmission}
+\[\P(\text{no errors})=(1-p)^8,\qquad\E[Bin(8,1-p)]=8(1-p).\]
+\subsection*{(b) Three intermediate servers}
+The message travels through four transmissions, so a bit is received correctly after zero, two or four errors. Thus
+\[\P(\text{bit }i\text{ is correct})=(1-p)^4+\binom42(1-p)^2p^2+p^4=:q.\]
+Consequently,
+\[\P(\text{the message is correct})=q^8,\qquad\E[Bin(8,q)]=8q.\]
+For $2n$ transmissions,
+\[q=\sum_{k=0}^n\binom{2n}{2k}p^{2k}(1-p)^{2n-2k}.\]
+Using
+\[\sum_{k=0}^{2n}\binom{2n}{k}p^k(1-p)^{2n-k}=1\]
+and
+\[\sum_{k=0}^{2n}\binom{2n}{k}p^k(1-p)^{2n-k}(-1)^k=(p-(1-p))^{2n},\]
+the notes conclude
+\[2q=1+(2p-1)^{2n},\qquad q\longrightarrow\frac12\quad\text{as }n\to\infty,\quad |2p-1|<1.\]
+\end{document}

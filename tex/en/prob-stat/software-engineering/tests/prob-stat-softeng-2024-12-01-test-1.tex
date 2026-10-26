@@ -1,0 +1,166 @@
+\documentclass[a4paper]{report}
+\input{tex/en/preamble.tex}
+\setlength{\emergencystretch}{3em}
+\allowdisplaybreaks
+\begin{document}
+
+\noindent Probability and Statistics, 01.12.2024 \hfill Test 1
+
+\hrulefill
+
+\begin{it}
+The exact grading formula depends on the results. As an approximation, use 2 plus the points earned. Time allowed: 210 minutes. Good luck.
+
+Some formulas: for $|x|<1$,
+$\sum_{n=0}^\infty  x^n/n! = e^x$,
+$\sum_{n=0}^\infty x^n = \frac{1}{1-x}$,
+$\sum_{n=0}^\infty nx^n = \frac{x}{(1-x)^2}$,
+$\sum_{n=0}^\infty n^2x^n = \frac{x(1+x)}{(1-x)^3}$,
+$\sum_{n=0}^\infty x^n \binom{n+k}{n} = \frac{1}{(1-x) ^{k+1}}$.
+
+
+
+\end{it}
+
+\begin{problem} (1.75 points in total)
+    \begin{enumerate}
+
+    \item (0.25 points) Let \(\P(A)=0.4\), \(\P(B)=0.3\) and \(\P(\overline{A\cup B})=0.42\). Are \(A,B\) independent?
+        \item (0.25 points) Five participants compete in a mathematics quiz. Each question has four possible answers, only one correct. Each participant answers five questions, choosing randomly. Find the probability that a given participant answers exactly three correctly.
+        What is the probability that the correct answers were to questions 1, 3 and 5,
+        given that exactly three answers were correct?
+
+
+        \item (0.25 points) Let $X,Y,Z$
+        be independent random variables. Prove that
+        $Cov(X+Y,Z) = Cov(X,Z) + Cov(Y,Z)$.
+        Does this remain true if $X,Y,Z$ are not
+        independent?
+
+\item (0.25 points) A fair coin is tossed ten times. Find the correlation between the number of heads in the first seven tosses and tails in the last seven tosses.
+
+        \item (0.25 points) Ten people play a card-drawing game. Each draws one card from a 52-card deck without replacement. A player wins by drawing an ace. If anyone wins, the game ends; otherwise, a new round is drawn from the remaining cards. Find the probability that the game ends after exactly three rounds.
+
+    \item (0.5 points)
+Each face of a six-sided die is labelled with a uniformly
+random number from $\{1,\dots,6\}$.
+What is the probability
+of rolling a six
+with this die?
+What is the expected number of rolls until the product of all results first becomes divisible by 6?
+    \end{enumerate}
+
+\end{problem}
+
+
+\begin{problem} (1.25 points in total)
+    Three friends play the following casino game:
+  \begin{itemize}
+        \item Each pays BGN 1 to enter;
+        \item A fair coin is tossed until the first tail. The casino pays BGN 1 for each head;
+        \item For each payment, the friends randomly choose who receives it.
+  \end{itemize}
+\begin{enumerate}
+    \item (0.50 points) What is the probability
+    that none of the three makes a loss?
+    \item (0.75 points) What is each friend's expected profit? Also find its distribution and variance.
+\end{enumerate}
+\end{problem}
+
+\begin{problem} (1.60 points in total)
+Angel is a young Pokemon trainer who knows that ten species of flying Pokemon live near town.
+He estimates that encountering a Pokemon takes about half an hour.
+  \begin{enumerate}
+    \item (0.50 points)
+    What is the expected time needed to encounter all ten species? Assume the species are equally rare.
+    \item (0.25 points) Let $X_i$ be the number of Pokemon seen until the first of species $i$. What is its distribution?
+    Express the quantity in part 1 using the $X_i$.
+    \item (0.10 points) Inclusion--exclusion applies
+    in various contexts, including maxima and minima:
+    $\max\{x_1,x_2\}=x_1+x_2-\min\{x_1,x_2\}$. Generalize this to $n$ numbers.
+    \item (0.25 points) Let $Y_1,Y_2$
+    be independent geometric random variables
+    with parameters $p_1,p_2$. Find
+    the distribution of $\min\{Y_1,Y_2\}$.
+    \item (0.50 points)
+    Angel has calculated the expectation in part 1, but realizes
+    that assuming
+    all ten species are equally rare
+    is unrealistic. Can you answer part 1 if
+    a random Pokemon's probability of being species $i$ is proportional to $i$? \textit{(For an explicit answer, solve the problem with four species.)}
+  \end{enumerate}
+
+
+
+\end{problem}
+
+
+\begin{problem}\textit{(Bonus: 1.50 points)}
+This problem introduces basic concepts of \emph{information theory}, developed by Shannon
+in the mid-20th century, including \emph{entropy} and \emph{information}.
+
+A code is a set of binary words,
+for example $\{00,01,10,11\}$, intended
+to transmit information through a channel, such as
+left/right/up/down or any other four options.
+
+All codes considered here must be \emph{prefix-free}.
+This means no codeword is a prefix of another. Thus $\{0,00,001\}$ is not allowed, since $0$
+is a prefix of $00$ and $001$, and $00$
+is a prefix of $001$. Such a situation causes difficulties
+for the receiver when decoding.
+
+
+For example, the result of an experiment with 32 equally likely outcomes can be transmitted using all five-bit words.
+
+Suppose four horses have winning probabilities $(1/2,1/4,1/8,1/8)$. We can encode the winner using
+all two-bit words. But a code with a smaller expected number of bits is possible: encode horse 1 by $0$, horse 2 by $10$, horse 3 by $110$ and horse 4 by $111$.
+\begin{itemize}
+    \item (0.25 points) Is this code prefix-free? What is the expected number of bits needed to report the winner?
+
+\end{itemize}
+
+
+
+Entropy is a thermodynamic concept often described informally as a \emph{measure of disorder}, or, in probability, a \emph{measure of randomness}. If $X$ is discrete and $p_X(k):=\P(X=k)$, define its entropy by
+\[
+H(X) := \Ebb{-\log_2(p_X(X))} = - \sum_k \log_2(\P(X = k))\P(X=k).
+\]
+An engineering interpretation of entropy is \textit{the minimum expected number of bits needed to transmit the outcome of $X$}!
+
+\begin{itemize}
+    \item (0.25 points) Calculate the entropy in the last example and compare it with the expectation in the preceding part.
+\end{itemize}
+
+Let $X,Y$ be discrete random variables and
+$p_{X,Y}(k,l):=\P(X=k,Y=l)$. Define
+the joint entropy of $X,Y$
+\[
+H(X,Y) = - \Ebb{\log_2 ( P_{X,Y}(X,Y)} =  -\sum_{k,l} \log_2 \lbrb{P(X= k , Y=l)}P(X= k , Y=l)
+\]
+and the conditional entropy $H(X|Y)$ by
+\[
+H(X|Y) = \sum_{k,l} \P(X=k,Y= l) \log_2 \lbrb{\frac{\P(X=k,Y=l)}{\P(X=k)}}.
+\]
+$Y$ may provide information about $X$, thereby reducing its randomness. This change is called the \emph{mutual information of $X,Y$}:
+\[
+I(X,Y) = H(X) - H(X|Y).
+\]
+
+\begin{itemize}
+    \item (0.25 points) Prove that
+    $H(X,Y)=H(X)+H(Y|X)$ and that
+    $I(X,Y) = I(Y,X)$.
+
+    \item (0.25 points) Toss a fair coin, and let \(X\) count the tosses until the first head. Find \(H(X)\).
+    \item (0.25 points) For this \(X\), propose an efficient sequence of yes/no questions of the form: Is \(X\) in \(S\)? Compare \(H(X)\) with the expected number of questions needed to determine \(X\).
+\item (0.25 points) Let \(Y\) be discrete with values in $(0,1)$. Compare $H(Y)$ and $H(Z)$ when \(Z=2Y\), and when $Z=\cos(Y)$. Explain.
+
+\end{itemize}
+
+
+\end{problem}
+
+
+
+\end{document}

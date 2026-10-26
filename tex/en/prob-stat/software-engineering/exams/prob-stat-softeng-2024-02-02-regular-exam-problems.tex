@@ -1,0 +1,183 @@
+\documentclass[a4paper]{report}
+\input{tex/en/preamble.tex}
+\setlength{\emergencystretch}{3em}
+\allowdisplaybreaks
+\begin{document}
+
+
+\noindent Probability and Statistics, 02.02.2024 \hfill Exam
+
+\hrulefill
+
+\begin{it}
+The grading formula is 2 plus the points earned. Time allowed: 3 hours. Good luck.
+
+
+
+Throughout, we work on a probability space $(\Omega,\cF,\P)$, and
+$k$ is a natural number.
+
+
+\end{it}
+
+
+\begin{problem}
+\begin{enumerate}
+\item
+There are two urns. The first contains 3 white and 2 black balls, and the second contains 1 white
+and 2 black balls. In each trial, two balls are drawn without replacement from the first urn,
+and one ball is drawn from the second. Define the events:
+\begin{align*}
+A &= \{\text{exactly one white ball is drawn from the first urn}\};\\
+B &= \{\text{more white balls are drawn from the first urn than from the second}\}.
+\end{align*}
+\begin{enumerate}
+
+    \item (0.25 points) Find the probabilities of $A$ and $B$, and the probability of $A$ given that $B$ occurs.
+    \item (0.25 points)
+    If trials are repeated until $B$ occurs, restoring the contents
+of both urns after each trial, what is the expected number of trials?
+\end{enumerate}
+\item (0.25 points)
+Let $X_1,\dots,X_n$ be independent
+random variables with mean $\mu$
+and variance $\sigma^2$. Express in terms of
+$\mu$ and $\sigma$ the expectations of
+ \[
+ \overline{X}_n = \frac{X_1 + \dots+ X_n}{n}
+ \quad
+\text{and}
+ \quad
+ S^2 = \frac{1}{n}\sum_{i=1}^n\left(X_i - \overline{X}_n\right)^2.
+ \]
+
+\item (0.25 points)
+A coin with probability $p$ of heads is tossed $n$ times. Let $E$ be the event that the first toss is heads, and $F_k$ the event that there are exactly $k$ tails. For which integer pairs $(n,k)$ are $E$ and $F_k$ independent?
+
+\end{enumerate}
+\end{problem}
+
+\begin{problem}
+    You are playing the popular game \emph{Deal or No Deal}.
+    \begin{enumerate}
+        \item (0.25 points) Three boxes A, B and C hide prizes of BGN 10, 50 and 100. At the start, you choose one box and keep it unopened. In the first round, you choose one of the other two boxes to eliminate. It contains BGN 50. After consulting the banker, the host lets you swap the two remaining boxes. You then win the prize in your box. Would you swap? Explain.
+        \item (0.25 points) Now there are four boxes A, B, C and D, containing BGN 10, 50, 100 and 200. Again, BGN 50 is eliminated in the first round, and you may exchange your box for one of the other two. After your choice, the game continues with another box being opened. Would you swap after the first round? Explain.
+        \item (0.25 points) What is the expected payoff from swapping or refusing to swap after the first round in parts 1 and 2? If the host instead offers BGN 50 in part 1 (BGN 100 in part 2) to leave the game, would you accept? Explain.
+        \item (0.25 points) Suppose you do not swap in part 2. In the second round, you choose one of the other two boxes to open. It contains BGN 200. Would you now swap? What if you had swapped initially? Explain.
+    \end{enumerate}
+\end{problem}
+
+\begin{problem}
+
+Let $X_1,\dots,X_n\sim X$ and
+$Y_1,\dots,Y_n\sim Y$ be independent random variables.
+Suppose $X$ and $Y$ have the same distribution.
+\begin{enumerate}
+    \item (0.25 points)
+    Find the distribution, expectation and variance of
+    \[
+    d_n := \sum_{i=1}^n \one_{\{X_i > Y_i\}}.
+    \]
+    \item (0.25 points)
+    For large $n$, find constants
+    $a,b$ such that
+    $\P(d_n \in (a,b)) = 99\%$.
+
+
+\item (0.5 points)
+A clinical study investigates whether exercise affects
+the mood of a test group. Each participant completes a questionnaire that rates their mood
+from 0 to 30 points, with higher scores indicating better mood.
+After one week of active exercise, they complete the same questionnaire. For simplicity, assume no participant can have the same score at the beginning and end. The results are shown below.
+
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{c|cccccccccc}
+    \textbf{Participant} & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
+    \hline
+    \textbf{Initial score} & 25 & 21 & 22 & 28 & 20 & 25 & 27 & 22 & 21 & 29 \\
+    \textbf{Final score} & 20 & 25 & 18 & 24 & 25 & 30 & 22 & 28 & 24 & 26 \\
+  \end{tabular}
+\end{table}
+
+
+Using parts 1 and 2, argue whether exercise affected the participants' scores.
+\end{enumerate}
+\end{problem}
+
+\begin{problem}
+    The aim of this problem is to find
+    the integer moments of
+    a normal random variable $X\sim N(\mu,\sigma^2)$. For simplicity, start with $Z\sim N(0,1)$.
+\begin{enumerate}
+    \item (0.25 points) Find
+    $\Ebb{e^{\lambda Z}}$ for $\lambda>0$. Find $\Ebb{Z^k}$ for $k\leq6$.
+    \item (0.25 points)
+    Prove that $\Ebb{f(Z)Z}=\Ebb{f'(Z)}$ for functions $f$ for which both expectations are well defined.
+    \item (0.25 points)
+    Find $\Ebb{Z^k}$ for every $k\geq0$. Can you obtain the corresponding result for
+     $\Ebb{X^k}$?
+    \item (0.25 points) Find the probability
+    $\P(Z^k>Z^{k-1})$ for $k\geq5$.
+    \end{enumerate}
+\end{problem}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

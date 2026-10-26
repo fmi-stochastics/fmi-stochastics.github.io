@@ -1,0 +1,58 @@
+\documentclass[a4paper]{report}
+\input{tex/en/preamble.tex}
+\begin{document}
+\noindent Applied Mathematics / Mathematics, 19 April 2026 \hfill Test 1
+\hrulefill
+\begin{it}
+The exact grading formula will depend on the results. As an approximation, use 2 + the number of points. Every answer must be justified and supported by clear, detailed calculations. Electronic devices (except standard calculators) and additional materials are prohibited. Time allowed: 4 hours. Good luck!
+\end{it}
+\begin{problem} (1.25 points)~
+\begin{enumerate}
+\item (0.25 points) An urn contains $n$ balls, and all possible numbers of white balls are equally likely. We add one white ball. What is the probability that a randomly chosen ball is white?
+\item (0.25 points) An urn contains $n$ white and $m$ black balls. Two players draw in succession and \emph{then} return the drawn balls. The first to draw a white ball wins. What is the probability that the first player wins? What happens as $m\to\infty$?
+\item (0.25 points) We have two urns, 5 white balls and 5 black balls. How should we distribute the balls between the urns, by number and colour, to maximize the probability of drawing a white ball after choosing an urn at random and then a ball at random from it?
+\item (0.5 points) Ivan has only 10-stotinka coins. The price of each item in a shop, in stotinki, ends in a uniformly random digit in $\{0,1,\ldots,9\}$; the final digits are independent. Ivan buys $n\geq1$ items. What is the probability that he can pay exactly, without receiving change\footnote{That is, his bill in stotinki is a multiple of 10.}? What is the expected number of items he must take before he can pay exactly for the first time\footnote{That is, the number of items until their total cost in stotinki first becomes a multiple of 10.}?
+\end{enumerate}
+\end{problem}
+\begin{problem} (1.5 points)~
+\begin{enumerate}
+\item (0.25 points) Let $\P(A)=0.5$, $\P(B|A)=0.4$ and $\P(A\cup B)=0.8$. Find $\P(B)$ and determine whether $A$ and $B$ are independent.
+\item (0.25 points) A discrete random variable $X$ has probability generating function $g_X(s)=c(2+s)^4$. Find $c$, $\E[X]$ and $\P(X=2)$.
+\item (0.25 points) Let $X\sim\mathrm{Poi}(\lambda_1)$ and $Y\sim\mathrm{Poi}(\lambda_2)$ be independent. Define $T=X+Y$. Find the conditional distribution and expectation of $X$ given $T$.
+\item (0.25 points) Let $X_1,X_2,X_3\overset{iid}{\sim}\mathrm{Geo}(p)$ and $Y=X_1+X_2+X_3$. Calculate $\P(X_1>X_2+X_3)$ and $\P(X_1>X_2+X_3\mid Y=15)$.
+\item (0.5 points) A factory produces items that are defective with probability $0.02$, independently. You inspect items until you find 15 defective ones. Estimate the probability that you need to inspect at most 500 items.
+\end{enumerate}
+\end{problem}
+\begin{problem} (1 point)
+Let $X_1,\ldots,X_n$ be independent, identically distributed discrete random variables and $S_n=X_1+\cdots+X_n$.
+\begin{enumerate}
+\item (0.25 points) Find $\E[X_i\mid S_n]$, $1\leq i\leq n$.\footnote{Throughout this problem, assume that the conditional expectations are well defined.}
+\item (0.25 points) Prove that if $f$ is strictly monotone and $X,Y$ are random variables such that $f(Y)$, $\E[X\mid Y]$ and $\E[X\mid f(Y)]$ are well defined, then $\E[X\mid f(Y)]=\E[X\mid Y]$.
+\end{enumerate}
+Let $f:I\to\mathbb R$, where $I$ is an interval. If for every $a,b\in I$ and $\lambda\in[0,1]$,
+$f(\lambda a+(1-\lambda)b)\leq\lambda f(a)+(1-\lambda)f(b)$, then $f$ is called convex.\footnote{If $f$ is twice differentiable, this condition is equivalent to $f''(x)\geq0$ for $x\in I$.} Convex functions satisfy \emph{Jensen's inequality}: $f(\E X)\leq\E f(X)$ for every random variable $X$ taking values in $I$.
+\begin{enumerate}[start=3]
+\item (0.5 points) Let $P_n=X_1\cdots X_n$. Using the preceding results and Jensen's inequality appropriately, prove that $\E[X_i\mid P_n]\geq\sqrt[n]{P_n}$ for $1\leq i\leq n$. Here assume $X_1>0$.
+\end{enumerate}
+\end{problem}
+\begin{problem} (1.2 points)
+A flamingo jumps along the integers as follows. Starting at 0, at each step it chooses uniformly one of the next 3 integers and jumps to it. Thus, from $m$ it moves to $m+1,m+2$ or $m+3$, with equal probabilities. We are interested in its possible paths.
+\begin{enumerate}
+\item (0.2 points) Model the experiment: how would you choose $(\Omega,\mathcal F)$?
+\item (0.25 points) Let $S_n$ be its position after $n$ steps, with $S_0=0$. Find $\E[S_n]$, $\mathrm{Var}(S_n)$ and $\rho_{S_n,S_{n+k}}$. What happens to the correlation as $k\to\infty$?
+\end{enumerate}
+Write $\tau_n:\Omega\to\mathbb N\cup\{\infty\}$ for the number of moves until the flamingo reaches $n$, if it does, and set $\tau_n=\infty$ otherwise.
+\begin{enumerate}[start=3]
+\item (0.25 points) Calculate $\E[\tau_4]$ and $\E[\tau_4\mid\tau_4<\infty]$.
+\item (0.5 points) Prove that
+\[\P(\tau_n<\infty)=\frac12\left(1+3^{-n/2}T_n\left(-\frac1{\sqrt3}\right)\right),\]
+where $T_n$ is the $n$th Chebyshev polynomial of the first kind.\footnote{Recall that $T_n(\theta)=\cos(n\arccos\theta)$ for $-1\leq\theta\leq1$.}
+\end{enumerate}
+\end{problem}
+\begin{problem} \emph{(Bonus)} (1 point)
+Let $X$ take finitely many values in $(0,\infty)$. What distribution of $X$ maximizes/minimizes $\E[X]\E[X^{-1}]$? What is the corresponding maximum/minimum?
+\begin{itemize}\item \emph{Hint:} You may use
+\[\max\left\{\sum_{i=1}^np_i^2\;\middle|\;p_i\geq0,\sum_{i=1}^np_i=1\right\}=\max\left\{\sum_{i=1}^{n-1}p_i^2\;\middle|\;p_i\geq0,\sum_{i=1}^{n-1}p_i=1\right\}.\]
+\end{itemize}
+\end{problem}
+\end{document}

@@ -1,0 +1,51 @@
+\documentclass[a4paper]{report}
+\input{tex/en/preamble.tex}
+\begin{document}
+\noindent Mathematics / Applied Mathematics, 24 June 2024 \hfill Examination
+\hrulefill
+\begin{it}The grade is 2 + the number of points. Time allowed: 4 hours. Good luck! We use $n,k$ for positive integers and $t$ for a positive real number.\end{it}
+\begin{problem}
+\begin{enumerate}
+\item (0.5 points) Let $\Omega$ have 12 elements. In how many ways can we choose three subsets $A,B,C\subset\Omega$ satisfying
+\[\P(A)+\P(B)+\P(C)=1+\P(A\cap B)+\P(A\cap C)+\P(B\cap C)?\]
+\item (0.5 points) Let $\Omega$ be the set of nondecreasing functions from $\{1,\ldots,k\}$ to $\{1,\ldots,n\}$. What is the probability that a uniformly chosen element of $\Omega$ is strictly increasing?
+\end{enumerate}
+\end{problem}
+\begin{problem}
+A student passes the time tossing a coin and keeps track of the excess of heads over tails. Let $S_n$ be this excess after $n$ tosses.
+\begin{enumerate}
+\item (0.25 points) Since the coin is fair, the student recalls that the law of large numbers implies $\lim_{n\to\infty}\P(S_n=0)=1$. Explain why this is or is not correct.
+\item (0.5 points) Find the limits, as $n\to\infty$, of $\P(S_{2n}=0)/n$, $\P(S_{2n}=0)$, $n\P(S_{2n}=0)$ and $\sqrt n\P(S_{2n}=0)$.\footnote{You may use Stirling's formula $n!\sim\sqrt{2\pi n}(n/e)^n$.}
+\item (0.5 points) Approximate $\P(S_n\in(0,\epsilon\sqrt n))$ for large $n$ and small $\epsilon$.
+\end{enumerate}
+\end{problem}
+\begin{problem}
+Let $X_1,X_2,\ldots$ be independent $\mathrm{Exp}(1)$ variables and $S_n=X_1+\cdots+X_n$.
+\begin{enumerate}
+\item (0.5 points) Find the density of $S_2$ and prove by induction that
+$f_{S_n}(x)=x^{n-1}e^{-x}\mathbbm1_{\{x>0\}}/(n-1)!$.
+\item (0.25 points) Let $N_t=\max\{n:S_n\leq t\}$. Prove that $\P(N_t\geq n)=\P(S_n\leq t)$ and $\P(N_t=n)=\P(S_n\leq t)-\P(S_{n+1}\leq t)$.
+\item (0.25 points) Find the distribution of $N_t$.
+\end{enumerate}
+\end{problem}
+\begin{problem}
+Benford's law,\footnote{Observed by Newcomb in logarithm tables in 1881, and by Benford in a larger dataset in 1934.} also known as the first-digit law, is the empirical observation that in many real datasets the first nonzero digit (not only in decimal notation) is not uniform and is most often 1. The decimal Benford distribution assigns probability $\log_{10}(1+1/d)$ to digit $d\in\{1,\ldots,9\}$.
+
+Find, to accuracy 0.01, the probability that the first nonzero decimal digit of $X$ is 1 when:
+\begin{enumerate}
+\item (0.25 points) $X\sim N(0,1)$;
+\item (0.25 points) $X\sim\mathrm{Exp}(1)$;
+\item (0.5 points) $X=U_1/U_2$ for independent $U_1,U_2\sim U(0,1)$. Also find $\E X$.
+\item (Bonus, 0.25 points) $X$ is a ``random positive power of 2''. Formally, find $\lim_{n\to\infty}\P(X_n\text{ begins with }1)$ for $X_n=2^{U_n}$, $U_n\sim U(\{1,\ldots,n\})$.
+\end{enumerate}
+Compare with Benford's distribution.\footnote{If time permits, calculate the probabilities for digits greater than 1 and compare them with Benford's distribution.}
+\end{problem}
+\begin{problem}
+Let $X\sim\mathcal N(\mu,\sigma^2)$ with both parameters unknown, and suppose a sample of $n$ observations is available.
+\begin{enumerate}
+\item (0.25 points) Derive maximum likelihood estimators of $\mu,\sigma^2$.
+\item (0.25 points) Construct 95\% confidence intervals for $\mu$ and $\sigma$.
+\item (0.5 points) Test $H_0:\mu=1$ against $H_1:\mu>1$ at level $\alpha=0.05$. Can $H_0$ be rejected for $n=100$, $\overline X=1.1$, $S^2=1.2213$?
+\end{enumerate}
+\end{problem}
+\end{document}

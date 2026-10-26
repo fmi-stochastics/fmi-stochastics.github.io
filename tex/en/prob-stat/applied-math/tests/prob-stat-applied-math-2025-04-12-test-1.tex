@@ -1,0 +1,82 @@
+\documentclass[a4paper]{report}
+\input{tex/en/preamble.tex}
+\begin{document}
+\noindent Applied Mathematics / Mathematics, 12 April 2025 \hfill Test 1
+\hrulefill
+\begin{it}The exact grading formula will depend on the results and will be no lower than 2 + the number of points. Time allowed: 4 hours. Good luck!\end{it}
+\begin{problem} (0.5 points)
+A box contains balls numbered $1,2,\ldots,14$. Three balls are drawn in succession without replacement. Find the probabilities of:
+\begin{itemize}
+\item $A=\{\text{all three numbers are even}\}$;
+\item $B=\{\text{the largest number is 10}\}$;
+\item $C=\{\text{the product is divisible by 3}\}$;
+\item $D=\{\text{the numbers are consecutive, regardless of drawing order}\}$.
+\end{itemize}
+Are $A,B$ independent? What is the probability of $C$ given $A$?
+\end{problem}
+\begin{problem} (0.5 points)
+The joint distribution of $X,Y$ is
+\[\begin{array}{c|ccc}Y\backslash X&1&2&4\\\hline -1&3/15&1/15&0\\0&\alpha&2\alpha&3/15\\1&1/15&0&1/15\end{array}\]
+Find $\alpha$ and $\mathrm{Cor}(X,Y)$.
+\end{problem}
+\begin{problem}
+Let $X_1,\ldots,X_n$ be independent and identically distributed, and $S_n=X_1+\cdots+X_n$.
+\begin{enumerate}
+\item (0.25 points) Find $\E[X_i\mid S_n]$ for $1\leq i\leq n$. Recall that $\E[X\mid Y]$ takes the value $\E[X\mid Y=k]$ with probability $\P(Y=k)$.
+
+For the following parts, $X_1\sim\mathrm{Geo}(p)$, meaning $\P(X=k)=(1-p)^{k-1}p$ for $k\geq1$.
+\item (0.25 points) Find the probability generating function $g_{S_n}(s)$.
+\item (0.25 points) Show that the geometric distribution is \emph{memoryless}: $\P(X>t+s\mid X>s)=\P(X>t)$. If an $\mathbb N$-valued random variable has this property, must it be geometric?
+\item (0.25 points) Calculate $\P(X_1>X_2+X_3)$ and $\P(X_1>X_2+X_3\mid S_3=15)$.
+\end{enumerate}
+\end{problem}
+\begin{problem}
+The cells of a $9\times9$ grid are coloured randomly white, green or red (shown as white, grey and black below).
+\[\includegraphics[width=0.4\textwidth]{tex/assets/prob-stat/grid2.png}\]
+\begin{enumerate}
+\item (0.25 points) What is the expected number of white or green cells? What is the probability that there are at least 60?
+
+A horizontal (vertical) flag consists of three consecutive horizontal (vertical) cells coloured white, green and red from left to right (top to bottom).
+\item (0.25 points) Is the number of horizontal flags binomially distributed? If so, with what parameters?
+\item (0.25 points) What is the expected number of horizontal flags?
+\item (0.25 points) Are the counts of horizontal and vertical flags independent? What is the expected total number of horizontal AND vertical flags?
+\end{enumerate}
+\end{problem}
+\begin{problem}
+Recall that $A$ occurs \emph{almost surely} if $\P(A)=1$. This is analogous to ``almost everywhere'' in analysis: $\P(A^c)=0$. We will study the Borel--Cantelli lemma, which informally states the following for a sequence $\mathcal A=(A_1,A_2,\ldots)$:
+\begin{itemize}
+\item If $\P(A_n)$ tends to 0 sufficiently fast, almost surely only finitely many events in $\mathcal A$ occur.
+\item Otherwise, if the events are also independent, almost surely infinitely many occur.
+\end{itemize}
+Define $\displaystyle\limsup A_n=\bigcap_{n=1}^\infty\bigcup_{k=n}^\infty A_k$. What condition must $\omega\in\Omega$ satisfy to belong to $\limsup A_n$? Explain the connection with infinitely many events occurring.
+
+\emph{Bonus (0.5 points):}
+\begin{itemize}
+\item Find $\limsup A_n$ for $A_n=[-1/n,3+1/n]$; for $A_n=[-2-(-1)^n,2+(-1)^n]$; and for $A_n=\{mp_n:m\in\mathbb N,\ p_k\text{ is the }k\text{th prime}\}$.
+\item Compare $\limsup(A_n\cup B_n)$ and $\limsup(A_n\cap B_n)$ with $\limsup A_n$ and $\limsup B_n$.
+\end{itemize}
+Prove the following (or use a statement without proof in a subsequent part):
+\begin{enumerate}
+\item (0.25 points) If $B_1\supseteq B_2\supseteq\cdots$, then $\P(\bigcap_{n=1}^\infty B_n)=\lim_{n\to\infty}\P(B_n)$.
+\item (0.25 points) \emph{Borel--Cantelli 1:} If $\sum_{n\geq1}\P(A_n)<\infty$, then $\P(\limsup A_n)=0$.
+\item (0.25 points) $\P(\limsup A_n)=1-\lim_{N\to\infty}\P(\bigcap_{n\geq N}A_n^c)$.
+\item (0.25 points) \emph{Borel--Cantelli 2:} If $\sum_{n\geq1}\P(A_n)=\infty$ and the events are independent, then $\P(\limsup A_n)=1$.
+\end{enumerate}
+\end{problem}
+\begin{problem}
+Angel tosses a fair coin infinitely often. Let $L_n$ be the longest run of consecutive heads among the first $n$ tosses. We seek the behaviour of $L_n$ as $n\to\infty$. For example:
+\[\begin{array}{c|cccccccccc}n&1&2&3&4&5&6&7&8&9&\cdots\\\hline\text{Outcome}&T&H&H&T&H&H&H&T&H&\cdots\\L_n&0&1&2&2&2&2&3&3&3&\cdots\end{array}\]
+Formally, let $X_i$ be iid $\mathrm{Ber}(1/2)$ variables and
+\[L_n=\max\{k\geq1:\text{there exists }i\in\{1,\ldots,n-k+1\}\text{ such that }X_i=\cdots=X_{i+k-1}=1\}.\]
+\begin{enumerate}
+\item Prove for every integer $j\in[1,n]$ that
+\[\P(L_n\geq j)\leq\frac{n-j+1}{2^j}\leq\frac n{2^j},\qquad\P(L_n\leq j)\leq(1-2^{-j})^{\lfloor n/j\rfloor}.\]
+\item Find positive real numbers $a_n$ such that for every $\epsilon\in(0,1)$,
+$\P(1-\epsilon<L_n/a_n<1+\epsilon)\to1$.
+\item Prove for every $\epsilon\in(0,1)$ that
+\[\P(L_n/a_n<1+\epsilon\text{ for all sufficiently large }n)=1,\]
+\[\P(L_n/a_n>1-\epsilon\text{ for all sufficiently large }n)=1.\]
+\item Conclude that $\P(L_n/a_n\to1)=1$.
+\end{enumerate}
+\end{problem}
+\end{document}

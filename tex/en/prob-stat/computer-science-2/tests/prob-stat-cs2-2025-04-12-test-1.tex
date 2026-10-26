@@ -1,0 +1,43 @@
+\documentclass[a4paper]{report}
+\input{tex/en/preamble.tex}
+\begin{document}
+\noindent Computer Science, 12 April 2025 \hfill Test 1
+\hrulefill
+\begin{it}The exact grading formula depends on the results. As an approximation, use 2 + the number of points. Time allowed: 3 hours. Good luck!\end{it}
+\begin{problem}
+An urn contains balls numbered $1,2,\ldots,14$. Three balls are drawn successively without replacement. Find the probabilities of:
+\begin{enumerate}
+\item (0.25 points) $A=\{\text{all three numbers are even}\}$;
+\item (0.25 points) $B=\{\text{the largest number is 10}\}$;
+\item (0.25 points) $C=\{\text{the product is divisible by 3}\}$;
+\item (0.25 points) $D=\{\text{the numbers are consecutive, regardless of drawing order}\}$.
+\end{enumerate}
+(0.5 points) Are $A,B$ independent? What is the probability of $C$ given $A$?
+\end{problem}
+\begin{problem}
+The joint distribution of $X,Y$ is
+\[\begin{array}{c|ccc}Y\backslash X&1&2&4\\\hline-1&3/15&1/15&0\\0&\alpha&2\alpha&3/15\\1&1/15&0&1/15\end{array}\]
+Find:
+\begin{enumerate}
+\item (0.1 points) $\alpha$ and the marginal distributions;
+\item (0.2 points) $\E[X]$ and $\E[Y]$;
+\item (0.5 points) $\mathrm{Cov}(X,Y)$ and $\rho_{X,Y}$.\footnote{If using a calculator, give answers to accuracy 0.0001.}
+\end{enumerate}
+\end{problem}
+\begin{problem}
+Let $X_1,\ldots,X_n$ be iid and $S_n=X_1+\cdots+X_n$.
+\begin{enumerate}
+\item (0.5 points) Find $\E[X_i\mid S_n]$ for $1\leq i\leq n$.
+\item (0.25 points) For $X_1\sim\mathrm{Geo}(p)$, find $g_{S_n}(s)$.
+\item (0.25 points) Calculate $\P(X_1>X_2+X_3)$ and $\P(X_1>X_2+X_3\mid S_3=15)$.
+\end{enumerate}
+\end{problem}
+\begin{problem}
+All $n$ seats at a local theatre performance celebrating Culture Day are reserved. Spectators enter one at a time and should sit in their reserved seats. The first spectator is absent-minded and chooses uniformly among all $n$ seats. Each subsequent spectator takes their own seat if available; otherwise they choose a random \emph{free} seat.
+\begin{enumerate}
+\item (0.25 points) Find separately the probabilities that the first, second and third spectators take their own seats.
+\item (0.25 points) Vasil is delayed by an examination at FMI and arrives last. What is the probability that he takes his own seat?
+\item (0.5 points) Find the probability that spectator $k$ takes their own seat.
+\end{enumerate}
+\end{problem}
+\end{document}

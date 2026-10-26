@@ -1,0 +1,261 @@
+\documentclass[a4paper]{report}
+\input{tex/en/preamble.tex}
+\setlength{\emergencystretch}{3em}
+\allowdisplaybreaks
+\begin{document}
+
+
+\noindent Probability and Statistics, 16.12.2023 \hfill Test 1
+
+\hrulefill
+
+\begin{it}
+The exact grading formula depends on the results. As an approximation, use 2 plus the points earned. Time allowed: 3 hours. Good luck.
+
+$m,n,k$ denote nonnegative integers.
+
+
+
+\end{it}
+
+\begin{problem}
+    \begin{enumerate}
+        \item (0.25 points) An urn contains 4 yellow, 5 green and 2 blue pebbles. After drawing one, a person rolls fair dice: one die for yellow, two for green and three for blue. Given that the dice total is 3, what is the probability that the pebble was green?
+
+        \item (0.25 points)
+        A fair die is rolled five times. Find the probabilities of\\
+        \(A=\{\text{the maximum value is at least 3}\}\) and\\ \(B=\{\text{the product of all values is divisible by 10}\}\).
+
+
+    \item (0.25 points)
+    A person tosses two biased coins, each with heads probability \(1/3\). If their faces agree, they draw two balls from an urn containing 4 black and 2 white balls, winning as many BGN as the number of white balls drawn. If the coin faces differ, they roll a die and pay BGN 3 if it is even. Find the distribution of the profit and prove that the game is unfair. How much should the player pay for the game to be fair?
+
+    \end{enumerate}
+\end{problem}
+
+
+
+\begin{problem}
+   \begin{enumerate}
+        \item (0.25 points) Let $X\sim Ge(p)$, i.e.
+        $\P(X=k)=pq^k$ for
+       $k \geq 0$;
+        Prove the
+        memoryless property:
+        for every $m,n\geq0$, $\P(X>m+n|X\geq n)=\P(X>m)$.
+
+        \item (0.25 points) Prove the converse:
+        if $Y$ is a random variable
+        taking values in
+       $\{0,1,2, \dots\}$
+        and, for all $m,n\geq0$, $\P(Y>m+n|Y\geq n)=\P(Y>m)$,
+        then $Y\sim Ge(p)$
+        for some $p\geq0$.
+
+        \item (0.25 points)
+        Let $X_1,\dots,
+        X_n$ be independent
+        random variables and
+        define
+        $X_{\min}:=\min\{X_1,\dots,X_n\}$ and
+        analogously
+       $X_{\max}$.
+        Which expressions
+       \[
+       \P(X_1 > m)^n,
+       \,\,
+       \P(X_1 \leq m)^n,
+       \,\,
+              \P(X_1 \leq m),
+       \,\,
+              1-
+       m  \P(X_1 > m)^n,
+       \,\,
+              1 -
+           \P(X_1 > m)^n,
+       (1-m)(1- \P(X_1 > m)^n)
+       \]
+        give the probabilities
+        respectively
+       $\P(X_{\min} \leq m)$
+        and
+       $\P(X_{\max} \leq m)$?
+        Prove your answer.
+        \item (0.25 points)
+        Five
+        fair
+        dice are rolled together. Any die
+        showing six
+        is removed, and
+        the others are rolled again until
+        none remain.
+        Let $K$ be the total number of
+        rounds. Find
+       $\P(K\leq n)$
+        and $\P(K=n)$.
+
+
+   \end{enumerate}
+
+
+\end{problem}
+
+\begin{problem}
+    Genetic algorithms are a well-known class of heuristic algorithms.
+    They begin with an initial
+    population of chromosomes encoding possible
+    solutions to a problem; over time, it
+    evolves into a better population,
+    hence their name.
+
+    Specifically, suppose
+    we wish to initialize
+    $n$ chromosomes (Boolean vectors) of length
+    $m$. All genes (vector entries/bits) are independent
+    $Ber(1/2)$ random variables.
+
+    \begin{enumerate}
+        \item (0.5 points)
+        What is the probability
+        that all vectors are distinct? What is the expected
+        total number of ones in
+        all vectors?
+        What is the expected number of
+        vectors with fewer than $m/4$ zeros?
+        \item (0.5 points)
+        What is the expected number
+        of repetitions, i.e.
+        equal pairs of vectors among
+        the $m$ vectors?
+        Answer the same question
+        if the vector entries are
+        independent $Ber(p)$ with $p\in(0,1)$. For which $p$ is the expected
+        number of repetitions minimized?
+
+        \item (0.5 points) \textit{*Bonus: What is the expected
+        number of unique vectors}?
+
+        \item (0.5 points) \textit{**Bonus: For fixed $m$, what is the order of the smallest $n$
+        for which the probability that all
+        chromosomes are distinct is below $50\%$?}
+\end{enumerate}
+
+\end{problem}
+
+
+\begin{problem}
+A television lottery uses a random generator that selects an integer uniformly from 1 to 5. The game is as follows\footnote{\href{https://shorturl.at/bjlqU}{https://shorturl.at/bjlqU}}:
+\begin{itemize}
+    \item A random number is selected (2 in the example);
+    \item The player may stop and win the amount below
+    the last number drawn, or guess whether the next
+    number will be smaller or larger. \textbf{Consecutive
+    numbers are guaranteed to differ};
+    \item An incorrect guess wins nothing and ends the game. After a correct guess,
+    the player may continue, up to the grand prize of BGN 1000.
+\end{itemize}
+
+
+\begin{center}
+\begin{tikzpicture}[>=stealth, node distance=2.5cm, every loop/.style={}]
+  \node[circle, draw, minimum size=1.5cm] (1) at (0,0) {\Huge \textbf{2}};
+  \node[circle, draw, minimum size=1.5cm] (2) at (2.5,0) {\Huge \textbf{?}};
+  \node[circle, draw, minimum size=1.5cm] (3) at (5,0) {\Huge \textbf{?}};
+  \node[circle, draw, minimum size=1.5cm] (4) at (7.5,0) {\Huge \textbf{?}};
+
+
+      \node[below] at (0,-1) {BGN 0};
+      \node[below] at (2.5,-1) {BGN 10};
+      \node[below] at (5,-1) {BGN 100};
+      \node[below] at (3*2.5,-1) {BGN 1000};
+
+
+  \draw[->] (1) -- (2) node[midway, above] {};
+  \draw[->] (2) -- (3) node[midway, above] {};
+  \draw[->] (3) -- (4) node[midway, above] {};
+
+\end{tikzpicture}
+\end{center}
+
+
+\begin{enumerate}
+    \item (0.5 points) Propose a strategy and calculate the winning probability and expected payoff if the player
+    has decided to make exactly $k$ guesses, for $k=0,1,2,3$. Compare with independently choosing larger/smaller at random
+    with probability $1/2$ each time.
+
+    \item \textit{(0.25 points) Bonus: Give pseudocode solving the problem for numbers
+    between $0$ and $n$, $m$ player choices, and prizes $c_0,\dots,c_n$.}
+
+    \item \textit{(0.5 points) Bonus: Give pseudocode deciding whether
+    stopping or guessing again is optimal after each round in the general game of part 2.}
+
+\end{enumerate}
+
+
+
+
+\end{problem}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

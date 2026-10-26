@@ -1,0 +1,69 @@
+\documentclass[a4paper]{report}
+\input{tex/en/preamble.tex}
+\newif\ifshowsolutions
+\showsolutionstrue
+\begin{document}
+\noindent Probability and Statistics, CS Year 3, 2020/2021. Name:\hfill Student no.:\qquad\qquad
+\hrulefill
+\begin{it}Your grade is 1 + the number of points. Good luck! Work on $(\Omega,\mathcal F,\P)$. Define $\mathbb N_0=\mathbb N\cup\{0\}$. Unless otherwise stated, $n,k,i\in\mathbb N$.\end{it}
+\begin{problem}
+An attacker sends a phishing email to a lecturer. At a random time $X\sim U(0,1)$ during the next day, the attacker hides all traces but also loses the opportunity to benefit. Thus $f_X(x)=1$ on $[0,1]$ and 0 elsewhere. The lecturer responds after an independent exponential time with mean two days: $Y\sim\mathrm{Exp}(1/2)$, with $f_Y(y)=\frac12e^{-y/2}$ for $y\geq0$ and 0 elsewhere.
+\begin{enumerate}
+\item (0.75 points) What is the probability that the attack succeeds? Approximately what fraction of many attempts will succeed?
+\ifshowsolutions
+\par\textbf{Solution.} The desired probability is
+\[p:=\P(X<Y)=\int_0^1\int_0^x\frac12e^{-y/2}\,dy\,dx,\]
+which is easily calculated. By the law of large numbers, the successful fraction is $p$; specify the variables and verify the hypotheses.
+\fi
+\item (0.25 points) What is the probability the attacker benefits given that the lecturer responds after exactly 12 hours?
+\ifshowsolutions
+\par\textbf{Solution.} We seek $\P(Y<X\mid X=1/2)=\P(Y<1/2)$. The intention was to use a conditional density, but it is actually unnecessary.
+\fi
+\end{enumerate}
+\end{problem}
+\begin{problem}
+Two faces of a fair die are white, two green and two red. Roll it twice. Let $X$ count white results and $Y$ red results. Find:
+\begin{enumerate}
+\item (0.5 points) the joint distribution and correlation of $X,Y$. Are they independent?
+\item (0.25 points) $\P(X=1\mid Y=1)$;
+\item (0.25 points) $\P(X>Y)$.
+\end{enumerate}
+\ifshowsolutions\par\textbf{Solution in the source:} ---\fi
+\end{problem}
+\begin{problem}
+Daily accident counts in Bulgaria are modelled by independent Poisson variables $X_1,X_2,\ldots$ with $\lambda=10$, so $\P(X_1=k)=e^{-\lambda}\lambda^k/k!$ for $k\in\mathbb N_0$. Set $S_n=X_1+\cdots+X_n$.
+\begin{enumerate}
+\item (0.25 points) Find $\E S_n$ and $DS_n$.
+\ifshowsolutions\par\textbf{Solution.} $\E S_n=DS_n=n\lambda$, since the $X_i$ are independent and $\E X_i=DX_i=\lambda$.\fi
+\item (0.75 points) If $T$ is the total number of serious accidents in 2021, show $\P(3529\leq T\leq3771)\approx0.954$ and carefully justify the approximation.
+\ifshowsolutions\par\textbf{Solution.} Use the CLT, explicitly checking its hypotheses, in particular $\E[X_i^2]<\infty$.\fi
+\end{enumerate}
+\end{problem}
+\begin{problem}
+Each of $n>2$ people tosses a fair coin. A person wins if their result differs from everyone else's. If there is no winner, all toss again.
+\begin{enumerate}
+\item (0.25 points) Let $X$ count rounds until a winner. Find its expectation and variance.
+\ifshowsolutions
+\par\textbf{Solution.} A winner requires one head and all other tails, or the reverse. This has probability $p_n=n/2^{n-1}$ (why?). Hence $X\sim\mathrm{Ge}(p_n)$, $\E X=1/p_n$ and $DX=1/p_n^2$.
+\fi
+\item (0.75 points) After the first winner leaves, continue with the remaining $n-1$ players, then $n-2$, and so on until two remain. What is the expected number of rounds? If winner $k$ receives $100(n-k)$, what is the most you would pay to enter?
+\ifshowsolutions
+\par\textbf{Solution.} Explain why the expected number is $1/p_n+1/p_{n-1}+\cdots+1/p_3$. By symmetry all players have the same expected winnings, and the total paid is $100[(n-1)+(n-2)+\cdots+2]$, so divide this total by $n$.
+\par Although not required, the total simplifies to $100[n(n-1)/2-1]$. The \href{https://math.stackexchange.com/questions/888354/asymptotic-behavior-of-sum-limits-k-1n-frac2kk}{asymptotic behaviour of the other sum} is nontrivial and equals $2^n/n$.
+\fi
+\end{enumerate}
+\end{problem}
+\begin{problem}
+A fan collects an album of $n=500$ different Euro 2020 stickers (in 2021), buying random stickers. Let $X$ be the number needed to collect all types.
+\begin{enumerate}
+\item (0.5 points) Let $X_1=1$, and for $i\geq2$ let $X_i$ count purchases after obtaining the $(i-1)$st distinct sticker through obtaining the $i$th, inclusive. For example, the sequence $\mathbf5,\mathbf{12},5,\mathbf{111},12,111,5,\mathbf{13}$ gives $X_1=1,X_2=1,X_3=2,X_4=4$. What is the distribution of $X_i$? Find $\E X$.
+\ifshowsolutions
+\par\textbf{Solution.} $X_2\sim\mathrm{Ge}(499/500)$, since a new type appears with probability $499/500$; otherwise it is the initial type. Then $X_3\sim\mathrm{Ge}(498/500)$, and so on. Complete the argument.
+\fi
+\item (0.5 points) Estimate the probability that at least $2n$ purchases are needed.
+\ifshowsolutions
+\par\textbf{Solution.} Chebyshev's inequality. This is the well-known \href{https://en.wikipedia.org/wiki/Coupon_collector\%27s_problem}{coupon collector's problem}, also appearing in bonus homework 2. Problems 4 and 5 are in fact very similar.
+\fi
+\end{enumerate}
+\end{problem}
+\end{document}

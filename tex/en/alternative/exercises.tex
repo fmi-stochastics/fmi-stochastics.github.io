@@ -1,0 +1,961 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage{cmap}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{fontawesome5}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage[a4paper,top=20mm,bottom=21mm,left=21mm,right=21mm,headheight=16pt]{geometry}
+\usepackage{booktabs,longtable,tabularx,array,multicol}
+\usepackage[table]{xcolor}
+\usepackage{enumitem}
+\usepackage[ruled,vlined]{algorithm2e}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage[expansion=false]{microtype}
+\usepackage{titlesec}
+\usepackage{pifont}
+\usepackage{wasysym}
+\usepackage{xparse}
+
+
+\definecolor{siteblue}{HTML}{173B8F}
+\definecolor{sitegold}{HTML}{F2C94C}
+\definecolor{muted}{HTML}{64748B}
+\definecolor{rulegray}{HTML}{B8C0CC}
+\definecolor{softgray}{HTML}{F4F5F7}
+
+\hypersetup{
+  unicode=true,
+  pdfencoding=auto,
+  colorlinks=true,
+  linkcolor=siteblue,
+  urlcolor=siteblue,
+  citecolor=siteblue,
+  pdfauthor={Martin Minchev},
+  pdftitle={Probability and Statistics: Alternative Exercises, 2026/2027}
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{2026/2027}
+\rhead{\nouppercase{\leftmark}}
+\cfoot{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\sectionmark}[1]{\markboth{#1}{#1}}
+
+\titleformat{\section}{\normalfont\large\bfseries}{\thesection.}{0.55em}{}
+\titleformat{\subsection}{\normalfont\normalsize\bfseries}{}{0pt}{}
+\titlespacing*{\section}{0pt}{1.2em}{0.55em}
+\titlespacing*{\subsection}{0pt}{0.85em}{0.3em}
+\newcommand{\sectionbreak}{\clearpage}
+
+\setlist[itemize]{leftmargin=1.55em,itemsep=0.18em,topsep=0.25em}
+\setlist[enumerate]{leftmargin=2.2em,itemsep=0.35em,topsep=0.3em}
+\newenvironment{enumeratea}{\begin{enumerate}[label=(\alph*),itemsep=0.28em,topsep=0.25em]}{\end{enumerate}}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.32em}
+\setlength{\emergencystretch}{3em}
+\renewcommand{\arraystretch}{1.15}
+\raggedbottom
+
+
+\newcommand{\E}{\mathbb E}
+\renewcommand{\P}{\mathbb P}
+\newcommand{\Pbb}{\mathbb P}
+\newcommand{\Ebb}{\mathbb E}
+\newcommand{\Var}{\operatorname{Var}}
+\newcommand{\Cov}{\operatorname{Cov}}
+\newcommand{\Cor}{\operatorname{Cor}}
+\newcommand{\Ber}{\operatorname{Ber}}
+\newcommand{\Bin}{\operatorname{Bin}}
+\newcommand{\Poi}{\operatorname{Poi}}
+\newcommand{\Geom}{\operatorname{Geom}}
+\newcommand{\Exp}{\operatorname{Exp}}
+\newcommand{\Unif}{\operatorname{U}}
+\newcommand{\ind}{\mathbf 1}
+\newcommand{\iid}{\mathrel{\mathrm{iid}}}
+
+\newcounter{problem}[section]
+\renewcommand{\theproblem}{\thesection.\arabic{problem}}
+\newcommand{\problemstart}[2]{%
+  \refstepcounter{problem}%
+  \par\medskip\noindent
+  #1\if\relax\detokenize{#1}\relax\else\,\fi
+  \textbf{Problem \theproblem.}%
+  \if\relax\detokenize{#2}\relax\else\ \emph{(#2)}\fi
+  \enspace\ignorespaces
+}
+\NewDocumentEnvironment{problem}{O{}}{\problemstart{}{#1}}{\par}
+\NewDocumentEnvironment{problembook}{O{}}{\problemstart{\faBook}{#1}}{\par}
+\NewDocumentEnvironment{problemstar}{O{}}{\problemstart{\faStar}{#1}}{\par}
+\NewDocumentEnvironment{probleminteresting}{O{}}{\problemstart{\faSmile[regular]}{#1}}{\par}
+\NewDocumentEnvironment{problempencil}{O{}}{\problemstart{\faPencil*}{#1}}{\par}
+\NewDocumentEnvironment{problemstarpencil}{O{}}{\problemstart{\faStar\,\faPencil*}{#1}}{\par}
+\NewDocumentEnvironment{researchtask}{O{}}{\problemstart{\faRobot}{#1}}{\par}
+
+\newcommand{\aitag}[1]{{\footnotesize\sffamily\color{muted}AI--#1}}
+\newcommand{\projectcheck}[1]{%
+  \par\smallskip\noindent\colorbox{softgray}{%
+    \parbox{\dimexpr\linewidth-2\fboxsep}{\small\textbf{Project checkpoint.} #1}}\par\smallskip
+}
+\newcommand{\leancheck}[1]{%
+  \par\smallskip\begingroup\sloppy\noindent{\small\textbf{Lean micro-task.} #1}\par\endgroup\smallskip
+}
+
+\newcommand{\chatgptmodel}{\textit{[model and version]}}
+\newcommand{\claudemodel}{\textit{[model and version]}}
+
+\begin{document}
+\setcounter{tocdepth}{1}
+\tableofcontents
+\noindent{\footnotesize English translation prepared with ChatGPT (OpenAI, GPT-6),
+26 October 2026, for translation of the Bulgarian text into English and LaTeX formatting.
+The Bulgarian originals remain the reference; translation may contain errors.}\par\smallskip
+
+\subsection*{Notes}
+Each topic contains \emph{core problems}, covering the minimum required for that topic;
+\emph{additional problems}, providing variety and extending the core material; and
+\emph{challenges}, related to the topic but going beyond the requirements of standard
+introductory courses in probability and statistics.
+The following symbols are used:
+\begin{itemize}
+  \item[\faBook] a problem introducing fundamental objects of the course;
+  \item[\faStar] a challenging problem;
+  \item[\faSmile] an interesting example;
+  \item[\faPencil*] a problem from an FMI test;
+  \item[\faRobot] an independent research task. All resources are permitted, including
+  literature, software and AI. You are expected to check the results, understand them,
+  and be able to explain them.
+\end{itemize}
+{\small
+\textbf{Note on the use of AI.}
+The latest publicly available versions of ChatGPT and Claude (at the time of writing,
+sol 6.1 and opus 5.5, respectively) were used for formatting, editing and clarifying
+individual formulations. The compiler is responsible for the final version and its
+mathematical correctness.
+}
+\section{Combinatorics}
+\subsection*{Core problems}
+\begin{problembook}
+For $n,k\ge 1$, recall:
+\begin{enumeratea}
+  \item how many solutions does $x_1+\cdots+x_n=k$ have when $x_1,\dots,x_n$
+  are positive integers? What if they are nonnegative integers?
+  \item state the inclusion--exclusion principle.
+\end{enumeratea}
+\end{problembook}
+\begin{problembook}
+Let $M$ be a set with $n$ elements. In how many ways can we choose:
+\begin{enumeratea}
+  \item $k$ distinct elements of $M$;
+  \item an ordered $k$-tuple of distinct elements of $M$;
+  \item an ordered $k$-tuple of elements of $M$, with repetitions allowed?
+\end{enumeratea}
+\end{problembook}
+\begin{problem}
+In how many ways can all $k$ distinguishable particles be distributed among $n$
+distinct cells if:
+\begin{enumeratea}
+  \item each cell contains at most one particle;
+  \item cells may contain any number of particles;
+  \item no cell is empty?
+\end{enumeratea}
+Answer the same questions for indistinguishable particles. Also state when the answer is zero.
+\end{problem}
+\begin{problem}
+Five distinguishable balls are distributed among three distinct boxes $A,B,C$.
+Find the number of distributions in which:
+\begin{enumeratea}
+  \item $A$ is empty;
+  \item only $A$ is empty;
+  \item exactly one box is empty;
+  \item at least one box is empty;
+  \item no box is empty.
+\end{enumeratea}
+\end{problem}
+\begin{problemstar}
+Consider the following questions.
+\begin{enumeratea}
+  \item In how many ways can we go from $(0,0)$ to $(n,n)$ on the square lattice
+  using unit steps to the right and upwards? What if the path never goes above the diagonal?
+  \item How many correctly balanced parenthesis expressions have $n$ opening and $n$
+  closing parentheses? Construct an explicit bijection between them and the paths
+  in the second part of the preceding question.
+  \item Find simple asymptotic equivalents for the total number of paths and for the
+  number that never go above the diagonal, as $n\to\infty$.
+\end{enumeratea}
+\end{problemstar}
+\subsection*{Additional problems}
+\begin{problem}
+How many four-digit numbers can be formed from the digits $1,2,3,4,5$ if:
+\begin{enumeratea}
+  \item repetition is not allowed;
+  \item repetition is allowed;
+  \item repetition is not allowed and the number is odd?
+\end{enumeratea}
+\end{problem}
+\begin{problem}
+In how many ways can a four-person delegation be selected from 12 candidates,
+including distinct candidates $A,B,C,D$, if:
+\begin{enumeratea}
+  \item there are no restrictions;
+  \item $A$ and $B$ must not both participate;
+  \item either both $C$ and $D$ participate, or neither does?
+\end{enumeratea}
+\end{problem}
+\begin{problem}
+Prove combinatorially, and then algebraically, that
+\[
+\sum_{k=0}^n\binom nk=2^n
+\qquad\text{and}\qquad
+\binom{2n}{n}=\sum_{k=0}^n\binom nk^2.
+\]
+\end{problem}
+\begin{problem}
+Let $p(n)$ be the number of partitions of $n$ into distinct positive integers,
+and $q(n)$ the number of partitions into odd positive integers, where repetitions
+are allowed and the order of the summands does not matter. For example, for $n=6$:
+\[
+p(6)=4:\ 6,\ 5+1,\ 4+2,\ 3+2+1; \qquad
+q(6)=4:\ 5+1,\ 3+3,\ 3+1+1+1,\ 1+1+1+1+1+1.
+\]
+\begin{center}
+\begin{tabular}{c|cccccccc}
+  $n$    & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\ \hline
+  $p(n)$ & 1 & 1 & 2 & 2 & 3 & 4 & 5 & 6 \\
+  $q(n)$ & 1 & 1 & 2 & 2 & 3 & 4 & 5 & 6
+\end{tabular}
+\end{center}
+By comparing generating functions, prove that $p(n)=q(n)$ for every $n$.
+\end{problem}
+\subsection*{Challenges and independent research}
+\begin{problemstar}[Derangements]
+Let $D_n$ be the number of permutations $\sigma\in S_n$ such that $\sigma(i)\ne i$ for every $i$.
+\begin{enumeratea}
+  \item Prove that
+  \[ D_n=n!\sum_{j=0}^{n}\frac{(-1)^j}{j!}. \]
+  \item Prove combinatorially that, for $n\ge 2$,
+  \[ D_n=(n-1)(D_{n-1}+D_{n-2}), \]
+  where $D_0=1$ and $D_1=0$.
+  \item Prove that, for $n\ge 1$, $D_n$ is the nearest integer to $n!/e$,
+  without using a numerical approximation to $e$.
+\end{enumeratea}
+\end{problemstar}
+\begin{problemstar}[Necklaces and Burnside's lemma]
+Let $X=\{0,1\}^n$ be the set of binary words of length $n$, and let
+$G=\{r^0,r^1,\dots,r^{n-1}\}\cong\mathbb Z_n$ be the group of cyclic rotations,
+$r(x_1x_2\dots x_n)=x_nx_1\dots x_{n-1}$. A \emph{necklace} is an orbit of $G$
+in $X$: two words are identified if one is obtained from the other by a cyclic
+rotation. For example, $0011,\,0110,\,1100,\,1001$ form one necklace, and
+$0101,\,1010$ form another. Rotations preserve the number of ones, so $G$ also acts on
+\[ X_k=\{x\in X:\ x\text{ has exactly }k\text{ ones}\}. \]
+Write $N(n,k)$ for the number of orbits in $X_k$, that is, the number of necklaces
+with $n$ beads and exactly $k$ ones.
+For $g\in G$, let
+\[ \operatorname{Fix}(g)=\{x\in X_k:\ g(x)=x\}, \]
+and let $X_k/G$ be the set of orbits. Use Burnside's (Cauchy--Frobenius) lemma
+\[ \#(X_k/G)=\frac1{|G|}\sum_{g\in G}|\operatorname{Fix}(g)|. \]
+Explain why a rotation $g$ whose cycles on the positions $\{1,\dots,n\}$ have
+length $d$ can fix a word with $k$ ones only if $d\mid k$. Prove that in this case
+\[ |\operatorname{Fix}(g)|=\binom{n/d}{k/d}, \]
+whereas if $d\nmid k$, then $\operatorname{Fix}(g)=\emptyset$. Also prove that
+for every $d\mid n$ there are exactly $\varphi(d)$ rotations whose cycles have length $d$.
+Deduce that, for $1\le k\le n-1$,
+\[ N(n,k)=\frac1n\sum_{d\mid\gcd(n,k)}\varphi(d)\binom{n/d}{k/d}, \]
+where $\varphi$ is Euler's totient function. As a check, find $N(12,4)$.
+\end{problemstar}
+\begin{researchtask}[Random mappings and cyclic vertices]
+Let $f:[n]\to[n]$ be chosen uniformly from all $n^n$ mappings. Let $G_f$ be the
+directed graph with edges $i\to f(i)$, and $K_n$ the number of vertices lying on
+a cycle in $G_f$. You may use AI to propose solutions, acting as their \emph{reviewer}:
+verification, rather than generation, is assessed.
+\begin{enumeratea}
+  \item Use software to find the distribution $\Pbb(K_n=k)$ for $n\le 7$.
+  The code may be AI-generated, but run it and check that
+  $\sum_k\#\{K_n=k\}=n^n$; also check the case $n=3$ by hand.
+  \item Find and prove a formula for $\#\{f:K_n=k\}$. You may ask AI for a proposal.
+  (i) Compare it with the table from part 1. (ii) Write the proof in your own words,
+  separating the choice of cyclic vertices, the permutation on them, and the directed
+  forest rooted at them. (iii) Give your own proof of the formula $k\,n^{n-k-1}$
+  for the number of forests with $k$ prescribed roots. If you use AI, check whether
+  it has actually proved the formula, and give a proof by a different method.
+  (iv) Find and numerically check the number of mappings with $K_n=k$ and exactly $c$ cycles.
+  \item Derive $\Ebb K_n$ in two ways: from the distribution and by linearity,
+  computing $\Pbb(\text{vertex }1\text{ is cyclic})$. Prove the identity between
+  the two expressions. Use the exact formula to calculate $\Ebb K_n$ for
+  $n=10,10^2,10^3,10^4,10^5$ and investigate numerically whether
+  \[ \frac{\Ebb K_n}{\sqrt n}\longrightarrow\sqrt{\frac{\pi}{2}}. \]
+  Explain the origin of the constant $\sqrt{\pi/2}$. Optionally investigate the finer asymptotic claim
+  \[ \Ebb K_n-\sqrt{\frac{\pi n}{2}}\longrightarrow-\frac13. \]
+  Let $T_n$ be the number of distinct vertices in the trajectory $1,f(1),f^2(1),\dots$
+  before its first repetition. Do $K_n$ and $T_n$ have the same distribution,
+  or only the same expectation?
+\end{enumeratea}
+\end{researchtask}
+\noindent\textbf{Lean.} Let $A,B\subseteq\Omega$, with indicators taking values in $\mathbb N$.
+Define the indicator by
+\[
+\ind_A(x)=\begin{cases}1,&x\in A,\\0,&x\notin A,\end{cases}
+\]
+and prove in Lean 4 with Mathlib that, for every $x\in\Omega$,
+\[ \ind_{A\cup B}(x)+\ind_{A\cap B}(x)=\ind_A(x)+\ind_B(x). \]
+
+\section{Conditional probability, independence and Bayes' rule}
+\subsection*{Core problems}
+\begin{problembook}
+Two standard dice are rolled independently.
+\begin{enumeratea}
+  \item What is the probability that the sum is less than 8, given that it is odd?
+  Are the events ``the sum is less than 8'' and ``the sum is odd'' independent?
+  \item Are ``the sum is 7'' and ``the first die shows 3'' independent?
+  What about ``the sum is 8'' and ``the first die shows 3''?
+\end{enumeratea}
+\end{problembook}
+\begin{problem}
+Let $A$ and $B$ be events with $\Pbb(A)>0$ and $0<\Pbb(B)<1$.
+\begin{enumeratea}
+  \item Prove that if $A$ and $B$ are independent, then so are $A$ and $\overline{B}$,
+  and also $\overline{A}$ and $\overline{B}$.
+  \item Prove that the following four conditions are equivalent:
+  \[
+  \Pbb(A\cap B)>\Pbb(A)\Pbb(B),\quad
+  \Pbb(A\mid B)>\Pbb(A),\quad
+  \Pbb(B\mid A)>\Pbb(B),\quad
+  \Pbb(A\mid B)>\Pbb(A\mid \overline{B}).
+  \]
+  \item If $A$ is independent of $B$ and $A$ is independent of $C$, must $A$ be
+  independent of $B\cap C$? What about $B\cup C$?
+\end{enumeratea}
+\end{problem}
+\begin{problembook}
+Three cards are drawn successively without replacement from a deck of 52 cards.
+Find the probability that:
+\begin{enumeratea}
+  \item all three are aces;
+  \item the third card is an ace;
+  \item the second card is an ace, given that the first is not.
+\end{enumeratea}
+\end{problembook}
+\begin{problembook}
+A box contains three coins: two fair coins and one with heads on both sides.
+We choose a coin uniformly and toss it. Conditional on the chosen coin, successive tosses are independent.
+\begin{enumeratea}
+  \item The outcome is heads. What is the probability that the coin is the false one?
+  \item We toss the same coin again and get heads again. Find the new probability
+  in two ways: by updating the preceding answer, treating it as a new prior,
+  and directly from the two tosses.
+  \item What is the probability of heads on the third toss, given that the first two were heads?
+\end{enumeratea}
+\end{problembook}
+\begin{problempencil}[Test 1, SE 2023]
+An urn contains 4 yellow, 5 green and 2 blue pebbles. We select a pebble uniformly.
+If it is yellow, we roll one standard die; if green, two; if blue, three.
+The rolls are independent. Given that the sum is 3, what is the probability that the pebble was green?
+\end{problempencil}
+\begin{problembook}
+A test gives a positive result for a person with a disease with probability $99\%$
+(sensitivity), and a negative result for a healthy person with probability $99\%$
+(specificity). The disease affects $0.5\%$ of the population. We choose a person uniformly and test them.
+\begin{enumeratea}
+  \item What is the probability that a person with a positive result actually has the disease?
+  \item At what disease prevalence is this probability exactly $1/2$?
+  \item The person is tested again and the result is again positive. If the two tests
+  are conditionally independent given the person's health status, and have the same
+  sensitivity and specificity, what is the probability that the person has the disease?
+  When is this independence assumption questionable?
+\end{enumeratea}
+\end{problembook}
+\subsection*{Additional problems}
+\begin{probleminteresting}[Kahneman, Thinking, Fast and Slow]
+An accident occurs at night in a city with a blue and a green taxi company.
+$85\%$ of the taxis are green and $15\%$ are blue. Assume that a taxi's probability
+of being involved in an accident does not depend on its company.
+A witness states that the taxi was blue. A subsequent assessment shows that the
+witness identifies the colour correctly with probability $80\%$, both for blue
+and for green taxis. What is the probability that the taxi really was blue?
+\end{probleminteresting}
+\begin{problem}
+Three tokens have sides coloured white--white, black--black and white--black,
+respectively. We choose a token uniformly and place it with a randomly selected
+side facing up, the two sides being equally likely. Given that the upper side is
+white, what is the probability that the hidden side is also white?
+\end{problem}
+\begin{probleminteresting}[Monty Hall]
+A car is behind one of three doors, chosen uniformly. You select a door without
+knowing where the car is. The host knows its location and always opens a different
+empty door, then offers you the chance to switch to the remaining closed door.
+\begin{enumeratea}
+  \item Should you switch? Does the probability of winning under the ``always switch''
+  strategy depend on how the host chooses a door when there are two possibilities?
+  \item You chose door 1 and the host opened door 3. When the host can choose between
+  doors 2 and 3, they open door 3 with probability $p\in[0,1]$.
+  Find the conditional probability that the car is behind door 2. For which $p$ is switching worthwhile?
+\end{enumeratea}
+\end{probleminteresting}
+\begin{probleminteresting}[Birthday paradox]
+Assume that different people's birthdays are independent and uniformly distributed
+over 365 days. What is the smallest number of people for which the probability
+that at least two share a birthday is greater than $1/2$? Use the multiplication
+rule. Discuss the assumptions of the model.
+\end{probleminteresting}
+\begin{problem}
+Two fair coins are tossed independently. Let $A$ be ``the first coin shows heads'',
+$B$ be ``the second coin shows heads'', and $C$ be ``the coins show the same outcome''.
+Prove that $A,B,C$ are pairwise independent but not mutually independent.
+Are $A$ and $C$ independent conditional on $B$?
+\end{problem}
+\begin{probleminteresting}[Simpson's paradox]
+The following table contains real data on two treatments for kidney stones
+(Charig et al., \emph{BMJ} 292, 1986; Julious \& Mullee, \emph{BMJ} 309, 1994):
+\begin{center}\small
+\begin{tabular}{@{}lrr@{}}
+\toprule
+ & Treatment A & Treatment B \\
+\midrule
+Small stones & $93\%\ (81/87)$ & $87\%\ (234/270)$ \\
+Large stones & $73\%\ (192/263)$ & $69\%\ (55/80)$ \\
+Overall & $78\%\ (273/350)$ & $83\%\ (289/350)$ \\
+\bottomrule
+\end{tabular}\end{center}
+Explain why the comparison between the treatments reverses when the groups are combined.
+Can these data alone establish which treatment is better?
+\end{probleminteresting}
+\begin{probleminteresting}[Reservoir sampling]
+Let $A$ be an array of $n\ge3$ distinct elements, indexed starting at 1.
+The following algorithm is executed, with independent random choices in different iterations:
+\begin{algorithm}[H]
+\caption{Reservoir sampling for one element}
+$sample \gets A[1]$\;
+\For{$i \gets 2$ \KwTo $n$}{
+  $j \gets$ a random integer, uniformly distributed on $\{1,\dots,i\}$\;
+  \If{$j = 1$}{ $sample \gets A[i]$\; }
+}
+\Return{$sample$}
+\end{algorithm}
+What is the probability that the final value of $sample$ is $A[1]$? $A[3]$? $A[n]$?
+Prove that the algorithm selects an element of the array uniformly.
+\end{probleminteresting}
+\begin{problem}
+There are $n\ge1$ urns, each containing $m$ white and $k$ black balls, where $m+k>0$.
+We transfer a uniformly chosen ball from the first urn to the second; after adding it,
+we choose a ball uniformly from the current contents of the second urn and transfer
+it to the third, and so on. Find the probability that a ball drawn uniformly from
+the final urn at the end is white.
+\end{problem}
+\subsection*{Challenges and independent research}
+\begin{problemstar}[A hidden common cause]
+Let $E$ be an event with $\Pbb(E)=q$, where $0<q<1$, and let $A$ and $B$ be
+conditionally independent given the value of $\ind_E$. Let
+\[
+\Pbb(A\mid \ind_E=e)=a_e
+\quad\text{and}\quad
+\Pbb(B\mid \ind_E=e)=b_e,
+\qquad\text{for }e\in\{0,1\}.
+\]
+\begin{enumeratea}
+  \item Prove that
+  \[ \Cov(\ind_A,\ind_B)=q(1-q)(a_1-a_0)(b_1-b_0). \]
+  When is this covariance zero? Explain why, for indicators, this is equivalent
+  to independence of $A$ and $B$.
+  \item Assuming $\Pbb(A\cap B)>0$, find $\Pbb(E\mid A\cap B)$.
+  \item Let
+  \[ q=0.10,\qquad a_0=0.02,\quad a_1=0.20,\qquad b_0=0.03,\quad b_1=0.25. \]
+  Calculate $\Pbb(A)$, $\Pbb(B)$ and $\Cov(\ind_A,\ind_B)$. Find and compare
+  \[ \Pbb(E),\qquad\Pbb(E\mid A),\qquad\Pbb(E\mid B),\qquad\Pbb(E\mid A\cap B). \]
+  Check that
+  \[ \Pbb(A\cap B)=0.00554\qquad\text{and}\qquad\Pbb(E\mid A\cap B)=\frac{250}{277}. \]
+  Interpret the results by viewing $E$ as a hidden common cause and $A,B$ as two observed clues to it.
+\end{enumeratea}
+\end{problemstar}
+\begin{problemstar}[An urn of unknown composition]
+For a fixed $n\ge2$, choose $K$ uniformly from $\{0,1,\dots,n\}$. Then use an
+urn containing $K$ red and $n-K$ blue balls. Make two draws from it.
+Consider separately sampling with and without replacement. Let $R_i$ be the event
+``the $i$th ball drawn is red'', for $i\in\{1,2\}$.
+\begin{enumeratea}
+  \item Given that the first ball is red, prove that in both models
+  \[ \Pbb(K=k\mid R_1)=\frac{2k}{n(n+1)},\qquad\text{for }k\in\{0,\dots,n\}. \]
+  \item Find $\Pbb(R_2\mid R_1)$ in both models and prove that the results are, respectively,
+  \[ \frac{2n+1}{3n}\qquad\text{and}\qquad\frac23. \]
+  \item Explain probabilistically why the results differ for finite $n$ and why
+  the difference disappears as $n\to\infty$.
+\end{enumeratea}
+\end{problemstar}
+\begin{researchtask}[When does a repeated test fail to provide independent evidence?]
+Let $D\sim\Ber(0.01)$ indicate the presence of a disease, and let $B\sim\Ber(q)$
+indicate a problematic laboratory batch, with $D$ and $B$ independent. All tests
+on a given person use the same batch. Conditional on $(D,B)$, the results
+$T_1,T_2,\dots$ are independent and identically distributed, with $T_i=1$ meaning a positive result.
+Initially let $q=0.10$, with positive-result probabilities given by
+\[
+\begin{array}{c|cc}
+ & B=0 & B=1\\ \hline
+\Pbb(T_i=1\mid D=1,B) & 0.95 & 0.80\\
+\Pbb(T_i=1\mid D=0,B) & 0.05 & 0.30
+\end{array}
+\]
+\begin{enumeratea}
+  \item Derive an exact formula for
+  \[ p_k=\Pbb(D=1\mid T_1=\cdots=T_k=1),\qquad\text{for }k\ge1. \]
+  \item Compare it with the naive model that first averages sensitivity and the
+  false-positive probability over $B$, then assumes that test results are
+  conditionally independent given $D$. Explain why this assumption can change the answer.
+  \item Make a table for $k=1,\dots,5$. Check that
+  \[ p_1=\frac{17}{152},\qquad p_2=\frac{701}{1592}\approx0.4403, \]
+  whereas the naive model gives approximately $0.6109$ for $k=2$.
+  \item Consider the parameter grid
+  \[
+  q\in\{0,0.05,0.10,0.20\},\qquad
+  \Pbb(T_i=1\mid D=0,B=1)\in\{0.10,0.20,0.30,0.40\},
+  \]
+  keeping all other parameters fixed. Find the pairs for which the naive estimate
+  of $p_2$ exceeds the exact value by at least $0.10$.
+  \item Does the naive model always overestimate $p_2$ if all four probabilities
+  in the table may vary? Give a proof or a counterexample and explain the result.
+  \item Does the naive model always overestimate $p_2$ if all four probabilities
+  in the table may vary? Find a necessary and sufficient condition for overestimation,
+  give a counterexample, and interpret the condition.
+\end{enumeratea}
+\end{researchtask}
+\noindent\textbf{Lean.} Let $A,B\subseteq\Omega$, with indicators taking values
+in $\mathbb N$. Use the definition from the first topic and prove in Lean 4 with
+Mathlib that, for every $x\in\Omega$,
+\[ \ind_{A\cap B}(x)=\ind_A(x)\ind_B(x). \]
+
+\section{Random variables and discrete distributions}
+\subsection*{Core problems}
+\begin{problembook}
+A player stakes 5 leva and rolls two independent standard dice. Two sixes pay
+100 leva; exactly one six pays 5 leva; no sixes pay nothing. Let $X$ be the player's
+net gain. Find the distribution and expectation of $X$. Is the game fair?
+\end{problembook}
+\begin{problembook}
+A person tosses a fair coin, taking a step forwards for heads and backwards for
+tails. Toss outcomes are independent. What is the probability that after 10 tosses the person is:
+\begin{enumeratea}
+  \item at the starting point;
+  \item at distance 2 from it;
+  \item five steps ahead of it?
+\end{enumeratea}
+\end{problembook}
+\begin{problembook}
+Let $Z_1$ and $Z_2$ be the outcomes of two independent dice rolls, and let $X=Z_1+Z_2$.
+\begin{enumeratea}
+  \item The dice are standard. Find the distribution, expectation and variance of $X$.
+  \item Let
+  \[
+  \Pbb(Z_i=1)=\Pbb(Z_i=6)=\frac14
+  \quad\text{and}\quad\Pbb(Z_i=j)=\frac18,
+  \qquad\text{for }i\in\{1,2\},\ j\in\{2,3,4,5\}.
+  \]
+  Find the distribution, expectation and variance of $X$, showing two ways of finding the expectation.
+  \item For standard dice, let $Y=|X-7|$. Find the distribution of $Y$ and $\Ebb Y$.
+  Compare $\Ebb Y$ with $|\Ebb X-7|$, and $\Ebb Y^2$ with $\Var X$.
+\end{enumeratea}
+\end{problembook}
+\begin{problem}
+A box contains 7 light bulbs, 3 of them defective. Four distinct bulbs are chosen
+uniformly. Find the distribution and expectation of the number of defective bulbs
+chosen. Also find the expectation using indicators, without summing over the whole
+distribution. Find the variance using indicators as well. Are these indicators independent?
+\end{problem}
+\begin{problembook}
+Two independent standard dice are rolled five times, with outcomes in different
+rolls also independent. What is the probability that exactly 2 rolls have sum 6?
+Find the expectation and variance of the number of such rolls.
+\end{problembook}
+\begin{problempencil}[Memorylessness; Test 1, SE 2023]
+Let $X\sim\Geom(p)$, meaning $\Pbb(X=k)=p(1-p)^k$ for $k\in\{0,1,2,\dots\}$,
+where $p\in(0,1]$.
+\begin{enumeratea}
+  \item Prove that for all integers $m,n\ge0$ with $\Pbb(X\ge n)>0$,
+  \[ \Pbb(X\ge m+n\mid X\ge n)=\Pbb(X\ge m). \]
+  \item Conversely, let $Y$ take values in $\{0,1,2,\dots\}$ and satisfy the above
+  equality for every pair of integers $m,n\ge0$ with $\Pbb(Y\ge n)>0$.
+  Prove that $Y\sim\Geom(p)$ for some $p\in(0,1]$.
+\end{enumeratea}
+\end{problempencil}
+\begin{problembook}
+Assume that the number of minor earthquakes in a region over $t$ months has a
+Poisson distribution with parameter $2t$. What is the probability of fewer than
+four earthquakes in three months?
+\end{problembook}
+\begin{probleminteresting}[St. Petersburg paradox]
+A casino charges an entry fee of $A$ leva. We toss a fair coin until the first
+heads, with independent outcomes. If heads first occurs on toss $n$, the prize
+is $2^n$ leva. Find the expected prize. For which $A$ would you personally play?
+What changes if the prize is $\min\{2^n,2^{30}\}$ leva? How does this result
+compare with your answer about the values of $A$ for which you would play?
+\end{probleminteresting}
+\subsection*{Additional problems}
+\begin{problem}
+An urn contains 5 white and 3 black balls. We draw until a white ball appears.
+Let $X$ be the number of black balls drawn. Find its distribution, expectation and variance for:
+\begin{enumeratea}
+  \item sampling without replacement;
+  \item sampling with replacement.
+\end{enumeratea}
+\end{problem}
+\begin{problem}
+$80\%$ of home printers work without additional configuration, with independent
+outcomes for different printers and weeks. A company sells 10 printers each week.
+Find the probability that at least 9 work immediately; the probability that this
+happens in five consecutive weeks; and the probability that the first week in
+which fewer than 9 work immediately is week $k$. Calculate the last probability
+for $k=3$ and $k=21$, and find the expected number of weeks until the first such week.
+\end{problem}
+\begin{problempencil}[Test 1, SE 2023]
+\begin{enumeratea}
+  \item Let $X_1,\dots,X_n$ be independent and identically distributed, with
+  $F(m)=\Pbb(X_1\le m)$, and let $X_{\min}=\min\{X_1,\dots,X_n\}$ and
+  $X_{\max}=\max\{X_1,\dots,X_n\}$. Express $\Pbb(X_{\min}\le m)$ and
+  $\Pbb(X_{\max}\le m)$ in terms of $F(m)$ and $n$.
+  \item Five standard dice are rolled. In each round, we roll all remaining dice
+  simultaneously and remove those showing six. All rolls are independent. Let $K$
+  be the number of rounds until all dice have been removed. What is the distribution
+  of the number of rolls of one die? Find $\Pbb(K\le n)$ and $\Pbb(K=n)$ for every integer $n\ge1$.
+\end{enumeratea}
+\end{problempencil}
+\begin{problem}
+Let $X$ take values in $\{0,1,2,\dots\}$ and have finite expectation.
+\begin{enumeratea}
+  \item Prove that
+  \[ \Ebb X=\sum_{k=1}^\infty\Pbb(X\ge k)=\sum_{n=0}^\infty\Pbb(X>n). \]
+  \item Check the formula for $X\sim\Geom(p)$.
+  \item Find $\Ebb K$ for the number of rounds $K$ in the preceding problem and
+  compare it with the expected number of rolls of one die.
+\end{enumeratea}
+\end{problem}
+\begin{problem}
+Independent Bernoulli trials have success probability $p$, where $0<p<1$.
+Find the probability that the $r$th success occurs on exactly trial $k+r$, for
+integers $r\ge1$ and $k\ge0$. Let $X_i$ indicate success on trial $i$. Express
+the event using $X_i$ and the partial sums $S_n=\sum_{i=1}^nX_i$, with $S_0=0$.
+\end{problem}
+\begin{problem}
+A shot hits its target with probability $0.001$. There are 5000 independent shots,
+and at least two hits are required. Find the exact probability and the Poisson
+approximation. How large is the numerical difference?
+\end{problem}
+\begin{problem}
+A submarine fires $n$ times; shots are independent and each torpedo hits with
+probability $p$. On a hit, one of the $m$ compartments is selected uniformly,
+independently of other hits. Find the probability that at least two distinct compartments are flooded.
+\end{problem}
+\begin{problem}[Banach's matchboxes]
+A smoker carries two boxes containing $n$ matches each. Each time, the smoker
+independently chooses one box with probability $1/2$ and takes a match.
+On first reaching for an empty box, what is the probability that the other box
+contains exactly $k\in\{0,\dots,n\}$ matches?
+\end{problem}
+\subsection*{Challenges and independent research}
+\begin{problemstar}
+Let $\pi$ be a uniformly random permutation of $\{1,\dots,n\}$, and let
+\[ I_n=\#\{(i,j):1\le i<j\le n,\ \pi(i)>\pi(j)\}. \]
+Prove that
+\[ \Ebb I_n=\frac{n(n-1)}4\qquad\text{and}\qquad\Var(I_n)=\frac{n(n-1)(2n+5)}{72}. \]
+\end{problemstar}
+\begin{problemstar}[Coupon collector]
+Let $X_1,X_2,\dots$ be independent and identically distributed, uniform on
+$\{1,\dots,m\}$, where $m\ge2$, and let
+\[ T=\inf\{n\ge1:\{X_1,\dots,X_n\}=\{1,\dots,m\}\}. \]
+\begin{enumeratea}
+  \item Find $\Pbb(T\le n)$ for $n\ge1$.
+  \item Prove that
+  \[ \Ebb T=mH_m,\qquad\Var(T)=m^2H_m^{(2)}-mH_m, \]
+  where $H_m=\sum_{j=1}^m\frac1j$ and $H_m^{(2)}=\sum_{j=1}^m\frac1{j^2}$.
+\end{enumeratea}
+Where do you use independence of the waiting times, and where is linearity of expectation alone sufficient?
+\end{problemstar}
+\begin{researchtask}[Generalised coupon collector]
+Let $X_1,X_2,\dots$ be independent and identically distributed random variables
+taking values in $[m]=\{1,\dots,m\}$, where $m\ge2$, with
+\[
+\Pbb(X_n=i)=p_i>0,\qquad\text{for }i\in[m],
+\qquad\text{and }\sum_{i=1}^m p_i=1.
+\]
+Let $T$ be the number of draws until all $m$ values have appeared.
+\begin{enumeratea}
+  \item Prove that
+  \[
+  \Ebb T=\sum_{\emptyset\ne A\subseteq[m]}\frac{(-1)^{|A|+1}}{\sum_{i\in A}p_i}
+  \qquad\text{and}\qquad
+  \Ebb T=\int_0^\infty\left(1-\prod_{i=1}^m\bigl(1-e^{-p_it}\bigr)\right)\,dt.
+  \]
+  Explain why the first formula is unsuitable for direct numerical calculation
+  when $m=30$. Suggest a numerical method for the integral and a way to check its accuracy.
+  \item Compare values from the integral formula with simulations for $m=10,30,100$
+  in the following models:
+  \begin{enumerate}[label=(\roman*)]
+    \item uniform probabilities: $p_i=1/m$ for $i\in[m]$;
+    \item probabilities
+    \[ p_i=\frac{i^{-\alpha}}{\sum_{j=1}^m j^{-\alpha}},\qquad\text{for }i\in[m], \]
+    considering both $\alpha=1$ and $\alpha=2$;
+    \item one rare coupon:
+    \[ p_1=m^{-2}\quad\text{and}\quad p_i=\frac{1-m^{-2}}{m-1},\qquad\text{for }i\in\{2,\dots,m\}. \]
+  \end{enumerate}
+  State the number of simulations and discuss the accuracy of the estimated mean.
+  Explain which mechanism determines the scale of $\Ebb T$ in each model.
+\end{enumeratea}
+You may use AI for the proof and numerical method, provided you check the results
+and explain how you checked them.
+\end{researchtask}
+\noindent\textbf{Lean.} Let $S$ be a finite nonempty set, $X,Y:S\to\mathbb R$,
+and $a,b\in\mathbb R$. On the finite uniform probability space on $S$, define
+\[ \Ebb X=\frac1{|S|}\sum_{s\in S}X(s). \]
+Formalise in Lean 4 with Mathlib and prove linearity:
+\[ \Ebb(aX+bY)=a\,\Ebb X+b\,\Ebb Y. \]
+First prove, by induction on $S$ and without using \texttt{Finset.sum\_add\_distrib}, that
+\[ \sum_{s\in S}\bigl(X(s)+Y(s)\bigr)=\sum_{s\in S}X(s)+\sum_{s\in S}Y(s); \]
+\texttt{Finset.mul\_sum} and \texttt{Finset.sum\_div} are useful for the rest.
+Why is nonemptiness of $S$ needed to define $\Ebb$, but not for the identity for sums?
+
+\section{Dependence, sums and generating functions}
+\subsection*{Part I. Joint distributions and conditional expectation}
+\begin{problembook}
+We independently roll two red and one blue standard dice. Let $X$ be the number
+of sixes on the red dice, and $Y$ the number of twos on all three dice. Find the
+joint distribution and $\Pbb(X>0\mid Y=1)$. Are $X$ and $Y$ independent?
+Can you answer the last question without calculating the entire joint distribution?
+\end{problembook}
+\begin{problembook}
+A fair coin is tossed independently four times. Let $X$ be the number of heads
+in the first three tosses, and $Y$ the number in the last two.
+\begin{enumeratea}
+  \item Find the joint and conditional distributions, $\Pbb(X=Y)$ and $\Pbb(X>1\mid Y=1)$.
+  \item Find $\Ebb(X\mid Y)$ and $\Ebb(Y\mid X)$ and their distributions.
+  Verify that $\Ebb[\Ebb(X\mid Y)]=\Ebb X$.
+  \item Find $\Cov(X,Y)$ in two ways: from the joint distribution, and by writing
+  $X$ and $Y$ as sums of indicators.
+\end{enumeratea}
+\end{problembook}
+\begin{problembook}
+Let $X$ be uniformly distributed on $\{-1,0,1\}$ and $Y=X^2$.
+\begin{enumeratea}
+  \item Show that $\Cov(X,Y)=0$, but $X$ and $Y$ are dependent.
+  \item Now let $X$ and $Y$ take values in $\{0,1\}$. Prove that $\Cov(X,Y)=0$
+  is equivalent to independence. Why does this not contradict the preceding example?
+  \item For random variables $X,Y$ with finite positive variances, prove that
+  $|\Cor(X,Y)|\le1$. When does equality hold?
+\end{enumeratea}
+\end{problembook}
+\begin{problempencil}
+One box contains 4 white and 6 black balls, and another contains 7 white and
+3 black balls. From each box we draw one ball uniformly, independently of the
+other draw. We add one white ball to the two drawn balls and place all three in a third box.
+\begin{enumeratea}
+  \item What is the probability that a uniformly chosen ball from the third box is white?
+  \item Draw from the third box with replacement until the first white ball.
+  For a fixed box composition, draws are independent and uniform. Let $X$ be the
+  number of draws. Find $\Ebb X$. Does $X$ have a geometric distribution?
+  \item Find $\Pbb(X>k)$ for every integer $k\ge0$, and prove that
+  $\Pbb(X>k+1\mid X>k)$ increases with $k$. What do we learn about the box's
+  composition after a sequence of black balls?
+\end{enumeratea}
+\end{problempencil}
+\subsection*{Additional problems}
+\begin{problembook}
+Choose three numbers uniformly without replacement from $\{1,2,3,4,5\}$.
+Let $X$ be the middle number in order of size, and $Y$ the smallest.
+\begin{enumeratea}
+  \item Find the joint and marginal distributions. Are $X,Y$ independent?
+  \item Find $\Cov(X,Y)$ and $\Cor(X,Y)$.
+  \item Find the distribution, expectation and variance of $X-2Y$.
+\end{enumeratea}
+\end{problembook}
+\begin{problempencil}
+Let $(X_1,\ldots,X_n)$ be a uniformly random permutation of $\{1,\ldots,n\}$,
+where $n\ge2$, and let $S=X_1+\cdots+X_n$.
+\begin{enumeratea}
+  \item Find $\Ebb S$, $\Var S$, $\Ebb X_i$ and $\Var X_i$.
+  \item Prove the variance-of-a-sum formula and use it to find $\Cov(X_i,X_j)$
+  for $i\ne j$. Explain the sign of the covariance.
+  \item For $1\le k\le n$, find $\Var(X_1+\cdots+X_k)$. Compare with the variance
+  of $k$ independent draws with replacement.
+\end{enumeratea}
+\end{problempencil}
+\begin{problempencil}
+On each face of a blank die, independently write a uniformly chosen number from
+1 to 6. Then roll the resulting die $n\ge2$ times. The faces rolled are independent,
+uniformly selected and independent of the labels. Let $T_k$ be the number seen on roll $k$.
+\begin{enumeratea}
+  \item What is the distribution of $T_1$? Find $\Cor(T_1,T_2)$. Are $T_1,T_2$ independent?
+  \item If $X=T_1+\cdots+T_{n-1}$ and $Y=T_2+\cdots+T_n$, find $\Cor(X,Y)$.
+  \item How do the two correlations change if the labels are independent and uniform
+  on $\{199,\ldots,999\}$? What if the labels are independent with an arbitrary
+  common distribution having finite positive variance?
+\end{enumeratea}
+\end{problempencil}
+\begin{problem}[P\'olya's urn]
+An urn contains one red and one black ball. At each step, choose a ball uniformly,
+replace it and add another ball of the same colour. Let $X_n$ indicate a red ball
+on draw $n$, and let $W_n=X_1+\cdots+X_n$. Find $\Pbb(X_n=1)$, $\Cov(X_i,X_j)$
+for $i\ne j$, and the distribution of $W_4$. What distribution do you conjecture for $W_n$?
+\end{problem}
+\subsection*{Challenges}
+\begin{problemstar}[Pairwise independence]
+Let $q$ be prime, and let $A,B$ be independent and uniform on $\{0,\ldots,q-1\}$.
+All subsequent calculations are modulo $q$. For $t\in\{0,\ldots,q-1\}$, define
+\[ X_t=A+tB\pmod q,\qquad X_\infty=B. \]
+\begin{enumeratea}
+  \item Prove that $X_0,\ldots,X_{q-1},X_\infty$ are uniform and pairwise
+  independent, but not mutually independent. What do the values of two distinct coordinates determine?
+  \item Let $N$ be the number of zero coordinates in this family.
+  Find its distribution, expectation and variance.
+  \item Calculate the variance using indicators as well. Is pairwise independence
+  enough for variances to add?
+\end{enumeratea}
+\end{problemstar}
+\begin{problemstar}
+For random variables $X,Y$ with finite second moments and a random variable $Z$, prove that
+\[
+\Cov(X,Y)=\Ebb\!\left[\Cov(X,Y\mid Z)\right]
++\Cov\!\left(\Ebb[X\mid Z],\Ebb[Y\mid Z]\right).
+\]
+What formula results when $Y=X$? Now let $Z\sim\Ber(1/2)$, let $U$ be uniform
+on $\{-1,1\}$, let $Z,U$ be independent, and define
+\[ X=3Z+U,\qquad Y=3Z-U. \]
+\begin{enumeratea}
+  \item Find the conditional covariance and correlation for fixed $Z$.
+  \item Find $\Cov(X,Y)$ and $\Cor(X,Y)$.
+  \item How do you explain the difference in signs? Relate your answer to the two terms in the formula.
+\end{enumeratea}
+\end{problemstar}
+\subsection*{Part II. Generating functions and random sums}
+\begin{problempencil}[Test 1, CS 2024]
+For a nonnegative integer-valued random variable $X$, write $g_X(s)=\Ebb[s^X]$, $0\le s\le1$.
+\begin{enumeratea}
+  \item Let $X$ be uniform on $\{1,\ldots,6\}$. Find $g_X$ and express
+  $\Ebb X$ and $\Var X$ in terms of its derivatives.
+  \item If $X,Y$ are independent nonnegative integer-valued random variables,
+  prove that $g_{X+Y}=g_Xg_Y$.
+  \item[$(\mathrm{c})^\star$] Is the converse true?
+\end{enumeratea}
+\end{problempencil}
+\begin{problembook}
+Let $X,Y$ be independent. Use generating functions to find the distribution of
+$X+Y$ when $X\sim\Bin(n,p)$ and $Y\sim\Bin(m,p)$, and then when
+$X\sim\Poi(\lambda)$ and $Y\sim\Poi(\mu)$. Similarly find the distribution of
+$G_1+\cdots+G_r$, where $G_1,\ldots,G_r$ are independent and $G_i-1\sim\Geom(p)$,
+so each $G_i$ counts the trials up to the first success. Why does equality of
+generating functions determine the distribution uniquely? Can the sum of independent
+$\Bin(n,p)$ and $\Bin(m,q)$ variables be binomial when $n,m\ge1$, $0<p,q<1$ and $p\ne q$?
+\end{problembook}
+\begin{problempencil}
+The number of visitors to a stadium is $N\sim\Poi(\lambda)$. Each visitor selects
+one of ten entrances uniformly, independently of everyone else and of $N$.
+\begin{enumeratea}
+  \item Find the distribution, expectation and variance of the number using the first entrance.
+  \item More generally, let $N,X_1,X_2,\ldots$ be independent nonnegative
+  integer-valued random variables, with $(X_i)$ identically distributed.
+  For $S=X_1+\cdots+X_N$, setting $S=0$ when $N=0$, prove that
+  \[ g_S(s)=g_N\bigl(g_{X_1}(s)\bigr). \]
+  If $N,X_1$ have finite second moments, find $\Ebb S$ and $\Var S$.
+  \item Apply the result to the stadium problem. Also obtain the distribution
+  in (a) using the law of total probability.
+\end{enumeratea}
+\end{problempencil}
+\begin{problembook}
+$A$ and $B$ play independent games. In each game, $A$ wins with probability $2/3$
+and $B$ with probability $1/3$. Play stops when someone wins two consecutive games.
+Let $T$ be the number of games played. Find $\Ebb T$ and the probability that
+$A$ wins the contest. What information about the past suffices to describe future
+play? Also find the generating function of $T$.
+\end{problembook}
+\subsection*{Additional problems}
+\begin{problempencil}
+Two teams each take one penalty in each round. All attempts are independent,
+with scoring probabilities $0.75$ for the first team and $0.80$ for the second.
+All five regular rounds are played. If tied afterwards, play continues until,
+in one round, one team scores and the other does not.
+\begin{enumeratea}
+  \item What is the probability that in each of the first five rounds both teams
+  have the same outcome for their penalty?
+  \item What is the probability that play continues after the fifth round? After the tenth?
+  \item Find the expected total number of penalties taken.
+\end{enumeratea}
+\end{problempencil}
+\begin{problem}
+Lottery tickets are numbered from 000000 to 999999. Find the probability that a uniformly chosen ticket:
+\begin{enumeratea}
+  \item has digit sum 21;
+  \item has equal sums of its first and last three digits;
+  \item has a sum of its first three digits that exceeds that of its last three by 2.
+\end{enumeratea}
+It suffices to express the answers as coefficients of a polynomial.
+\end{problem}
+\begin{problempencil}
+We telephone $N\sim\Poi(\lambda)$ people with an offer. Person $i$ would accept
+on the $K_i$th call, where $K_1,K_2,\ldots$ are independent, identically distributed
+and independent of $N$, with $\Pbb(K_i=n)=f(n)$ for $n\ge1$ and
+$\sum_{n\ge1}f(n)=1$. Let $X_n$ be the number of people who would accept on call $n$.
+\begin{enumeratea}
+  \item Prove that $(X_n)_{n\ge1}$ are independent and $X_n\sim\Poi(\lambda f(n))$.
+  \item We stop at the first round with no new acceptance. If
+  $T=\inf\{n\ge1:X_n=0\}$ and $S=X_1+\cdots+X_T$, prove that
+  \[ \Ebb S=\lambda\Ebb[F(T)],\qquad F(k)=\sum_{j=1}^k f(j). \]
+  Why can we not directly apply the expectation formula for a random sum whose
+  number of summands is independent of the summands?
+\end{enumeratea}
+\end{problempencil}
+\begin{problempencil}
+Two standard dice are rolled independently. Can we label their faces with other
+positive integers so that independent rolls have the same sum distribution?
+Repeated labels are allowed. Find a construction different from the two standard dice.
+\end{problempencil}
+\subsection*{Challenges}
+\begin{problemstar}\label{prob:week4-penney}
+We toss a fair coin independently, recording outcomes as $H,T$. For a word
+$w=w_1w_2w_3$, let $\tau_w$ be the toss number when it first appears as three
+consecutive outcomes. Consider $a=HHT$ and $b=THH$.
+\begin{enumeratea}
+  \item Choose states retaining enough information about the appearance of the
+  two words, and draw the possible transitions.
+  \item Find $\Pbb(\tau_a<\tau_b)$ and $\Ebb(\tau_a\wedge\tau_b)$.
+  \item Prove that $\tau_a\wedge\tau_b<\infty$ almost surely, without using the calculated expectation.
+\end{enumeratea}
+\end{problemstar}
+\begin{problemstar}[Branching process]
+A population starts with one individual. Each individual has 0 children with
+probability $1-p$ and 2 children with probability $p$, where $0<p<1$, independently
+of all other individuals in all generations. Let $Z_n$ be the number of individuals
+in generation $n$, with $Z_0=1$, and let
+\[ f(s)=1-p+ps^2,\qquad T=\inf\{n\ge0:Z_n=0\}. \]
+\begin{enumeratea}
+  \item Prove that $g_{Z_n}=f^{\circ n}$.
+  \item Show that $q_n=\Pbb(T\le n)=f^{\circ n}(0)$ and that $(q_n)$ is increasing.
+  \item Prove that $q=\Pbb(T<\infty)$ is the smallest solution of $f(q)=q$ in
+  $[0,1]$, and find it as a function of $p$.
+  \item Find $\Ebb Z_n$. When $p=1/2$, it is constant, yet extinction occurs almost surely.
+  How do you explain this?
+\end{enumeratea}
+\end{problemstar}
+\subsection*{Independent research}
+\begin{researchtask}[Penney's game]
+Two players each choose a different word from $\{H,T\}^3$. We then toss a fair
+coin independently until one of the words appears. The player whose word appears first wins.
+\begin{enumeratea}
+  \item Generalise the model in Problem~\ref{prob:week4-penney} and write a program
+  that calculates exactly, for each of the 56 ordered pairs $(a,b)$,
+  \[ p(a,b)=\Pbb(\tau_a<\tau_b),\qquad e(a,b)=\Ebb(\tau_a\wedge\tau_b). \]
+  Use rational arithmetic and check at least one pair by hand.
+  \item For each first word $a$, find the best responses $b$ for the second player.
+  Does the player choosing second have an advantage? Formulate a general rule
+  for the best response and prove it.
+  \item Draw a directed graph with edge $a\to b$ when $b$ is a best response to
+  $a$. Find a cycle and explain what it shows about comparisons between words.
+\end{enumeratea}
+\end{researchtask}
+\noindent\textbf{Lean.} Formalise in Lean 4 with Mathlib and prove that, for
+finite sets $S,T$ and functions $a:S\to\mathbb R$ and $b:T\to\mathbb R$,
+\[
+\sum_{s\in S}\sum_{t\in T}a(s)b(t)
+=\left(\sum_{s\in S}a(s)\right)\left(\sum_{t\in T}b(t)\right).
+\]
+Explain how this identity is used in proving $g_{X+Y}=g_Xg_Y$ for independent
+nonnegative integer-valued random variables $X,Y$ with finite ranges.
+
+\end{document}

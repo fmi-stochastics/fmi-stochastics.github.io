@@ -1,0 +1,134 @@
+\documentclass[a4paper]{article}
+\input{tex/en/preamble.tex}
+\setlength{\emergencystretch}{3em}
+\allowdisplaybreaks
+\begin{document}
+\noindent Software Engineering \hfill Test 1, 01.12.2024: solutions
+\par\smallskip\hrule\smallskip\noindent
+\textit{English transcription of the handwritten solutions. The source's order, calculations and unfinished evaluations are retained.}
+
+\section*{Problem 1}
+\begin{enumerate}
+\item $\P(A)\P(B)=0.12$, and
+\begin{align*}
+\P(A\cap B)&=\P(A)+\P(B)-\P(A\cup B)\\
+&=\P(A)+\P(B)-(1-\P(\overline{A\cup B}))\\
+&=0.7-0.58=0.12.
+\end{align*}
+Thus $\P(A)\P(B)=\P(A\cap B)$: yes, they are independent.
+\item
+\[
+\P(\text{three correct})=\binom53(\tfrac14)^3(\tfrac34)^2\approx8.79\%,
+\]
+\[
+\P(\text{questions 1,3,5 correct}\mid\text{three correct})
+=\frac1{\binom53}=\frac1{10}.
+\]
+\item Under independence, all the covariances are zero. In general, use the formula (or definition):
+\begin{align*}
+\operatorname{Cov}(X+Y,Z)
+&=\E[(X+Y)Z]-\E[X+Y]\E Z\\
+&=\E[XZ]-\E X\E Z+\E[YZ]-\E Y\E Z\\
+&=\operatorname{Cov}(X,Z)+\operatorname{Cov}(Y,Z),
+\end{align*}
+by linearity.
+\item Let $X_i=1$ if toss $i$ is heads and zero otherwise; the $X_i$ are iid $\operatorname{Ber}(1/2)$. We seek
+\[
+\operatorname{Cov}(X_1+\dots+X_7,(1-X_4)+\dots+(1-X_{10})).
+\]
+By part 3 this is $4\operatorname{Cov}(X_i,-X_i)=-4D X_i=-1$, since $\operatorname{Cov}(X_i,X_j)=0$ for $i\neq j$.
+Writing the two sums as $Y,Z$, the correlation is
+\[
+\frac{-1}{\sqrt{DY\,DZ}}=\frac{-1}{7\cdot\frac14}=-\frac47.
+\]
+\item Ending after exactly three rounds means no ace among cards 1--20 and at least one ace among cards 21--30. Thus
+\begin{align*}
+\P(\text{exactly three rounds})
+&=\P(\text{no ace in cards 1--20})-\P(\text{no ace in cards 1--30})\\
+&=\frac{\binom{48}{20}}{\binom{52}{20}}-\frac{\binom{48}{30}}{\binom{52}{30}}\\
+&=\frac{48!}{20!28!}\frac{20!32!}{52!}
+-\frac{48!}{30!18!}\frac{30!22!}{52!}\\
+&=\frac{29\cdot30\cdot31\cdot32}{49\cdot50\cdot51\cdot52}
+-\frac{19\cdot20\cdot21\cdot22}{49\cdot50\cdot51\cdot52}
+\approx10.58\%.
+\end{align*}
+\item Let $X_1,\dots,X_6$ be the face labels, iid uniform on $\{1,\dots,6\}$, and let $Y$ be the roll. Then
+\begin{align*}
+\P(\text{six})&=\E[\one_{\{\text{six}\}}]\\
+&=\E\!\left[\E\!\left[\frac16\one_{\{X_1=6\}}+\dots+
+\frac16\one_{\{X_6=6\}}\ \middle|\ X_1,\dots,X_6\right]\right]\\
+&=\E[\one_{\{X_i=6\}}]=\frac16.
+\end{align*}
+Alternatively, condition on the number of sixes, which ranges from 0 to 6.
+The expected number of rolls until the product is divisible by 6 is $\infty$ (or one may say it does not exist).
+The die could, for example, have only ones; then the product can never be divisible by 6.
+\end{enumerate}
+
+\section*{Problem 3}
+\begin{enumerate}
+\item Coupon collector: see the exercises.
+\[
+\text{Answer: }10(1+\tfrac12+\dots+\tfrac1{10})\approx29.29.
+\]
+\item $X_i\sim\operatorname{Ge}(1/10)$ and $Y=\max\{X_1,\dots,X_{10}\}$.
+\item
+\[
+\max\{x_1,\dots,x_n\}=
+\sum_i x_i-\sum_{i<j}\min\{x_i,x_j\}
++\sum_{i<j<k}\min\{x_i,x_j,x_k\}-\dots
++(-1)^{n+1}\min\{x_1,\dots,x_n\}.
+\]
+\item $\operatorname{Ge}(p_1+p_2-p_1p_2)$. See the exercises.
+\item For four species with probabilities $1/10,2/10,3/10,4/10$,
+\[
+\min\{X_i,X_j\}\sim\operatorname{Ge}(p_i+p_j).
+\]
+This does not follow from part 4, because the $X_i,X_j$ are not independent; it follows by another argument (what is it?).
+Hence
+\begin{align*}
+\E[\max\{X_1,\dots,X_4\}]
+&=\E[\sum_iX_i]-\E[\sum_{i<j}\min\{X_i,X_j\}]+\dots\\
+&=\left[10+\frac{10}{2}+\frac{10}{3}+\frac{10}{4}\right]\\
+&\quad-\left[\frac{10}{3}+\frac{10}{4}+\frac{10}{5}+
+\frac{10}{5}+\frac{10}{6}+\frac{10}{7}\right]\\
+&\quad+\left[\frac{10}{6}+\frac{10}{7}+\frac{10}{8}+\frac{10}{9}\right]-1=\dots
+\end{align*}
+\end{enumerate}
+
+\section*{Problem 2}
+\begin{enumerate}
+\item Let $A_i$ mean that player $i$ receives BGN 0. Then
+\begin{align*}
+\P(A_1\cup A_2\cup A_3)
+&=\P(\text{at least one receives 0})\\
+&=\sum_i\P(A_i)-\sum_{i<j}\P(A_i\cap A_j)+\P(A_1\cap A_2\cap A_3)\\
+&=3\P(A_1)-3\P(A_1\cap A_2)+\P(A_1\cap A_2\cap A_3)\\
+&=3\sum_{\ell=0}^\infty(\tfrac12)^{\ell+1}
+\left[(\tfrac23)^\ell-(\tfrac13)^\ell\right]+\frac12\\
+&=\frac32\left[\frac1{1-\frac13}-\frac1{1-\frac16}\right]+\frac12\\
+&=\frac32\left[\frac32-\frac65\right]+\frac12=\frac{19}{20}.
+\end{align*}
+The answer is $1-\P(\bigcup_iA_i)=1/20=5\%$.
+\item Let $X$ be the winnings of a fixed player. For $k\geq0$,
+\[
+\P(X=k)=\sum_{\ell=0}^\infty
+(\tfrac12)^{\ell+1}\binom\ell k(\tfrac13)^k(\tfrac23)^{\ell-k}.
+\]
+Here $(1/2)^{\ell+1}$ is the probability that the casino pays BGN $\ell$, and the remaining factor is the probability that $k$ of these payments go to the fixed player.
+Put $\ell=k+m$:
+\begin{align*}
+\P(X=k)&=\sum_{m=0}^\infty(\tfrac12)^{k+m+1}
+\binom{k+m}{k}(\tfrac13)^k(\tfrac23)^m\\
+&=(\tfrac16)^k\frac12\sum_{m=0}^\infty(\tfrac13)^m\binom{k+m}{k}\\
+&=(\tfrac16)^k\frac12\frac1{(1-\frac13)^{k+1}}
+=\frac12(\tfrac16)^k(\tfrac32)^{k+1}
+=\frac34(\tfrac14)^k.
+\end{align*}
+The sum uses the formula supplied in the test. The handwritten conclusion is
+\[
+X\sim\operatorname{Ge}(\tfrac14)
+\quad\Longrightarrow\quad
+DX=\frac{3/4}{(1/4)^2}=12.
+\]
+\end{enumerate}
+\end{document}

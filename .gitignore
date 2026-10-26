@@ -1,3 +1,10 @@
 site/
 .cache/
 __pycache__/
+.pdf-build/
+tmp/
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz

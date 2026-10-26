@@ -1,0 +1,58 @@
+% English translation of the Bulgarian source.
+\documentclass[a4paper]{report}
+\input{tex/en/preamble.tex}
+\begin{document}
+\noindent Probability and Statistics / SEM, 5 September 2024 \hfill Examination
+\hrulefill
+\begin{it}
+The grading formula is $2+$ the number of points. Time allowed: 3 hours. Good luck.
+We use $m,n$ for natural numbers, and $a/b$ is equivalent to $\frac{a}{b}$.
+\end{it}
+\begin{problem}
+A die has the number 1 on two faces, the number 3 on two other faces, 5 on one remaining face, and 7 on the last face. Let the random variable $X$ be the result of one roll.
+\begin{itemize}
+\item (0.25 points) Find the distribution, expectation and variance of $X$. Find the probability that in 5 rolls the total number of threes and sevens is 4.
+\item (0.25 points) Approximately find the probability that the sum of 100 rolls exceeds 2222. What about 4444?
+\item (0.25 points) Find the expected number of rolls until the hundredth seven. What is the expected number of threes up to that time?
+\end{itemize}
+\end{problem}
+\begin{problem}
+An FMI student, dissatisfied with the unpredictability of standard roulette, decides to create a variant in which past colours affect future ones. Its rules are:
+\begin{itemize}
+\item The roulette wheel has only black and red numbers.
+\item On spin $n+1$, the probability of a red number is $P_n(m):=\frac{1+m}{2+n}$, where $m$ is the number of red results so far.
+\end{itemize}
+Let $X_n:=\ind{\{\text{spin $n$ produces a red number}\}}$. Given the history $(X_1,\ldots,X_n)$, the conditional distribution of $X_{n+1}$ is Bernoulli with success parameter $P_n(\sum_{i=1}^nX_i)$. For example, if the first results are (red, red, black), then $(X_1,X_2,X_3)=(1,1,0)$ and $(P_0,P_1,P_2,P_3)=(1/2,2/3,3/4,3/5)$, so $\mathbb P(X_4=1\mid X_1=1,X_2=1,X_3=0)=P_3(2)=3/5$.
+\begin{enumerate}
+\item (0.25 points) Prove that
+\begin{align*}
+&\P(X_1=x_1,X_2=x_2,\dots,X_n=x_n)\\
+&\qquad=\P(X_{\sigma(1)}=x_1,X_{\sigma(2)}=x_2,\dots,X_{\sigma(n)}=x_n)
+\end{align*}
+for every permutation $\sigma$ of $\{1,\ldots,n\}$; that is, the vector $(X_1,\dots,X_n)$ and all its permutations have the same distribution.
+\item (0.25 points) Find $\P(X_n=0)$ and $\mbox{Cov}(X_i,X_j)$ for $i\neq j$.
+\item (0.25 points) Find the distribution of the number of red results $W_4$ after 4 trials. What is the distribution of $W_n$ after $n$ trials?
+\item (0.25 points) Find $\P(X_m=0\mid X_n=1)$ for all $m,n$.
+\item (0.25 points) Find the probability that the $n$th and $(n+1)$st numbers are equal.
+\item (0.25 points) Calculate $\mathbb P(W_{n+1}=W_n+1)$.
+\item \textit{Bonus*: (0.5 points) Prove that $P_n$ has a limit in distribution, and find it.}
+\item \textit{Bonus*: (0.25 points) Propose an algorithm that explicitly constructs a roulette wheel with numbers from 1 to 36, with the even numbers red, and implements the condition above.}
+\end{enumerate}
+\end{problem}
+\begin{problem}
+\begin{enumerate}
+\item (0.5 points) Let $q\in(0,1)$ and $U_1\sim U(0,1)$. Define
+\[X:=1+\left\lfloor\frac{\ln(U_1)}{\ln(q)}\right\rfloor,\]
+where $\lfloor x\rfloor$ is the integer part of $x$; for example, $\lfloor1.15\rfloor=1$ and $\lfloor\pi\rfloor=3$. What values does $X$ take? Find its distribution and expectation.
+\item (0.25 points) Let $U_1,U_2\sim U(0,1)$ be independent, and let $Y:=\ln(U_1)/\ln(U_2)$. Find the density and expectation of $Y$.
+\item (0.25 points) Is it true that $1+\lfloor\ln(U_1)/\ln(U_2)\rfloor$ has a geometric distribution? Explain why.
+\end{enumerate}
+\end{problem}
+\begin{problem}
+\begin{enumerate}
+\item (0.25 points) Model the temperature on a given day by $Y=-30+X$, where $X\sim Exp(\lambda)$. Find $\lambda$ such that the expected monthly minimum temperature is 10 degrees; assume that a month has 30 days.
+\item (0.25 points) Estimate the probability that the average monthly minimum temperature over a period of 10 years exceeds 0.01 degrees. Discuss why this model is or is not good.
+\item (0.5 points) Now focus only on summer months. If we model the daily temperature by $Y\sim Exp(\lambda)$, this allows arbitrarily high temperatures, albeit with a small probability. To restrict the values of your model, introduce a random variable $Z$ that has the distribution of $Y$ conditional on $Y$ being between 10 and 40 degrees. Find its density and expectation. What is the expected monthly minimum temperature under the daily temperature model $Z$?
+\end{enumerate}
+\end{problem}
+\end{document}

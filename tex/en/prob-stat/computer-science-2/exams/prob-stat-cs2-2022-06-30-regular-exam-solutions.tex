@@ -1,0 +1,72 @@
+\documentclass[a4paper]{article}
+\input{tex/en/preamble.tex}
+\setlength{\emergencystretch}{3em}
+\pagenumbering{arabic}
+\begin{document}
+\begin{center}\Large Probability and Statistics, Computer Science\par\large Regular exam, 30 June 2022: solutions\end{center}
+\noindent\textit{English transcription of the supplied handwritten workings. Numerical conclusions and notation are retained as written.}
+\section*{Problem 1}
+The completed magic square is
+\[\begin{array}{|c|c|c|}\hline2&7&6\\\hline9&5&1\\\hline4&3&8\\\hline\end{array}\]
+\begin{enumerate}
+\item The expected number of correct entries is $\E[Bin(5,1/10)]=1/2$.
+\item The expected number of simulations is $\E[Ge(1/10^5)]=10^5$.
+\item Let $X$ be the number of simulations until the first success. With $p=10^{-5}$,
+\[X\sim Ge(p),\qquad\E X=10^5=1/p,\qquad DX=(1-p)/p^2.\]
+We seek $n$ with $\P(X>n)\le1\%$. A rough Chebyshev bound is
+\[\P(X-\E X>\varepsilon)\le\P(|X-\E X|>\varepsilon)\le\frac{DX}{\varepsilon^2}=1\%.\]
+Thus take $\varepsilon=10\sqrt{DX}$ and $n=\lceil\E X+10\sqrt{DX}\rceil=1099995$.
+\end{enumerate}
+For the second simulation procedure:
+\begin{enumerate}
+\item By indicator variables, the expectation is
+\[\E(\one_{\{\text{entry 1 correct}\}}+\cdots+\one_{\{\text{entry 5 correct}\}})=5\E\one_{\{\text{entry 1 correct}\}}=5\cdot\frac15=1.\]
+\item $\E[Ge(1/5!)]=5!=120$.
+\item As above, choose $n=\lceil\E Y+10\sqrt{DY}\rceil=1315$ for $Y\sim Ge(1/5!)$.
+\end{enumerate}
+\section*{Problem 2}
+Let $Z_i$ be the number on the $i$-th roll. The handwritten calculation is
+\begin{align*}
+&Cor(Z_1+\cdots+Z_{n-1},Z_2+\cdots+Z_n)\\
+&=\frac{\E[(Z_1+\cdots+Z_{n-1})(Z_2+\cdots+Z_n)]-(\E[Z_1+\cdots+Z_{n-1}])^2}{D(Z_1+\cdots+Z_{n-1})}\\
+&=\frac{(n-2)\E Z_1^2+[(n-1)^2-(n-2)](\E Z_1)^2-(n-1)^2(\E Z_1)^2}{(n-1)[\E Z_1^2-(\E Z_1)^2]}=\frac{n-2}{n-1}.
+\end{align*}
+The note says that the result does not depend on how the dice are filled, provided the results are independent and have equal finite expectations and variances.
+\section*{Problem 3}
+Let $X_i$ be the money collected on day $i$. With $n$ volunteers, $X_i$ is a sum of $10n$ independent variables of the form $100\cdot Ber(1/25)$. Hence
+\[\E X_i=40n,\qquad DX_i=n\cdot100^2\cdot\frac1{25}\frac{24}{25}.\]
+The notes seek $n$ such that
+\begin{align*}
+99\%&\le\P(X_1+\cdots+X_{100}\ge10^6)\\
+&=\P\left(\frac{X_1+\cdots+X_{100}-4000n}{\sqrt{n\cdot100^2\cdot24/25^2\cdot100}}\ge\frac{10^6-4000n}{\sqrt{n\cdot100^2\cdot24/25^2\cdot100}}\right)\\
+&\approx\P\left(N(0,1)\ge\frac{10^6-4000n}{80\sqrt{6n}}\right).
+\end{align*}
+The next line in the source writes
+\[\frac{10^6-4000n}{80\sqrt{6n}}\le\Phi^{-1}(0.01)\approx2.33,\]
+followed by $n\ge248.20$, and the boxed conclusion ``$n=249$ is sufficient''. A red annotation says ``250 is enough''. These are transcribed source conclusions; in particular, the displayed sign of the normal quantile is as written in the original.
+
+For the second part, the notes write
+\[\P\left(\frac{X_1+\cdots+X_{99}-40\cdot99\cdot249}{\sqrt{n\cdot100^2\cdot24/25^2\cdot99}}>\frac{10^6-40\cdot99\cdot249}{7218.26}\right)\approx\P(N(0,1)\ge4.53)\approx0.\]
+\section*{Problem 4}
+\begin{enumerate}
+\item Normalisation gives
+\[1=c\int_0^\infty\int_0^\infty xe^{-(x+y)/2}\,dy\,dx
+=2c\int_0^\infty xe^{-x/2}\,dx=8c\int_0^\infty ze^{-z}\,dz=8c,\]
+so $c=1/8$. The margin notes $\int xe^{-x}dx=-xe^{-x}-e^{-x}$.
+\item
+\begin{align*}
+\P(X>1,Y>1)&=c\int_1^\infty\int_1^\infty xe^{-(x+y)/2}\,dy\,dx\\
+&=2ce^{-1/2}\cdot4\left[-\frac x2e^{-x/2}-e^{-x/2}\right]_1^\infty
+=e^{-1/2}\frac32e^{-1/2}=\frac3{2e}.
+\end{align*}
+\item
+\[\E\left[\frac YX\right]=c\int_0^\infty\int_0^\infty\frac yx xe^{-(x+y)/2}\,dx\,dy
+=c\int_0^\infty\int_0^\infty ye^{-(x+y)/2}\,dx\,dy=1,\]
+by symmetry with the normalisation integral.
+\item The marginal density is $f_Y(y)=e^{-y/2}/2$ for $y>0$. Thus
+\[f_{X\mid Y}(x,1)=\frac{xe^{-x/2}\cdot\frac18e^{-1/2}}{e^{-1/2}/2}=\frac{xe^{-x/2}}4,\]
+and
+\[\E[X\mid Y=1]=\int_0^\infty\frac{x^2e^{-x/2}}4\,dx=4.\]
+The factorisation $f_{X,Y}(x,y)=c\,xe^{-x/2}e^{-y/2}$ also shows independence.
+\end{enumerate}
+\end{document}

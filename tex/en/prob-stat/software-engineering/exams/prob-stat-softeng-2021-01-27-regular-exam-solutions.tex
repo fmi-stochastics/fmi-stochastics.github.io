@@ -1,0 +1,202 @@
+\documentclass[a4paper]{report}
+\input{tex/en/preamble.tex}
+\setlength{\emergencystretch}{3em}
+\allowdisplaybreaks
+\begin{document}
+
+
+\noindent Probability and Statistics, Software Engineering, Year 3, 2020/2021 \hfill Written exam, 27.01.2021
+
+\hrulefill
+
+\begin{it}
+Your grade is 2 plus the number of points earned. Time allowed: 3 hours. Good luck.
+
+Throughout, we work on a probability space $(\Omega, \cF, \P)$.
+\end{it}
+
+\begin{problem} (1 point)
+An urn contains balls numbered from 1 to 10 inclusive.
+Three balls are drawn without replacement. Define
+the following events concerning the balls drawn:
+\begin{enumerate}
+    \item $A = $\textit{the largest number is 6};
+    \item $B = $\textit{at least two balls have even numbers};
+    \item $C = $\textit{the sum of the numbers is divisible by 3}.
+    \end{enumerate}
+\end{problem}
+Find the probabilities of these events and
+determine whether any are independent. What is $\P(A|B)$?
+What is the expected number of even-numbered balls drawn
+if sampling is with replacement?
+
+$\bullet$
+
+Let $c=\binom{10}{3}=120$. Then
+
+\[ \P(A) = \frac{\binom{5}{2}}{c} = \frac{1}{12}, \quad \P(B) = \frac{\binom{5}{3} + 5\binom{5}{2}}{c} = \frac12 \, .
+\]
+For $\P(C)$, either enumerate the combinations directly,
+or observe that the possible combinations modulo $3$ are
+three equal residues or $0+1+2$. Hence
+\[
+\P(C) = \frac{3\cdot 4 \cdot 3 + 2 \cdot \binom{3}{3} + \binom{4}{3}}{c}
+= \frac{7}{20}\, .
+\]
+Direct calculation/enumeration gives
+\[
+\P(A \cap B) = \frac{\binom{2}{2} + \binom{3}{1}\cdot 2}{c} = \frac{7}{120} , \P(A \cap C) = \frac{3}{120} , \P(B \cap C) = \frac{21}{120}\, .
+\]
+No pair is independent, and
+\[\P(A|B) = \frac{\P(A \cap B)}{\P(B)} = \frac{7}{60} \, .\]
+With replacement, the number of even-numbered balls drawn
+has distribution $Bin(3,1/2)$, so the required expectation
+is $3/2$.
+
+\begin{problem}(1 point)
+Two instruments measure the concentration of dust particles
+in the air.
+Suppose the true concentration is $x$ $g/m^3$.
+The reading of the first instrument
+is normally distributed with mean $x$ and standard deviation ($\sigma$) $0.05x$.
+The second reading is also normally distributed,
+with mean $x$ and standard deviation
+$0.1x$. Which instrument would you use?
+For each instrument, what is the probability of an error
+greater than $0.1x$?
+
+Someone decides to use the arithmetic mean of the two readings.
+If the measurements are independent, what is the probability
+of an error greater than $0.1x$ with this procedure?
+\end{problem}
+
+
+$\bullet$
+The instrument with smaller variance is preferable. Denote the readings
+of the first and second instruments by $\xi_1\sim N(x,(0.05x)^2)$ and
+$\xi_2\sim N(x,(0.1x)^2)$. The required probabilities are
+\begin{align*}
+\P(|\xi_1 - x| > 0.1x) &= \P(\xi_1 < 0.9x) + \P(\xi_1 > 1.1x)
+= 2\P(\xi_1 < 0.9x) \\&= 2 \P\left(N(0,1) < \frac{0.9x - x}{0.1x}\right)
+ = 2\P(N(0,1) < -1) \\
+ &\approx
+ 0.3174 \, .
+\end{align*}
+and similarly
+\[
+\P(|\xi_2 - x| > 0.1x) = 2 \P(N(0,1) < -2) \approx 0.0456
+\, .
+\]
+
+If we define $\xi_3=1/2(\xi_1+\xi_2)$, then
+$\xi_3\sim N(x,1/4(0.05^2+0.1^2)x^2)$ and
+\[
+\P(|\xi_3 - x| > 0.1x) = 2  \P\left(N(0,1) < \frac{-0.1x}{
+\sqrt{1/4( 0.05^2 + 0.1^2)x^2 }}\right)\approx
+2\P(N(0,1) < -1.79) \approx 0.0734 \, .
+\]
+
+
+
+\begin{problem} (1 point)
+Let $\xi$ and $\eta$ be independent random variables,
+$\xi\sim Exp(2)$ and $\eta\sim U(0,3)$, i.e.
+\[
+f_\xi(x) = \begin{cases}
+2 e^{-2x} & \text{if } x >0\\
+0 & \text{otherwise}
+\end{cases}; \quad
+f_\eta(x) = \begin{cases}
+\frac13 & \text{if } 0<x <3\\
+0 & \text{otherwise.}
+\end{cases}\]
+Find the correlation of $\xi$ and $\eta$, $P(\xi<\eta)$ and the density
+of $\xi/\eta$.
+
+\end{problem}
+
+$\bullet$
+
+The correlation is 0 because $\xi$ and $\eta$ are independent. Considering
+$0<\eta<3$ and $0<\xi<\eta$, we obtain
+\[
+\P(\xi < \eta) =
+\int_0^3\int_0^y 2e^{-2x}\cdot\frac13 \d x \d y
+=\frac16\left(5 + \frac{1}{e^6}\right) \approx 0.8334 \, .
+\]
+
+Note that independence gives
+$f_{\xi, \eta}(x,y) = 2/3 \cdot e^{-2x} \mathbb{1}_{x > 0, 0 < y < 3}$.
+Define $X=\xi/\eta$ and $Y=\eta$. The inverse transformation
+is
+$\xi=XY$ and $\eta=Y$, with Jacobian $Y$. Therefore
+\[
+f_{X,Y}(x,y) = yf_{\xi,\eta}(xy,y) = y\frac23 e^{-2xy}\mathbb{1}_{xy>0,
+0<y<3} \, .
+\]
+Thus, for $x>0$,
+\begin{align*}
+f_X(x) &= \int_\infty^\infty f_{X,Y}(x,y) \d y =
+\frac23 \int_0^3 ye^{-2xy} \d y
+= \frac{1}{6x^2} \int_0^3 -2xy \cdot e^{-2xy} \d (-2xy)\\
+&= \frac{1}{6x^2} \int_0^{-6x} t \cdot e^t \d t
+ = \frac{e^{-6x}(-6x - 1) + 1}{6x^2} \, ,
+\end{align*}
+as required.
+The last result also gives another way to calculate
+the probability requested earlier:
+\[
+\P(\xi < \eta) = \P\left(\frac{\xi}{\eta}< 1\right) = \int_0^1 f_X(x) \d x
+= \int_0^1\frac{e^{-6x}(-6x - 1) + 1}{6x^2} \d x
+\]
+\begin{problem} (1 point)
+Let $\xi$ and $\eta$ have joint density
+\[
+f_{\xi, \eta}(x, y) = \begin{cases}
+c x^3 y^2 & \text{if } 0<x,y<2\\
+0 & \text{otherwise.}
+\end{cases}
+\]
+Find the constant $c$, the correlation of $\xi$ and $\eta$, and
+$\E(\xi| \eta = 1)$.
+\end{problem}
+$\bullet$
+\[
+1 = c \int_0^2 \int_0^2 x^3 y^2 \d x \d y = c \frac{32}{3} \, .
+\]
+Hence $c=3/32=0.09735$. For $x\in(0,2)$,
+
+\begin{align*}
+f_\xi(x) = \int_0^2 cx^3 y^2 \d y = cx^3 \frac{8}{3} = \frac14 x^3 \, .
+\end{align*}
+Therefore
+\[ \E \xi = \frac14 \int_0^2 x^4 \d x = \frac85 = 1.6, \quad
+D \xi = \frac14\int_0^2 x^5 \d x - \frac{64}{25} = \frac{8}{75}\approx 0.1067 \, .\]
+Similarly, for $y\in(0,2)$,
+\[
+f_\eta(y) = c\int_0^2 x^3 y^2\d x = \frac{3}{8}y^2\, ,
+\]
+\[
+\E \eta = \frac38\int_0^2 y^3 \d y  =
+\frac{3}{2} =1.5 , \quad
+D \eta = \frac38\int_0^2 y^4 \d y - \frac94 = \frac{3}{20} = 0.15\, \, .
+\]
+Next,
+\[
+\E \xi \eta = \frac{3}{32} \int_0^2 \int_0^2 xy(x^3y^2) \d x \d y
+= \frac{12}{5} = 2.4
+\]
+Therefore
+\[
+Cor(\xi, \eta) =\frac{ \E \xi\eta - \E \xi \E \eta}
+{\sqrt{D\xi D\eta}}= 0 \, .
+\]
+For the last question,
+\begin{align*}
+\E (\xi | \eta = 0.5) &= \int_0^2 x f_{\xi|\eta}(x | y = 1) \d x
+= \int_0^2 x \frac{f_{\xi, \eta}(x, 1)}{f_\eta(1)} \d x
+= \int_0 ^2 x \frac{x^3}{4}\d x
+= \frac85=1.6 \, .
+\end{align*}
+
+\end{document}

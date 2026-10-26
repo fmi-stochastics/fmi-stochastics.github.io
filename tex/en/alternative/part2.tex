@@ -1,0 +1,221 @@
+\section{Conditional probability, independence and Bayes' rule}
+\subsection*{Core problems}
+\begin{problembook}
+Two standard dice are rolled independently.
+\begin{enumeratea}
+  \item What is the probability that the sum is less than 8, given that it is odd?
+  Are the events ``the sum is less than 8'' and ``the sum is odd'' independent?
+  \item Are ``the sum is 7'' and ``the first die shows 3'' independent?
+  What about ``the sum is 8'' and ``the first die shows 3''?
+\end{enumeratea}
+\end{problembook}
+\begin{problem}
+Let $A$ and $B$ be events with $\Pbb(A)>0$ and $0<\Pbb(B)<1$.
+\begin{enumeratea}
+  \item Prove that if $A$ and $B$ are independent, then so are $A$ and $\overline{B}$,
+  and also $\overline{A}$ and $\overline{B}$.
+  \item Prove that the following four conditions are equivalent:
+  \[
+  \Pbb(A\cap B)>\Pbb(A)\Pbb(B),\quad
+  \Pbb(A\mid B)>\Pbb(A),\quad
+  \Pbb(B\mid A)>\Pbb(B),\quad
+  \Pbb(A\mid B)>\Pbb(A\mid \overline{B}).
+  \]
+  \item If $A$ is independent of $B$ and $A$ is independent of $C$, must $A$ be
+  independent of $B\cap C$? What about $B\cup C$?
+\end{enumeratea}
+\end{problem}
+\begin{problembook}
+Three cards are drawn successively without replacement from a deck of 52 cards.
+Find the probability that:
+\begin{enumeratea}
+  \item all three are aces;
+  \item the third card is an ace;
+  \item the second card is an ace, given that the first is not.
+\end{enumeratea}
+\end{problembook}
+\begin{problembook}
+A box contains three coins: two fair coins and one with heads on both sides.
+We choose a coin uniformly and toss it. Conditional on the chosen coin, successive tosses are independent.
+\begin{enumeratea}
+  \item The outcome is heads. What is the probability that the coin is the false one?
+  \item We toss the same coin again and get heads again. Find the new probability
+  in two ways: by updating the preceding answer, treating it as a new prior,
+  and directly from the two tosses.
+  \item What is the probability of heads on the third toss, given that the first two were heads?
+\end{enumeratea}
+\end{problembook}
+\begin{problempencil}[Test 1, SE 2023]
+An urn contains 4 yellow, 5 green and 2 blue pebbles. We select a pebble uniformly.
+If it is yellow, we roll one standard die; if green, two; if blue, three.
+The rolls are independent. Given that the sum is 3, what is the probability that the pebble was green?
+\end{problempencil}
+\begin{problembook}
+A test gives a positive result for a person with a disease with probability $99\%$
+(sensitivity), and a negative result for a healthy person with probability $99\%$
+(specificity). The disease affects $0.5\%$ of the population. We choose a person uniformly and test them.
+\begin{enumeratea}
+  \item What is the probability that a person with a positive result actually has the disease?
+  \item At what disease prevalence is this probability exactly $1/2$?
+  \item The person is tested again and the result is again positive. If the two tests
+  are conditionally independent given the person's health status, and have the same
+  sensitivity and specificity, what is the probability that the person has the disease?
+  When is this independence assumption questionable?
+\end{enumeratea}
+\end{problembook}
+\subsection*{Additional problems}
+\begin{probleminteresting}[Kahneman, Thinking, Fast and Slow]
+An accident occurs at night in a city with a blue and a green taxi company.
+$85\%$ of the taxis are green and $15\%$ are blue. Assume that a taxi's probability
+of being involved in an accident does not depend on its company.
+A witness states that the taxi was blue. A subsequent assessment shows that the
+witness identifies the colour correctly with probability $80\%$, both for blue
+and for green taxis. What is the probability that the taxi really was blue?
+\end{probleminteresting}
+\begin{problem}
+Three tokens have sides coloured white--white, black--black and white--black,
+respectively. We choose a token uniformly and place it with a randomly selected
+side facing up, the two sides being equally likely. Given that the upper side is
+white, what is the probability that the hidden side is also white?
+\end{problem}
+\begin{probleminteresting}[Monty Hall]
+A car is behind one of three doors, chosen uniformly. You select a door without
+knowing where the car is. The host knows its location and always opens a different
+empty door, then offers you the chance to switch to the remaining closed door.
+\begin{enumeratea}
+  \item Should you switch? Does the probability of winning under the ``always switch''
+  strategy depend on how the host chooses a door when there are two possibilities?
+  \item You chose door 1 and the host opened door 3. When the host can choose between
+  doors 2 and 3, they open door 3 with probability $p\in[0,1]$.
+  Find the conditional probability that the car is behind door 2. For which $p$ is switching worthwhile?
+\end{enumeratea}
+\end{probleminteresting}
+\begin{probleminteresting}[Birthday paradox]
+Assume that different people's birthdays are independent and uniformly distributed
+over 365 days. What is the smallest number of people for which the probability
+that at least two share a birthday is greater than $1/2$? Use the multiplication
+rule. Discuss the assumptions of the model.
+\end{probleminteresting}
+\begin{problem}
+Two fair coins are tossed independently. Let $A$ be ``the first coin shows heads'',
+$B$ be ``the second coin shows heads'', and $C$ be ``the coins show the same outcome''.
+Prove that $A,B,C$ are pairwise independent but not mutually independent.
+Are $A$ and $C$ independent conditional on $B$?
+\end{problem}
+\begin{probleminteresting}[Simpson's paradox]
+The following table contains real data on two treatments for kidney stones
+(Charig et al., \emph{BMJ} 292, 1986; Julious \& Mullee, \emph{BMJ} 309, 1994):
+\begin{center}\small
+\begin{tabular}{@{}lrr@{}}
+\toprule
+ & Treatment A & Treatment B \\
+\midrule
+Small stones & $93\%\ (81/87)$ & $87\%\ (234/270)$ \\
+Large stones & $73\%\ (192/263)$ & $69\%\ (55/80)$ \\
+Overall & $78\%\ (273/350)$ & $83\%\ (289/350)$ \\
+\bottomrule
+\end{tabular}\end{center}
+Explain why the comparison between the treatments reverses when the groups are combined.
+Can these data alone establish which treatment is better?
+\end{probleminteresting}
+\begin{probleminteresting}[Reservoir sampling]
+Let $A$ be an array of $n\ge3$ distinct elements, indexed starting at 1.
+The following algorithm is executed, with independent random choices in different iterations:
+\begin{algorithm}[H]
+\caption{Reservoir sampling for one element}
+$sample \gets A[1]$\;
+\For{$i \gets 2$ \KwTo $n$}{
+  $j \gets$ a random integer, uniformly distributed on $\{1,\dots,i\}$\;
+  \If{$j = 1$}{ $sample \gets A[i]$\; }
+}
+\Return{$sample$}
+\end{algorithm}
+What is the probability that the final value of $sample$ is $A[1]$? $A[3]$? $A[n]$?
+Prove that the algorithm selects an element of the array uniformly.
+\end{probleminteresting}
+\begin{problem}
+There are $n\ge1$ urns, each containing $m$ white and $k$ black balls, where $m+k>0$.
+We transfer a uniformly chosen ball from the first urn to the second; after adding it,
+we choose a ball uniformly from the current contents of the second urn and transfer
+it to the third, and so on. Find the probability that a ball drawn uniformly from
+the final urn at the end is white.
+\end{problem}
+\subsection*{Challenges and independent research}
+\begin{problemstar}[A hidden common cause]
+Let $E$ be an event with $\Pbb(E)=q$, where $0<q<1$, and let $A$ and $B$ be
+conditionally independent given the value of $\ind_E$. Let
+\[
+\Pbb(A\mid \ind_E=e)=a_e
+\quad\text{and}\quad
+\Pbb(B\mid \ind_E=e)=b_e,
+\qquad\text{for }e\in\{0,1\}.
+\]
+\begin{enumeratea}
+  \item Prove that
+  \[ \Cov(\ind_A,\ind_B)=q(1-q)(a_1-a_0)(b_1-b_0). \]
+  When is this covariance zero? Explain why, for indicators, this is equivalent
+  to independence of $A$ and $B$.
+  \item Assuming $\Pbb(A\cap B)>0$, find $\Pbb(E\mid A\cap B)$.
+  \item Let
+  \[ q=0.10,\qquad a_0=0.02,\quad a_1=0.20,\qquad b_0=0.03,\quad b_1=0.25. \]
+  Calculate $\Pbb(A)$, $\Pbb(B)$ and $\Cov(\ind_A,\ind_B)$. Find and compare
+  \[ \Pbb(E),\qquad\Pbb(E\mid A),\qquad\Pbb(E\mid B),\qquad\Pbb(E\mid A\cap B). \]
+  Check that
+  \[ \Pbb(A\cap B)=0.00554\qquad\text{and}\qquad\Pbb(E\mid A\cap B)=\frac{250}{277}. \]
+  Interpret the results by viewing $E$ as a hidden common cause and $A,B$ as two observed clues to it.
+\end{enumeratea}
+\end{problemstar}
+\begin{problemstar}[An urn of unknown composition]
+For a fixed $n\ge2$, choose $K$ uniformly from $\{0,1,\dots,n\}$. Then use an
+urn containing $K$ red and $n-K$ blue balls. Make two draws from it.
+Consider separately sampling with and without replacement. Let $R_i$ be the event
+``the $i$th ball drawn is red'', for $i\in\{1,2\}$.
+\begin{enumeratea}
+  \item Given that the first ball is red, prove that in both models
+  \[ \Pbb(K=k\mid R_1)=\frac{2k}{n(n+1)},\qquad\text{for }k\in\{0,\dots,n\}. \]
+  \item Find $\Pbb(R_2\mid R_1)$ in both models and prove that the results are, respectively,
+  \[ \frac{2n+1}{3n}\qquad\text{and}\qquad\frac23. \]
+  \item Explain probabilistically why the results differ for finite $n$ and why
+  the difference disappears as $n\to\infty$.
+\end{enumeratea}
+\end{problemstar}
+\begin{researchtask}[When does a repeated test fail to provide independent evidence?]
+Let $D\sim\Ber(0.01)$ indicate the presence of a disease, and let $B\sim\Ber(q)$
+indicate a problematic laboratory batch, with $D$ and $B$ independent. All tests
+on a given person use the same batch. Conditional on $(D,B)$, the results
+$T_1,T_2,\dots$ are independent and identically distributed, with $T_i=1$ meaning a positive result.
+Initially let $q=0.10$, with positive-result probabilities given by
+\[
+\begin{array}{c|cc}
+ & B=0 & B=1\\ \hline
+\Pbb(T_i=1\mid D=1,B) & 0.95 & 0.80\\
+\Pbb(T_i=1\mid D=0,B) & 0.05 & 0.30
+\end{array}
+\]
+\begin{enumeratea}
+  \item Derive an exact formula for
+  \[ p_k=\Pbb(D=1\mid T_1=\cdots=T_k=1),\qquad\text{for }k\ge1. \]
+  \item Compare it with the naive model that first averages sensitivity and the
+  false-positive probability over $B$, then assumes that test results are
+  conditionally independent given $D$. Explain why this assumption can change the answer.
+  \item Make a table for $k=1,\dots,5$. Check that
+  \[ p_1=\frac{17}{152},\qquad p_2=\frac{701}{1592}\approx0.4403, \]
+  whereas the naive model gives approximately $0.6109$ for $k=2$.
+  \item Consider the parameter grid
+  \[
+  q\in\{0,0.05,0.10,0.20\},\qquad
+  \Pbb(T_i=1\mid D=0,B=1)\in\{0.10,0.20,0.30,0.40\},
+  \]
+  keeping all other parameters fixed. Find the pairs for which the naive estimate
+  of $p_2$ exceeds the exact value by at least $0.10$.
+  \item Does the naive model always overestimate $p_2$ if all four probabilities
+  in the table may vary? Give a proof or a counterexample and explain the result.
+  \item Does the naive model always overestimate $p_2$ if all four probabilities
+  in the table may vary? Find a necessary and sufficient condition for overestimation,
+  give a counterexample, and interpret the condition.
+\end{enumeratea}
+\end{researchtask}
+\noindent\textbf{Lean.} Let $A,B\subseteq\Omega$, with indicators taking values
+in $\mathbb N$. Use the definition from the first topic and prove in Lean 4 with
+Mathlib that, for every $x\in\Omega$,
+\[ \ind_{A\cap B}(x)=\ind_A(x)\ind_B(x). \]

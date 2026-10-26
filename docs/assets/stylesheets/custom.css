@@ -319,3 +319,14 @@ body {
     min-height: 9.5rem;
   }
 }
+
+/* Compact language labels with comfortable click targets and keyboard focus. */
+.language-switch { display: flex; align-items: center; gap: 0; margin-left: auto; flex-shrink: 0; font-size: .6rem; font-weight: 500; }
+.language-switch a { display: inline-flex; align-items: center; justify-content: center; min-height: 2.2rem; min-width: 1.4rem; border-radius: .2rem; color: #fff; opacity: .78; }
+.language-switch a[aria-current="true"] { opacity: 1; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .25em; }
+.language-switch a:hover { opacity: 1; text-decoration: underline; text-underline-offset: .25em; }
+.language-switch a:focus-visible { outline: 2px solid #f2c94c; outline-offset: 2px; opacity: 1; }
+.language-switch span { opacity: .45; }
+.md-header__title { min-width: 0; }
+.translation-note { margin-top: 2rem; padding-top: .8rem; border-top: 1px solid var(--su-line); color: #526176; font-size: .7rem; line-height: 1.6; }
+.landing-hero h1 { white-space: normal; overflow-wrap: anywhere; }

@@ -1,0 +1,44 @@
+\documentclass[a4paper]{report}
+\input{tex/en/preamble.tex}
+\begin{document}
+\noindent Mathematics / Applied Mathematics, 22 August 2024 \hfill Examination
+\hrulefill
+\begin{it}The grading formula is $f(2+\text{number of points})$. Time allowed: 3 hours. Good luck!\end{it}
+Integer-valued random variables $Z_1,\ldots,Z_n$ are \textbf{exchangeable} if their order of observation is irrelevant probabilistically: for every permutation $\sigma$ of $\{1,\ldots,n\}$ and all integers $z_1,\ldots,z_n$,
+\[\P(Z_1=z_1,\ldots,Z_n=z_n)=\P(Z_1=z_{\sigma(1)},\ldots,Z_n=z_{\sigma(n)}).\]
+In particular, $Z_i\overset d=Z_1$, $(Z_i,Z_j)\overset d=(Z_1,Z_2)$ for $i\neq j$, and so on.
+\begin{problem}
+Let $\widetilde p\sim\mathrm{Beta}(1,1)$.\footnote{For $\alpha,\beta>0$, $Y\sim\mathrm{Beta}(\alpha,\beta)$ has density $y^{\alpha-1}(1-y)^{\beta-1}/B(\alpha,\beta)$ on $[0,1]$, and 0 elsewhere. Here $B(\alpha,\beta)=\int_0^1y^{\alpha-1}(1-y)^{\beta-1}\,dy=\Gamma(\alpha)\Gamma(\beta)/\Gamma(\alpha+\beta)$, and Euler's gamma function satisfies $\Gamma(n)=(n-1)!$.} Conditional on $\widetilde p$, let $X_1,\ldots,X_4$ be iid Bernoulli variables with success probability $\widetilde p$; thus, for $x_i\in\{0,1\}$,
+\[\P(X_1=x_1,\ldots,X_4=x_4\mid\widetilde p)=\widetilde p^{\sum_{i=1}^4x_i}(1-\widetilde p)^{\sum_{i=1}^4(1-x_i)}.\]
+\begin{enumerate}
+\item (0.25 points) Prove that $X_1,\ldots,X_4$ are exchangeable. Are they independent?
+\item (0.25 points) Calculate $\P(X_4=1)$ and $\P(X_4=1\mid X_1=x_1,X_2=x_2,X_3=x_3)$.
+\item (0.25 points) Calculate $\mathrm{Cov}(X_2,X_5)$.
+\item (0.25 points) Find the distribution of $X_1+\cdots+X_4$.
+\item (Bonus, 0.5 points) Find the conditional distribution, expectation and variance of $\widetilde p$ given $(X_1,X_2,X_3)$.
+\item (0.5 points) Generalize the formulas in parts 2 and 4 to $X_1,\ldots,X_n$.
+\end{enumerate}
+\end{problem}
+\begin{problem}
+An urn contains one white and one black ball, otherwise identical. At each trial, choose a ball uniformly, then return it together with one additional ball of the same colour.
+\begin{enumerate}
+\item (0.25 points) What is the probability of drawing black on trial 4? What is its conditional probability given the outcomes of the first three trials?
+\item (0.25 points) Find the distribution of the number $W_4$ of white balls after four trials. What about after $n$ trials?
+\item (0.25 points) For $m<n$, find the probability that the $m$th ball was black given that the $n$th was white.
+\item (0.25 points) For arbitrary $n$, find the probability that the $n$th and $(n+1)$st balls are black.
+\item (0.25 points) Calculate $\P(W_{n+1}=W_n+1)$.
+\item (0.5 points) Prove that $W_n/n$ converges in distribution and find its limit.
+\end{enumerate}
+\end{problem}
+\begin{problem} (0.5 points)
+Consider shuffling a standard deck by repeatedly removing the top card and reinserting it at a uniformly random position. Call the card initially at the bottom card X. It is natural to regard the deck as fully shuffled when X, having been pushed to the top, is also reinserted at a random position. What is the expected number of moves until this happens? What is the probability that the ace of clubs is in position 5 when the procedure ends?
+\end{problem}
+\begin{problem}
+Let $U_1,U_2,U_3\sim U(0,1)$ be independent, with order statistics $U_{(1)}=\min\{U_1,U_2,U_3\}$, $U_{(2)}$, $U_{(3)}=\max\{U_1,U_2,U_3\}$. For example, if $U_1=0.23$, $U_2=0.88$, $U_3=0.1$, then $U_{(1)}=0.1$, $U_{(2)}=0.23$, $U_{(3)}=0.88$.
+\begin{enumerate}
+\item (0.25 points) Find the densities and expectations of $U_{(1)},U_{(3)}$.
+\item (0.25 points) Is $U_{(2)}\sim U(0,1)$? Prove it if so; otherwise find its distribution.
+\item (0.25 points) Find the variance of $X=-\ln U_1$.
+\end{enumerate}
+\end{problem}
+\end{document}

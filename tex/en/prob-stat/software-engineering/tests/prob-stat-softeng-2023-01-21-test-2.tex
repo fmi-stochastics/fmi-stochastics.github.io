@@ -1,0 +1,184 @@
+\documentclass[a4paper]{report}
+\input{tex/en/preamble.tex}
+\setlength{\emergencystretch}{3em}
+\allowdisplaybreaks
+\begin{document}
+
+
+\noindent Probability and Statistics, 21.01.2023 \hfill Test 2
+
+\hrulefill
+
+\begin{it}
+The exact grading formula depends on the results. As an approximation, use 2 plus the points earned. Time allowed: 3 hours. Good luck.
+
+Throughout, we work on a probability space $(\Omega, \cF, \P)$.
+
+Recall that
+the recurrence
+$a_n = A a_{n-1} + B$
+has solution
+$a_n = C_1 A^n + C_2$,
+where the constants
+$C_1,C_2$ are determined
+by the initial conditions.
+
+\end{it}
+
+\begin{problem}
+Let $X,Y$ have joint density $f_{X,Y}(x,y)=cx^2+1$ for $x,y\geq0$, $x+2y\leq1$, and zero elsewhere, where $c$ is
+a constant. Find:
+
+\begin{enumerate}
+
+    \item (0.5 points) $c$, the density of $X$ and the expectation of $Y$;
+\item (0.25 points) $\E(Y|X=1/2)$;
+\item (0.25 points) the density of $Z=X+2Y$.
+
+\end{enumerate}
+
+\end{problem}
+
+\begin{problem} A shop is open from 10:00 to 18:00. Model the times between successive arrivals of customers under 30 as independent exponential
+variables with mean 5 minutes, and the times between successive customers over 30 as independent exponential variables with mean 10 minutes.
+
+\begin{enumerate}
+    \item (0.5 points) What is the probability that at least 100 customers under 30 visit in one day?
+    \item (0.25 points) Find the distribution of the waiting time for the first customer of the day.
+    \item (0.25 points)
+    You may assume that the times between successive customers are independent and have the distribution in part 2\footnote{Bonus**: Prove this.}. What is the probability that at least 150 people visit in one day?
+\end{enumerate}
+
+\end{problem}
+
+\begin{problem} A point starts at the origin. At each step it chooses one
+of the coordinate directions uniformly and moves one unit. The figure below shows a sample path of 10 steps.
+
+\begin{center}
+
+\begin{tikzpicture}[scale=0.5]
+\draw[step=1cm,gray,very thin] (-3,-3) grid (3,3);
+\foreach \x in {-3,-2,...,3} { \node[anchor=north] at (\x,0) {\x}; }
+\foreach \y in {-3,-2,...,3} { \node[anchor=east] at (0,\y) {\y}; }
+
+\coordinate (start) at (0,0);
+\coordinate (step1) at (1,0);
+\coordinate (step2) at (1,1);
+\coordinate (step3) at (2,1);
+\coordinate (step4) at (2,2);
+\coordinate (step5) at (1,2);
+\coordinate (step6) at (0,2);
+\coordinate (step7) at (-1,2);
+\coordinate (step8) at (-1,1);
+\coordinate (step9) at (-2,1);
+\coordinate (step10) at (-2,2);
+
+\draw[->, thick] (start) -- (step1);
+\draw[->, thick] (step1) -- (step2);
+\draw[->, thick] (step2) -- (step3);
+\draw[->, thick] (step3) -- (step4);
+\draw[->, thick] (step4) -- (step5);
+\draw[->, thick] (step5) -- (step6);
+\draw[->, thick] (step6) -- (step7);
+\draw[->, thick] (step7) -- (step8);
+\draw[->, thick] (step8) -- (step9);
+\draw[->, thick] (step9) -- (step10);
+\end{tikzpicture}
+
+\end{center}
+
+\begin{enumerate}
+\item (0.5 points)
+What is the probability that its $x$-coordinate exceeds 10 after 1000 steps?
+\item (0.5 points) Find the expectation\footnote{Bonus***: And the variance!} of the squared distance from the origin after
+$100$ steps.
+
+ \end{enumerate}
+\end{problem}
+
+
+
+\begin{problem}
+Let $X_0\sim Exp(1)$ and $X_n=2X_{n-1}+\epsilon_n$ for $n\in\N$, where the $\epsilon_n$ are independent $N(0,1)$ random variables.
+\begin{enumerate}
+
+\item (0.25 points) Find $\E X_n$ and $D X_n$.
+\item (0.25 points) Let $S_{n,1}=\sum_{i=1}^n(X_i-2X_{i-1})^2$ and
+$S_{n,2}=\sum_{i=1}^n|X_i-2X_{i-1}|$. Find $\E S_{n,1}$ and $\E S_{n,2}$.
+
+\item (0.5 points) Can you answer parts 1 and 2 when $\epsilon_i\sim N(1,2)$?
+
+
+
+
+
+
+
+
+ \end{enumerate}
+
+\end{problem}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

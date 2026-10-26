@@ -1,0 +1,179 @@
+\documentclass[a4paper]{report}
+\input{tex/en/preamble.tex}
+\setlength{\emergencystretch}{3em}
+\allowdisplaybreaks
+\begin{document}
+
+
+\noindent Probability and Statistics \hfill Written exam, 01.02.2023
+
+\hrulefill
+
+\begin{it}
+The exact grading formula depends on the results.
+The minimum score required
+to pass is 1 point. As an approximation, use 2 plus the points earned. Time allowed: 3 hours. Good luck.
+
+Integration formulas:
+$\int u \, \mathrm{d} v = uv - \int
+v \, \mathrm{d} u$, $\mathrm{d} f(x) =
+f'(x) \mathrm{d} x$.
+\end{it}
+
+\begin{problem}
+A standard roulette wheel has 18 red, 18
+black and one green number. For a successful
+bet on
+black/red, the casino pays
+twice the stake.
+
+\begin{enumerate}
+    \item (0.5 points) Assume all bets are BGN 1. How many bets per day must the casino accept so that its profit is at least
+    BGN 1000 with probability 90\%?
+    With this many bets, what is the probability that the casino makes a loss
+    on a given day?
+    \item (0.25 points) One may also bet on a single number, with a payout of
+    36 times the stake. Which would you prefer: betting on one number or on black/red? (Compare
+    the expectations and variances and make your choice
+    using them.)
+
+    \item (0.25 points) If you have BGN 5, which would you prefer:
+    five bets on a number over
+    five spins, bets on five different numbers in one spin, or a BGN 5 bet on black/red in one spin?
+
+
+
+
+\end{enumerate}
+
+\end{problem}
+
+\begin{problem}
+Let the joint density of $X$ and $Y$ be $f_{X,Y}(x,y)=cx^3y$ for $x,y\geq0$, $x+y\leq1$, and zero elsewhere, where $c$ is
+a constant. Find:
+
+\begin{enumerate}
+
+    \item (0.5 points) $c$, the density of $X$ and the expectation of $Y$.
+    Explain how you would calculate
+     $Cor(X, Y)$;
+\item (0.25 points) $\E(Y|X=1/2)$ and
+$\E(X|X=1/2)$;
+\item (0.25 points) the density of the random variable $Z=XY$.
+
+\end{enumerate}
+\end{problem}
+
+
+\begin{problem}
+
+The cells of a $9\times9$ grid are
+coloured at random in one of the colours
+white, green and red.
+
+\[ \includegraphics[width=0.4\textwidth]{tex/assets/prob-stat/grid.png}
+ \]
+
+
+
+
+\begin{enumerate}
+    \item (0.5 points) What is the expected number of cells coloured
+    white or green?
+    What is the probability that there are at least 60 such cells?
+
+    A horizontal (vertical) flag is
+    three consecutive horizontal (vertical) cells coloured
+    white, green and red from left
+    to right (top to bottom).
+
+    \item (0.25 points)
+    Is the number of horizontal
+    flags binomially distributed?
+    If so, what are its parameters?
+    \item (0.25 points)
+    What is the expected number of horizontal
+    flags?
+    \item (0.25 points)
+    Are the numbers of horizontal
+    and vertical flags independent?
+    What is the expected total number of
+    horizontal AND vertical
+    flags?
+\end{enumerate}
+\end{problem}
+
+
+\begin{problem}
+    Let $X_1,X_2,\dots$ be independent
+    $Exp(1)$ random variables and
+    $S_n = X_1 + \dots + X_n$.
+
+    \begin{enumerate}
+        \item (0.5 points) Find the density
+        of $S_2$ and prove by induction
+        that the density of $S_n$ is
+        \[
+        f_{S_n}(x) = \frac{x^{n-1}}{(n-1)!}{e^{-x}}\one_{\{x>0\}}.
+        \]
+        \item (0.25 points)
+        Let $N_t:=\max\{n:S_n\leq t\}$.
+        Prove that $\P(N_t\geq n)
+        =\P(S_n\leq t)$ and that
+        $\P(N_t = n) =
+        \P(S_n \leq t) - \P(S_{n+1} \leq t)$.
+        \item (0.25 points)
+        Find the distribution of
+        $N_t$.
+    \end{enumerate}
+
+
+\end{problem}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

@@ -1,0 +1,189 @@
+\setcounter{tocdepth}{1}
+\tableofcontents
+\subsection*{Notes}
+Each topic contains \emph{core problems}, covering the minimum required for that topic;
+\emph{additional problems}, providing variety and extending the core material; and
+\emph{challenges}, related to the topic but going beyond the requirements of standard
+introductory courses in probability and statistics.
+The following symbols are used:
+\begin{itemize}
+  \item[\faBook] a problem introducing fundamental objects of the course;
+  \item[\faStar] a challenging problem;
+  \item[\faSmile] an interesting example;
+  \item[\faPencil*] a problem from an FMI test;
+  \item[\faRobot] an independent research task. All resources are permitted, including
+  literature, software and AI. You are expected to check the results, understand them,
+  and be able to explain them.
+\end{itemize}
+{\small
+\textbf{Note on the use of AI.}
+The latest publicly available versions of ChatGPT and Claude (at the time of writing,
+sol 6.1 and opus 5.5, respectively) were used for formatting, editing and clarifying
+individual formulations. The compiler is responsible for the final version and its
+mathematical correctness.
+}
+\section{Combinatorics}
+\subsection*{Core problems}
+\begin{problembook}
+For $n,k\ge 1$, recall:
+\begin{enumeratea}
+  \item how many solutions does $x_1+\cdots+x_n=k$ have when $x_1,\dots,x_n$
+  are positive integers? What if they are nonnegative integers?
+  \item state the inclusion--exclusion principle.
+\end{enumeratea}
+\end{problembook}
+\begin{problembook}
+Let $M$ be a set with $n$ elements. In how many ways can we choose:
+\begin{enumeratea}
+  \item $k$ distinct elements of $M$;
+  \item an ordered $k$-tuple of distinct elements of $M$;
+  \item an ordered $k$-tuple of elements of $M$, with repetitions allowed?
+\end{enumeratea}
+\end{problembook}
+\begin{problem}
+In how many ways can all $k$ distinguishable particles be distributed among $n$
+distinct cells if:
+\begin{enumeratea}
+  \item each cell contains at most one particle;
+  \item cells may contain any number of particles;
+  \item no cell is empty?
+\end{enumeratea}
+Answer the same questions for indistinguishable particles. Also state when the answer is zero.
+\end{problem}
+\begin{problem}
+Five distinguishable balls are distributed among three distinct boxes $A,B,C$.
+Find the number of distributions in which:
+\begin{enumeratea}
+  \item $A$ is empty;
+  \item only $A$ is empty;
+  \item exactly one box is empty;
+  \item at least one box is empty;
+  \item no box is empty.
+\end{enumeratea}
+\end{problem}
+\begin{problemstar}
+Consider the following questions.
+\begin{enumeratea}
+  \item In how many ways can we go from $(0,0)$ to $(n,n)$ on the square lattice
+  using unit steps to the right and upwards? What if the path never goes above the diagonal?
+  \item How many correctly balanced parenthesis expressions have $n$ opening and $n$
+  closing parentheses? Construct an explicit bijection between them and the paths
+  in the second part of the preceding question.
+  \item Find simple asymptotic equivalents for the total number of paths and for the
+  number that never go above the diagonal, as $n\to\infty$.
+\end{enumeratea}
+\end{problemstar}
+\subsection*{Additional problems}
+\begin{problem}
+How many four-digit numbers can be formed from the digits $1,2,3,4,5$ if:
+\begin{enumeratea}
+  \item repetition is not allowed;
+  \item repetition is allowed;
+  \item repetition is not allowed and the number is odd?
+\end{enumeratea}
+\end{problem}
+\begin{problem}
+In how many ways can a four-person delegation be selected from 12 candidates,
+including distinct candidates $A,B,C,D$, if:
+\begin{enumeratea}
+  \item there are no restrictions;
+  \item $A$ and $B$ must not both participate;
+  \item either both $C$ and $D$ participate, or neither does?
+\end{enumeratea}
+\end{problem}
+\begin{problem}
+Prove combinatorially, and then algebraically, that
+\[
+\sum_{k=0}^n\binom nk=2^n
+\qquad\text{and}\qquad
+\binom{2n}{n}=\sum_{k=0}^n\binom nk^2.
+\]
+\end{problem}
+\begin{problem}
+Let $p(n)$ be the number of partitions of $n$ into distinct positive integers,
+and $q(n)$ the number of partitions into odd positive integers, where repetitions
+are allowed and the order of the summands does not matter. For example, for $n=6$:
+\[
+p(6)=4:\ 6,\ 5+1,\ 4+2,\ 3+2+1; \qquad
+q(6)=4:\ 5+1,\ 3+3,\ 3+1+1+1,\ 1+1+1+1+1+1.
+\]
+\begin{center}
+\begin{tabular}{c|cccccccc}
+  $n$    & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\ \hline
+  $p(n)$ & 1 & 1 & 2 & 2 & 3 & 4 & 5 & 6 \\
+  $q(n)$ & 1 & 1 & 2 & 2 & 3 & 4 & 5 & 6
+\end{tabular}
+\end{center}
+By comparing generating functions, prove that $p(n)=q(n)$ for every $n$.
+\end{problem}
+\subsection*{Challenges and independent research}
+\begin{problemstar}[Derangements]
+Let $D_n$ be the number of permutations $\sigma\in S_n$ such that $\sigma(i)\ne i$ for every $i$.
+\begin{enumeratea}
+  \item Prove that
+  \[ D_n=n!\sum_{j=0}^{n}\frac{(-1)^j}{j!}. \]
+  \item Prove combinatorially that, for $n\ge 2$,
+  \[ D_n=(n-1)(D_{n-1}+D_{n-2}), \]
+  where $D_0=1$ and $D_1=0$.
+  \item Prove that, for $n\ge 1$, $D_n$ is the nearest integer to $n!/e$,
+  without using a numerical approximation to $e$.
+\end{enumeratea}
+\end{problemstar}
+\begin{problemstar}[Necklaces and Burnside's lemma]
+Let $X=\{0,1\}^n$ be the set of binary words of length $n$, and let
+$G=\{r^0,r^1,\dots,r^{n-1}\}\cong\mathbb Z_n$ be the group of cyclic rotations,
+$r(x_1x_2\dots x_n)=x_nx_1\dots x_{n-1}$. A \emph{necklace} is an orbit of $G$
+in $X$: two words are identified if one is obtained from the other by a cyclic
+rotation. For example, $0011,\,0110,\,1100,\,1001$ form one necklace, and
+$0101,\,1010$ form another. Rotations preserve the number of ones, so $G$ also acts on
+\[ X_k=\{x\in X:\ x\text{ has exactly }k\text{ ones}\}. \]
+Write $N(n,k)$ for the number of orbits in $X_k$, that is, the number of necklaces
+with $n$ beads and exactly $k$ ones.
+For $g\in G$, let
+\[ \operatorname{Fix}(g)=\{x\in X_k:\ g(x)=x\}, \]
+and let $X_k/G$ be the set of orbits. Use Burnside's (Cauchy--Frobenius) lemma
+\[ \#(X_k/G)=\frac1{|G|}\sum_{g\in G}|\operatorname{Fix}(g)|. \]
+Explain why a rotation $g$ whose cycles on the positions $\{1,\dots,n\}$ have
+length $d$ can fix a word with $k$ ones only if $d\mid k$. Prove that in this case
+\[ |\operatorname{Fix}(g)|=\binom{n/d}{k/d}, \]
+whereas if $d\nmid k$, then $\operatorname{Fix}(g)=\emptyset$. Also prove that
+for every $d\mid n$ there are exactly $\varphi(d)$ rotations whose cycles have length $d$.
+Deduce that, for $1\le k\le n-1$,
+\[ N(n,k)=\frac1n\sum_{d\mid\gcd(n,k)}\varphi(d)\binom{n/d}{k/d}, \]
+where $\varphi$ is Euler's totient function. As a check, find $N(12,4)$.
+\end{problemstar}
+\begin{researchtask}[Random mappings and cyclic vertices]
+Let $f:[n]\to[n]$ be chosen uniformly from all $n^n$ mappings. Let $G_f$ be the
+directed graph with edges $i\to f(i)$, and $K_n$ the number of vertices lying on
+a cycle in $G_f$. You may use AI to propose solutions, acting as their \emph{reviewer}:
+verification, rather than generation, is assessed.
+\begin{enumeratea}
+  \item Use software to find the distribution $\Pbb(K_n=k)$ for $n\le 7$.
+  The code may be AI-generated, but run it and check that
+  $\sum_k\#\{K_n=k\}=n^n$; also check the case $n=3$ by hand.
+  \item Find and prove a formula for $\#\{f:K_n=k\}$. You may ask AI for a proposal.
+  (i) Compare it with the table from part 1. (ii) Write the proof in your own words,
+  separating the choice of cyclic vertices, the permutation on them, and the directed
+  forest rooted at them. (iii) Give your own proof of the formula $k\,n^{n-k-1}$
+  for the number of forests with $k$ prescribed roots. If you use AI, check whether
+  it has actually proved the formula, and give a proof by a different method.
+  (iv) Find and numerically check the number of mappings with $K_n=k$ and exactly $c$ cycles.
+  \item Derive $\Ebb K_n$ in two ways: from the distribution and by linearity,
+  computing $\Pbb(\text{vertex }1\text{ is cyclic})$. Prove the identity between
+  the two expressions. Use the exact formula to calculate $\Ebb K_n$ for
+  $n=10,10^2,10^3,10^4,10^5$ and investigate numerically whether
+  \[ \frac{\Ebb K_n}{\sqrt n}\longrightarrow\sqrt{\frac{\pi}{2}}. \]
+  Explain the origin of the constant $\sqrt{\pi/2}$. Optionally investigate the finer asymptotic claim
+  \[ \Ebb K_n-\sqrt{\frac{\pi n}{2}}\longrightarrow-\frac13. \]
+  Let $T_n$ be the number of distinct vertices in the trajectory $1,f(1),f^2(1),\dots$
+  before its first repetition. Do $K_n$ and $T_n$ have the same distribution,
+  or only the same expectation?
+\end{enumeratea}
+\end{researchtask}
+\noindent\textbf{Lean.} Let $A,B\subseteq\Omega$, with indicators taking values in $\mathbb N$.
+Define the indicator by
+\[
+\ind_A(x)=\begin{cases}1,&x\in A,\\0,&x\notin A,\end{cases}
+\]
+and prove in Lean 4 with Mathlib that, for every $x\in\Omega$,
+\[ \ind_{A\cup B}(x)+\ind_{A\cap B}(x)=\ind_A(x)+\ind_B(x). \]

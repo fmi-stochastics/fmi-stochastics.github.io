@@ -1,0 +1,106 @@
+\documentclass[a4paper]{report}
+\input{tex/en/preamble.tex}
+\setlength{\emergencystretch}{3em}
+\allowdisplaybreaks
+\begin{document}
+
+
+\noindent Probability and Statistics, 06.02.2025 \hfill Exam
+
+\hrulefill
+
+\begin{it}
+\noindent Grading formula: $2$ plus points earned.
+Time allowed: 3 hours. Good luck!
+\end{it}
+
+\vspace{2ex}
+
+
+
+\begin{problem} (0.75 points)
+A coin is tossed repeatedly, with probability $p$ of heads and $1-p$ of tails.
+Let $Y$ be the number of tosses needed to obtain exactly 3 heads.
+\begin{enumerate}
+    \item (0.25 points) Find $\P(Y=n)$ and $\mathbb E[Y]$.
+    \item (0.5 points) Express $\P(Y\leq2k)$ and,
+    for $p=1/2$ and large $k$, give an approximation.
+\end{enumerate}
+\end{problem}
+
+
+
+
+\begin{problem} (1 point)
+Box A contains slips bearing the integers from 1 to 10 inclusive.
+Angel chooses $K$ uniformly from 1 to 10, draws $K$ randomly chosen slips from box A, and places them in box B.
+
+\begin{enumerate}
+    \item (0.25 points) What is the expected number on a randomly drawn slip from box B?
+    \item (0.25 points) What is the probability that box B contains two numbers whose sum is 11?
+    \item (0.5 points) Let $X$ be the smallest number in box B, and let $N$ be the number of draws with replacement from B until $X$ is drawn for the first time. Is $N$ geometrically distributed, and if so, with what parameter? Find $\mathbb E[N]$.
+\end{enumerate}
+\end{problem}
+
+
+\begin{problem} (1.25 points)
+Let $X,Y,Z$ be random variables with respective densities
+\[
+f_X(x) \;=\;
+\begin{cases}
+k \, x \, e^{-x} & x \ge 0\\
+0 & \text{otherwise}
+\end{cases}
+\qquad
+\text{and}
+\qquad
+f_{Y,Z}(x,y) \;=\;
+\begin{cases}
+c\,\bigl(x + y\bigr) & x>0,\; y>0,\; x+y<1\\
+0 & \text{otherwise}
+\end{cases}
+\]
+where $k,c$ are constants and $X$ is independent of $(Y,Z)$.
+\begin{enumerate}
+    \item (0.25 points) Find $k,c$ and the expectations of $X,Y,Z$.
+    \item (0.25 points) Find $\P(X>2)$ and $\P(Y>1/2)$.
+    \item (0.5 points) Are $Y$ and $Z$ independent? Find their covariance. Calculate $
+\Ebb{Z|Y}$, $\Ebb{X|Y}$ and $\Ebb{Z|(Y=\Ebb{Y})}$.
+    \item (0.25 points) Find the density of $\eta:=YZ$.
+\end{enumerate}
+\end{problem}
+
+
+
+
+
+\begin{problem}(1.0 point)
+Let $\sigma$ be a uniformly chosen permutation of $\{1,2,\ldots,n\}$ among all $n!$ possibilities. Recall that a permutation of $\{1,2,\ldots,n\}$ is a bijection
+    \[
+    \sigma:\{1,2,\ldots,n\}\to\{1,2,\ldots,n\},
+    \]
+that assigns each number from $1$ to $n$ exactly one image and conversely. Every permutation decomposes into disjoint sets called cycles. A cycle of length $k$ is a sequence of distinct elements $(a_1,a_2,\dots,a_k)$ satisfying:
+    \[
+    \sigma(a_1)=a_2,\quad \sigma(a_2)=a_3,\quad \dots,\quad \sigma(a_{k-1})=a_k,\quad \sigma(a_k)=a_1.
+    \]
+Define the random variables
+\[
+c(\sigma):=\text{number of cycles in }\sigma,
+\quad
+F(\sigma):=\text{number of fixed points, i.e. $i$ such that $\sigma(i)=i$.}
+\]
+\begin{enumerate}
+    \item (0.25 points) Show that, for every $1\leq k\leq n$, the probability that $1$ belongs to a cycle of length $k$ is $1/n$.
+    \item (0.25 points) Find $\mathbb E[c(\sigma)]$ and $\mathbb E[F(\sigma)]$.
+    \item (0.25 points) Find the probability that $\sigma$ has no fixed points, and its limit as $n\to\infty$.
+    \item (0.25 points) Is it true that
+    \[
+    \frac{c(\sigma)-\log n}{\sqrt{\log n}} \xrightarrow[n\to\infty]{d} N(0,1)?
+    \]
+    Justify your answer fully, stating the assumptions and theorems needed and performing the relevant calculations.
+\end{enumerate}
+\end{problem}
+
+
+
+\end{document}

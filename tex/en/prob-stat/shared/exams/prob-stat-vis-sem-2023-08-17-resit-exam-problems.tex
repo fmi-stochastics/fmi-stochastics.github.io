@@ -1,0 +1,32 @@
+% English translation of the Bulgarian source.
+\documentclass[a4paper]{report}
+\input{tex/en/preamble.tex}
+\begin{document}
+\noindent Probability and Statistics / SEM, CS Stream 2 / SE, Year 3\\
+Written examination, 17 August 2023
+\hrulefill
+\begin{problem}
+\begin{enumerate}
+\item (0.25 points) A player tosses 3 fair coins and rolls 3 standard dice. For every head the player receives BGN 1, and for every six, BGN 3. What are the expected winnings?
+\item (0.25 points) A player rolls a die until the sum of the numbers obtained is divisible by 6. If this happens on the $k$th roll, the player wins BGN $k$. What are the expected winnings?
+\item (0.25 points) Let $X$ have a distribution on $0,1,2,\dots$ such that, for $k=1,2,3,\dots$,
+\[\frac{\P(X=k)}{\P(X=k-1)}=\frac{3}{k}.\]
+Find the expectation and variance of $X$.
+\item (0.25 points) Let the number of visitors to a stadium on a given day be $Y\sim Poi(\lambda)$. The stadium has 10 entrances $E_1,\dots,E_{10}$, and each visitor chooses any of them with equal probability. What are the distribution, expectation and variance of the number of visitors entering through $E_1$?
+\end{enumerate}
+\end{problem}
+\begin{problem}
+$n>2$ people each toss a fair coin. The winner is the person whose result is opposite to everyone else's. If there is no such person, the players toss again. Let $X$ be the number of rounds until a winner is determined. What are the expectation and variance of $X$?
+
+Suppose that after the first winner is determined, the game continues until only two players remain. What is the expected number of rounds? If the $k$th winner receives $100(n-k)$, how much would you pay to participate in this game?
+\end{problem}
+\begin{problem}
+Let the joint density of $X$ and $Y$ be $f_{X,Y}(x,y)=cx+y$ for $x,y\geq0$, $x+2y\leq1$, and 0 outside this region, where $c$ is a constant.
+\begin{enumerate}
+\item (0.25 points) Find $c$, the density of $X$, and the expectation of $Y$.
+\item (0.25 points) Find $\E(Y\mid X=1/2)$.
+\item (0.25 points) Find the densities of the random variables $Z=X+2Y$ and $Z=XY$.
+\item (0.25 points) Let $(X_1,Y_1),\dots,(X_n,Y_n)$ be independent and have the same distribution as $(X,Y)$. Estimate $\P(X_1+\dots+X_n>Y_1+\dots+Y_n)$ for large $n$.
+\end{enumerate}
+\end{problem}
+\end{document}

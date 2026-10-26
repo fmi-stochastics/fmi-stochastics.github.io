@@ -1,0 +1,72 @@
+\documentclass[11pt,a4paper]{article}
+\input{tex/en/preamble.tex}
+\pagestyle{fancy}\fancyhf{}\lhead{Computer Science: Examination solutions}\rhead{30 June 2024}
+\setlength{\headheight}{15pt}\pagenumbering{arabic}\cfoot{\thepage}
+\begin{document}
+\noindent\emph{English transcription of the original handwritten solution outline. Its cross-references and unfinished calculations are retained. An apparent missing-factor issue is identified in a transcription note.}
+
+\section*{Problem 1}
+\paragraph{(a)} The probability of being on the team with the two best players is
+\[
+\frac1{\binom52}=\frac1{10}.
+\]
+The answer is therefore $\E[\operatorname{Ge}(1/10)]=10$.
+\paragraph{(b), (c)} These are analogous to Problem 1(b) and 1(a), respectively, of the examination of 17 August 2022.
+
+\section*{Problem 2}
+Let $X,Y\sim\operatorname{Exp}(1/10)$.
+\paragraph{(a)} $\P(X=Y)=0$, since the random variables are continuous. For example,
+\[
+\P(X=Y)=\int_0^\infty\underbrace{\P(X=y)}_{0}f_Y(y)\d y=0.
+\]
+\paragraph{(b)} Solve
+\[
+\P(X>x)\P(Y>x)=e^{-x/10}e^{-x/10}=\frac12.
+\]
+\paragraph{(c)} Let $Z_i$ be the indicator that Boris arrives first at the $i$th meeting; it has probability $50\%$. Then
+\[
+\P\left(\sum_{i=1}^{100}Z_i>55\right)
+=\P\left(\frac{\sum_{i=1}^{100}Z_i-50}{\sqrt{100\cdot\frac12\cdot\frac12}}
+>\frac5{\sqrt{25}}\right),
+\]
+and apply the central limit theorem.
+\paragraph{(d)} Put $Z=|X-Y|$. For example,
+\begin{align*}
+\P(Z\le t)&=\P(X-Y\le t,\ X\ge Y)+\P(Y-X\le t,\ Y\ge X)\\
+&=2\P(Y\le X\le Y+t)\qquad\text{by symmetry}.
+\end{align*}
+The original continues with the following integrals:
+\begin{align*}
+&\int_0^\infty\left[\int_y^{y+t}f_X(x)\d x\right]f_Y(y)\d y\\
+&\qquad=\int_0^\infty[e^{-y/10}-e^{-(y+t)/10}]e^{-y/10}\d y=\cdots.
+\end{align*}
+\emph{Transcription note:} the source omits the preceding factor 2 in these integrals and omits the factor $1/10$ from $f_Y(y)$. They are needed when using this expression as the cumulative distribution function.
+
+One can then find $f_Z(t)$ by differentiating the preceding expression and proceed in the standard way.
+
+\section*{Problem 3}
+By inclusion--exclusion,
+\begin{align*}
+1\ge\P(A\cup B\cup C)
+&=\P(A)+\P(B)+\P(C)\\
+&\quad-\P(A\cap B)-\P(A\cap C)-\P(B\cap C)\\
+&\quad+\P(A\cap B\cap C)\\
+&=1+\P(A\cap B\cap C).
+\end{align*}
+Consequently, $\P(A\cap B\cap C)=0$ and $\P(A\cup B\cup C)=1$.
+In the finite setting of the problem, this gives
+\[
+A\cap B\cap C=\varnothing,\qquad A\cup B\cup C=\Omega.
+\]
+Every element $\omega\in\Omega$ must therefore belong to the union but not to the triple intersection. An element can belong only to $A$, only to $B$, only to $C$, to exactly $A\cap B$, exactly $A\cap C$, or exactly $B\cap C$. Belonging to none of them or to all three is impossible.
+
+Six of the eight membership possibilities satisfy the condition. Hence the answer is
+\[
+6^{|\Omega|},\qquad\text{and the corresponding probability is}\qquad
+\left(\frac68\right)^{|\Omega|}.
+\]
+\paragraph{(b)} For the number of strictly increasing functions, see Problem 1.2(a) of the exercise manual. For the number of nondecreasing functions, see Problem 1.2(b) there. See also Problem 2.10 of the manual.
+
+\section*{Problem 4 and the bonus problem}
+See Applied Mathematics Test 2, 2024.
+\end{document}

@@ -1,0 +1,43 @@
+\documentclass[a4paper]{report}
+\input{tex/en/preamble.tex}
+\begin{document}
+\noindent Computer Science, Year 3, Stream 2, 9 June 2023 \hfill Test 2
+\hrulefill
+\begin{it}The exact grading formula depends on the results. As an approximation, use 2 + the number of points. Time allowed: 3 hours. Good luck! Throughout, work on $(\Omega,\mathcal F,\P)$.\end{it}
+\begin{problem}
+Benford's law,\footnote{Observed by Newcomb in logarithm tables in 1881 and by Benford in a larger dataset in 1934.} or the first-digit law, describes the empirical observation that the first nonzero digit in many real datasets is not uniform and is most often 1, even outside decimal notation. Its decimal distribution assigns probability $\log_{10}(1+1/d)$ to $d\in\{1,\ldots,9\}$.
+Find, to accuracy 0.01, the probability that the first nonzero decimal digit of $X$ is 1 for:
+\begin{enumerate}
+\item (0.25 points) $X\sim N(0,1)$;
+\item (0.25 points) $X\sim\mathrm{Exp}(1)$;
+\item (0.75 points) $X=U_1/U_2$, with independent $U_1,U_2\sim U(0,1)$. Also find $\E X$.
+\item (Bonus, 0.5 points) A ``random positive power of 2'': formally, find $\lim_{n\to\infty}\P(X_n\text{ begins with 1})$ for $X_n=2^{U_n}$ and $U_n\sim U(\{1,\ldots,n\})$.
+\end{enumerate}
+Compare with Benford's distribution.\footnote{If time permits, also calculate the probabilities for digits larger than 1 and compare.}
+\end{problem}
+\begin{problem}
+Let $X_1,X_2\sim\Gamma(3,2)$, so $f_X(x)=4x^2e^{-2x}\mathbbm1_{\{x>0\}}$.
+\begin{enumerate}
+\item (0.5 points) Find the density of $Y=X_1/(X_1+X_2)$.
+\item (0.25 points) Find $\mathrm{Cor}(X_1,X_2)$ and $\mathrm{Cor}(X_1+X_2,Y)$.
+\item (0.25 points) Are $X_1+X_2$ and $Y$ independent?
+\end{enumerate}
+\end{problem}
+\begin{problem}
+A chip manufacturer claims that only one chip in 1000 is defective.
+\begin{enumerate}
+\item (0.5 points) How would you use the central limit theorem to estimate the probability of at least one defective chip among 100? What other methods would you suggest?
+\item (0.5 points) The Berry--Esseen inequality states that for iid $X_1,\ldots,X_n$, with $\mu=\E X_1$, $\sigma=\sqrt{DX}$, $\rho=\E[|X-\mu|^3]<\infty$ and $Z_n=(X_1+\cdots+X_n-n\mu)/(\sigma\sqrt n)$,
+\[\sup_{x\in\mathbb R}|\P(Z_n\leq x)-\Phi(x)|\leq\frac{\rho}{2\sigma^3\sqrt n}.\]
+How could this help in part 1? For what $n$ would the CLT approximation error be below 0.001 if the manufacturer's claim is correct?
+\end{enumerate}
+\end{problem}
+\begin{problem}
+Let $f_{X,Y}(x,y)=cx^3+1$ for $x,y\geq0$, $x+4y\leq1$, and 0 otherwise. Find:
+\begin{enumerate}
+\item (0.5 points) $c$, the density of $X$ and the expectation of $Y$;
+\item (0.25 points) $\E[Y\mid X=1/2]$;
+\item (0.25 points) the density of $Z=X+2Y$.
+\end{enumerate}
+\end{problem}
+\end{document}

@@ -1,0 +1,40 @@
+\documentclass[a4paper]{report}
+\input{tex/en/preamble.tex}
+\begin{document}
+\noindent Computer Science, 30 June 2024 \hfill Examination
+\hrulefill
+\begin{it}The grade is 2 + the number of points. Time allowed: 4 hours. Good luck!\end{it}
+\begin{problem}
+Asen and five friends play football daily, choosing uniformly at random two teams of three. Find the expectation and variance of the number of days until:
+\begin{enumerate}
+\item (0.25 points) Asen first plays with his two best friends;
+\item (0.25 points) a previously used team division first recurs;
+\item (0.5 points) all possible team divisions have occurred.
+\end{enumerate}
+\end{problem}
+\begin{problem}
+Boris and Valya arrange to meet outside FMI. Their travel times are independent exponential variables with mean 10 minutes.
+\begin{enumerate}
+\item (0.25 points) What is the probability, to accuracy 0.01 if desired, that the first arrives in under 10 minutes and the other one minute later?
+\item (0.25 points) Find $x$ such that the probability that both take at least $x$ minutes is 50\%.
+\item (0.25 points) After 100 such arrangements, approximately what is the probability, to accuracy 0.01, that Boris arrived first at least 55 times?
+\item (0.5 points) Find the expectation, variance and density of the waiting time of the first arrival until the second arrives.
+\end{enumerate}
+\end{problem}
+\begin{problem}
+\begin{enumerate}
+\item (0.5 points) Let $\Omega$ have 10 elements. In how many ways can three subsets $A,B,C$ satisfy
+\[\P(A)+\P(B)+\P(C)=1+\P(A\cap B)+\P(A\cap C)+\P(B\cap C)?\]
+\item (0.5 points) Choose uniformly a nondecreasing function from $\{1,\ldots,10\}$ to $\{1,\ldots,20\}$. What is the probability that it is strictly increasing?
+\end{enumerate}
+\end{problem}
+\begin{problem}
+Let $X,Y$ be independent $\mathrm{Exp}(1)$ variables and $Z=\sqrt{X/Y}$.
+\begin{enumerate}
+\item (0.5 points) Find $F_Z$ and use it to calculate $\E Z$.
+\item (0.5 points) Express $\E Z$ using the joint density of $X,Y$. Deduce $\Gamma(1/2)=\sqrt\pi$.\footnote{Euler's gamma function is $\Gamma(z)=\int_0^\infty t^{z-1}e^{-t}\,\mathrm dt$ and satisfies $\Gamma(z+1)=z\Gamma(z)$.}
+\end{enumerate}
+\end{problem}
+\hrulefill
+\emph{Bonus (0.5 points):} Find $\displaystyle\lim_{n\to\infty}e^{-n}\left(\frac n{1!}+\frac{n^2}{2!}+\cdots+\frac{n^n}{n!}\right)$.
+\end{document}

@@ -1,0 +1,36 @@
+\documentclass[a4paper]{report}
+\input{tex/en/preamble.tex}
+\begin{document}
+\noindent Probability and Statistics, CS Stream 2 \hfill Written examination, 30 June 2022
+\hrulefill
+\begin{it}Your grade is 2 + the number of points. Time allowed: 3 hours. Good luck! Work on $(\Omega,\mathcal F,\P)$, with random variables $X,Y$. If needed, use
+\[\int e^{-x}\,dx=-e^{-x},\quad\int xe^{-x}\,dx=-e^{-x}(x+1),\quad\int x^2e^{-x}\,dx=-e^{-x}(x^2+2x+2).\]
+\end{it}
+\begin{problem}
+A magic square is a $3\times3$ table with equal sums along each row, column and the two main diagonals. A fifth-grader must fill the following square with the numbers 1 through 9 exactly once:
+\[\renewcommand{\arraystretch}{1.6}\begin{array}{|c|c|c|}\hline2&7&\phantom9\\\hline\phantom1&5&\phantom3\\\hline\phantom4&\phantom9&8\\\hline\end{array}\]
+Unwilling to add numbers, the pupil writes a program to fill the blanks randomly until it finds the correct configuration. \textbf{One simulation independently chooses five uniform numbers from $\{1,\ldots,9\}$ and fills the blank cells from top to bottom and left to right.}
+\begin{enumerate}
+\item What is the expected number of correct entries in each simulation?
+\item What is the expected number of simulations until the correct arrangement?
+\item Suggest $n$ such that the probability of at least one success in $n$ simulations is 99\%.
+\end{enumerate}
+Answer the same questions if \textbf{a simulation is a random ordering of the missing numbers $(1,3,4,6,9)$}.
+\end{problem}
+\begin{problem}
+Each face of a blank die is labelled with a random integer from 1 to 6. Roll it $n$ times. Let $X$ sum the first $n-1$ rolls and $Y$ the last $n-1$. Find $\mathrm{Cor}(X,Y)$. How would the answer change if labels were chosen between 199 and 999?
+\end{problem}
+\begin{problem}
+A charity recruits volunteers to collect donations. Each talks to 100 people daily; on average one in 25 donates a fixed 10 BGN. What is the smallest number of volunteers you would recruit so the probability of raising at least one million BGN in 100 days is at least 99\%?\footnote{Chebyshev's inequality is too crude to be suitable here.} With that many volunteers, what is the probability of raising the money in 99 days?
+\end{problem}
+\begin{problem}
+A mechanism has two components with lifetimes $X,Y$ hours and joint density $f_{X,Y}(x,y)=cxe^{-(x+y)/2}$ for $x,y>0$, and 0 otherwise. Find:
+\begin{enumerate}
+\item $c$;
+\item the probability that both work for more than one hour;
+\item $\E[Y/X]$;
+\item $\E[X\mid Y=1]$.
+\end{enumerate}
+Are $X,Y$ independent?
+\end{problem}
+\end{document}

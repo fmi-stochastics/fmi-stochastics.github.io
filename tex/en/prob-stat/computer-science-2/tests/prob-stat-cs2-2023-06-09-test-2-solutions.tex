@@ -1,0 +1,94 @@
+\documentclass[a4paper]{article}
+\input{tex/en/preamble.tex}
+\setlength{\emergencystretch}{3em}
+\pagenumbering{arabic}
+\begin{document}
+\begin{center}\Large Probability and Statistics, Computer Science\par\large Test 2, 9 June 2023: solutions\end{center}
+\noindent\textit{English transcription of the supplied handwritten solution notes.}
+\section*{Problem 1: leading digit 1}
+For any distribution of $X$, let $A$ be the probability that the first nonzero decimal digit is 1. Sum the probabilities over $[10^k,2\cdot10^k)$, $k\in\mathbb Z$, including the corresponding negative intervals for negative values. Since accuracy 0.01 is requested, only a few terms may be needed. For Benford's law, the probability is $\log_{10}2\approx30.1\%$.
+\subsection*{1. Standard normal}
+By symmetry, double the sum on the positive half-line. The normal table gives
+\begin{align*}
+\P(1\le X<2)&=\Phi(2)-\Phi(1)\approx0.97725-0.84134=0.13591,\\
+\P(0.1\le X<0.2)&\approx0.57926-0.53983=0.03943,\\
+\P(0.01\le X<0.02)&\approx0.50798-0.50399=0.00399.
+\end{align*}
+The smaller intervals have total probability bounded above by
+\[\P(0\le X<0.002)<\Phi(0.01)-\Phi(0)=0.00399.\]
+(In fact $\Phi(0.002)-\Phi(0)\approx0.0008$, but the first bound is available from the table.) The upper tail is bounded by
+\[\P(X\ge10)\le\P(X\ge3.99)\approx0.00003,\]
+using the last table entry. The positive contribution is approximately $0.17933$ with error below $0.00402$. Thus the answer is about $0.35866$, with maximum error $0.00802$, giving about 36\% to accuracy 0.01. The source remarks that 37\% would also be accepted under its rough bound, and leaves the answer to accuracy $10^{-10}$ blank.
+\subsection*{2. Exponential}
+For $X\sim Exp(1)$, $F_X(t)=1-e^{-t}$ for $t\ge0$. The notes give
+\[\P(X\le0.0002)\approx0.00020,\qquad\P(X>10)\approx0.00005.\]
+They sum the central intervals and display
+\[A\approx0.00010+0.00985+0.08610+0.23254=0.32859\approx33\%.\]
+\noindent\textit{Transcription note: the source labels the first retained interval $[0.001,0.002)$ but prints its contribution as $0.00010$; the displayed approximation is retained as written.}
+\subsection*{3. Ratio of uniforms}
+Set $Y=U_1/U_2$ and $Z=U_2$. The inverse map is $U_1=YZ$, $U_2=Z$, with Jacobian $z$. Therefore
+\[f_{Y,Z}(y,z)=z\one_{\{0\le yz\le1,\ 0\le z\le1\}}
+=z\one_{\{y\ge0,\ 0\le z\le\min(1,1/y)\}}.\]
+Hence
+\[f_Y(y)=\int_0^{\min(1,1/y)}z\,dz=
+\begin{cases}1/2,&0\le y\le1,\\1/(2y^2),&y>1,\\0,&y<0.\end{cases}\]
+The source sketch is flat at height $1/2$ up to 1, then decreases as $1/(2y^2)$.
+For the tails it gives $\P(Y<0.00002)=0.00001$ and, for $t\ge1$,
+\[\P(Y>t)=\int_t^\infty\frac1{2y^2}\,dy=\frac1{2t},\qquad\P(Y>20000)\approx0.00003.\]
+Summing the intervening intervals gives approximately $0.333325\approx33\%$. In this case the sum can also be evaluated exactly:
+\begin{align*}
+A&=\frac12\sum_{k=1}^\infty10^{-k}
++\sum_{k=0}^\infty\left(\frac1{2\cdot10^k}-\frac1{4\cdot10^k}\right)\\
+&=\frac12\frac{1/10}{1-1/10}+\frac14\frac1{1-1/10}=\frac13.
+\end{align*}
+\subsection*{4. Powers of two}
+The notes propose observing and proving that exactly one power of two with $k$ decimal digits begins with 1, for each $k$. Thus there are $k$ such powers up to $10^k$. The number of powers of two below $10^k$ is determined by $2^m<10^k$, or $m<k\log_2 10$. Their resulting bounds on the proportion are
+\[\frac{k}{k\log_2 10+1}\le\frac{k}{\lceil k\log_2 10\rceil}\le\frac{k}{k\log_2 10},\]
+and both outer terms tend to $1/\log_2 10=\log_{10}2$, the Benford probability.
+\noindent\textit{Transcription note: the stated ``exactly one'' counting claim is reproduced from the handwritten argument; no replacement proof has been supplied.}
+\section*{Problem 2: gamma ratio}
+Set $Y=X_1/(X_1+X_2)$, $Z=X_1+X_2$. Then $X_1=YZ$, $X_2=Z-YZ$, and
+\[J=\begin{vmatrix}z&y\\-z&1-y\end{vmatrix}=z.\]
+The notes start from
+\[f_{Y,Z}(y,z)=16(yz)^2e^{-2yz}(z-yz)^2e^{-2(z-yz)}z\one_{\{yz>0,z-yz>0\}},\]
+then simplify it in the handwriting to
+\[16y^2(1-y)^2z^3e^{-2z}\one_{\{z>0,0<y<1\}}.\]
+\noindent\textit{Transcription note: this simplification has $z^3$ in the source, although the preceding product contains five powers of $z$. The subsequent workings below follow that displayed exponent.}
+
+The notes write
+\[f_Y(y)=16y^2(1-y)^2\int_0^\infty z^3e^{-2z}\,dz\]
+and give three ways to evaluate the constant:
+\begin{enumerate}
+\item Integration by parts gives $\int_0^\infty z^3e^{-2z}\,dz=3/8$.
+\item With $t=2z$, the integral is $\frac1{16}\int_0^\infty t^3e^{-t}dt=\frac1{16}\E X^3$ for $X\sim Exp(1)$. Its moment generating function is
+\[M_X(\lambda)=\int_0^\infty e^{\lambda x}e^{-x}dx=\frac1{1-\lambda},\]
+so $M_X'(0)=1$, $M_X''(0)=2$, $M_X'''(0)=6$, again giving $3/8$.
+\item Since the expression must be a density on $(0,1)$, integrate $y^2(1-y)^2$ on $(0,1)$ to identify the normalising constant.
+\end{enumerate}
+For part 2, $Cor(X_1,X_2)=0$ because the variables are independent by assumption. The notes also conclude
+\[Cor\left(\frac{X_1}{X_1+X_2},X_1+X_2\right)=0,\]
+because the ratio and sum are independent: the displayed joint density factors into a function of $y$ and a function of $z$, including separate support indicators. This factorisation gives $f_{Y,Z}=f_Yf_Z$.
+\section*{Problem 3: CLT approximation}
+\begin{enumerate}
+\item ``Standard CLT calculation.''
+\item For $X_i\sim Ber(1/1000)$,
+\[\mu=1/1000,\qquad\sigma=\sqrt{999/10^6}\approx10^{-1.5}.\]
+The handwritten expression for the third moment is
+\[\rho=\frac1{1000}\left(1-\frac1{1000}\right)^3+\frac{999}{1000}\left(0-\frac1{1000}\right)^3\approx10^{-3}.\]
+It uses the Berry--Esseen error bound $\rho/(2\sigma^3\sqrt n)$. For $n=100$, the displayed estimate is
+\[\frac\rho{2\sigma^3\sqrt{100}}\approx10^{-3}\cdot\frac12\cdot10^{4.5}\cdot\frac1{10}\approx1.58.\]
+For desired errors 0.001, 0.01 and 0.1, the handwritten conclusions are respectively
+\[\begin{array}{c|c|c}
+\text{error}&\text{bound on }\sqrt n&\text{displayed bound on }n\\\hline
+0.001&10^{1.5}\cdot10^3/2&10^9/2\\
+0.01&10^2\cdot10^{1.5}/2&10^7/2\\
+0.1&10\cdot10^{1.5}/2&10^5/2
+\end{array}\]
+\textit{The source writes the bounds with denominator 2 after squaring; those figures are transcribed unchanged.}
+
+For comparison, when $p=1/2$, the notes use $\mu=1/2$, $\sigma=1/2$, $\rho=1/8$. The corresponding requirements are
+\[\begin{array}{c|c|c}\text{error}&\sqrt n&n\\\hline0.001&>500&>250000\\0.01&>50&>2500\\0.1&>5&>25\end{array}\]
+\end{enumerate}
+\section*{Problem 4}
+``Standard calculation.''
+\end{document}

@@ -1,0 +1,64 @@
+\documentclass[a4paper]{report}
+\input{tex/en/preamble.tex}
+\begin{document}
+\noindent Mathematics / Applied Mathematics, 8 June 2024 \hfill Test 2
+\hrulefill
+\begin{it}The exact grading formula will depend on the results. As an approximation, use 2 + the number of points. Time allowed: 4 hours. Good luck!\end{it}
+\begin{problem}
+Based on previous games, Angel models his score as a random variable with mean 5011 points and variance 4000. Approximately how many games does he need to be at least 99\% certain that:
+\begin{enumerate}
+\item (0.5 points) his total score is at least one million?
+\item (0.5 points) his highest score among these games is at least 10000?
+\end{enumerate}
+\end{problem}
+\begin{problem} (1 point)
+Let $\xi,\eta$ be independent, with $\xi\sim\mathrm{Exp}(2)$ and $\eta\sim U(0,3)$, that is,
+\[f_\xi(x)=\begin{cases}2e^{-2x},&x>0,\\0,&\text{otherwise,}\end{cases}\qquad
+f_\eta(x)=\begin{cases}1/3,&0<x<3,\\0,&\text{otherwise.}\end{cases}\]
+Find their correlation, $\P(\xi<\eta)$ and the density of $\xi/\eta$.
+\end{problem}
+\begin{problem}
+\begin{enumerate}
+\item (0.25 points) Let $X\sim\mathcal N(\mu,\sigma^2)$ with both parameters unknown, and suppose a sample of $n$ observations is available. Test
+\[H_0:\mu=3.8\qquad\text{against}\qquad H_1:\mu\neq3.8\]
+at significance level $\alpha=0.05$. Can $H_0$ be rejected if $n=16$, $\overline X=3.295$ and $S^2=1.4641$? Derive the test using likelihood ratios.
+\item (0.5 points) Let $X\sim U(\alpha,\beta)$. Find method of moments and maximum likelihood estimators of $\alpha,\beta$. Determine whether they are unbiased and/or consistent.
+\end{enumerate}
+\end{problem}
+\begin{problem}
+Let $X,Y$ be independent $\mathrm{Exp}(1)$ variables and $Z=\sqrt{X/Y}$.
+\begin{enumerate}
+\item (0.5 points) Find $F_Z$ and use it to calculate $\E Z$.
+\item (0.25 points) Express $\E Z$ using the joint density of $X,Y$. Conclude that $\Gamma(1/2)=\sqrt\pi$.\footnote{Euler's gamma function is $\Gamma(z)=\int_0^\infty t^{z-1}e^{-t}\,\mathrm dt$.}
+\end{enumerate}
+\end{problem}
+\begin{problem}
+The aim is to find the integer moments of $X\sim N(\mu,\sigma^2)$. For convenience, begin with $Z\sim N(0,1)$.
+\begin{enumerate}
+\item (0.25 points) Find $\E[e^{\lambda Z}]$ for $\lambda>0$ and $\E[Z^k]$ for $k\leq6$.
+\item (0.25 points) Prove $\E[f(Z)Z]=\E[f'(Z)]$ for functions for which both expectations are well defined.
+\item (0.25 points) Find $\E[Z^k]$ for every $k\geq0$. Can you obtain the corresponding result for $\E[X^k]$?
+\item (0.25 points) Find $\P(Z^k>Z^{k-1})$ for $k\geq5$.
+\end{enumerate}
+\end{problem}
+\begin{problem}
+A vector $X=(X_1,\ldots,X_n)$ is normally distributed, or Gaussian, with mean $\mu=(\mu_1,\ldots,\mu_n)$ and covariance matrix $\Sigma$, $\Sigma_{ij}=\mathrm{Cov}(X_i,X_j)$, if every linear combination $\langle\lambda,X\rangle=\sum_i\lambda_iX_i$ has distribution
+$N(\langle\lambda,\mu\rangle,\sum_{i,j}\lambda_i\lambda_j\mathrm{Cov}(X_i,X_j))$.\footnote{The sum is the quadratic form $\lambda\Sigma\lambda^T$.}
+\begin{enumerate}
+\item (0.10 points) Find the moment generating function $M_Y(t)$ of $Y\sim N(\mu,\sigma^2)$.
+\item (0.25 points) Using the assertion that $M_Y(t)M_W(t)=M_{Y+W}(t)$ in a nonempty neighbourhood of 0 implies independence of $Y,W$, and its analogue for more than two variables, prove that uncorrelated components of a Gaussian vector are jointly independent normally distributed variables.
+
+\textbf{For the rest of the problem, assume $X=(X_1,\ldots,X_n)$ consists of independent $N(0,\sigma^2)$ variables.}
+\item (0.25 points) Let $P$ be an $n\times n$ orthogonal matrix, so $PP^T=I_n$. Prove that $PX$ also consists of independent $N(0,\sigma^2)$ variables.
+\item (0.25 points) Let $V$ be a $k$-dimensional linear subspace of $\mathbb R^n$, and $V^\perp$ its orthogonal complement, so $\mathbb R^n=V\oplus V^\perp$. Prove that the projections of $X$ onto $V$ and $V^\perp$ are independent Gaussian vectors and that their lengths are independent and chi-squared distributed with parameters $k$ and $n-k$, respectively.
+
+\emph{Using the preceding part, explain why it suffices to consider $X_V=(X_1,\ldots,X_k,0,\ldots,0)$ and $X-X_V$.}
+\item (0.25 points) Take $V$ to be the subspace of $\mathbb R^n$ spanned by $(1,\ldots,1)$. Prove that
+\[\overline X=\frac{X_1+\cdots+X_n}{n}\qquad\text{and}\qquad(n-1)S^2=\sum_{i=1}^n(X_i-\overline X_n)^2\]
+are independent, and specify their distributions.
+\end{enumerate}
+\end{problem}
+\begin{problem} \emph{Bonus} (0.5 points)
+Find $\displaystyle\lim_{n\to\infty}e^{-n}\left(\frac{n}{1!}+\frac{n^2}{2!}+\cdots+\frac{n^n}{n!}\right)$.
+\end{problem}
+\end{document}

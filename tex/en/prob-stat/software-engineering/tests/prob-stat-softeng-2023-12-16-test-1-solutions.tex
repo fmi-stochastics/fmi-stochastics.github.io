@@ -1,0 +1,280 @@
+\documentclass[a4paper]{article}
+\input{tex/en/preamble.tex}
+\setlength{\emergencystretch}{3em}
+\allowdisplaybreaks
+\begin{document}
+\noindent Software Engineering \hfill Test 1, 16.12.2023: solutions
+\par\smallskip\hrule\smallskip\noindent
+\textit{English transcription of all twelve handwritten pages. The original calculations and their inconsistencies are preserved; this is a translation, not a corrected solution set.}
+
+\section*{Problem 1}
+\begin{enumerate}
+\item We use Bayes' formula. Drawing a yellow, green, or blue ball means rolling one, two, or three dice, respectively. Thus
+\begin{align*}
+\P(\text{green}\mid\text{sum }3)
+&=\frac{\P(\text{sum }3\mid\text{green})\P(\text{green})}
+{\sum_i\P(\text{sum }3\mid\text{colour }i)\P(\text{colour }i)}\\
+&=\frac{\frac2{36}\frac5{11}}
+{\frac16\frac4{11}+\frac2{36}\frac5{11}+\frac1{6^3}\frac2{11}}
+\approx29.13\%.
+\end{align*}
+\item The probability that the largest result is at least $3$ is
+\[
+\P(\max\geq3)=1-\P(\text{all results}<3)
+=1-\left(\frac13\right)^5\approx99.59\%.
+\]
+For the product to be divisible by $10$, let $A=\{\text{product divisible by }2\}$
+and $B=\{\text{product divisible by }5\}$. Then
+\begin{align*}
+\P(A\cap B)
+&=1-\P(\overline A\cup\overline B)\\
+&=1-\P(\overline A)-\P(\overline B)+\P(\overline A\cap\overline B)\\
+&=1-\left(\frac12\right)^5-\left(\frac56\right)^5
++\left(\frac13\right)^5\approx57.10\%.
+\end{align*}
+\item The expected payoff is
+\begin{align*}
+&\left[\left(\frac13\right)^2+\left(\frac23\right)^2\right]
+\left[\frac{\binom22}{\binom62}\,2
++\frac{2\cdot4}{\binom62}\,1\right]
+-\frac49\left[\frac12\cdot3\right]\\
+&\hspace{4cm}=-\frac8{27}<0.
+\end{align*}
+For a fair game, replace the payment by $x$ BGN:
+\[
+\frac{10}{27}-\frac49\frac x2=0
+\quad\Longrightarrow\quad \boxed{x=\frac53}.
+\]
+\end{enumerate}
+
+\section*{Problem 2}
+\begin{enumerate}
+\item By the definition of conditional probability,
+\[
+\P(X>m+n\mid X\geq n)
+=\frac{\P(X>m+n)}{\P(X\geq n)}
+=\frac{\P(X>m+n)}{\P(X>n-1)}.
+\]
+For $X\sim\operatorname{Ge}(p)$, with probabilities $pq^k$, $k\geq0$,
+\begin{align*}
+\P(X>n)&=\sum_{k=n+1}^{\infty}pq^k
+=pq^{n+1}(1+q+\cdots)\\
+&=\frac{pq^{n+1}}{1-q}=q^{n+1}.
+\end{align*}
+Consequently,
+\[
+\frac{q^{m+n+1}}{q^n}=q^{m+1}=\P(X>m).
+\]
+\item The handwritten argument starts with
+\[
+\P(Y>m+n\mid Y>n+1)=\P(Y>m),
+\]
+and then writes, for $n\geq1$,
+\[
+\P(Y>m+n)=\P(Y>n-1)\P(Y>m).
+\]
+Its recurrence is
+\begin{align*}
+\P(Y>m+1)
+&=\P(Y>0)\P(Y>m)\\
+&=\P(Y>0)\big[\P(Y>0)\P(Y>m-1)\big]\\
+&=\cdots=\big(\P(Y>0)\big)^{m+2}.
+\end{align*}
+Let $\P(Y=0)=p$. Then $\P(Y>0)=1-p=:q$, and the source writes
+\begin{align*}
+\P(Y=k)&=\P(Y>k-1)-\P(Y>k)\\
+&=q^{k+1}-q^k=q^k(1-q)=pq^k.
+\end{align*}
+It concludes that $Y\sim\operatorname{Ge}(\P(Y=0))$.
+\item Using the i.i.d.\ assumption as in the handwritten solution,
+\begin{align*}
+\P(\min\{X_1,\ldots,X_n\}\leq t)
+&=1-\P(X_{\min}>t)\\
+&=1-\P(X_1>t)^n,\\
+\P(\max\{X_1,\ldots,X_n\}\leq t)
+&=\P(\text{all }X_i\leq t)\\
+&=\P(X_1\leq t)^n.
+\end{align*}
+\item Distinguish the five dice. The time until the first six on each die has
+the geometric distribution with parameter $1/6$. Here use the convention
+$\P(X=k)=pq^{k-1}$ for $k\geq1$.
+Let $X_i$ be the first-six time of die $i$. Then $K=\max_iX_i$ and
+\[
+\P(K\leq n)=\P(X_1\leq n)^5.
+\]
+Now
+\begin{align*}
+\P(X\leq n)&=\sum_{k=1}^{n}pq^{k-1}
+=\sum_{k=0}^{n-1}pq^k
+=\frac{p(1-q^n)}{1-q}=1-q^n,\\
+\P(K\leq n)&=(1-q^n)^5,\\
+\P(K=n)&=\P(K\leq n)-\P(K\leq n-1)\\
+&=\boxed{(1-q^n)^5-(1-q^{n-1})^5},
+\qquad q=\frac56.
+\end{align*}
+\end{enumerate}
+
+\section*{Problem 3}
+\begin{enumerate}
+\item As in the birthday problem, the probability that all $n$ bit vectors
+of length $m$ are distinct is
+\[
+\boxed{\frac{\prod_{k=0}^{n-1}(2^m-k)}{(2^m)^n}}.
+\]
+The expected total number of ones is
+\[
+\E\operatorname{Bin}(nm,\tfrac12)=\frac{mn}{2}.
+\]
+The expected number of vectors containing fewer than $m/4$ zeros is
+$\E\operatorname{Bin}(n,p)=np$, where
+\[
+p=\sum_{k=0}^{\lceil m/4\rceil-1}
+\P\big(\operatorname{Bin}(m,\tfrac12)=k\big).
+\]
+\item By linearity of expectation, the expected number of equal pairs is
+\[
+\E\sum_{i\ne j}\mathbf1_{\{X_i=X_j\}}
+=\binom n2\P(X_1=X_2)=\frac{\binom n2}{2^m}.
+\]
+For $p\ne1/2$, the corresponding calculation is
+\begin{align*}
+&\binom n2\sum_{k=0}^m\binom mk
+p^kp^k(1-p)^{m-k}(1-p)^{m-k}\\
+&\quad=\binom n2\sum_{k=0}^m\binom mk
+(p^2)^k\big((1-p)^2\big)^{m-k}\\
+&\quad=\boxed{\binom n2\big[p^2+(1-p)^2\big]^m}.
+\end{align*}
+Alternatively, two coordinates agree with probability $(1-p)^2+p^2$.
+Independence across coordinates gives
+$\P(X_1=X_2)=[p^2+(1-p)^2]^m$.
+\item The handwritten inclusion--exclusion argument for the expected number
+of distinct vectors is
+\begin{align*}
+&\E\big[n-\#\text{equal pairs}+\#\text{equal triples}
+-\#\text{equal quadruples}+\cdots\big]\\
+&\quad=\E\left[\sum_{k=1}^{\infty}(-1)^{k+1}
+\sum_{\substack{\text{distinct}\\i_1,\ldots,i_k}}
+\mathbf1_{\{X_{i_1}=\cdots=X_{i_k}\}}\right]\\
+&\quad=\sum_{k=1}^{\infty}(-1)^{k+1}\binom nk
+\sum_{j=0}^{m}\binom mj(p^k)^j\big((1-p)^k\big)^{m-j}.
+\end{align*}
+The source's last line is
+\[
+\sum_{k=1}^{\infty}(-1)^{k+1}\big(p^k+(1-p)^k\big)^m.
+\]
+(The binomial coefficient in the preceding line is absent from that last
+handwritten line.)
+\item We seek the least $n$ for which the probability that all vectors are
+distinct is less than $1/2$.
+
+\textbf{Method I.}
+\begin{align*}
+\prod_{k=0}^{n-1}\left(1-\frac{k}{2^m}\right)&<\frac12\\
+\Longleftrightarrow\quad
+\log\prod_{k=0}^{n-1}\left(1-\frac{k}{2^m}\right)&<-\log2\\
+\Longleftrightarrow\quad
+\sum_{k=0}^{n-1}\log\left(1-\frac{k}{2^m}\right)
+&\approx-\frac{n(n-1)}{2^{m+1}}<-\log2.
+\end{align*}
+Here $\log(1+x)\approx x$ for small $x$. Thus
+\[
+n(n-1)>2^{m+1}\log2,
+\qquad
+n_{\min}\approx\frac{1+\sqrt{1+2^{m+3}\log2}}2
+\approx\sqrt{2^{m+1}\log2}.
+\]
+
+\textbf{Method II.}
+\[
+\frac{(2^m)!}{(2^m-n)!}\frac1{2^{mn}}<\frac12.
+\]
+Use Stirling's approximation $n!\approx\sqrt{2\pi n}(n/e)^n$:
+\begin{align*}
+\frac{(2^m)!}{(2^m-n)!}\frac1{2^{mn}}
+&\approx
+\frac{\sqrt{2\pi2^m}(2^m/e)^{2^m}}
+{\sqrt{2\pi(2^m-n)}((2^m-n)/e)^{2^m-n}}\frac1{2^{mn}}\\
+&=\sqrt{\frac1{1-n/2^m}}
+\left(\frac{2^m}{2^m-n}\right)^{2^m-n}
+2^{mn}\frac1{2^{mn}}\frac1{e^n}.
+\end{align*}
+For $n\ll2^m$, the source continues
+\begin{align*}
+&\approx\left(\frac1{1-n/2^m}\right)^{2^m-n}\frac1{e^n}\\
+&=\frac{(1-n/2^m)^n}{(1-n/2^m)^{2^m}}\frac1{e^n}
+\approx(1-n/2^m)^n<\frac12.
+\end{align*}
+Therefore
+\[
+\log(1-n/2^m)<-\frac{\log2}{n}
+\quad\Longrightarrow\quad
+\frac n{2^m}>\frac{\log2}{n}
+\quad\Longrightarrow\quad
+n>\sqrt{2^m\log2}.
+\]
+\textit{Where did a $\sqrt2$ go?}
+In both cases, $n_{\min}=\Theta(2^{m/2})$ as $m\to\infty$.
+\end{enumerate}
+
+\section*{Problem 4}
+The natural strategy is to choose \textit{higher} for $1$ and $2$ and
+\textit{lower} for $4$ and $5$; for $3$ either choice is equivalent.
+For simplicity, take \textit{lower} for $3$.
+
+Since the probabilities are uniform, we can simply count the combinations
+leading to each winning state. The original table is reproduced below.
+The final column was left empty in the handwritten notes.
+\[
+\begin{array}{c|rrrrr}
+\text{number }m\backslash\text{move }n&1&2&3&4&5\\ \hline
+1&1&3&9&28&\\
+2&1&4&12&37&\\
+3&1&4&12&37&\\
+4&1&3&9&28&\\
+5&1&2&7&21&\\ \hline
+\text{probability of reaching move }n&
+\frac55&\frac{16}{5\cdot4}&\frac{49}{5\cdot4\cdot4}
+&\frac{151}{5\cdot4\cdot4\cdot4}&
+\end{array}
+\]
+The coloured arrows in the original show how the counts in the next
+column are obtained by adding counts from the admissible preceding
+states.
+
+If we play until move $k$, the expected payoff is the probability of
+reaching that move multiplied by the payoff at move $k$.
+See the notebook for a generalization.
+
+\medskip
+If stopping at any time is also allowed (which is the realistic scenario),
+the optimal expected payoff at each state is
+\[
+\max\left\{\text{current payoff},\
+\sum_{i,k}\P(\text{move to state }(i,k))\,
+\text{optimal payoff at }(i,k)\right\}.
+\]
+The partially filled table in the handwritten solution is
+\[
+\begin{array}{c|rrrr}
+A&1&2&3&4\\ \hline
+1&&&1000&1000\\
+2&&&750&1000\\
+3&&&&1000\\
+4&&&&1000\\
+5&&&&1000\\
+\text{loss}&&&&
+\end{array}
+\]
+For example,
+\begin{align*}
+A[1,3]
+&=\max\left\{100,\frac14\,1000+\frac14\,1000+\cdots\right\}
+=1000,\\
+A[2,3]
+&=\max\left\{100,\frac14\,0+\frac34\,1000\right\}=750.
+\end{align*}
+The first entry inside the maximum is the payoff if we stop; the second
+is the expected payoff if we continue. In the second example, rolling a
+$1$ means losing. Continue in the same way. See the notebook for the
+solution of the general case.
+\end{document}

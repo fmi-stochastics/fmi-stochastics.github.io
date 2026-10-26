@@ -1,0 +1,9 @@
+{# Visible, keyboard-accessible language links at the right of the header. #}
+<nav class="language-switch" aria-label="{{ 'Language' if config.theme.language == 'en' else 'Език' }}">
+  {% for alt in config.extra.alternate %}
+    <a href="{{ alt.link | url }}" lang="{{ alt.lang }}" hreflang="{{ alt.lang }}"
+       title="{{ 'English' if alt.lang == 'en' else 'Български' }}"
+       {% if alt.lang == config.theme.language %}aria-current="true"{% endif %}>{{ alt.lang | upper }}</a>
+    {% if not loop.last %}<span aria-hidden="true">/</span>{% endif %}
+  {% endfor %}
+</nav>

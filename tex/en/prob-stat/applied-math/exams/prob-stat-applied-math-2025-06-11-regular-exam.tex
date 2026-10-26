@@ -1,0 +1,86 @@
+\documentclass[a4paper]{report}
+\input{tex/en/preamble.tex}
+\begin{document}
+\noindent Applied Mathematics / Mathematics, 11 June 2025 \hfill Examination
+\hrulefill
+\begin{it}
+To pass this examination, demonstrate at least one of the following: familiarity with what was required in previous assessments; knowledge of the material covered in tutorials; or mastery of the material and the ability to apply it in a new context.
+The grade equals the number of points; 13 points are available. Time allowed: 4 hours. Good luck!
+\begin{itemize}
+\item Problem 1 contains questions from this year's and last year's tests.
+\item Problem 2 contains questions from the list provided at the start of the semester.
+\item Problem 3 contains new questions.
+\end{itemize}
+\end{it}
+\begin{problem}
+\begin{enumerate}
+\item Let $n$ be a positive integer. Choose $u_1$ uniformly from $\{1,\ldots,n\}$, then $u_2$ uniformly from $\{1,\ldots,u_1-1\}$, and so on until $u_\ell=1$. Set $E_n=\{u_1,\ldots,u_\ell\}$.
+\begin{enumerate}
+\item (0.25 points) Find $\P(k\in E_n)$ for $k\leq n$.
+\item (0.25 points) Find $\P(2\in E_n\mid3\notin E_n)$.
+\item (0.5 points) Find $\E[|E_n|]$ and $D(|E_n|)$ and estimate their asymptotic behaviour as $n\to\infty$.
+\end{enumerate}
+\item (0.5 points) Each face of a six-sided die is filled with a uniformly random number from $\{1,\ldots,6\}$.
+\begin{enumerate}
+\item What is the probability of rolling a six, and the expected number of rolls until this happens?
+\item What is the expected number of rolls until the product of all outcomes is first divisible by 6?
+\item If two rolls produced two sixes but the labels are unknown, what is the probability that all faces are sixes? Given the same observation, what is the most likely labelling?
+\end{enumerate}
+\item Asen and five friends play football every day, choosing uniformly at random two teams of three. Find the expectation and variance of the number of days until:
+\begin{enumerate}
+\item (0.25 points) Asen is first on a team with his two best friends;
+\item (0.25 points) a previously used division into teams first recurs;
+\item (0.5 points) every possible division has occurred.
+\end{enumerate}
+\item (0.25 points) Let $X$ be a random number in $\{0,1,2\}$ and $Y\sim\mathrm{Ber}(2/3)$ independent of it. Find the joint distribution and correlation of $X$ and $Z=(X+Y)\pmod3$.
+\item (0.25 points) Let $X$ be uniform on $\{1,\ldots,6\}$. Find its probability generating function and express $\E[X]$ and $DX$ in terms of it.
+\item (0.5 points) For nonnegative integer-valued $X,Y$, does independence imply $g_X(s)g_Y(s)=g_{X+Y}(s)$ for all $s\geq0$? Does the converse hold? Prove your claims.
+\item (0.5 points) Let $X,Y$ be the results of two independent standard dice. Find the distribution of $X+Y$. Can two blank six-sided dice be labelled with other positive integers, not necessarily identically, to give the same sum distribution?
+\item (0.5 points) Let $X\sim\mathcal N(\mu,\sigma^2)$ with both parameters unknown, with a sample of $n$ observations. Test $H_0:\mu=3.8$ against $H_1:\mu\neq3.8$ at level $\alpha=0.05$. Can $H_0$ be rejected for $n=16$, $\overline X=3.295$, $S^2=1.4641$? Derive the test using likelihood ratios.
+\item (0.5 points) Let $X\sim U(-\alpha,\alpha)$. Find method of moments and maximum likelihood estimators of $\alpha$, and determine whether they are unbiased and/or consistent.
+\end{enumerate}
+\end{problem}
+\begin{problem}
+\begin{enumerate}
+\item (0.5 points) A coin with probability $p$ of heads is tossed $n$ times. Let $E$ be the event that the first toss is heads and $F_k$ the event of exactly $k$ tails. For which integer pairs $(n,k)$ are $E,F_k$ independent?
+\item (1 point) Let $(X_1,\ldots,X_n)$ be a random permutation of $\{1,\ldots,n\}$ and $S=X_1+\cdots+X_n$.
+\begin{enumerate}
+\item Find $\E S$ and $DS$.
+\item Prove $D(X+Y)=DX+DY+2\mathrm{Cov}(X,Y)$ for two random variables.
+\item Express $\E S$ using $\E X_i$. Find $\E X_i$, $\E X_i^2$ and $DX_i$ for every $i$.
+\item Express $DS$ using $DX_i$ and $\mathrm{Cov}(X_i,X_j)$. Find the covariance for every $i,j$.
+\item (0.25 points) Let $U_1,U_2\sim U(0,1)$ be independent and $Y=\ln U_1/\ln U_2$. Find the density and expectation of $Y$.
+\item (0.25 points) Is $1+\lfloor\ln U_1/\ln U_2\rfloor$ geometrically distributed? Explain.
+\end{enumerate}
+\item (1 point) Consider the standard distributions $\mathrm{Ber}(p)$, $\mathrm{Bin}(n,p)$, $\mathrm{Ge}(p)$ and $\mathrm{Poi}(\lambda)$. Let $X_1,X_2$ be iid with one of these laws. Is $X_1X_2$, or $X_1+X_2$, of the same distributional type as $X_1$, possibly with different parameters? Give a full justification in each of the four cases. If the answer is not always yes, can you give an example where this situation does occur?
+\item (1 point) Find to accuracy 0.01 the probability that the first nonzero decimal digit of $X$ is 1 when:
+\begin{enumerate}
+\item $X\sim N(0,1)$;
+\item $X\sim\mathrm{Exp}(1)$;
+\item $X=U_1/U_2$ with independent $U_1,U_2\sim U(0,1)$. Also find $\E X$.
+\end{enumerate}
+\item (0.5 points) Let $X,X_1,\ldots,X_n\sim\mathcal N(\mu,\sigma^2)$ be iid. Find maximum likelihood estimators of $\mu,\sigma$, both unknown. Find a 95\% confidence interval for $\mu$ when $\sigma$ is unknown.
+\end{enumerate}
+\end{problem}
+\begin{problem}
+\begin{enumerate}
+\item Let $X,Y\sim\mathrm{Exp}(1)$ be independent, $S=X+Y$ and $W=X/(X+Y)$.
+\begin{enumerate}
+\item (0.75 points) Show that $S,W$ are independent and find their distributions.
+\item (0.25 points) Find $\E[W^k]$ for $k>-1$.
+\end{enumerate}
+\item (0.5 points) Let $X,Y\sim\mathcal N(0,1)$ be independent and $Q=X/Y$. Find the distribution and density of $Q$.
+\item Choose $(X,Y)$ uniformly in the unit disc $x^2+y^2\leq1$.
+\begin{enumerate}
+\item (0.5 points) Find the density of its distance $R$ from the centre.
+\item (0.5 points) Find $\E R$, the median and the mode of $R$.
+\end{enumerate}
+\item Let $T_1,\ldots,T_n$ be iid $\mathrm{Exp}(\lambda)$ with unknown $\lambda>0$.
+\begin{enumerate}
+\item (0.25 points) Find the maximum likelihood estimator of $\lambda$.
+\item (1 point) Prove $2\lambda\sum_{i=1}^nT_i\sim\chi^2_{2n}$ and derive an exact two-sided 95\% confidence interval for $\lambda$.
+\item (0.25 points) Use likelihood ratios to formulate a level 0.05 test of $H_0:\lambda=1$ against $H_1:\lambda<1$, and express the rejection region in terms of $\sum T_i$.
+\end{enumerate}
+\end{enumerate}
+\end{problem}
+\end{document}

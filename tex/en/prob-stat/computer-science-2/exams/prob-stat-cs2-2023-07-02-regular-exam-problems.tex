@@ -1,0 +1,44 @@
+\documentclass[a4paper]{report}
+\input{tex/en/preamble.tex}
+\begin{document}
+\noindent Probability and Statistics, CS Year 3, Stream 2 \hfill Written examination, 2 July 2023
+\hrulefill
+\begin{problem}
+A speed-measuring device's percentage error has distribution $N(0,5^2)$.
+\begin{enumerate}
+\item (0.25 points) On average, how many cars pass before the first error of at least 10\%? Among 1000 cars, how many errors exceed 10\% on average? After 100 cars, what is the probability that the mean error exceeds 1\%?
+\item (0.25 points) Model passing speeds in km/h as independent $N(40,5^2)$ variables. What is the probability that the device records a speed above the 50 km/h limit? What must its standard deviation be for the mean error after 100 cars to exceed 1 km/h with probability 0.1\%?
+\item (0.5 points) Answer part 1 using absolute error, the modulus of the error in that part.
+\end{enumerate}
+\end{problem}
+\begin{problem}
+A travel company advertises seaside hotels by repeatedly calling $N\sim\mathrm{Poi}(\lambda)$ contacts. Person $i$ accepts after $K_i$ calls, where the $K_i$ are iid, independent of $N$, with $\P(K_i=n)=f(n)$. The value $\infty$ is allowed, so $f(\infty)\geq0$. Let $X_n=\sum_{i=1}^N\mathbbm1_{\{K_i=n\}}$ count holidays sold in round $n$.
+\begin{enumerate}
+\item (0.5 points) Prove that the $X_n$ are independent and $X_n\sim\mathrm{Poi}(\lambda f(n))$.
+\item (0.5 points) The company stops after $T=\inf\{n:X_n=0\}$, the first round with no new customer. Let $S=X_1+\cdots+X_T$. Prove $\E[S]=\lambda\E[F(T)]$, where $F(k)=f(1)+\cdots+f(k)$.
+\end{enumerate}
+\end{problem}
+\begin{problem}
+Let $U\sim U(0,1)$ and $V\sim U(-\pi/2,\pi/2)$.
+\begin{enumerate}
+\item (0.5 points) One method of generating a pseudorandom number between 0 and 1 from $U$ chooses a usually large positive integer $M$ and takes $X=\{MU\}$, the fractional part. Find $\E X$, $DX$ and $\mathrm{Cor}(U,X)$. What do you think of this method?
+\item (0.5 points) Let $U_1,\ldots,U_{100}$ be iid copies of $U$. Find their individual expectations and those of the maximum and minimum.
+\item (0.5 points) Find the density, expectation and variance of $Y=\tan V$.
+\item (0.5 points) For $Z\sim\mathrm{Cauchy}(1)$ with density $1/[\pi(1+x^2)]$, prove that $1/Z$, $2Z/(1-Z^2)$ and $(3Z-Z^3)/(1-3Z^2)$ have the same distribution.
+\end{enumerate}
+\end{problem}
+\noindent\textbf{Bonus}
+\begin{enumerate}
+\item (0.25 points) Define $D(Y\mid X)=\E[(Y-\E[Y\mid X])^2\mid X]$. Recall $\E X=\E[\E[X\mid Y]]$. Which of
+\[\E[D(Y\mid X)],\quad D(D(Y\mid X)),\quad\E[D(Y\mid X)]+D(D(Y\mid X)),\]
+\[\E[D(Y\mid X)]+D(\E[Y\mid X])\]
+expresses $DY$ in terms of conditional variance?
+\end{enumerate}
+Construct Cantor's function $c:[0,1]\to[0,1]$ recursively: $f(x)=1/2$ on $[1/3,2/3]$, $f(x)=f(3x)/2$ on $[0,1/3)$, and $f(x)=(1+f(3x-2))/2$ on $(2/3,1]$.
+\begin{figure}[ht]\centering\includegraphics[width=\textwidth]{tex/assets/prob-stat/Cantor.jpg}
+\caption{Recursive construction of Cantor's function. Source: \href{https://en.wikipedia.org/wiki/Cantor_function}{Wikipedia}.}\end{figure}
+\begin{enumerate}[start=2]
+\item (0.25 points) Let $F_X(x)=c(x)$ for $x\in(0,1)$. Find $\E X$ and $DX$.
+\item (0.25 points) Prove that $F_X$ is differentiable almost everywhere. What is the density $f_X$?
+\end{enumerate}
+\end{document}

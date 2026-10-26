@@ -1,0 +1,222 @@
+\documentclass[a4paper]{report}
+\input{tex/en/preamble.tex}
+\setlength{\emergencystretch}{3em}
+\allowdisplaybreaks
+\begin{document}
+
+
+\noindent Probability and Statistics, Software Engineering, Year 3, Groups 4/5, 2020/2021 \hfill Test 2
+
+\hrulefill
+
+\begin{it}
+Your grade is 2 plus the number of points earned. Time allowed: 4 hours. Good luck.
+
+Throughout, we work on a probability space $(\Omega, \cF, \P)$.
+
+\end{it}
+
+\begin{problem} (2 points)
+\begin{enumerate}
+    \item (0.5 points) Two cards are drawn from a standard 52-card deck. Let $X$ be the number of aces and $Y$ the number of hearts. Find the joint distribution and correlation of $X,Y$.
+
+$\bullet$ Let $C=\binom{52}{2}=1326$. Combinatorial counting gives
+\begin{center}
+\begin{tabular}{ |c|c|c|c| }
+ \hline
+$X\ (\text{aces})\backslash Y\ (\text{hearts})$ & 0 & 1 & 2 \\
+  \hline
+ 0 & $\binom{36}{2}/ C$& $\binom{12}{1} \binom{36}{1}/ C$ &   $\binom{12}{2}/ C$\\
+ 1 &  $\binom{3}{1} \binom{36}{1}/ C$ &  ($\binom{12}{1} \binom{3}{1} +
+ \binom{1}{1} \binom{36}{1})/ C$ &  $\binom{12}{1}/ C$\\
+ 2 & $\binom{3}{2}/ C$& $\binom{3}{1}/ C $& 0\\
+ \hline\end{tabular} \, ,
+ \end{center}
+After calculating and summing the rows and columns (or directly by counting),
+ \begin{center}
+\begin{tabular}{ |c|c|c|c| }
+ \hline
+$X\ (\text{aces})\backslash Y\ (\text{hearts})$ & 0 & 1 & 2 \\
+  \hline
+ 0 & $105/221$& $72/221$ &   $11/221$\\
+ 1 &  $18/221$ &  $12/221$ &  $2/221$\\
+ 2 & $1/442$& $1/442$ & 0\\
+ \hline
+\end{tabular}
+\\
+\begin{tabular}{ |c|c|c|c| }
+ \hline
+$Y\ (\text{hearts})$ & 0 & 1 & 2 \\
+  \hline
+ $\P(Y = \cdot) $& $19/34$& $13/34$ &   $2/34$\\
+ \hline
+\end{tabular}
+\\
+\begin{tabular}{ |c|c|c|c| }
+ \hline
+$X\ (\text{aces})$ & 0 & 1 & 2 \\
+  \hline
+ $\P(X = \cdot) $& $188/221$& $32/221$ &   $1/221$\\
+ \hline
+\end{tabular} \, .
+
+\end{center}
+Therefore
+\begin{align*}
+    &\E X = 34/221 = 2/13;    &D X = \E X^2 - (\E X)^2 = 36/221 - (2/13)^2 =
+    400/2873;\\
+    &\E Y = 17/34 = 1/2;    &D Y =  \E Y^2 - (\E Y)^2 = 21/34 - 1/4 = 25/68;\\
+    &\E XY = 12/221 + 4/221 + 2/442 = 1/13;
+    &Cor(X,Y) = \frac{\E XY - \E X \E Y}{\sqrt{D X \cdot D Y}} =
+    \frac{1/13 - 1/13 }{\sqrt{D X \cdot D Y}} = 0
+    \, .
+\end{align*}
+Thus $X,Y$ are uncorrelated, although they are not independent!
+
+
+
+\item (1 point)
+Let $X$ be an asset price and $Y$ the average deposit interest rate (both daily and in dimensionless units). Their joint density is
+$f_{X,Y}(x,y)=c(x^2+e^yx)$ for $0<x,y<1$, and zero elsewhere, where $c$ is
+a constant. Find
+$c$ and the covariance of $X,Y$. What is the expected asset price if
+the interest rate
+is $0.5$?
+
+$\bullet$
+\[
+1 = c \int_0^1 \int_0^1 (x^2 + e^y x) \d x \d y = c \int_0^1 \frac13 + \frac12 e^y \d y
+= c\left(\frac13 + \frac12 ( e - 1)\right) = \frac{3e - 1}{6} \, .
+\]
+Hence $c=6/(3e-1)$. For $x\in(0,1)$,
+
+\begin{align*}
+f_X(x) = \int_0^1 c(x^2 + e^yx) \d y = c(x^2 + (e - 1)x) \, .
+\end{align*}
+Therefore
+\[ \E X = c\int_0^1 x ( x^2 + (e-1)x) \d x = c\left(\frac14 + (e-1)\frac13\right)
+= c\frac{4e - 1}{12}\, .\]
+Similarly, for $y\in(0,1)$,
+\[
+f_Y(y) = c\int_0^1 x^2 + e^y x \d x = c\left(\frac13 + \frac12 e^y\right)
+= \frac{c}{6}\left(2 + 3 e^y\right)\, ,
+\]
+\[
+\E Y = \frac{c}{6}\int_0^1 y (2 + 3 e^y) \d y  =
+\frac{c}{6}\left(
+2 \frac12 + 3 \right) = \frac{2c}{3} \, ,
+\]
+where we used
+$\int xe^x\d x=\int x\d e^x=xe^x-\int e^x\d x=e^x(x-1)$ and
+hence $\int_0^1 xe^x\d x=1$.
+Next,
+\[
+\E XY = c \int_0^1 \int_0^1 xy(x^2 + e^y x) \d x \d y
+=c \int_0^1 \frac14 y + \frac13 ye^y \d y =
+c \left( \frac14 \cdot\frac12 + \frac13 \right) = \frac{11c}{24}\, .
+\]
+Therefore
+\[
+Cov(X, Y) = \E XY - \E X \E Y = \frac{11c}{24} - c^2 \frac{4e - 1}{18} \approx
+-0.0014 \, .
+\]
+For the last question,
+\begin{align*}
+\E (X | Y = 0.5) &= \int_0^1 x f_{X|Y}(x | y = 0.5) \d x
+= \int_0^1 x \frac{f_{X, Y}(x, 0.5)}{f_Y(0.5)} \d x
+= \int_0 ^1 x \frac{c(x^2 + x \sqrt{e})}{\frac{c}{6}\left(2 + 3 \sqrt{e}\right)}\d x \\
+&= \frac{6}{2 + 3\sqrt{e}} \int_0^1 x^3 + x^2 \sqrt{e} \d x
+= \frac{6}{2 + 3\sqrt{e}} (\frac14 + \frac13 \sqrt{e}) \approx 0.6907 \, .
+\end{align*}
+
+
+\item (0.5 points) Let $X$ have density $f_X(x)=\frac14xe^{-x/2}$ for $x\geq0$ and
+zero otherwise. Find the density of $Y=-2X+2$.
+
+$\bullet$ Apply the transformation theorem directly or follow its proof:
+for $y>2$, $\P(Y\leq2)=\P(X\geq0)=1$ and $f_Y(y)=0$.
+
+For $y\leq2$,
+$F_Y(y)  = \P(Y \leq y) = \P(-2X + 2 \leq y) = \P( X \geq 1/2(2 - y)) = 1 - F_X( 1/2(2 - y))$.
+Therefore \begin{align*}
+f_Y(y) = \frac {\d}{\d y}F_y(y) &= \frac {\d}{\d y}\left(1 - F_X\left( \frac12\left(2 - y\right)
+\right)\right)
+= -F_X'\left( \frac12\left(2 - y\right)\right) \cdot \left( \frac12\left(2 - y\right)\right) '
+\\
+&= \frac12 f_X\left(1 - \frac12 y\right) = \frac12 \cdot \frac14 \left(1- \frac12y\right)e^{y/4 - 1/2} \, .
+\end{align*}
+    \end{enumerate}
+\end{problem}
+
+
+\begin{problem}(0.5 points)
+
+According to official data, Sofia's historical average January temperature is $-0.5^\circ C$. Let $X$ be the average January temperature in Sofia in degrees Celsius, assumed normally distributed. The variance is usually estimated
+from data too, but here we consider a different (not recommended) method.
+
+Suppose someone regards a temperature above $20^\circ C$ as an extreme anomaly
+with probability 1 percent. What variance estimate does this imply? What
+is then the probability of a temperature below $-15^\circ C$?
+
+$\bullet$
+Let $\sigma^2$, $\sigma\geq0$, be the variance, so $X\sim N(-0.5,\sigma^2)$. We have
+\[\frac{1}{100} = \P\left(X \geq 20\right) = \P\left( \frac{X + 0.5}{\sigma} \geq \frac{20.5}{\sigma}\right)
+= \P\left(N(0,1) \geq \frac{20.5}{\sigma}\right) = 1 - \Phi\left(\frac{20.5}{\sigma}\right) \, ,
+\]
+where $\Phi(x)=\P(N(0,1)\leq x)$. From a normal table, find $z$
+such
+that $\Phi(z)=0.99$. This gives $20.5/\sigma\approx2.33$ and
+$\sigma\approx8.80$. Then
+\[
+\P(X \leq -15) =\P\left( \frac{X + 0.5}{8.80} \leq \frac{-14.5}{8.80}\right)
+\approx \P\left(N(0,1) \leq -1.65\right) \approx 0.0495 \, .
+\]
+
+\end{problem}
+
+\begin{problem}(1.5 points)
+A point $A$ is chosen randomly in the disk $k(O,1)$ with centre $O$ and radius $1$. Let
+$X=|OA|$. Can you guess
+the mode and median? Justify your guesses. What would you expect $\E X$ to be?
+\textit{(The mode of a discrete distribution is a value with maximum probability.
+In the continuous case, analogously, we seek a value maximizing $f_X$.
+We call $a$ a median of $X$ if $\P(X\leq a)=\P(X\geq a)=1/2$.)}
+
+$\bullet$ Informally, we may guess that the mode is 1, because at a fixed
+distance from the centre, a larger distance corresponds to more points.
+Formally, the cardinalities are of course the same. The median is the value
+satisfying $\pi r^2=1-\pi r^2$.
+    \begin{enumerate}
+
+    \item (0.75 points) Find the distribution function, density, expectation and
+    variance of $X$.
+
+$\bullet$ For $c\in(0,1)$, $F_X(c)=\P(X\leq c)=\P(X\in k(O,c))=S_{k(O,c)}/S_{k(0,1)}
+=c^2$. Hence $f_X(c)=F_X'(c)=2c$. For completeness, if $c\geq1$, then $F_X(c)=1,
+f_X(c)=0$, while if $c\leq0$, $F_X(c)=0$, $f_X(c)=0$.
+We obtain
+\[\E X = \int_0^1 x 2x \d x = \frac23; D X = \int_0^1 x^2 \cdot 2x \d x - \frac49= \frac{1}{18}\, . \]
+    \item (0.75 points) Now let $A_1,A_2,A_3$ be three points chosen randomly
+    and independently in the same disk. What is the expected distance to the point
+    nearest the centre? And to the farthest? \textit{(Bonus: Find the expected
+    distance to the middle point. Should it equal $\E X$?)}
+
+$\bullet$
+Let the distances from $O$ to $A_1,A_2,A_3$ be $X_1,X_2,X_3$, respectively. Then
+$X_1,X_2,X_3\sim X$ are independent, where $X$ is as in the previous part.
+The distance to the nearest point is $Y_1=\min(X_1,X_2,X_3)$, and to
+the farthest, $Y_2=\max(X_1,X_2,X_3)$.
+For $y\in(0,1)$,
+$\P(Y_2\leq y)=\P(X\leq y)^3=y^6$. Therefore
+\[
+f_{Y_2}(y) = 6y^5; \E Y_2 = \int_0^1 y 6y^5 \d y = \frac67 \, .
+\]
+Similarly, $\P(Y_1\leq y)=1-\P(Y_1\geq y)=1-(\P(X\geq y))^3=
+1-(1-y^2)^3$. Therefore
+\[
+f_{Y_1}(y) = 6y(1-y^2)^2; \E Y = \int_0^1 y 6y(1 - y^2)^2 \d y = \frac{16}{35} \, .
+\]
+\end{enumerate}
+\end{problem}
+
+\end{document}

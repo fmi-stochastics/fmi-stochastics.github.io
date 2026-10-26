@@ -1,0 +1,44 @@
+% English translation of the Bulgarian source.
+\documentclass[a4paper]{report}
+\input{tex/en/preamble.tex}
+\begin{document}
+\noindent 9 September 2025 \hfill Examination problems
+\hrulefill
+\begin{problem}
+\begin{enumerate}
+\item We have 10 cards bearing the letters of the Bulgarian word for probability, represented by the tokens V, E, R, O, YA, T, N, O, S, T. Here YA represents a single Cyrillic vowel, and the vowels are E, O and YA.
+\begin{enumerate}
+\item (0.25 points) Calculate the probabilities of the events:
+$A$: five letters drawn at random without replacement can form STOYAN, consisting of the five tokens S, T, O, YA, N;
+$B$: three letters drawn at random with/without replacement are all consonants;
+$C$: four letters drawn at random without replacement contain equal numbers of vowels and consonants.
+\item (0.25 points) Let $X$ and $Y$ be the numbers of vowels and consonants, respectively, in 7 letters drawn at random with replacement. Find $Cor(X,Y)$.
+\end{enumerate}
+\item (0.5 points) Three radio signals are sent successively and independently. Their reception probabilities are $1/2$, $1/3$ and $1/4$, respectively. Let $X$ be the number of signals received. Find the expectation and distribution of $\xi$. If the probability of establishing a connection is 0.2 when one signal is received, 0.6 when two are received, and 1 when three are received, what is the probability of establishing a connection?
+\item (0.5 points) A standard die is rolled repeatedly. Let $X$ be the number of rolls until the first six, and $Y$ the number until all faces have appeared. Find the probability generating functions and expectations of $X$ and $Y$.
+\end{enumerate}
+\end{problem}
+\begin{problem}
+The lifetime of a battery is normally distributed with mean 300 hours and standard deviation 20.
+\begin{enumerate}
+\item (0.25 points) For more than how many hours can we assert that $98\%$ of batteries will operate?
+\item (0.25 points) A device powered by 4 batteries continues working as long as at least one is charged. What is the probability that it operates for at least 350 hours?
+\end{enumerate}
+\end{problem}
+\begin{problem}
+(0.5 points) Let $X$ be the age of a car involved in an accident, and let $Y$ be the time for which the car had been insured before the accident, both measured in years. Their joint density is found to be
+\[f(x,y)=c(10-xy^2)\quad\text{for }2\leq x\leq10\text{ and }0\leq y\leq1.\]
+What is the average age of a car involved in an accident? Calculate the probability that the car was first insured less than half a year before the accident.
+\end{problem}
+\begin{problem}
+Let $X\sim\mathcal N(\mu,\sigma^2)$, where $\mu$ and $\sigma^2$ are unknown, and suppose we have a sample of $n$ observations.
+\begin{enumerate}
+\item (0.5 points) Derive maximum likelihood estimators of $\mu$ and $\sigma^2$.
+\item (0.5 points) Construct $95\%$ confidence intervals for $\mu$ and $\sigma$.
+\item (0.5 points) Test
+\[H_0:\mu=1\quad\text{against}\quad H_1:\mu>1\]
+at significance level $\alpha=0.05$. Can $H_0$ be rejected if $n=100$, $\overline X=1.1$, and $S^2=1.2213$?
+\end{enumerate}
+\end{problem}
+\end{document}
+

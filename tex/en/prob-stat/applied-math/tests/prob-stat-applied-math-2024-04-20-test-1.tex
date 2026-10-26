@@ -1,0 +1,40 @@
+\documentclass[a4paper]{report}
+\input{tex/en/preamble.tex}
+\begin{document}
+\noindent Mathematics / Applied Mathematics, 20 April 2024 \hfill Test 1
+\hrulefill
+\begin{it}The exact grading formula will depend on the results. As an approximation, use 2 + the number of points. Time allowed: 4 hours. Good luck!\end{it}
+\begin{problem}
+\begin{enumerate}
+\item (0.25 points) An urn contains 1 yellow, 2 green and 3 blue pebbles. After drawing a pebble, a person rolls standard dice: one die for a yellow pebble, two for a green one, and three for a blue one. Given that the sum rolled is 3, what is the probability that the pebble was green?
+\item (0.25 points) A standard die is rolled five times. Find the probabilities of the events $A$: the largest result is at least 3; and $B$: the product of all results is divisible by 10.
+\item (0.25 points) Seven balls are placed randomly and independently in seven boxes. Let $X_i$ be the number of boxes containing exactly $i$ balls. Find the distribution of $X_3$, $\E[X_3]$ and $\sum_{i=1}^7i\E[X_i]$.
+\item (0.25 points) Let $X,Y$ be independent random variables with values in $\{1,2,3,\ldots\}$. Is it true that $\E[XY]=\E[X]\E[Y]$ and $\E[X/Y]=\E[X]/\E[Y]$?
+\end{enumerate}
+\end{problem}
+\begin{problem}
+Each face of a six-sided die is filled with a uniformly random number from $\{1,\ldots,6\}$.
+\begin{enumerate}
+\item (0.5 points) What is the probability of rolling a six? What is the expected number of rolls until this happens?
+\item (0.25 points) What is the expected number of rolls until the product of all results is first divisible by 6?
+\item (0.5 points) You do not know how the die was filled, but you know that two rolls produced two sixes. What is the probability that all its faces are sixes? Given the same observation, what is the most likely way the die was filled?
+\end{enumerate}
+\end{problem}
+\begin{problem}
+Let $n$ be a positive integer. Choose positive integers as follows: $u_1$ uniformly from $[1,n]$, $u_2$ uniformly from $[1,u_1-1]$, $u_3$ uniformly from $[1,u_2-1]$, and so on, until $u_\ell=1$ for some $\ell\leq n$. Let $E_n=\{u_1,\ldots,u_\ell\}$.
+\begin{enumerate}
+\item (0.5 points) Find $\P(k\in E_n)$ for $k\leq n$.
+\item (0.25 points) Find $\P(2\in E_n\mid3\notin E_n)$.
+\item (0.75 points) Find $\E[|E_n|]$ and $D(|E_n|)$ and estimate their asymptotic behaviour as $n\to\infty$.
+\end{enumerate}
+\end{problem}
+\begin{problem}
+\begin{enumerate}
+\item (0.5 points) Let $X$ be a random number from $\{0,1,2\}$ and let $Y\sim\mathrm{Ber}(2/3)$ be independent of $X$. Find the joint distribution and correlation of $X$ and $Z=(X+Y)\pmod3$.
+\item (0.25 points) Let $X$ be uniform on $\{1,\ldots,6\}$. Find its probability generating function and express $\E[X]$ and $DX$ in terms of it.
+\item (0.5 points) Let $X,Y$ take values in $\{0,1,\ldots\}$. Does independence imply $g_X(s)g_Y(s)=g_{X+Y}(s)$ for every $s\geq0$? Conversely, if this identity holds for every $s\geq0$, must $X,Y$ be independent? Prove your claims.
+\item (0.5 points) Let $X,Y$ be the outcomes of two independent standard dice. What is the distribution of $X+Y$? Can two blank six-sided dice be filled with other positive integers (the dice need not be identical) so that their sum on one roll has the same distribution as $X+Y$?
+\end{enumerate}
+\end{problem}
+\end{document}
+

@@ -1,0 +1,66 @@
+\documentclass[a4paper]{report}
+\input{tex/en/preamble.tex}
+\setlength{\emergencystretch}{3em}
+\allowdisplaybreaks
+\begin{document}
+
+
+\noindent Probability and Statistics, Software Engineering, Year 3, Groups 4/5, 2020/2021 \hfill Test 1
+
+\hrulefill
+
+\begin{it}
+Your grade is 2 plus the number of points earned. Time allowed: 3 hours. Good luck.
+
+Throughout, we work on a probability space $(\Omega, \cF, \P)$.
+Recall that, for $A\subset\Omega$, we write $\overline A=\Omega\setminus A$.
+\end{it}
+
+\begin{problem} (1 point)
+Three dice are rolled together five times. What is the probability that the number of rolls showing only odd values is even? Find the expectation
+of this count.
+\end{problem}
+
+\begin{problem}(0.8 points)
+Two numbers are chosen at random from $[0,1]$. What is the probability
+that the sum of their squares exceeds 1?
+\end{problem}
+
+
+\begin{problem}(1 point)
+A race has 25 teams: 8 in the jeep category, 10 in trucks
+and 7 in motorcycles. Jeeps finish with probability 0.9, trucks with probability 0.7,
+and motorcycles with probability 0.6. After the race, three teams are chosen randomly
+from the participants.
+It is known that one of the selected teams finished
+and the other two did not. What is the probability that the three selected teams belong to different
+categories?
+
+\end{problem}
+
+\begin{problem}(1.2 points)
+\begin{enumerate}
+    \item (0.4 points) Let $A,B\subset\Omega$ be events. Recall the definition of
+    independence of $A$ and $B$. Prove that if $A$ and $B$ are independent, then $\overline A$ and
+    $B$ are independent too.
+
+    \item (0.4 points) Let $n>1$ be an integer and $A_1,\dots,A_n$ events. Recall that $A_1,\dots,A_n$
+    are mutually independent if, for every $\{i_1,\dots,i_k\}\subset\{1,\dots,n\}$,
+    \begin{equation}\label{ind}
+    \P(A_{i_1})\P(A_{i_2}) \dots \P(A_{i_k}) = \P(A_{i_1} \cap A_{i_2} \cap \dots \cap A_{i_k})
+    \, .
+    \end{equation}Prove that if $A_1,\dots,A_n$ are mutually independent,
+    then $\overline{A_1},\dots,\overline{A_n}$ are also mutually independent.
+
+
+    \item (0.4 points) Let $X$ take values in $\N$, and for $n\in\N$ put
+    $p_n:=\P(X=n)$. Define the expectation $\E X$ and variance $D X$. Prove that
+    \begin{equation}\label{last}
+    \sum_{k = 1}^\infty \P(X \geq k) = \E X \, .
+    \end{equation}
+\end{enumerate}
+
+
+\end{problem}
+
+\end{document}

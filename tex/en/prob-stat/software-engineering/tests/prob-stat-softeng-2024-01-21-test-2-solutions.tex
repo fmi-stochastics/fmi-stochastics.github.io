@@ -1,0 +1,338 @@
+\documentclass[a4paper]{report}
+\input{tex/en/preamble.tex}
+\setlength{\emergencystretch}{3em}
+\allowdisplaybreaks
+\begin{document}
+
+
+\noindent Probability and Statistics, 21.01.2024 \hfill Test 2
+
+\hrulefill
+
+\renewcommand{\P}{\mathbb{P}}
+\renewcommand{\D}{\mathbb{D}}
+
+\begin{it}
+The exact grading formula depends on the results. As an approximation, use 2 plus the points earned. Time allowed: 3 hours. Good luck.
+
+$m,n,k$ denote nonnegative integers.
+
+
+
+\end{it}
+
+\begin{problem}
+    Let $X$ have distribution function
+\[
+F_X(x) = \begin{cases}
+    0, & \text{for }x\leq0;\\
+    ax^2+bx, & \text{for }0<x\leq1;\\
+    1, & \text{for }x>1.
+\end{cases}
+\]
+    \begin{enumerate}
+        \item (0.25 points) Is $X$ a continuous random variable? If so, derive its density.
+        \item (0.25 points) Find $a,b$ if additionally $\P(X>0.75)=0.5$.
+        \item (0.25 points) If the expectation of a random variable $Y$ exists, then
+        \[\mathbb{E}[Y]=\int_0^\infty\mathbb{P}(Y>t)\D t-\int_{-\infty}^0\mathbb{P}(Y\leq t)\D t.\]
+        Prove this identity when $Y$ is continuous with density $f_Y$.
+        \item (0.25 points) Use the formula to find $\E X$.
+    \end{enumerate}
+\end{problem}
+
+\begin{solution}
+    \begin{enumerate}
+        \item Yes: it is continuous because it takes uncountably many values. It is also absolutely continuous because the given distribution function is differentiable:
+            \[f_X(x) = \frac{d}{dx}F_X(x) = \begin{cases}
+            0, & \text{for }x\leq0;\\
+            2ax+b, & \text{for }0<x<1;\\
+            0, & \text{for }x>1.
+            \end{cases} = (2ax + b)\mathbb{1}_{\{0<x<1\}}\]
+
+        \item We are also given $\P(X>0.75)=1-F_X(0.75)=0.5$. From the definition, $1=\P(X<1)=F_X(1)=a+b$. Solve the system:
+        \[
+        \begin{array}{|l} 1-F_X\left(\frac{3}{4}\right) = \frac{1}{2} \\ F_X(1) = 1\end{array} \Leftrightarrow
+        \begin{array}{|l} F_X\left(\frac{3}{4}\right) = \frac{1}{2} \\ F_X(1) = 1\end{array} \Leftrightarrow
+        \begin{array}{|l} \frac{9}{16}a + \frac{3}{4}b = \frac{1}{2} \\ a+b = 1\end{array}\]
+        Thus $(a,b)=\left(\frac16,\frac56\right)$.
+
+        \item The alternative expression for the expectation follows by interchanging the order of integration. We show that the right side equals the left. Consider the first summand:
+        \[\int_0^\infty\P(Y>t)dt = \int_0^\infty\left(\int_t^\infty f_Y(y)dy\right)dt = \int\limits_{\{0 < y < t\}}f_Y(y)d(t, y) = \int_0^\infty\left(\int_0^yf_Y(y)dt\right)dy =\]
+        \[\int_0^\infty\left(\int_0^ydt\right)f_Y(y)dy = \int_0^\infty yf_Y(y)dy\]
+
+        Similarly, for the second summand,
+        \[-\int_{-\infty}^0\P(Y\le t)dt = \int_{-\infty}^0yf_Y(y)dy\]
+
+        completing the proof.
+
+        Formally, we used Fubini's theorem, which allows the order of integration to be interchanged when the integral over the region is absolutely convergent. Explain why this applies here.
+        \item
+        \begin{align*}
+            \E[X]
+            &= \int_0^\infty\P(X>t)dt - \int_{-\infty}^0\P(X < t)dt \\
+            &= \int_0^\infty(1-F_X(t))dt - \underbrace{\int_{-\infty}^0F_X(t)dt}_{=0} \\
+            &= \int_0^1(1-ax^2-bx)dx + \underbrace{\int_1^\infty(1-F_X(x))dx}_{=0} \\
+            &= 1 - \frac{a}{3} - \frac{b}{2} \\
+            &= \frac{19}{36}
+        \end{align*}
+
+        To check the arithmetic, compare the result with the usual calculation $\int_0^1xf_X(x)\,dx$.
+
+    \end{enumerate}
+\end{solution}
+
+\begin{problem}
+    Let $U_1,U_2,U_3\sim U(0,1)$ be independent, and let $U_{(1)},U_{(2)},U_{(3)}$
+    be the values $U_1,U_2$
+    and $U_3$ in increasing order.
+
+\textit{For example, if $U_1=0.23$, $U_2=0.88$, $U_3=0.1$, then
+$U_{(1)}=0.1,$ $ U_{(2)}=0.23,$ $ U_{(3)}=0.88$. }
+    \begin{enumerate}
+        \item (0.25 points) Find the densities and expectations of $U_{(1)}:=\min\{U_1,U_2,U_3\}$ and $U_{(3)}:=
+        \max\{U_1, U_2, U_3\}$.
+        \item (0.25 points) Is it true that
+        $U_{(2)}\sim U(0,1)$? If yes, prove it;
+        otherwise find its distribution.
+        \item (0.25 points) Find the variance
+        of $X:=-\ln(U_1)$.
+    \end{enumerate}
+    Let $X_1,X_2,X_3,X_4\sim Exp(1)$
+    be independent.
+    \begin{enumerate}
+         \setcounter{enumi}{3}
+        \item (0.25 points) Find the densities,
+        expectations and variances of
+        $S_2:=X_1+X_2$, $S_3:=X_1+X_2+X_3$ and $S_4:=X_1+\dots+X_4$.
+        \item (0.5 points) Let $Y_k:={S_k}/{
+        S_4}$. Prove that $Y_{(k)}$ and $U_{(k)
+}$ have the same distribution for $k=1,2,3$.
+
+    \end{enumerate}
+\end{problem}
+
+\begin{solution}
+    \begin{enumerate}
+        \def\U#1{U_{(#1)}}
+        \def\F#1{F_{U_{(#1)}}}
+        \def\f#1{f_{U_{(#1)}}}
+        \def\Ex#1{E[U_{(#1)}]}
+        \item Proceed in the standard way (for $0<t<1$; outside this interval the result is immediate):
+        \begin{align*}
+            \F1(t) &= \P(\U1<t) = 1-\P(\U1>t) = 1 - \P(U_1>t)^3 = 1-(1-t)^3 \\
+            \Rightarrow \f1(t) &= \frac{d}{dt}\F1(t) = -3(1-t)^2\cdot(-1) = 3(1-t)^2 \\
+            \Rightarrow \Ex1 &= \int_0^1t\cdot3(1-t)^2dt = 3\int_0^1(t^3 - 2t^2 + t)dt = \dots = \frac{1}{4}
+        \end{align*}
+        \begin{align*}
+            \F3(t) &= \P(\U3<t) = \P(U_1 < t)^3 = t^3 \\
+            \Rightarrow \f3(t) &= 3t^2 \\
+            \Rightarrow \Ex3 &= \int_0^1t\cdot3t^2dt = 3\int_0^1t^3dt =\dots=\frac{3}{4}
+        \end{align*}
+
+        \item It is worth considering why the initial guess is misleading, but directly:
+        \begin{align*}
+            \F2(t) &= \P(\U2 < t) \\
+                &=\P\left(\text{at least two of the three independent values are }<t\right)\\
+                &= \P(Bin(3, t) \ge 2) \\
+                &= \binom{3}{2}t^2(1-t) + t^3 \\
+                &= 3t^2-2t^3 \\
+            \Rightarrow \f2(t) &= 6t - 6t^2 = 6t(1-t)
+        \end{align*}
+
+        \item Write $U:=U_1$. We have $X:=-\ln(U)=:g(U)\in[0,+\infty)$. The function $g$ is strictly decreasing and hence invertible; its inverse $h(x):=g^{-1}(x)=e^{-x}$ is differentiable. Changing variables,
+
+        \[f_X(x)=\underbrace{f_U(h(x))}_{=1}\cdot|\underbrace{h'(x)}_{-e^{-x}}|=e^{-x}\text{ for }0<x.\]
+
+        Hence $X\sim Exp(1)$, and we may use $\Ebb{X}
+        =DX=1$ or calculate directly:
+        \begin{align*}
+            \E[X] &= \int_{0}^{\infty}xe^{-x}dx = \dots = 1 \\
+            \E[X^2] &= \int_{0}^{\infty}x^2e^{-x}dx = \dots = 2 \\
+            \Rightarrow \D[X] &= 2 - 1 = 1
+        \end{align*}
+
+        \item Recall that a sum of independent identically distributed exponential random variables is gamma-distributed. If $X_i\sim Exp(\lambda)$ are independent, then
+        \[S_n := \sum_{i = 1}^nX_i \sim \Gamma(n, \lambda)\]
+
+        Thus, in general and (on the right) in our particular case, for $t>0$:
+        \begin{align*}
+            f_{S_n}(t) &= \frac{\lambda^nt^{n-1}e^{-\lambda t}}{(n-1)!} &&= \frac{t^{n-1}}{(n-1)!}e^{-t} \\
+            \E[S_n] &= \frac{n}{\lambda} &&= n \\
+            \D[S_n] &= \frac{n}{\lambda^2} &&= n
+        \end{align*}
+
+        The expectation and variance follow directly from independence. Even without using the gamma distribution, the density can be derived from the convolution formula for a sum of two independent random variables:
+        \begin{align*}
+            f_{S_2}(t) &\stackrel{t>0}{=} \int_{-\infty}^{+\infty}\underbrace{f_{X_1}(x)}_{=e^{-x}\cdot\mathbb{1}_{\{0<x\}}}\underbrace{f_{X_2}(t-x)}_{e^{-(t-x)}\cdot\mathbb{1}_{\{0 < t - x\}}}dx = \int_0^te^{-x}e^{x-t}dx = e^{-t}\int_0^tdx &&= te^{-t}\\
+            f_{S_3}(t) &\stackrel{t>0}{=} \int_{-\infty}^{+\infty}\underbrace{f_{S_2}(x)}_{=xe^{-x}\cdot\mathbb{1}_{\{0<x\}}}\underbrace{f_{X_3}(t-x)}_{e^{-(t-x)}\cdot\mathbb{1}_{\{0 < t - x\}}}dx = \int_0^txe^{-x}e^{x-t}dx = e^{-t}\int_0^txdx &&= \frac{t^2}{2}e^{-t}\\
+            f_{S_4}(t)&\stackrel{t>0}{=}\dots\text{ by induction}.
+        \end{align*}
+
+        \item For the last part, write
+        \[
+        Y_k = \frac{X_1 + \dots +  X_k}{(X_1 + \dots + X_k) +
+        (X_{k+1} + \dots + X_{4})} = \frac{S_k}{S_k + \widetilde{S}_{4-k}},
+        \]
+        where $\widetilde S_{4-k}$ is a copy of
+        $S_{4-k}$ independent of $S_k$. Then use the standard method
+        for the density of a transformation (a two-dimensional change of variables, its Jacobian, etc.).
+    \end{enumerate}
+\end{solution}
+
+\begin{problem}
+\begin{enumerate}
+    \item (0.25 points)
+In the manufacture of specialized automotive parts, the lengths of certain components are measured,
+and deviations from the recommended length are modelled with mean 0 and variance 9.
+A component is acceptable if its deviation from the recommended length is less than a threshold \(s\).
+What percentage of length errors fall within the acceptable range when \(s=1\)?
+Find \(s\) such that 95\% of components meet the acceptance criterion.
+
+\item (0.5 points) Let $X\sim N(1,1)$. To accuracy 0.01,
+find $\E|X|$.
+\end{enumerate}
+\end{problem}
+
+\begin{solution}
+    \begin{enumerate}
+        \item
+        \item \begin{align*}
+            \E[|X|] &= \int_{-\infty}^{+\infty}|x|f_X(x)dx \stackrel{t := x - 1}{=} \int_{-\infty}^{+\infty}|t+1|\underbrace{f_X(t+1)}_{f_Z(t)}dt \\
+            &= \int_{-\infty}^{-1}-(t+1)f_Z(t)dt + \int_{-1}^{+\infty}(t+1)f_Z(t)dt \\
+            &= \underbrace{-\int_{-\infty}^{-1}f_Z(t)dt}_{=-\Phi(-1)} + \underbrace{\int_{-1}^{+\infty}f_Z(t)dt}_{=1 - \Phi(-1)} - \underbrace{\int_{-\infty}^{-1}tf_Z(t)dt}_{t \mapsto -t} + \underbrace{\int_{-1}^{+\infty}tf_Z(t)dt}_{=\int_{-1}^{-1} + \int_1^\infty} \\
+            &=1-2\underbrace{\Phi(-1)}_{1-\Phi(1)}+2\int_1^\infty tf_Z(t)\,dt+\underbrace{\int_{-1}^1tf_Z(t)\,dt}_{=0\text{ (odd)}}\\
+            &= 2\Phi(1) - 1 + 2J
+        \end{align*}
+
+        It remains to calculate:
+        \begin{align*}
+            J := \int_1^\infty tf_Z(t)dt &= \int_1^\infty t\cdot\frac{1}{\sqrt{2\pi}}e^{-\frac{t^2}{2}}dt = -\frac{1}{\sqrt{2\pi}}\int_1^\infty e^{-\frac{t^2}{2}}d\left(-\frac{t^2}{2}\right) = -\frac{1}{\sqrt{2\pi}}\left[e^{-\frac{t^2}{2}}\right]_{t=1}^{t\to+\infty} = \frac{1}{\sqrt{2\pi e}}
+        \end{align*}
+
+        Finally:
+        \[\E[|X|] = -1 + 2\underbrace{\Phi(1)}_{\approx 0.841} + \underbrace{\frac{2}{\sqrt{2\pi e}}}_{\approx 0.484} \approx 1.166\]
+    \end{enumerate}
+\end{solution}
+
+\begin{problem}
+The plane is ruled by parallel lines spaced $2t$ apart. A needle of length $2l\leq2t$ is dropped
+at a random position.
+\begin{enumerate}
+    \item (0.5 points) What is the probability that the needle touches a line?
+
+\textit{Hint: Parametrize by the position of the needle's centre and its angle to the lines.}
+
+    \item (0.25 points) Suppose $l=t$.
+    What minimum number of independently dropped needles makes the probability that at least half cross a line at least 95\%?
+Explain how and why this procedure can estimate $\pi$.
+
+\item \textit{(0.25 points) Bonus: Solve part 1 when $l>t$.}
+\end{enumerate}
+\end{problem}
+
+\begin{solution}
+    This is known as Buffon's needle problem.
+    \begin{enumerate}
+        \item Let
+        \begin{align*}
+            X&:=\text{distance from the needle's centre to the nearest line}&&\sim U(0,t)\\
+            \theta&:=\text{acute angle between the needle and the nearest line}&&\sim U\left(0,\frac\pi2\right).
+        \end{align*}
+
+        The needle crosses the line if and only if $X\leq l\sin\theta$, so we seek:
+        \[p := \P(X \le l\sin\theta) = \int_0^{\frac{\pi}{2}}\int_{0}^{l\sin\theta}\frac{2}{\pi t}dtd\theta = \frac{2l}{\pi t}\]
+        See the linked \href{https://en.wikipedia.org/wiki/Buffon\%27s_needle_problem}{solution of Buffon's needle problem}.
+        \item Since $l=t$, $p=2/\pi$. Model the needle drops as Bernoulli trials: $S_n:=\sum_{i=1}^nX_i$, where the independent $X_i\sim Ber(p)$ indicate success when a needle crosses a line. We seek an estimate of $n$ such that
+        \[\P\left(S_n \ge \frac{1}{2}n\right) \ge 95\%\]
+
+        Use the CLT. First note $\mu:=\E[X_1]=p=2/\pi$ and $\sigma:=\sqrt{\D[X]}=\sqrt{p(1-p)}$. We require:
+
+        \[\P\left(\frac{S_n - n\mu}{\sigma\sqrt{n}} \ge \frac{\frac{n}{2} - n\mu}{\sigma\sqrt{n}}\right)
+        =\P\left(\frac{S_n-n\mu}{\sigma\sqrt n}\geq\frac{\sqrt n(\frac12-\mu)}{\sigma}\right)\stackrel{\text{CLT}}{\approx}
+        \P\left(Z \ge \underbrace{\frac{\sqrt{n}\left(\frac{1}{2} - \mu\right)}{\sigma}}_{=: C_n}\right) \ge 95\%\]
+
+        \begin{align*}
+            1 - \Phi\left(C_n\right) &\ge 95\% \\
+            \Phi(C_n)&\leq5\%&&\Phi\text{ is increasing, as is }\Phi^{-1}\\
+            C_n &\le \Phi^{-1}(5\%)\\
+            \frac{\sqrt n(\frac12-\mu)}{\sigma}&\leq\Phi^{-1}(5\%)&&C_n<0\text{ and decreases with }n,\text{ since }\tfrac12<\mu\\
+            \sqrt n&\geq\frac{\sigma\Phi^{-1}(5\%)}{\frac12-\mu}&&\text{note also }\Phi^{-1}(5\%)<0\\
+            n &\ge \left(\frac{\sigma \Phi^{-1}(5\%)}{\frac{1}{2}-\mu}\right)^2
+        \end{align*}
+
+        Approximating:
+        \begin{align*}
+            \Phi^{-1}(5\%) &\approx -1.645 \\
+            \sigma &\approx 0.481 \\
+            \mu &\approx 0.637 \\
+            \Rightarrow \left(\frac{\sigma \Phi^{-1}(5\%)}{\frac{1}{2}-\mu}\right)^2 &\approx 33.5387
+        \end{align*}
+
+        Finally, $n\geq34$.
+
+        The (strong) law of large numbers explains the estimate of $\pi$. Since $\frac1nS_n\stackrel{\text{a.s.}}{\longrightarrow}\mu=2/\pi$, estimate $\pi$ by $2/(\frac1nS_n)$. Consider how large $n$ should be for a desired accuracy.
+
+        \item See the long-needle case in the linked solution of \href{https://en.wikipedia.org/wiki/Buffon\%27s_needle_problem}{Buffon's needle problem}.
+    \end{enumerate}
+\end{solution}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

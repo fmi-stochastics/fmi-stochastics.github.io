@@ -1,0 +1,74 @@
+\documentclass[11pt,a4paper]{article}
+\input{tex/en/preamble.tex}
+\pagestyle{fancy}\fancyhf{}\lhead{Applied Mathematics: Test 2 solutions}\rhead{8 June 2024}
+\setlength{\headheight}{15pt}\pagenumbering{arabic}\cfoot{\thepage}
+\begin{document}
+\noindent\emph{English transcription of the original handwritten solution notes. Cross-references and the level of detail of the original are retained.}
+
+\section*{Problems 1 and 2}
+See Problems 1 and 2 of the Computer Science Test 2, 2024.
+
+\section*{Problem 3}
+See the exercise classes.
+
+\section*{Problem 4}
+Let $X,Y\sim\operatorname{Exp}(1)$ be independent and identically distributed.
+Recall that $\P(\operatorname{Exp}(\lambda)>t)=e^{-\lambda t}$.
+For $t>0$,
+\begin{align*}
+\P\left(\sqrt{X/Y}>t\right)
+&=\P(X>Yt^2)\\
+&=\int_0^\infty\P(X>yt^2)f_Y(y)\d y\\
+&=\int_0^\infty e^{-yt^2}e^{-y}\d y\\
+&=\frac1{1+t^2}\int_0^\infty e^{-y(1+t^2)}\d[y(1+t^2)]
+=\frac1{1+t^2},
+\end{align*}
+using $\int_0^\infty e^{-x}\d x=1$. Therefore,
+\[
+\E\sqrt{X/Y}=\int_0^\infty\P\left(\sqrt{X/Y}>t\right)\d t
+=\int_0^\infty\frac{\d t}{1+t^2}=\frac\pi2.
+\]
+Alternatively, use $F_{\sqrt{X/Y}}(t)=t^2/(1+t^2)$ and obtain the density by differentiating, $f=F'$, and so on.
+
+\subsection*{Second method}
+\begin{align*}
+\E\sqrt{X/Y}
+&=\int_0^\infty\int_0^\infty\sqrt{x/y}\,f_{X,Y}(x,y)\d x\d y\\
+&=\int_0^\infty\int_0^\infty\sqrt{x/y}\,e^{-x}e^{-y}\d x\d y\\
+&=\left(\int_0^\infty e^{-x}\sqrt x\d x\right)
+\left(\int_0^\infty e^{-y}\frac1{\sqrt y}\d y\right)\\
+&=\Gamma(3/2)\Gamma(1/2)=\frac12\Gamma(1/2)^2,
+\end{align*}
+where $\Gamma(z+1)=z\Gamma(z)$. By the first method,
+\[
+\frac12\Gamma(1/2)^2=\frac\pi2,
+\qquad\text{hence}\qquad\Gamma(1/2)=\sqrt\pi.
+\]
+
+\section*{Problem 5}
+See Problem 4 of the Software Engineering examination, February 2024.
+
+\section*{Problem 6}
+This is the proof of a special case of Cochran's theorem, divided into individual steps.
+
+\section*{Problem 7}
+\[
+e^{-n}\left(\frac{n^0}{0!}+\frac{n^1}{1!}+\cdots+\frac{n^n}{n!}\right)
+=\sum_{k=0}^n\P(\operatorname{Poi}(n)=k)
+=\P(\operatorname{Poi}(n)\le n).
+\]
+As seen earlier in the course, if $X_n\sim\operatorname{Poi}(n)$, then
+\[
+X_n\overset d=Y_1+\cdots+Y_n,
+\qquad Y_1,\ldots,Y_n\ \text{i.i.d.}\ \operatorname{Poi}(1),
+\qquad\E Y_i=D(Y_i)=1.
+\]
+Thus, by the central limit theorem,
+\begin{align*}
+\P(\operatorname{Poi}(n)\le n)
+&=\P(Y_1+\cdots+Y_n\le n)\\
+&=\P\left(\frac{Y_1+\cdots+Y_n-n}{\sqrt n}
+\le\frac{n-n}{\sqrt n}\right)\\
+&\longrightarrow\P(N(0,1)\le0)=\frac12.
+\end{align*}
+\end{document}

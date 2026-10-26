@@ -1,0 +1,51 @@
+% English translation of the Bulgarian source.
+\documentclass[a4paper]{report}
+\input{tex/en/preamble.tex}
+\begin{document}
+\noindent Probability and Statistics / SEM \hfill Written examination, 17 August 2022
+\hrulefill
+\begin{it}
+Your grade will be 2 plus the number of points you receive. Time allowed: 3 hours. Good luck.
+Throughout, we work on a probability space $(\Omega,\cF,\P)$.
+If needed, you may use $1^2+2^2+\dots+n^2=n(n+1)(2n+1)/6$.
+\end{it}
+\begin{problem}
+Suppose that every second a dart lands in a random square of the grid below.
+\begingroup
+\begin{center}
+\setlength{\tabcolsep}{1pt}
+\renewcommand{\arraystretch}{3}
+\begin{tabular}{|*{3}{>{\collectcell\fwcell}c<{\endcollectcell}|}}
+\hline & & \\ \hline & & \\ \hline & & \\ \hline
+\end{tabular}
+\end{center}
+\endgroup
+\begin{itemize}
+\item (0.5 points) What is the expected time until every square contains at least one dart?
+\item (0.3 points) What is the expected time until the first moment when some square contains two darts?
+\item (0.2 points) Can you generalize to an $n\times n$ grid?
+\end{itemize}
+\end{problem}
+\begin{problem}
+Let $(X_1,\dots,X_n)$ be a random permutation of the numbers in $\{1,2,\dots,n\}$, and let $S=X_1+\dots+X_n$.
+\begin{enumerate}
+\item (0.1 points) Find $\E S$ and $D S$.
+\item (0.1 points) Prove that for two random variables $X$ and $Y$, $D(X+Y)=DX+DY+2Cov(X,Y)$.
+\item (0.4 points) Express $\E S$ in terms of $\E X_i$. Find $\E X_i$, $\E X_i^2$ and $D X_i$ for every $i$.
+\item (0.4 points) Express $D S$ in terms of $D X_i$ and $Cov(X_i,X_j)$. Find $Cov(X_i,X_j)$ for all $i,j$.
+\end{enumerate}
+\end{problem}
+\begin{problem}
+Let $U_1,V_1,U_2,V_2,\dots$ be independent $U(0,1)$ random variables, and let $M_i=\max(U_i,V_i)$.
+\begin{itemize}
+\item (0.75 points) Find $D(M_1+\dots+M_n)$ for every $n$.
+\item (0.25 points) Give an approximation to the distribution of $M_1+\dots+M_n$ for large $n$.
+\end{itemize}
+\end{problem}
+\begin{problem}
+\begin{enumerate}
+\item (0.5 points) Let $X_1,\dots,X_n$ be independent identically distributed random variables with density $f_X(x)=c/x^4$ for $x>1$, and 0 otherwise. If $S_n=X_1+\dots+X_n$, find constants $a,b,c$ such that $(S_n-a)/b$ is approximately standard normal, and justify your answer.
+\item (0.5 points) Let $X_1,\dots,X_{40}$ be independent $Poi(10)$ random variables. Find a constant $a$ such that $X_1+\dots+X_{40}\in(a,\infty)$ with probability at least $99\%$.
+\end{enumerate}
+\end{problem}
+\end{document}

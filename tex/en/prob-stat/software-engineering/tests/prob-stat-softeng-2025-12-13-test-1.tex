@@ -1,0 +1,90 @@
+\documentclass[a4paper]{report}
+\input{tex/en/preamble.tex}
+\setlength{\emergencystretch}{3em}
+\allowdisplaybreaks
+\begin{document}
+
+
+\noindent Software Engineering, 13.12.2025 \hfill Test 1
+
+\hrulefill
+
+\begin{it}
+The exact grading formula depends on the results. As an approximation, use 2 plus the points earned. Time allowed: 3 hours. Good luck.
+
+
+
+
+
+\end{it}
+
+\begin{problem}~
+\begin{enumerate}
+\item (0.25 points) A box contains 12 distinguishable bolts, five defective. Four bolts are chosen at random. What is the probability that no two defective bolts are adjacent in the order chosen?
+    \item (0.25 points) $X,Y$ have the following joint distribution:
+$$\begin{array}{c|ccc}
+Y \backslash X & 1 & 2 & 4 \\
+\hline
+-1 & 3/15 & 1/15 & 0 \\
+0 & \alpha & 2\alpha & 3/15 \\
+1 & 1/15 & 0 & 1/15 \\
+\end{array}$$
+Find $\alpha$, the marginal distributions of $X,Y$, $\Ebb X$, $\Ebb Y$, $Cov(X,Y)$ and $\rho_{\tiny X,Y}$.
+    \item (0.25 points) A factory produces items that are defective independently with probability $0.02$. Inspect items until three defective ones are found. Let $X$ be the number inspected. Find $\mathbb P(X>100)$. Estimate the probability that fewer than 500 inspections are needed.
+    \item (0.25 points) Let $X\sim\mbox{Po}(\lambda_1)$ and $Y\sim\mbox{Po}(\lambda_2)$ be independent. Define $T:=X+Y$. Find the conditional distribution and expectation of $X$ given $T$.
+\end{enumerate}
+\end{problem}
+
+\begin{problem} (1 point)
+A young estate agent calls the numbers in a telephone directory in order\footnote{Assume infinitely many numbers.} until selling a luxury property in Kapinova Ravnina. Each call succeeds with probability $\alpha$. Let $N$ count people who decline. The agent also asks those who decline for their email addresses to add to a mailing list. Given $N=n$, each of these $n$ people supplies an email address with probability $\beta$, independently. If $X$ is the number of addresses collected, identify its distribution and find its expectation and variance.
+\end{problem}
+
+\begin{problem} (1 point)
+    In a game, a fair die is rolled. Initially, there are ten rolls available. A six awards five bonus rolls, and a five awards three. Bonuses may be awarded at most twice: after two awards (of either size), later fives or sixes give no extra rolls. Find the expected total number of rolls.
+\end{problem}
+
+
+\begin{problem}
+A flamingo jumps along the integers, starting at 0. At each step it uniformly chooses one of the next three integers (from $m\in\mathbb N_0$, it moves to $m+1,m+2,m+3$ with equal probabilities). Let $X_n$ be its position after step $n\in\mathbb N$.
+\begin{enumerate}
+    \item (0.25 points) Find the distribution of $X_2$ and calculate $\mathbb P(X_3=6)$.
+    \item (0.25 points) Find the expectation and variance of $X_n$.
+    \item (0.25 points) Find $\rho_{X_n,X_{n+k}}$. What happens as $k\to\infty$?
+\end{enumerate}
+Let $\tau_m$ count the steps until the flamingo reaches $m\in\mathbb N$, and put $\tau_m=\infty$ if it never does.
+\begin{enumerate}
+    \item[4.] (0.25 points) Calculate $\mathbb P(\tau_4=2)$, $\mathbb P(\tau_4=3)$ and $\mathbb P(\tau_4<\infty)$.
+    \item[5.] (0.25 points) Calculate $\E[\tau_5\mid\tau_5<\infty]$.
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+\end{problem}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

@@ -1,0 +1,59 @@
+\documentclass[a4paper]{report}
+\input{tex/en/preamble.tex}
+\begin{document}
+\noindent Probability Theory and Mathematical Statistics, 2024/2025 \hfill Homework 2 bis
+\hrulefill
+\begin{it}The maximum total across the three homework assignments this semester is 50 points, corresponding to a bonus of 0.5 on the tutorial grade. Throughout, work on a probability space $(\Omega,\mathcal A,\P)$.\end{it}
+\begin{problem} (2 points)
+A person starts at $n\in\mathbb N$ on the number line, moving one step right with probability $p>1/2$ and one step left with probability $1-p$. Let $p_n$ be the probability of reaching 0 when starting at $n$. Express $p_1,p_2,p_3$ in terms of $p$.
+\end{problem}
+\begin{problem} (2 points)
+Students enter an examination one at a time and show their identity cards. It is announced that the first student whose birthday matches that of a student who has already entered receives a one-point grade bonus. Which position in the queue gives you the greatest chance of winning?
+\end{problem}
+\begin{problem} (2 points)
+A rabbit starts at 0 and makes independent jumps uniformly distributed on $[0,1]$ in the positive direction. The interval $[1-x,1]$ is a trap of length $x\in[0,1]$. What is the probability that the rabbit jumps over the trap?
+\end{problem}
+\begin{problem} (6 points; simulating random variables)
+Assume that we can readily simulate $U(0,1)$ variables. This may be a mathematical task, constructing deterministic sequences that ``look like'' independent uniform samples (pseudorandom numbers), or a technological task using physical phenomena.
+
+We study three classical algorithms for simulating a value $X$ from a specified distribution: inversion of $F_X$, rejection sampling, and the Box--Muller method.
+
+\textbf{Method 1}
+\begin{enumerate}
+\item Let $U\sim U(0,1)$. What is the distribution of $F_X^{-1}(U)$?\footnote{If $F_X$ is not strictly increasing, its ordinary inverse may not exist everywhere. One usually uses the generalized inverse $F_X^{-1}(t)=\inf\{x\in\mathbb R:F_X(x)\geq t\}$. For our purposes you may assume an ordinary inverse.} Use this to propose simulations of:
+\begin{enumerate}
+\item $X\sim\mathrm{Exp}(\lambda)$, $\lambda>0$;
+\item $X\sim\mathrm{Cauchy}(c)$, $c>0$, with $f_X(x)=c/[\pi(c^2+x^2)]$;
+\item $X\sim\mathrm{Pareto}(\theta)$, $\theta>0$, with $f_X(x)=\theta x^{-1-\theta}\mathbbm1_{\{x\geq1\}}$.
+\end{enumerate}
+\item What phenomena do these distributions model, and why? Generate samples and illustrate the law of large numbers and central limit theorem in all three cases.
+\item What difficulties arise if this method is used for normal or gamma distributions?
+\end{enumerate}
+\textbf{Method 2}
+The following algorithm, associated with ideas of von Neumann from 1949--1950, simulates a variable with density $f_X$:
+\begin{itemize}
+\item Choose a variable $Y$ that is easy to simulate, for example by Method 1, with density $f_Y$ satisfying $f_X(x)/f_Y(x)\leq c$ for all $x$ and some $c>0$.
+\item Generate a value of $Y$.
+\item Independently generate $U\sim U(0,1)$.
+\item If $U\leq f_X(Y)/[cf_Y(Y)]$, accept $Y$ as a sample from $X$; otherwise reject it and repeat.
+\end{itemize}
+\begin{enumerate}
+\item Prove that the algorithm is correct.
+\item Generate $X\sim N(\mu,\sigma^2)$. \emph{One possibility is to use an exponential proposal after a suitable transformation.}
+\item Let $X\sim\Gamma(\alpha,1)$, with density $f_X(x)=x^{\alpha-1}e^{-x}\mathbbm1_{\{x>0\}}/\Gamma(\alpha)$.
+\begin{enumerate}
+\item For $\alpha<1$, consider $Y$ with density
+\[f_Y(x)=\frac{\alpha e}{\alpha+e}\left(x^{\alpha-1}\mathbbm1_{\{0<x<1\}}+e^{-x}\mathbbm1_{\{x\geq1\}}\right).\]
+\item Show that this is a density. How would you simulate $Y$ using Method 1?
+\item Can Method 2 be used to generate $\Gamma(\alpha,1)$ variables for $\alpha<1$?
+\item How would you simulate $\Gamma(\alpha,\beta)$ using this method and properties of the gamma distribution?
+\end{enumerate}
+\end{enumerate}
+\textbf{Method 3}
+\begin{enumerate}
+\item Let $X^2\sim\mathrm{Exp}(1/2)$ and $\Theta\sim U(0,2\pi)$ be independent. Find the distributions of $Z_1=R\cos\Theta$ and $Z_2=R\sin\Theta$. Are they independent?
+\item How would you use this to simulate $n$ independent $N(\mu,\sigma)$ variables?
+\end{enumerate}
+A frequently used distribution (why?) is the lognormal: $X\sim\mathrm{Lognormal}(\mu,\sigma^2)$ when $\ln X\sim N(\mu,\sigma)$. Propose three ways to simulate it.
+\end{problem}
+\end{document}

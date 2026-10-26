@@ -1,0 +1,208 @@
+\documentclass[11pt,a4paper]{article}
+\input{tex/en/preamble.tex}
+\pagestyle{fancy}\fancyhf{}\lhead{Computer Science: Test 2 solutions}\rhead{8 June 2024}
+\setlength{\headheight}{15pt}\pagenumbering{arabic}\cfoot{\thepage}
+\begin{document}
+\noindent\emph{English transcription of the handwritten solution notes. Original calculations are retained; apparent inconsistencies are identified in the transcription notes.}
+
+\section*{Problem 1}
+We have $\E X_i=5011$ and $D(X_i)=4000$.
+\subsection*{1. The sum}
+Let $S_n=\sum_{i=1}^nX_i$. We seek $n$ such that $\P(S_n>10^6)\ge99\%$. By the central limit theorem,
+\begin{align*}
+\P(S_n>10^6)
+&=\P\left(\frac{S_n-\E S_n}{\sqrt{D(S_n)}}>
+\frac{10^6-5011n}{\sqrt{4000n}}\right)\\
+&\approx\P\left(N(0,1)>\frac{10^6-5011n}{\sqrt{4000n}}\right).
+\end{align*}
+For this to be at least $99\%$, require
+\[
+\frac{10^6-5011n}{\sqrt{4000n}}<-2.33,
+\qquad\text{giving}\qquad n\ge200.
+\]
+
+\subsection*{2. The maximum}
+We seek $n$ such that
+\[
+\P\left(\max_{1\le i\le n}X_i>10^4\right)\ge99\%.
+\]
+Equivalently,
+\[
+\P\left(\max_{1\le i\le n}X_i\le10^4\right)\le1\%,
+\qquad [\P(X_1\le10^4)]^n\le1\%.
+\]
+Writing $p=\P(X_1\le10^4)$, this gives
+\[
+n\ge\frac{\ln(1/100)}{\ln p}.
+\]
+To obtain a particular value of $p$, a specific distribution of $X_i$ must be chosen. If $X_i\sim N(5011,4000)$, then
+\[
+\P(X_1\le10^4)=\P\left(N(0,1)\le\frac{10^4-5011}{\sqrt{4000}}\right)
+\approx\P(N(0,1)\le78.88).
+\]
+Thus the probability for the maximum involves $\Phi(78.88)^n$.
+All solutions that reach an expression of this kind receive the maximum possible number of points.
+
+\subsection*{Bonus: an explicit bound}
+To find an explicit value of $n$ such that $\Phi(78.88)^n\le1\%$, note that although $\Phi(78.88)$ is very close to 1, raising it to a sufficiently high power makes it close to 0.
+The standard bounds for $\P(N(0,1)>x)=1-\Phi(x)$ are
+\[
+\left(\frac1x-\frac1{x^3}\right)\frac{e^{-x^2/2}}{\sqrt{2\pi}}
+\le1-\Phi(x)\le\frac1x\frac{e^{-x^2/2}}{\sqrt{2\pi}}.
+\]
+\paragraph{Proof.} Integrate by parts twice:
+\begin{align*}
+1-\Phi(x)&=\int_x^\infty\frac1{\sqrt{2\pi}}e^{-t^2/2}\d t\\
+&=\frac1{\sqrt{2\pi}}\left(-\int_x^\infty\frac1t\d(e^{-t^2/2})\right)\\
+&=\frac1{\sqrt{2\pi}}\left(\frac1x e^{-x^2/2}
++\int_x^\infty e^{-t^2/2}\d(1/t)\right)\\
+&=\frac1{\sqrt{2\pi}}\left(\frac1x e^{-x^2/2}
+-\int_x^\infty\frac1{t^2}e^{-t^2/2}\d t\right)\\
+&=\frac1{\sqrt{2\pi}}\left(\frac1x e^{-x^2/2}
++\int_x^\infty\frac1{t^3}\d(e^{-t^2/2})\right)\\
+&=\frac1{\sqrt{2\pi}}\left(\frac1x e^{-x^2/2}-\frac1{x^3}e^{-x^2/2}
+-\int_x^\infty e^{-t^2/2}\d(1/t^3)\right).
+\end{align*}
+The final line in the original is written
+\[
+=\frac1{\sqrt{2\pi}}\left(\frac1x-\frac1{x^3}\right)e^{-x^2/2}
+-\frac3{\sqrt{2\pi}}\int_x^\infty\frac1{t^4}e^{-t^2/2}\d t
+\ge\frac1{\sqrt{2\pi}}\left(\frac1x-\frac1{x^3}\right)e^{-x^2/2}.\tag{Note 1}
+\]
+Hence, for $x=78.88$,
+\[
+\Phi(78.88)\le1-\left(\frac1x-\frac1{x^3}\right)
+\frac{e^{-x^2/2}}{\sqrt{2\pi}}.
+\]
+It is sufficient to find $n$ such that
+\[
+\left[1-\left(\frac1x-\frac1{x^3}\right)
+\frac{e^{-x^2/2}}{\sqrt{2\pi}}\right]^n\le1\%.
+\]
+The source next writes
+\[
+n\ln\left[1-\left(\frac1x-\frac1{x^3}\right)
+\frac{e^{-x^2/2}}{\sqrt{2\pi}}\right]\le1\%.\tag{Note 2}
+\]
+Using $\ln(1+u)\le u$ (or $\ln(1-u)\sim-u$), the subsequent line is
+\[
+n\left[-\left(\frac1x-\frac1{x^3}\right)
+\frac{e^{-x^2/2}}{\sqrt{2\pi}}\right]\le\ln(1/100).
+\]
+This gives the sufficient bound
+\[
+n\ge\ln(100)e^{x^2/2}\sqrt{2\pi}\,\frac{x^3}{x^2-1},
+\qquad\text{and thus}\qquad n\ge1.16\cdot10^{1354}!
+\]
+
+\section*{Problem 2}
+See Problem 3 of the Software Engineering examination, January 2020/2021.
+
+\section*{Problem 3}
+Let $X\sim\operatorname{Exp}(\alpha^{-1})$ and $Y\sim\operatorname{Exp}(\beta^{-1})$.
+\subsection*{1. Estimating the mean}
+We seek $c$ such that $\P(|\alpha-\overline X|>c)\le1\%$.
+The handwritten source gives the following CLT normalization for large $n$:
+\[
+\frac{\overline X-\alpha}{\alpha\sqrt n}\approx Z\sim N(0,1).\tag{Note 3}
+\]
+It therefore seeks $c$ such that
+\[
+\P\left(|Z|>\frac c{\alpha\sqrt n}\right)\le1\%
+\quad\Longleftrightarrow\quad
+\P\left(Z>\frac c{\alpha\sqrt n}\right)\le0.5\%.
+\]
+The source concludes
+\[
+\frac c{\alpha\sqrt n}\approx2.57,
+\qquad c\approx2.57\alpha\sqrt n.\tag{Note 3}
+\]
+
+\subsection*{2. The ratio}
+Set $Z_i=\sqrt{X_i/Y_i}$. If $\E Z_i<\infty$, the strong law of large numbers gives
+\[
+\frac{Z_1+\cdots+Z_n}{n}\longrightarrow\E Z_1
+\qquad\text{almost surely}.
+\]
+\paragraph{First method.} For $t>0$, using $\P(\operatorname{Exp}(\lambda)>t)=e^{-\lambda t}$,
+\begin{align*}
+\P\left(\sqrt{X/Y}>t\right)
+&=\P(X>Yt^2)=\int_0^\infty\P(X>yt^2)f_Y(y)\d y\\
+&=\int_0^\infty e^{-yt^2/\alpha}\frac1\beta e^{-y/\beta}\d y\\
+&=\left(\frac{t^2}\alpha+\frac1\beta\right)^{-1}\frac1\beta
+\int_0^\infty e^{-y(t^2/\alpha+1/\beta)}\d\left[y(t^2/\alpha+1/\beta)\right]\\
+&=\frac{\alpha\beta}{\beta t^2+\alpha}\frac1\beta
+=\frac\alpha{\beta t^2+\alpha}.
+\end{align*}
+The integral after substitution equals $\int_0^\infty e^{-x}\d x=1$. Therefore,
+\begin{align*}
+\E\sqrt{X/Y}
+&=\int_0^\infty\P\left(\sqrt{X/Y}>t\right)\d t\\
+&=\int_0^\infty\frac\alpha{\beta t^2+\alpha}\d t
+=\int_0^\infty\frac1{(\beta/\alpha)t^2+1}\d t\\
+&=\sqrt{\frac\alpha\beta}\int_0^\infty\frac{\d y}{1+y^2}
+=\sqrt{\frac\alpha\beta}\frac\pi2,
+\end{align*}
+where $y=\sqrt{\beta/\alpha}\,t$. This is different from
+$\sqrt{\E X/\E Y}=\sqrt{\alpha/\beta}$.
+
+\paragraph{Second method.} Independence gives
+\[
+f_{X,Y}(x,y)=f_X(x)f_Y(y)=\frac1\alpha e^{-x/\alpha}\frac1\beta e^{-y/\beta}.
+\]
+Thus
+\begin{align*}
+\E\sqrt{X/Y}
+&=\int_0^\infty\int_0^\infty\sqrt{x/y}\,
+\frac1\alpha e^{-x/\alpha}\frac1\beta e^{-y/\beta}\d x\d y\\
+&=\left(\int_0^\infty\sqrt x\frac1\alpha e^{-x/\alpha}\d x\right)
+\left(\int_0^\infty\frac1{\sqrt y}\frac1\beta e^{-y/\beta}\d y\right).
+\end{align*}
+Substitute $x'=x/\alpha$ and $y'=y/\beta$. The factors $\sqrt\alpha$ and $1/\sqrt\beta$ can be taken outside, giving
+\[
+\E\sqrt{X/Y}=\sqrt{\frac\alpha\beta}\Gamma(3/2)\Gamma(1/2)
+=\sqrt{\frac\alpha\beta}\frac12\Gamma(1/2)^2
+=\sqrt{\frac\alpha\beta}\frac\pi2.
+\]
+Here $\Gamma(z)=\int_0^\infty x^{z-1}e^{-x}\d x$ and $\Gamma(z+1)=z\Gamma(z)$.
+
+\paragraph{Third method.} Introduce $Z=\sqrt{X/Y}$ and $W=\sqrt Y$, so $X=Z^2W^2$ and $Y=W^2$. The Jacobian is
+\[
+|J|=\begin{vmatrix}2zw^2&2z^2w\\0&2w\end{vmatrix}=4zw^3.
+\]
+Thus, for $z,w>0$,
+\[
+f_{Z,W}(z,w)=f_{X,Y}(z^2w^2,w^2)\,4zw^3
+=\frac1{\alpha\beta}e^{-z^2w^2/\alpha-w^2/\beta}\,4zw^3.
+\]
+Integrating out $w$,
+\begin{align*}
+f_Z(z)&=\int_0^\infty\frac1{\alpha\beta}
+e^{-w^2(1/\beta+z^2/\alpha)}\,4zw^3\d w\\
+&=\frac{4z}{\alpha\beta}\frac12\int_0^\infty
+e^{-w^2(1/\beta+z^2/\alpha)}w^2\d(w^2)\\
+&=\frac{2z}{\alpha\beta}\left(\frac1\beta+\frac{z^2}\alpha\right)^{-2}
+\int_0^\infty e^{-y}y\d y\\
+&=\frac{2z}{\alpha\beta}\frac{(\alpha\beta)^2}{(\alpha+\beta z^2)^2}
+=\frac{2\alpha\beta z}{(\alpha+\beta z^2)^2}
+=2\frac\beta\alpha\frac z{(1+(\beta/\alpha)z^2)^2}.
+\end{align*}
+We used $y=w^2(1/\beta+z^2/\alpha)$ and $\int_0^\infty ye^{-y}\d y=\E[\operatorname{Exp}(1)]=1$.
+Finally, with $z=\sqrt{\alpha/\beta}\,y$,
+\begin{align*}
+\E Z&=\int_0^\infty z\,2\frac\beta\alpha\frac z{(1+(\beta/\alpha)z^2)^2}\d z\\
+&=2\sqrt{\frac\alpha\beta}\int_0^\infty\frac{y^2}{(1+y^2)^2}\d y
+=2\sqrt{\frac\alpha\beta}\frac\pi4
+=\frac\pi2\sqrt{\frac\alpha\beta}.
+\end{align*}
+
+\section*{Problem 4}
+See Problem 4 of the Software Engineering examination, February 2024.
+
+\section*{Transcription notes}
+\begin{enumerate}
+\item The remainder after the second integration by parts should have a plus sign. The minus sign in the original conflicts with its next inequality.
+\item After taking logarithms, the right-hand side should be $\ln(1/100)$ rather than $1\%$. The original's following line uses the logarithm.
+\item The original repeatedly writes $\alpha\sqrt n$ for the standard deviation of the sample mean. For $X_i\sim\operatorname{Exp}(1/\alpha)$ it is $\alpha/\sqrt n$. The corresponding approximate bound is $c\approx2.57\alpha/\sqrt n$.
+\end{enumerate}
+\end{document}

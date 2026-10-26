@@ -1,0 +1,166 @@
+\documentclass[a4paper]{report}
+\input{tex/en/preamble.tex}
+\setlength{\emergencystretch}{3em}
+\allowdisplaybreaks
+\begin{document}
+
+
+\noindent Probability and Statistics, 21.01.2024 \hfill Test 2
+
+\hrulefill
+
+\begin{it}
+The exact grading formula depends on the results. As an approximation, use 2 plus the points earned. Time allowed: 3 hours. Good luck.
+
+$m,n,k$ denote nonnegative integers.
+
+
+
+\end{it}
+
+\begin{problem}
+    Let $X$ have distribution function
+\[
+F_X(x) = \begin{cases}
+    0, & \text{for }x\leq0;\\
+    ax^2+bx, & \text{for }0<x\leq1;\\
+    1, & \text{for }x>1.
+\end{cases}
+\]
+    \begin{enumerate}
+        \item (0.25 points) Is $X$ a continuous random variable? If so, derive its density.
+        \item (0.25 points) Find $a,b$ if additionally $\P(X>0.75)=0.5$.
+        \item (0.25 points) If the expectation of a random variable $Y$ exists, then
+        \[\mathbb{E}[Y]=\int_0^\infty\mathbb{P}(Y>t)\D t-\int_{-\infty}^0\mathbb{P}(Y\leq t)\D t.\]
+        Prove this identity when $Y$ is continuous with density $f_Y$.
+        \item (0.25 points) Use the formula to find $\E X$.
+    \end{enumerate}
+\end{problem}
+
+\begin{problem}
+    Let $U_1,U_2,U_3\sim U(0,1)$ be independent, and let $U_{(1)},U_{(2)},U_{(3)}$
+    be the values $U_1,U_2$
+    and $U_3$ in increasing order.
+
+\textit{For example, if $U_1=0.23$, $U_2=0.88$, $U_3=0.1$, then
+$U_{(1)}=0.1,$ $ U_{(2)}=0.23,$ $ U_{(3)}=0.88$. }
+    \begin{enumerate}
+        \item (0.25 points) Find the densities and expectations of $U_{(1)}:=\min\{U_1,U_2,U_3\}$ and $U_{(3)}:=
+        \max\{U_1, U_2, U_3\}$.
+        \item (0.25 points) Is it true that
+        $U_{(2)}\sim U(0,1)$? If yes, prove it;
+        otherwise find its distribution.
+        \item (0.25 points) Find the variance
+        of $X:=-\ln(U_1)$.
+    \end{enumerate}
+    Let $X_1,X_2,X_3,X_4\sim Exp(1)$
+    be independent.
+    \begin{enumerate}
+         \setcounter{enumi}{3}
+        \item (0.25 points) Find the densities,
+        expectations and variances of
+        $S_2:=X_1+X_2$, $S_3:=X_1+X_2+X_3$ and $S_4:=X_1+\dots+X_4$.
+        \item (0.5 points) Let $Y_k:={S_k}/{
+        S_n}$. Prove that $Y_{(k)}$ and $U_{(k)
+}$ have the same distribution for $k=1,2,3$.
+
+    \end{enumerate}
+\end{problem}
+
+\begin{problem}
+\begin{enumerate}
+    \item (0.25 points)
+In the manufacture of specialized automotive parts, the lengths of certain components are measured,
+and deviations from the recommended length are modelled with mean 0 and variance 9.
+A component is acceptable if its deviation from the recommended length is less than a threshold \(s\).
+What percentage of length errors fall within the acceptable range when \(s=1\)?
+Find \(s\) such that 95\% of components meet the acceptance criterion.
+
+\item (0.5 points) Let $X\sim N(1,1)$. To accuracy 0.01,
+find $\E|X|$.
+\end{enumerate}
+
+
+
+
+\end{problem}
+
+\begin{problem}
+The plane is ruled by parallel lines spaced $2t$ apart. A needle of length $2l\leq2t$ is dropped
+which lands at
+
+a random position.
+\begin{enumerate}
+    \item (0.5 points) What is the probability that the needle touches a line?
+
+\textit{Hint: Parametrize by the position of the needle's centre and its angle to the lines.}
+
+    \item (0.25 points) Suppose $l=t$.
+    What minimum number of independently dropped needles makes the probability that at least half cross a line at least 95\%?
+Explain how and why this procedure can estimate $\pi$.
+
+\item \textit{(0.25 points) Bonus: Solve part 1 when $l>t$.}
+\end{enumerate}
+
+\end{problem}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

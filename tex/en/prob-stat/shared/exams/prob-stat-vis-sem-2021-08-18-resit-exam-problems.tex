@@ -1,0 +1,60 @@
+% English translation of the Bulgarian source.
+\documentclass[a4paper]{report}
+\input{tex/en/preamble.tex}
+\begin{document}
+\noindent \textcolor{gray}{Probability and Statistics / SEM, CS/SE, Year 3, 18 August 2021. Name:}
+\hfill \textcolor{gray}{Student no.:\qquad\qquad}
+\hrulefill
+\begin{it}
+Each subpart is worth 0.5 points. Your grade will be 1.5 plus the number of points you receive. Good luck.
+Throughout, we work on a probability space $(\Omega,\cF,\P)$.
+\end{it}
+\begin{problem}
+While hiking, you reach a fork and are unsure which direction leads to your destination. On average, $2/3$ of the visitors are well-meaning tourists who answer correctly in $1/6$ of cases, and the remaining $1/3$ are experienced locals who never make mistakes.
+Answers to different questions are independent, even if you ask the same person the same question!
+\begin{enumerate}
+\item You ask a random passer-by which of the two directions is correct, left or right. If the answer is ``left'', what is the probability that it is correct?
+\item You repeat the same question to the same passer-by and receive the same answer. What is the probability that it is correct? \textit{(Since the answers are random and independent, you do not know a priori whether you will receive the same answer or whether the first answer was correct.)}
+\end{enumerate}
+\end{problem}
+\begin{problem}
+We randomly fill one byte. Equivalently, we consider the numbers from $00000000_{(2)}$ to $11111111_{(2)}$, that is, from $0_{(10)}$ to $255_{(10)}$. The first bit, from left to right, is chosen to be 1 with probability $1/2$, the second with probability $1/4$, and so on.
+\begin{center}
+\begin{tikzpicture}[thick,scale=0.6, every node/.style={scale=1.5}]
+\Byte {0, 1, 0, 0, 0, 1, 1, 1}
+\end{tikzpicture}
+\end{center}
+\begin{enumerate}
+\item What is the expected number of ones?
+\item What is the expected value of the number represented by the resulting byte in decimal notation? In the example above, the number is $71$.
+\end{enumerate}
+\end{problem}
+\begin{problem}
+$A$ and $B$ pass the time by choosing numbers with distribution $U([0,1])$, for example on their computers, in rounds: first they each choose one number, then another, and so on. Without much knowledge of probability, they decide to check how often ``large'' numbers occur, say numbers greater than $0.75$. They choose two methods:
+\begin{enumerate}
+\item Each chooses 5 numbers, and they calculate the fraction of the 10 numbers that are greater than $0.75$.
+\item As above, but each simulates 500 numbers.
+
+Determine the average answers they would obtain under each procedure. What are the variances of the different methods? Which method would you choose, and why?
+\item Over a large number of rounds, in what fraction of them will both numbers be greater than $0.75$? What is the expected number of rounds until at least one of the two numbers is greater than $0.75$?
+\end{enumerate}
+\begin{it}
+Here is a sample realization:
+\begin{center}
+\begin{tabular}{l||l|l|l|l|l}
+Round &1&2&3&4&5\\
+$A$ &0.167&0.518&0.991&0.364&0.496\\
+$B$ &0.296&0.840&0.755&0.143&0.646
+\end{tabular}
+\end{center}
+The proportion in part 1 is $3/10$, the proportion in part 3 is $1/5$, and the number of rounds until at least one number exceeds $0.75$ is 2.
+\end{it}
+\end{problem}
+\begin{problem}
+A property near FMI costs EUR 250,000. An experienced estate agent can negotiate a different price, with the percentage change in the price being a random variable $X_1\sim N(-10,10)$. If you negotiate yourself, you can change the price by $X_2\sim N(0,100)$ percent, where $X_1$ and $X_2$ are independent.
+\begin{enumerate}
+\item What is the probability that the price is better if you negotiate yourself than if you use an agent?
+\item What is the probability of negotiating a price below EUR 225,000 in each case?
+\end{enumerate}
+\end{problem}
+\end{document}

@@ -1,0 +1,68 @@
+\documentclass[a4paper]{report}
+\input{tex/en/preamble.tex}
+\setlength{\emergencystretch}{3em}
+\allowdisplaybreaks
+\begin{document}
+
+
+\noindent Software Engineering, 02.02.2026 \hfill Exam
+
+\hrulefill
+
+\begin{it}
+The exact grading formula depends on the results. As an approximation, use 2 plus the points earned. Justify every answer with clear, detailed calculations. Electronic devices (except ordinary calculators) and additional materials are prohibited.
+
+Time allowed: 3 hours. Good luck.
+
+
+
+
+
+\end{it}
+
+\vspace{0.6cm}
+
+\begin{problem} (1 point)
+A website randomly displays one of $m$ advertisements whenever the page loads. Let $M$ be the number of advertisements not shown after $n$ loads, and $A$ the event that advertisement 1 has not been shown after $n$ loads. Find $\mathbb P(M=0)$, $\mathbb E[M]$, $\mbox{Var}(M)$, $\mathbb P(M=0|A^c)$ and $\mathbb P(A|M=1)$.
+\end{problem}
+
+\vspace{0.2cm}
+
+\begin{problem} (1 point) The number of comments on a popular influencer's latest post is $N\sim\mbox{Po}(120)$. Each comment is positive with probability $30\%$, independently of the others. Let $A$ be the number of positive comments.
+\begin{enumerate}
+    \item Given exactly $100$ comments, how many do you expect to be positive?
+    \item Given exactly $40$ positive comments, what total number of comments do you expect?
+    \item What is the correlation between the positive and total comment counts?
+    \item Given exactly $120$ comments, approximately what is the probability that the percentage of positive comments differs from 30\% by more than 5 percentage points?
+\end{enumerate}
+\end{problem}
+
+\vspace{0.2cm}
+
+\begin{problem} (1 point)
+In a fictional model, the National Statistical Institute represents quarterly economic growth by a random variable $\Theta$ (in percent). Before collecting data, growth is assumed to fluctuate around zero: $\Theta\sim\mbox{N}(0,4)$. A preliminary report based on incomplete data gives growth $X$. If true growth is $\Theta=\theta$, the preliminary estimate has conditional distribution $X\mid\Theta=\theta\sim\mbox{N}(\theta,1)$.
+\begin{enumerate}
+    \item Given the preliminary estimate $X=x$, what true growth do you expect and with what uncertainty (variance)?
+    \item What is the probability of positive true growth if the preliminary report gives $1\%$?
+    \item What is the probability that reported growth is below true growth, given that true growth is positive?
+    \item Show that the reporting error $X-\Theta$ and true growth are independent.
+\end{enumerate}
+
+\end{problem}
+
+\vspace{0.2cm}
+
+\begin{problem} (1 point)
+Let $U_1,U_2$ be independent $\mbox{Unif}(0,1)$ random variables. Put
+\[X=U_1-U_2,\qquad Y=|U_1-U_2|, \qquad R=\frac{U_2}{U_1}.\]
+Find $f_X$, $\mathbb E[X|U_1>U_2]$, $f_Y$, $\mathbb E[Y]$ and the conditional distribution of $R$ given $U_1>U_2$.
+\end{problem}
+
+\pagebreak
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\linewidth]{tex/assets/prob-stat/software-engineering/standard_normal_table.jpg}
+\end{figure}
+
+\end{document}

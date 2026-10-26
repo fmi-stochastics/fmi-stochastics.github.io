@@ -1,0 +1,60 @@
+\documentclass[a4paper]{report}
+\input{tex/en/preamble.tex}
+\begin{document}
+\noindent Stochastic Empirical Methods, SE Year 3, 2023/2024 \hfill Bonus homework
+\hrulefill
+\begin{it}This assignment awards no points, but illustrates some types of argument required in the theory examination. Enjoy the work! Work on $(\Omega,\mathcal A,\P)$. Write $\overline A=\Omega\setminus A$ and $\mathbb N_0=\mathbb N\cup\{0\}$.\end{it}
+\begin{problem}
+For $A,B\subset\Omega$, define $A\mathbin\Delta B=(A\cap\overline B)\cup(\overline A\cap B)$. Express $\mathbbm1_{(A\Delta B)\Delta C}$ using $\mathbbm1_A,\mathbbm1_B,\mathbbm1_C$.
+\end{problem}
+\begin{problem}
+Prove for $A,B\subset\Omega$ with $\P(B)\ne0$ that $\P(A\mid B)\geq[\P(A)+\P(B)-1]/\P(B)$.
+\end{problem}
+\begin{problem}
+Pool samples from $n$ people for a COVID test. If negative, declare everyone healthy; if positive, retest each individually. Four equally common blood groups each represent a quarter of the population, with infection proportions 10\%, 1\%, 5\% and 4\%, respectively. Each person's blood group is independent of the others, with these population proportions. The pooled test costs 1 BGN and each individual test 1.25 BGN.
+\begin{itemize}
+\item Model the expected cost $p_c(n)$ per tested person.
+\item Treat $n$ as continuous $x$. Derive, without solving, an equation for $x^*$ satisfying \[p_c(x^*)=\min_{x>0}p_c(x).\]
+\item Optionally use a computer to find the optimal integer $n^*$ and minimum cost.
+\end{itemize}
+\end{problem}
+\begin{problem}
+Let $X$ be $\mathbb N_0$-valued and $H_X(\lambda)=\E[e^{-\lambda X}]$ for $\lambda\geq0$.
+\begin{itemize}
+\item Prove $H_X(\lambda)\leq1$ and, by formally differentiating under the expectation, express $\E X$ and $\E X^2$.
+\item Express the generating function $s_X$ using $H_X$.
+\item For $X\sim\mathrm{Bin}(n,p)$, find $H_X$ and use it to obtain $\E X$, $\E X^2$.
+\end{itemize}
+\end{problem}
+\begin{problem}
+A power plant's daily operation depends on $Y=|X-1|$, the deviation of a parameter with $\E X=1$, $DX=0.01$. Because large deviations pose an environmental hazard, a regulator imposes a fine $g(n)$ BGN if $Y\in(n,n+1]$, $n\geq2$.
+\begin{itemize}
+\item Find an upper bound for $f(a)=\P(Y>a)$.
+\item Independent experts claim that for $g(n)=n^{3/2}$, $\lim_{n\to\infty}g(n)\P(Y\in[n,n+1))=0$, making the fines insufficiently effective. Is their claim about the limit true?
+\end{itemize}
+\end{problem}
+\begin{problem}
+Let $X_1,X_2,\ldots$ be independent Poisson variables with $\P(X_1=k)=e^{-\lambda}\lambda^k/k!$, $k\geq0$. Model a birth process by $Y_n=(1+X_n)Y_{n-1}$, $Y_0=1$, and a birth-and-death process by $Z_n=X_nZ_{n-1}$, $Z_0=1$.
+\begin{itemize}
+\item Define almost sure convergence of random variables $\xi_n$ to $\xi$.
+\item Does $n^{-1}\log Y_n$ have a limit, and what is it? What type of convergence holds? Does $\E Y_n$ grow exponentially?
+\item Calculate $\P(Z_n\ne0)$ and prove that $Z_n\to0$ almost surely, so extinction occurs almost surely. Does $\E Z_n$ grow exponentially when $\lambda>1$?
+\end{itemize}
+\end{problem}
+\begin{problem}
+Roll a six-sided die $3\times10^{12}$ times and let $X$ count ones or threes. A struggling student is asked to approximate:
+\begin{itemize}
+\item $\P(X>10^{12})$;
+\item $\P(X>10^{12}+10^3)$;
+\item $\P(X>10^{12}+10^9)$.
+\end{itemize}
+The student answers ``fifty-fifty'', or $1/2$, to all three. How many answers, and which, are correct? Justify mathematically.
+\end{problem}
+\begin{problem}
+The duration of acquired immunity is exponential $X$ with rate $\lambda$. Immunity strength is a continuous variable $Y$ with density $f_Y(y)=\beta y^{\beta-1}$, $0<y\leq1$, $\beta>0$. Given $n$ observations $(x_1,\ldots,x_n)$ and $(y_1,\ldots,y_n)$, find maximum likelihood estimators of $\lambda,\beta$. Are they consistent?
+\end{problem}
+\begin{problem}
+In a phase 3 vaccine trial, $n=10000$ people are tested and 9000 acquire immunity. Model the immune count as $X\sim\mathrm{Bin}(10000,p)$. Construct a symmetric critical region for $H_0:p=0.9$ with type I error $\alpha=0.01$. Is there reason to regard this region as close to optimal?
+\end{problem}
+\end{document}
+

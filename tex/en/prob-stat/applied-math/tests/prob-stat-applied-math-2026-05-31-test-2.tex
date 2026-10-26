@@ -1,0 +1,52 @@
+\documentclass[a4paper]{report}
+\input{tex/en/preamble.tex}
+\begin{document}
+\noindent Applied Mathematics / Mathematics, 31 May 2026 \hfill Test 2
+\hrulefill
+\begin{it}
+The exact grading formula will depend on the results. As an approximation, use 2 + the number of points. Every answer must be justified and supported by clear, detailed calculations. Electronic devices (except standard calculators) and additional materials are prohibited. Time allowed: 4 hours. Good luck!
+\end{it}
+\begin{problem} (1.5 points)~
+\begin{enumerate}
+\item (0.5 points) Let the continuous random vector $(X,Y)$ have joint density
+\[f_{X,Y}(x,y)=\begin{cases}cxy,&0<y<\sqrt x<1,\\0,&\text{otherwise.}\end{cases}\]
+Find $c$, $\E[X]$, $\E[X\mid Y=1/3]$ and $\P(X-Y<1/2)$.
+\item (0.25 points) Let $X,Y$ be random variables. Prove that
+$\mathrm{Var}(X)=\E[\mathrm{Var}(X\mid Y)]+\mathrm{Var}(\E[X\mid Y])$.\footnote{Conditional variance is defined by $\mathrm{Var}(X\mid Y)=\E[(X-\E[X\mid Y])^2\mid Y]$.}
+\item (0.25 points) Let $X\sim\mathrm N(0,1)$ and $Y=X^2$. Find $\mathrm{Corr}(X,Y)$.
+\item (0.5 points) Let $X_n$ have density $f(x)=nx^{n-1}\mathbbm1_{(0,1)}(x)$. Show that $X_n$ converges in probability. What about $n(1-X_n)$?
+\end{enumerate}
+\end{problem}
+\begin{problem} (1.25 points)
+Two independent systems monitor a server for incidents. The system load at a given time is $\Theta\sim\mathrm{Unif}(0,1)$ percent. The first monitoring system is new and depends on the load: its detection time satisfies $X\mid\Theta=\theta\sim\mathrm{Exp}(\theta)$. The second is old and calibrated: it depends on neither the load nor the first monitoring system, and its detection time is $Y\sim\mathrm{Exp}(1)$.
+\begin{enumerate}
+\item (0.25 points) What is the expected detection time of the first system?
+\item (0.25 points) Find $\P(X<Y)$, the probability that the new system detects the incident before the old one.
+\item (0.5 points) Find the conditional density of $\Theta\mid X<Y$.
+\item (0.25 points) Compare $\E[\Theta\mid X<Y]$ and $\E[\Theta\mid Y<X]$.
+\end{enumerate}
+\end{problem}
+\begin{problem} (1.25 points)
+Choose $X$ uniformly in $[0,1]$. Let $X_1,X_2,\ldots$ be the digits in its decimal expansion,\footnote{You may assume that the digits are well defined, since almost every number in $[0,1]$ has a unique representation in base $r$, for $r\geq2$.} so $X=0.\overline{X_1X_2X_3\cdots}$.
+\begin{enumerate}
+\item (0.5 points) What is the distribution of $X_n$? Are the digits independent? Justify your answers.
+\item (0.25 points) Cantor's grandson simulates numbers in $[0,1]$ satisfying his condition: every digit occurs at least once and, for some $k\in\{0,1,\ldots\}$, $X_{k+1}=X_{k+2}=X_{k+3}=2$. What is the probability of drawing such a number?
+\end{enumerate}
+For a digit $d$, let $Y_d^{(n)}$ be the proportion of the first $n$ digits of $X$ that equal $d$, and define
+\[Y_d=\begin{cases}\displaystyle\lim_{n\to\infty}Y_d^{(n)},&\text{if the limit exists},\\0,&\text{otherwise.}\end{cases}\]
+\begin{enumerate}[start=3]
+\item (0.25 points) Find the distribution of $Y_d$ for each $d=0,1,\ldots,9$.
+\item (0.25 points) Calculate $\P(0.08<Y_d^{(10000)}<0.12)$. How many digits must we observe to claim that $|Y_d^{(n)}-Y_d|\leq0.01$ with 95\% confidence?
+\end{enumerate}
+\end{problem}
+\begin{problem} (1 point)
+Let $X_1,\ldots,X_n\overset{i.i.d.}{\sim}\mathrm{Unif}(-\theta,\theta)$, where $\theta>0$.
+\begin{enumerate}
+\item (0.75 points) Find the maximum likelihood estimator of $\theta$. Determine whether it is unbiased and consistent.
+\item (0.25 points) Find a method of moments estimator of $\theta$.
+\end{enumerate}
+\end{problem}
+\begin{problem} (Bonus, 1 point)
+Choose three points independently and uniformly on a circle of radius 1. Find the probability that the longest side $L$ of the triangle they form is no longer than $\sqrt3$. Consider a generalization: how can one calculate $\P(L<\varepsilon)$ for $\varepsilon\leq\sqrt3$?
+\end{problem}
+\end{document}

@@ -1,0 +1,124 @@
+\documentclass[11pt,a4paper]{article}
+\input{tex/en/preamble.tex}
+\pagestyle{fancy}\fancyhf{}\lhead{PTMS, 2023/2024}\rhead{Homework 2}
+\setlength{\headheight}{15pt}
+\begin{document}
+\emph{The maximum total for all homework assignments during the semester is 50 points,
+corresponding to a bonus of 0.5 towards the exercise-class grade.}
+\begin{problem}
+(3 points) Let $X,Y$ be random numbers from $\{1,\ldots,n\}$\footnote{That is,
+independent and uniformly distributed on this set.}, and let $p_n$ be the
+probability that $X+Y$ is a perfect square. Find
+\[\lim_{n\to\infty}\sqrt n p_n.\]
+\end{problem}
+\begin{problem}
+($6\times2=12$ points)
+\begin{enumerate}
+\item One card is drawn from each of 10 standard decks of 52 cards. Find the
+probability that the resulting 10-card hand:
+\begin{enumeratea}
+\item contains no repeated cards;
+\item contains at least three aces;
+\item contains four clubs, three diamonds, two hearts and one spade;
+\item contains exactly 4 more black cards than red cards, given that there are more black than red cards.
+\end{enumeratea}
+\item All items in one batch are functional; in another batch, $1/4$ are defective.
+An item from a randomly selected batch turns out to be functional. Calculate the
+probability that a second randomly chosen item from the same batch is defective,
+if the first item was returned to its batch after inspection.
+\item What is the probability that the roots of $x^2+ax+b=0$, $a,b\in[0,1]$, are real?
+\item Two faces each of a fair die are coloured white, green and red. Roll it twice.
+Let $X$ count white outcomes and $Y$ count red outcomes. Find their joint
+distribution, determine whether they are independent, and find their covariance,
+$\P(X=1\mid Y=1)$ and $\P(X>Y)$.
+\item Let $X$ take values in $\mathbb N_0$, and let
+\[g_X(s):=\E s^X=\sum_{k=0}^\infty s^k\P(X=k)\]
+be its generating function.
+\begin{enumeratea}
+\item Let $Y:=3X$ and $Z=X_1+X_2$, where $X_1,X_2\sim X$ are independent.
+Express $g_Y$ and $g_Z$ in terms of $g_X$.
+\item Let $X\sim Ge(p)$, meaning $\P(X=k)=p(1-p)^k$ for $k\in\mathbb N_0$.
+Calculate $g_X$ and use it to find $\E(X)$ and $D(X)$.
+\end{enumeratea}
+\item Let $X,Y$ be independent random variables with
+\[\P(X=-1)=\P(X=1)=\P(Y=1)=2\P(Y=3)=2\P(Y=5)=\frac12.\]
+Let $Z_1:=2X+Y+1$, $Z_2:=XY$, and $Z_3=X^Y$. Find their expectations and variances.
+\end{enumerate}
+\end{problem}
+\begin{problem}[5 points]
+Let $n\ge3$ and $p$ be natural numbers. Consider the following game with players $A_1,\ldots,A_n$:
+\begin{itemize}
+\item Each player writes predictions for $(2p+1)$ tosses of a standard coin
+(probability $1/2$ for each of heads and tails), using H for heads and T for tails.
+\item The coin is tossed $(2p+1)$ times, and the players with the most correct
+predictions split a prize of $n!$ leva.
+\end{itemize}
+Example: $n=4$, $p=1$, predictions $HTH,HHH,TTT,HHT$. With outcome $TTH$,
+players 1 and 3 each predict 2 correctly and split $4!$, receiving 12 leva each.
+For $n=4$, $p=1$, the same predictions and outcome $TTT$, player 3 predicts all
+3 correctly and wins $4!=24$ leva.
+For $i\in[n]$, define
+\begin{itemize}
+\item $X_i=$ ``the number of outcomes correctly predicted by $A_i$'';
+\item $G_i=$ ``player $A_i$'s winnings'';
+\item $q_k=\P(X_i=k)$, $r_k=\P(X_i\le k)$.
+\end{itemize}
+Our aim is to calculate player $A_1$'s expected winnings, $\E(G_1)$, under two strategies.
+
+\textbf{Part 1. Preliminary considerations.}
+\begin{enumerate}
+\item * As usual, we work on a probability space $(\Omega,\mathcal F,\P)$.
+What set would you propose for $\Omega$?
+\item What is the distribution of $X_i$?
+\item Calculate $r_p$.
+\item Recall that $X(\Omega)$ denotes all images of elements of $\Omega$ under $X$.
+For example, $X_1(\Omega)=\{0,1,\ldots,2p+1\}$, since $A_1$ can predict between
+0 and $2p+1$ outcomes correctly. If $\P(A)>0$, define conditional expectation by
+\[\E(X\mid A)=\sum_{k\in X(\Omega)}k\P(X=k\mid A).\]
+Prove that if $B_1,\ldots,B_s$ form a partition into events of nonzero probability, then
+\[\E X=\sum_{k=1}^s\E(X\mid B_k)\P(B_k).\]
+\emph{(Expand $\E X$ by definition, apply the law of total probability, and interchange the sums.)}
+\end{enumerate}
+\textbf{Part 2. All players play randomly.} In this part, assume that all players
+choose heads or tails randomly with probability $1/2$, independently of each other.
+\begin{enumerate}
+\item What is $G_1(\Omega)$, the set of possible winnings for $A_1$?
+\item For every $k\in X_1(\Omega)$ and $j\in[n]$, prove that
+\[\P\left(G_1=\frac{n!}{j}\,\middle|\,X_1=k\right)
+=\binom{n-1}{j-1}(r_k-r_{k-1})^{j-1}r_{k-1}^{n-j}.\]
+\item Prove that, for $k>0$,
+\[\E(G_1\mid X_1=k)=\frac{(n-1)!(r_k^n-r_{k-1}^n)}{q_k}.\]
+Note that the formula also holds for $k=0$ if we define $r_{-1}=0$.
+\emph{(Expand using the preceding part and use the binomial theorem.)}
+\item Conclude that $\E(G_1)=(n-1)!$.
+\emph{(Consider the partition $\{X_1=k\}$, $k\in\{0,1,\ldots,2p+1\}$.)}
+\item Is the conclusion of the preceding part expected? We could also have
+obtained it differently: can we calculate $G_1+\cdots+G_n$? Use linearity of
+expectation and symmetry to obtain $\E(G_1)$ again.
+\end{enumerate}
+\textbf{Part 3. $A_1$ and $A_2$ cooperate; all other players play randomly.}
+Assume that everyone except $A_2$ plays randomly. $A_2$ knows $A_1$ and predicts
+the opposite of $A_1$; for example, $HHT$ for $A_1$ means $TTH$ for $A_2$.
+If either wins, they share the winnings equally. Write
+\begin{itemize}
+\item $G',G'_1,G'_2$ for their combined and individual winnings, respectively,
+so $G'=G'_1+G'_2$;
+\item $Y=$ ``the larger number of correct predictions by $A_1$ and $A_2$''
+(for predictions $HHT,TTH$ and outcome $HHH$, $Y=2$);
+\item as before, for $k\in\{1,3,4,\ldots,n\}$, $q_k=\P(X_i=k)$ and $r_k=\P(X_i\le k)$.
+\end{itemize}
+\begin{enumerate}
+\item Prove that $Y(\Omega)=\{p+1,\ldots,2p+1\}$.
+\item Prove that for $k\in\{p+1,\ldots,2p+1\}$, $\P(Y=k)=2q_k$.
+\item Prove that for $k\in\{p+1,\ldots,2p+1\}$ and $j\in\{0,\ldots,n-2\}$,
+\[\P\left(G'=\frac{n!}{j+1}\,\middle|\,Y=k\right)
+=\binom{n-2}{j}(r_k-r_{k-1})^j r_{k-1}^{n-2-j},\]
+and consequently, using the binomial theorem,
+\[\E(G'\mid Y=k)=n(n-2)!\frac{r_k^{n-1}-r_{k-1}^{n-1}}{q_k}.\]
+\item Conclude that
+\[\E(G')=2n(n-2)!\left(1-\frac1{2^{n-1}}\right),\]
+and check that this strategy is better for $A_1,A_2$ than the strategy in Part 2.
+\item Calculate $\E(G_i)$ for $i\in\{3,\ldots,n\}$.
+\end{enumerate}
+\end{problem}
+\end{document}

@@ -1,0 +1,117 @@
+\documentclass[11pt,a4paper]{article}
+\input{tex/en/preamble.tex}
+\pagestyle{fancy}\fancyhf{}\lhead{Probability and Statistics: Resit solutions}\rhead{17 August 2023}
+\setlength{\headheight}{15pt}\pagenumbering{arabic}\cfoot{\thepage}
+\begin{document}
+\noindent\emph{English transcription of the original handwritten solution outline. The original level of detail is retained, including the parts described there as standard.}
+
+\section*{Problem 1}
+\subsection*{1. Expected winnings}
+\begin{align*}
+\E\left[\sum_{i=1}^3\left(\mathbf1_{\{\text{coin }i\text{ is heads}\}}
++3\mathbf1_{\{\text{die }i\text{ shows }6\}}\right)\right]
+&=3\P(\text{coin 1 is heads})+3\cdot3\P(\text{die 1 shows }6)\\
+&=\frac32+\frac96=3.
+\end{align*}
+\subsection*{2. A sum divisible by 6}
+Whatever the sum before round $i$, exactly one die outcome makes the new sum congruent to 0 modulo 6. Hence the number of rounds has distribution $\operatorname{Ge}(1/6)$. Put $p=1/6$; then
+\begin{align*}
+\E[\text{winnings}]&=\sum_{k=1}^\infty kp(1-p)^{k-1}\\
+&=\frac p{1-p}\sum_{k=1}^\infty k(1-p)^k
+=\frac p{1-p}\frac{1-p}{p^2}=\frac1p=6.
+\end{align*}
+This is precisely $\E[\operatorname{Ge}(1/6)]$.
+
+\subsection*{3. Identifying a distribution}
+Since $\P(X=k)/\P(X=k-1)=3/k$,
+\begin{align*}
+\P(X=k)&=\frac3k\P(X=k-1)
+=\frac3k\frac3{k-1}\cdots\frac31\P(X=0)\\
+&=\frac{3^k}{k!}\P(X=0).
+\end{align*}
+Because the probabilities sum to 1,
+\[
+\P(X=0)\underbrace{\left(1+\frac3{1!}+\frac{3^2}{2!}+\cdots\right)}_{e^3}=1.
+\]
+Thus $\P(X=0)=e^{-3}$ and $\P(X=k)=e^{-3}3^k/k!$. Hence
+\[
+X\sim\operatorname{Poi}(3),\qquad\E X=DX=3.
+\]
+
+\subsection*{4. Visitors at entrance 1}
+Let $X$ be the number of visitors using entrance 1, and let $Y\sim\operatorname{Poi}(\lambda)$ be the total number of visitors. Compute the generating function of $X$:
+\begin{align*}
+\E s^X&=\sum_{k=0}^\infty\E[s^X\mid Y=k]\P(Y=k)\\
+&=\sum_{k=0}^\infty
+\E\left[s^{\sum_{i=1}^k\mathbf1_{\{\text{visitor }i\text{ chooses entrance 1}\}}}\right]
+e^{-\lambda}\frac{\lambda^k}{k!}\\
+&=\sum_{k=0}^\infty
+\left(\E s^{\mathbf1_{\{\text{visitor 1 chooses entrance 1}\}}}\right)^k
+e^{-\lambda}\frac{\lambda^k}{k!}\\
+&=\sum_{k=0}^\infty\left(\frac9{10}s^0+\frac1{10}s^1\right)^k
+e^{-\lambda}\frac{\lambda^k}{k!}\\
+&=e^{-\lambda}e^{(9/10+s/10)\lambda}
+=e^{(\lambda/10)(s-1)}.
+\end{align*}
+The third equality uses independence. For $Z\sim\operatorname{Poi}(\lambda)$,
+\[
+\E s^Z=\sum_{k=0}^\infty s^k e^{-\lambda}\frac{\lambda^k}{k!}
+=e^{-\lambda}e^{\lambda s}=e^{\lambda(s-1)}.
+\]
+Comparing generating functions gives
+\[
+X\sim\operatorname{Poi}(\lambda/10),\qquad\E X=DX=\lambda/10.
+\]
+In fact, as proved in the lectures, binomial thinning of $\operatorname{Poi}(\lambda)$ with probability $p$ has distribution $\operatorname{Poi}(\lambda p)$.
+
+\section*{Problem 2}
+\subsection*{1. Time to a winner}
+For $n\ge3$,
+\begin{align*}
+p_n:=\P(\text{a winner exists})
+&=\P(\text{one head, all others tails})
++\P(\text{one tail, all others heads})\\
+&=2\frac n{2^n}=\frac n{2^{n-1}}.
+\end{align*}
+Therefore $X\sim\operatorname{Ge}(p_n)$, with
+\[
+\E X=\frac{2^{n-1}}n=\frac1{p_n},\qquad DX=\frac{1-p_n}{p_n^2}.
+\]
+\subsection*{2. A fair entry price}
+The total payout is
+\[
+100[(n-1)+(n-2)+\cdots+2]
+=100\left(\frac{(n-1)n}2-1\right)=:S.
+\]
+By symmetry, the expected winnings of player $i$ do not depend on $i$. Thus
+\[
+\sum_{i=1}^n\E[\text{winnings of player }i]
+=S=n\E[\text{winnings of player 1}].
+\]
+The fair entry price is therefore $S/n$.
+\subsection*{3. Total number of rounds}
+With $k$ players remaining, part 1 gives an expected $2^{k-1}/k$ rounds until the next winner. Hence the expected total number of rounds is
+\[
+\frac{2^{n-1}}n+\frac{2^{n-2}}{n-1}+\cdots+\frac{2^2}3
+=\sum_{k=3}^n\frac{2^{k-1}}k.
+\]
+
+\section*{Problem 3}
+Parts 1, 2 and 3 are standard.
+\paragraph{4.} Set $Z_i=X_i-Y_i$. By the central limit theorem,
+\begin{align*}
+\P(X_1+\cdots+X_n>Y_1+\cdots+Y_n)
+&=\P(Z_1+\cdots+Z_n>0)\\
+&\approx\P\left(N(0,1)>\frac{-n\E Z_1}{\sqrt{nDZ_1}}\right).
+\end{align*}
+The required mean and variance are
+\[
+\E Z_1=\E[X-Y]=\E X-\E Y,
+\]
+using the quantities calculated in part 1, and
+\begin{align*}
+DZ_1&=\E[(X-Y)^2]-(\E Z_1)^2\\
+&=\E X^2+\E Y^2-2\E[XY]-(\E Z_1)^2.
+\end{align*}
+The second moments come from part 1, the product moment from part 3 (or directly), and the final squared mean from the preceding calculation.
+\end{document}

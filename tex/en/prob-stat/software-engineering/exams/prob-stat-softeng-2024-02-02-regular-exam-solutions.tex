@@ -1,0 +1,195 @@
+\documentclass[11pt,a4paper]{article}
+\input{tex/en/preamble.tex}
+\pagestyle{fancy}\fancyhf{}\lhead{Software Engineering: Examination solutions}\rhead{2 February 2024}
+\setlength{\headheight}{15pt}\pagenumbering{arabic}\cfoot{\thepage}
+\begin{document}
+\noindent\emph{English transcription of the original handwritten solution outline. The original arguments and incomplete evaluations are retained. Apparent inconsistencies are identified in notes.}
+
+\section*{Problem 1}
+\subsection*{1(a). Two urns}
+Urn I contains three white and two black balls; urn II contains one white and two black balls. Draw two balls from I and one from II. Let $X,Y$ count the white balls drawn from I and II, respectively. Then
+\[
+\P(A)=\frac{\binom31\binom21}{\binom52}=\frac35.
+\]
+Also,
+\begin{align*}
+\P(B)&=1-\P(Y=1,\ X=0\text{ or }1)-\P(Y=0,\ X=0)\\
+&=1-\frac13\left(\frac1{10}+\frac6{10}\right)-\frac23\frac1{10}
+=\frac{21}{30}=\frac7{10}.
+\end{align*}
+Thus
+\[
+\P(A\mid B)=\frac{\P(A\cap B)}{\P(B)}
+=\frac{\P(X=1,Y=0)}{7/10}
+=\frac{\frac35\cdot\frac23}{7/10}=\frac25\frac{10}7=\frac47.
+\]
+\subsection*{1(b). Repeated trials}
+Since $\P(B)=7/10$, the expected number of trials is $\E[\operatorname{Ge}(7/10)]=10/7$.
+
+\subsection*{2. Sample mean and empirical variance}
+By linearity,
+\[
+\E\overline X_n=\E\left[\frac{X_1+\cdots+X_n}{n}\right]
+=\frac1n\,n\E X_1=\mu.
+\]
+Next,
+\begin{align*}
+\E\left[\sum_{i=1}^n(X_i-\overline X_n)^2\right]
+&=\E\left[\sum_{i=1}^n(X_i^2-2X_i\overline X_n+\overline X_n^2)\right]\\
+&=n\E X_1^2-\E\left[2(X_1+\cdots+X_n)\overline X_n-n\overline X_n^2\right]\\
+&=n\E X_1^2-\E[n\overline X_n^2]
+=n(\E X_1^2-\E\overline X_n^2).\tag{1}
+\end{align*}
+By independence,
+\[
+D\overline X_n=\frac1{n^2}D(X_1+\cdots+X_n)
+=\frac1nDX_1=\frac{\sigma^2}n.
+\]
+Therefore,
+\[
+\E\overline X_n^2=D\overline X_n+(\E\overline X_n)^2
+=\frac{\sigma^2}n+\mu^2,
+\qquad\E X_i^2=DX_i+(\E X_i)^2=\sigma^2+\mu^2.
+\]
+Using (1),
+\begin{align*}
+\E S^2&=\E\left[\frac1n\sum_{i=1}^n(X_i-\overline X_n)^2\right]\\
+&=\frac1n\,n\left(\sigma^2+\mu^2-\frac{\sigma^2}n-\mu^2\right)
+=\frac{n-1}n\sigma^2.
+\end{align*}
+This was also derived in the lectures.
+
+\subsection*{3. Independence of events}
+We have
+\[
+\P(E)=p,\qquad\P(F_k)=\binom nk(1-p)^kp^{n-k},
+\qquad\P(E\cap F_k)=p\binom{n-1}k(1-p)^kp^{n-k-1}.
+\]
+We seek $n,k$ such that
+\[
+p\binom nk(1-p)^kp^{n-k}=p\binom{n-1}k(1-p)^kp^{n-k-1}.
+\]
+Cancelling the common factors gives
+\[
+p\frac{n!}{k!(n-k)!}=\frac{(n-1)!}{k!(n-k-1)!},
+\qquad p=\frac{n-k}n=1-\frac kn.
+\]
+If $p$ is rational, the original writes $p=r/s$, $r,s\in\mathbb N$, and states that the solutions are all pairs
+\[
+(k,n)=(lr,ls),\qquad l\in\mathbb N.\tag{Note 1}
+\]
+If $p$ is irrational, no such $k,n$ exist.
+
+\section*{Problem 2}
+This differs from the familiar Monty Hall problem: no external knowledge of the hidden prizes is used when selecting the boxes to open. After each opening, the conditional distribution is uniform over the remaining possible permutations.
+
+Consequently, swapping does not change the expected winnings in any of the subproblems. The expected winnings are the mean of the remaining prizes.
+
+To formalize the argument, verify that conditioning on the contents of an opened box preserves symmetry among all permutations of the contents of the unopened boxes. In the original's notation, probabilities of the form
+\[
+\P(X_1=i_1,\ldots,X_{n-1}=i_{n-1}\mid X_n=i_n)
+\]
+are unchanged when the unopened positions are permuted.
+
+\section*{Problem 3}
+\subsection*{1. Distribution}
+By symmetry, $\P(X>Y)=1/2$: indeed,
+\[
+\P(X>Y)+\P(X<Y)+\P(X=Y)=1,
+\]
+where the source states $\P(X=Y)=0$ ``by the problem's assumption'', and $\P(X>Y)=\P(X<Y)$ because $X,Y$ have the same distribution. See Note 2. Thus
+\[
+d_n\sim\operatorname{Bin}(n,1/2),\qquad\E d_n=\frac n2,\qquad Dd_n=\frac n4.
+\]
+\subsection*{2. A normal approximation}
+The central limit theorem gives
+\[
+\frac{d_n-n/2}{\sqrt{n/4}}\xrightarrow{d}N(0,1).
+\]
+Hence
+\[
+\P\left(-2.57\le\frac{d_n-n/2}{\sqrt{n/4}}\le2.57\right)\approx99\%,
+\]
+or
+\[
+\P\left(d_n\in\left(\frac n2-2.57\sqrt{\frac n4},
+\frac n2+2.57\sqrt{\frac n4}\right)\right)\approx99\%.
+\]
+\subsection*{3. The observed study}
+Here $d_{10}=5$. The interval from part 2, for $n=10$, is $5\pm4.06$. Observing $d_{10}=10$ or $d_{10}=0$ would be sufficiently unusual under the assumption that $X$ and $Y$ have the same distribution to suggest a difference.
+
+The difficulties here are:
+\begin{itemize}
+\item The sample is small. The interval has length $2\cdot2.57\sqrt n\cdot(1/2)$, which is large relative to small $n$. Applying the CLT may itself be problematic.
+\item The observed $d_{10}=5$ shows no clear difference between $X$ and $Y$ in terms of the number of pairs for which $X_i>Y_i$.
+\end{itemize}
+
+\section*{Problem 4}
+\subsection*{1. Moment generating function}
+\begin{align*}
+\E e^{\lambda Z}
+&=\frac1{\sqrt{2\pi}}\int_{-\infty}^\infty e^{\lambda z}e^{-z^2/2}\d z\\
+&=\frac1{\sqrt{2\pi}}\int_{-\infty}^\infty e^{-\frac12(z^2-2\lambda z)}\d z\\
+&=\frac1{\sqrt{2\pi}}\int_{-\infty}^\infty
+e^{-\frac12(z^2-2\lambda z+\lambda^2)+\lambda^2/2}\d z\\
+&=e^{\lambda^2/2}\frac1{\sqrt{2\pi}}\int_{-\infty}^\infty e^{-y^2/2}\d y
+=e^{\lambda^2/2},
+\end{align*}
+with $y=z-\lambda$. The normalized Gaussian integral is 1.
+Let $\varphi(\lambda)=\E e^{\lambda Z}$. Then
+\[
+\varphi^{(k)}(\lambda)=\E[Z^ke^{\lambda Z}],\qquad
+\varphi^{(k)}(0)=\E Z^k.
+\]
+Differentiation gives
+\begin{align*}
+\varphi'(\lambda)&=\lambda e^{\lambda^2/2},&\E Z&=0\quad\text{(by symmetry)},\\
+\varphi''(\lambda)&=(1+\lambda^2)e^{\lambda^2/2},&\E Z^2&=1,\\
+\varphi'''(\lambda)&=(\lambda+\lambda^3+2\lambda)e^{\lambda^2/2},\\
+\varphi^{(4)}(\lambda)&=(\lambda^4+6\lambda^2+3)e^{\lambda^2/2},&\E Z^4&=3,\\
+\varphi^{(5)}(\lambda)&=(4\lambda^3+12\lambda+\lambda^5+6\lambda^3+3\lambda)e^{\lambda^2/2}\\
+&=(\lambda^5+10\lambda^3+15\lambda)e^{\lambda^2/2},&\E Z^5&=0,\\
+\varphi^{(6)}(\lambda)&=(5\lambda^4+30\lambda^2+15+\lambda^6+10\lambda^4+15\lambda^2)e^{\lambda^2/2},
+&\E Z^6&=15.
+\end{align*}
+
+\subsection*{2. Integration by parts}
+The original suppresses the common normalizing factor in the following integration-by-parts calculation. With that factor displayed,
+\begin{align*}
+\E[f(Z)Z]
+&=\frac1{\sqrt{2\pi}}\int_{-\infty}^\infty f(x)x e^{-x^2/2}\d x\\
+&=-\frac1{\sqrt{2\pi}}\int_{-\infty}^\infty f(x)\d(e^{-x^2/2})\\
+&=-\left[\frac{f(x)e^{-x^2/2}}{\sqrt{2\pi}}\right]_{-\infty}^{\infty}
++\frac1{\sqrt{2\pi}}\int_{-\infty}^\infty e^{-x^2/2}\d f(x)\\
+&=\frac1{\sqrt{2\pi}}\int_{-\infty}^\infty f'(x)e^{-x^2/2}\d x
+=\E f'(Z).
+\end{align*}
+
+\subsection*{3. All integer moments}
+Apply part 2 to $f(z)=z^n$:
+\[
+\E Z^{n+1}=n\E Z^{n-1}.
+\]
+Iterating the recurrence gives the successive factors $(k-1)(k-3)(k-5)\cdots$. For even powers,
+\[
+\E Z^{2k}=1\cdot3\cdot5\cdots(2k-1),
+\]
+whereas for odd powers $\E Z^{2k+1}=0$.
+
+\subsection*{4. Comparing powers}
+\[
+\P(Z^k>Z^{k-1})=\P(Z^{k-1}(Z-1)>0).
+\]
+If $k$ is even, the event is equivalent to $Z(Z-1)>0$, so its probability is
+\[
+\P(Z>1)+\P(Z<0)=\P(Z>1)+\frac12,
+\]
+where the first term is obtained from the normal table.
+If $k$ is odd, the answer is $\P(Z>1)=\cdots$.
+
+\section*{Transcription notes}
+\begin{enumerate}
+\item The rational-parameter statement in the original is inconsistent with its equation $p=1-k/n$. If $p=r/s$, that equation gives $(k,n)=(l(s-r),ls)$ for the corresponding multiples (with $r/s$ reduced). The cancellation argument also assumes the nondegenerate case $0<p<1$.
+\item The calculation follows the no-ties assumption explicitly invoked in the handwritten solution. The parameter $1/2$ is valid under that assumption; equality in distribution alone does not ensure $\P(X=Y)=0$.
+\end{enumerate}
+\end{document}

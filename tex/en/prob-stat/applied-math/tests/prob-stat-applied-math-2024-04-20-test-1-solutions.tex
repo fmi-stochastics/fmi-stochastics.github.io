@@ -1,0 +1,290 @@
+\documentclass[11pt,a4paper]{article}
+\input{tex/en/preamble.tex}
+\pagestyle{fancy}\fancyhf{}\lhead{Applied Mathematics: Test 1 solutions}\rhead{20 April 2024}
+\setlength{\headheight}{15pt}\pagenumbering{arabic}\cfoot{\thepage}
+\begin{document}
+\noindent\emph{English transcription of the original handwritten solution notes. The original calculations and arguments are retained. Apparent inconsistencies in the original are marked with numbered transcription notes at the end.}
+
+\section*{Problem 1}
+\subsection*{1. Conditional probability}
+A yellow ball means rolling one die, green means two dice, and blue means three dice. Thus
+\[
+\P(\text{green}\mid\text{sum }3)
+=\frac{\frac2{36}\cdot\frac13}
+{\frac16\cdot\frac16+\frac2{36}\cdot\frac13+\frac1{216}\cdot\frac12}
+=\frac8{21}\approx38.10\%.
+\]
+\subsection*{2. Five dice}
+\[
+\P(\max\ge3)=1-\P(\max=1\text{ or }2)=1-\left(\frac13\right)^5.
+\]
+For the probability that the product is divisible by 10, let $A$ be the event that at least one number is divisible by 5 and $B$ the event that at least one number is divisible by 2. Then
+\[
+\P(A^c)=\left(\frac56\right)^5,\qquad
+\P(B^c)=\left(\frac12\right)^5,\qquad
+\P(A^c\cap B^c)=\left(\frac26\right)^5.
+\]
+\begin{align*}
+\P(A\cap B)&=\P(A)+\P(B)-\P(A\cup B)\\
+&=1-\P(A^c)+1-\P(B^c)-\bigl(1-\P(A^c\cap B^c)\bigr)\\
+&=1-\left(\frac56\right)^5-\left(\frac12\right)^5
++\left(\frac16\right)^5\approx56.70\%.\tag{Note 1}
+\end{align*}
+
+\subsection*{3. Seven balls in seven boxes}
+For $X_3=2$, two boxes contain three balls each and one box contains one ball:
+\[
+\P(X_3=2)=\frac{7\binom73\,6\binom43\,5/2}{7^7}\approx1.78\%.
+\]
+For $X_3=1$, the possible nonzero occupancies are
+$(3,4)$, $(3,1,1,1,1)$, $(3,2,2)$ and $(3,2,1,1)$. Hence
+\begin{align*}
+\P(X_3=1)&=\frac{7\binom73\,6}{7^7}
++\frac{7\binom73\,6\cdot5\cdot4\cdot3}{7^7}\\
+&\quad+\frac{7\binom73\,6\binom42\,5/2}{7^7}
++\frac{7\binom73\,6\binom42\,5\cdot4}{7^7}
+\approx34.99\%.
+\end{align*}
+The original then writes
+\[
+\P(X_3=0)=1-\P(X_3=0\text{ or }1)\approx63.23\%.\tag{Note 2}
+\]
+\paragraph{Check.}
+Enumerate the arrangements with no box containing three balls. The following table transcribes the separate counts and their approximate contributions from the handwritten check. Every numerator is divided by $7^7$.
+\begin{center}\small
+\begin{tabular}{lll}
+Nonzero occupancies & Numerator & Approximation\\\hline
+$1+1+1+1+1+1+1$ & $7!$ & $0.61\%$\\[3pt]
+$2+1+1+1+1+1$ & $7\binom72\,6\cdot5\cdot4\cdot3\cdot2$ & $12.85\%$\\[3pt]
+$4+1+1+1$ & $7\binom74\,6\cdot5\cdot4$ & $3.57\%$\\[3pt]
+$2+2+1+1+1$ & $7\binom72\,6\binom52\,5\cdot4\cdot3/2$ & $32.13\%$\\[3pt]
+$5+1+1$ & $7\binom75\,6\cdot5$ & $0.33\%$\\[3pt]
+$4+2+1$ & $7\binom74\,6\binom32\,5$ & $2.68\%$\\[3pt]
+$2+2+2+1$ & $\binom73\frac{7\cdot6\cdot5\cdot4\cdot3\cdot2}{(2!)^3}\,4$ & $10.71\%$\\[3pt]
+$6+1$ & $7\binom76\,6$ & $0\%$\\[3pt]
+$5+2$ & $7\binom75\,6$ & $0\%$\\\hline
+Total & & $63.23\%$
+\end{tabular}
+\end{center}
+\[
+\E X_3=\P(X_3=1)+2\P(X_3=2)
+\approx\frac{35}{100}+\frac4{100}\approx\frac{37}{100}.\tag{Note 3}
+\]
+Also, in the notation of the original,
+\[
+\sum_{i=0}^7i\E X_i=\E[X_0+1X_1+\cdots+7X_7]=7,\tag{Note 4}
+\]
+because the weighted occupancy counts give the total number of balls.
+Similarly,
+\[
+\sum_{i=0}^7\E X_i=\E[X_0+\cdots+X_7]
+=\E[\text{number of boxes}]=7.
+\]
+
+\subsection*{4. Products and quotients}
+For independent random variables, $\E[XY]=\E X\,\E Y$. See the lectures for the proof.
+In general, $\E[X/Y]\ne\E X/\E Y$. A counterexample can be constructed from simple random variables, for instance independent $X,Y$ with
+\[
+\P(X=1)=\P(X=2)=\tfrac12,\qquad
+\P(Y=2)=\P(Y=3)=\tfrac12.
+\]
+
+\section*{Problem 2}
+\subsection*{1. A randomly labelled die}
+Let $X$ be the number of faces labelled 6. Then $X\sim\operatorname{Bin}(6,1/6)$.
+Let $Y$ be the outcome of the first roll. By total probability,
+\begin{align*}
+\P(Y=6)&=\sum_{k=0}^6\P(Y=6\mid X=k)\P(X=k)\\
+&=\sum_{k=0}^6\frac k6\binom6k\left(\frac16\right)^k
+\left(\frac56\right)^{6-k}
+=\frac16\E[\operatorname{Bin}(6,1/6)]=\frac16.
+\end{align*}
+Let $Z$ be the number of rolls until the first 6. A die with no face labelled 6 is possible. Conditional on $X=0$, we have $Z=\infty$: a 6 is never rolled. Consequently, $\E Z=\infty$.
+
+\subsection*{2. A product divisible by 6}
+The expectation is again infinite, because all the faces might be labelled 5.
+
+\subsection*{3. Two observed sixes}
+Bayes' formula gives
+\begin{align*}
+&\P(\text{all faces are 6}\mid\text{two observed 6s})\\
+&\qquad=\frac{1\cdot1\cdot\P(X=6)}
+{\sum_{k=0}^6\P(X=k)\P(\text{two observed 6s}\mid X=k)}\\
+&\qquad=\frac{(1/6)^6}
+{\sum_{k=0}^6\binom6k(1/6)^k(5/6)^{6-k}(k/6)^2}\\
+&\qquad=\frac{(1/6)^6}{(1/6)^2\E[\operatorname{Bin}(6,1/6)^2]}\\
+&\qquad=\frac{(1/6)^4}{6\cdot(1/6)\cdot(5/6)+(6/6)^2}
+\approx0.04\%.
+\end{align*}
+For the most likely number of sixes, compare
+\[
+f(k)=\P(X=k)(k/6)^2\ \propto\ \binom6k5^{6-k}(k/6)^2.
+\]
+The respective rescaled values are
+\[
+\begin{array}{c|rrrrrrr}
+k&0&1&2&3&4&5&6\\\hline
+\text{rescaled }f(k)&0&520.83&1041.67&625&166.67&20.83&1
+\end{array}
+\]
+Thus, two faces labelled 6 is the most likely case.
+
+\section*{Problem 3}
+\subsection*{1. The probability of selecting $k$}
+Write $p_n(k)=\P(k\in E_n)$, the probability of selecting $k$ when the first choice is from $\{1,\ldots,n\}$. The key observation is
+\[
+p_n(k)=p_n(k+1)+p_n(k+1)\frac1k.
+\]
+The first term corresponds to selecting $k$ without selecting $k+1$ (why?); the second corresponds to selecting $k+1$ and then $k$. Hence
+\[
+p_n(k)=\frac{k+1}{k}p_n(k+1).
+\]
+Using $p_n(n)=1/n$ (or $p_n(1)=1$), telescoping gives
+\[
+p_n(k)=\frac1k.
+\]
+
+\subsection*{2. Conditional probability}
+\[
+\P(2\in E_n\mid3\notin E_n)
+=\frac{p_n(3)}{1-p_n(3)}=\frac{1/3}{2/3}=50\%.
+\]
+
+\subsection*{3. Mean and variance}
+Let $X_i=\mathbf1_{\{i\in E_n\}}$. Then
+\[
+\E|E_n|=\E\sum_{i=1}^nX_i
+=\sum_{i=1}^n\P(i\in E_n)=1+\frac12+\cdots+\frac1n\sim\ln n.
+\]
+For the variance, use
+\[
+D\left(\sum_{i=1}^nX_i\right)=\sum_{i,j=1}^n\operatorname{Cov}(X_i,X_j),
+\qquad DX_i=\frac1i-\frac1{i^2}.
+\]
+For $i<j$,
+\[
+\operatorname{Cov}(X_i,X_j)=\E[X_iX_j]-\E X_i\E X_j
+=\P(i,j\in E_n)-\frac1i\frac1j.
+\]
+However,
+\[
+\P(i,j\in E_n)=\P(i\in E_n\mid j\in E_n)\P(j\in E_n)
+=\frac1i\frac1j\qquad\text{(why?)}.
+\]
+Thus the covariances vanish for $i\ne j$, and
+\[
+D|E_n|=\sum_{i=1}^nDX_i
+=1+\frac12+\cdots+\frac1n
+-\left(1+\frac1{2^2}+\cdots+\frac1{n^2}\right)\sim\ln n,
+\]
+since the sum of $1/i^2$ converges.
+
+\section*{Problem 4}
+\subsection*{1. Joint distribution and correlation}
+The joint distribution is
+\[
+\begin{array}{c|ccc|c}
+Z\backslash X&0&1&2&\P(Z=z)\\\hline
+0&1/9&0&2/9&1/3\\
+1&2/9&1/9&0&1/3\\
+2&0&2/9&1/9&1/3\\\hline
+\P(X=x)&1/3&1/3&1/3&1
+\end{array}
+\]
+Therefore $\E X=\E Z=1$ and
+\[
+DX=DZ=\tfrac13\cdot1^2+\tfrac13\cdot2^2-1=\tfrac23.
+\]
+\[
+\operatorname{Cor}(X,Z)=\frac{\E[XZ]-\E X\E Z}{\sqrt{DX\,DZ}}
+=\frac{1\cdot1\cdot\frac19+2\cdot1\cdot\frac29+2^2\cdot\frac19-1^2}
+{\sqrt{4/9}}=0.
+\]
+
+\subsection*{2. Generating function of a die}
+\[
+g_X(s)=\tfrac16(s+\cdots+s^6),\qquad
+\E X=g'_X(1)=1,\tag{Note 5}
+\]
+\[
+DX=g''_X(1)+g'_X(1)-[g'_X(1)]^2.
+\]
+
+\subsection*{3. Generating functions and independence}
+If $X$ and $Y$ are independent, $\P(X=k,Y=m)=\P(X=k)\P(Y=m)$, so
+\begin{align*}
+\E s^{X+Y}
+&=\sum_{k=0}^\infty s^k\P(X+Y=k)\\
+&=\sum_{k=0}^\infty s^k\sum_{m=0}^k\P(X=m,Y=k-m)\\
+&=\sum_{k=0}^\infty s^k\sum_{m=0}^k\P(X=m)\P(Y=k-m)\\
+&=\sum_{k=0}^\infty\sum_{m=0}^k s^m\P(X=m)s^{k-m}\P(Y=k-m)\\
+&=\sum_{m=0}^\infty s^m\P(X=m)\sum_{k=m}^\infty s^{k-m}\P(Y=k-m)\\
+&=g_X(s)g_Y(s).
+\end{align*}
+The order of summation is changed over the region $0\le m\le k$.
+
+The converse is false! The distribution in part 1 is a counterexample. The original expands the product as
+\[
+g_X(s)g_Z(s)=(1+s+s^2)^2(1/3)^2
+=\frac{s^4+2s^3+3s^2+2s+s}{9}.\tag{Note 6}
+\]
+Meanwhile,
+\[
+\begin{array}{c|ccccc}
+X+Z&0&1&2&3&4\\\hline
+\text{probability}&1/9&2/9&3/9&2/9&1/9
+\end{array}
+\]
+Thus $g_{X+Z}(s)=g_X(s)g_Z(s)$, although $X,Z$ are dependent:
+\[
+\P(X=0,Z=2)=0\ne\P(X=0)\P(Z=2).
+\]
+
+\subsection*{4. Alternative dice}
+Yes, it is possible. For a standard die,
+\[
+g_X(s)=\tfrac16(s+\cdots+s^6),\qquad
+g_{X+Y}(s)=\tfrac1{36}(s+\cdots+s^6)^2.
+\]
+We want to express this as the product of two generating functions other than the standard one. Equivalently, factor
+\[
+(s+\cdots+s^6)^2=P(s)Q(s),\qquad P(1)=Q(1)=6.
+\]
+The initial list of conditions in the original has $P(0)=Q(0)=1$ (why?), whereas the following page uses $P(0)=Q(0)=0$. See Note 7.
+\begin{align*}
+(s+\cdots+s^6)^2
+&=[s(s^2+s+1)(s^3+1)]^2\\
+&=[s(s+1)(s^2+s+1)(s^2-s+1)]^2.
+\end{align*}
+At $s=1$ these four factors have values $1,2,3,1$, respectively. The conditions $P(0)=Q(0)=0$ and $P(1)=Q(1)=6$ require the factors $s(s+1)(s^2+s+1)$ in both polynomials.
+
+\paragraph{Case 1.}
+\[
+P(s)=s(s+1)(s^2+s+1),\qquad Q(s)=P(s)(s^2-s+1)^2.
+\]
+Expanding,
+\[
+P(s)=s^4+2s^3+2s^2+s,\qquad Q(s)=s^8+s^6+s^5+s^4+s^3+s.
+\]
+The dice therefore have faces
+\[
+(1,2,2,3,3,4)\qquad\text{and}\qquad(1,3,4,5,6,8).
+\]
+\paragraph{Case 2.}
+\[
+P(s)=Q(s)=s(s+1)(s^2+s+1)(s^2-s+1),
+\]
+which gives two standard dice.
+
+\section*{Transcription notes}
+These notes identify apparent slips in the Bulgarian handwritten source; they are not part of its original solution text.
+\begin{enumerate}
+\item The last term on the final line is written $(1/6)^5$ in the source, but the preceding line gives $(2/6)^5$. The displayed approximation $56.70\%$ agrees with $(2/6)^5$.
+\item The source writes ``$0$ or $1$''; the complement of $X_3=0$ is $X_3=1$ or $X_3=2$.
+\item The source's approximate arithmetic $35/100+4/100\approx37/100$ is inconsistent. The exact displayed probabilities give $\E X_3=\P(X_3=1)+2\P(X_3=2)$.
+\item The source includes $X_0$ in the weighted sum. Its coefficient should be zero when counting balls. The unweighted sum, which counts boxes, does include $X_0$.
+\item The source writes $g'_X(1)=1$. For the generating function on that same line, the derivative at 1 is $7/2$.
+\item The last term of the expanded numerator is written $s$ in the source. Expansion of $(1+s+s^2)^2$ gives constant term 1, in agreement with the subsequent distribution table.
+\item The source initially writes $P(0)=Q(0)=1$, then uses $P(0)=Q(0)=0$. The latter is consistent with positive integer die labels and with the factors displayed.
+\end{enumerate}
+\end{document}

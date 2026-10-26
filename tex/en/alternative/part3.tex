@@ -1,0 +1,187 @@
+\section{Random variables and discrete distributions}
+\subsection*{Core problems}
+\begin{problembook}
+A player stakes 5 leva and rolls two independent standard dice. Two sixes pay
+100 leva; exactly one six pays 5 leva; no sixes pay nothing. Let $X$ be the player's
+net gain. Find the distribution and expectation of $X$. Is the game fair?
+\end{problembook}
+\begin{problembook}
+A person tosses a fair coin, taking a step forwards for heads and backwards for
+tails. Toss outcomes are independent. What is the probability that after 10 tosses the person is:
+\begin{enumeratea}
+  \item at the starting point;
+  \item at distance 2 from it;
+  \item five steps ahead of it?
+\end{enumeratea}
+\end{problembook}
+\begin{problembook}
+Let $Z_1$ and $Z_2$ be the outcomes of two independent dice rolls, and let $X=Z_1+Z_2$.
+\begin{enumeratea}
+  \item The dice are standard. Find the distribution, expectation and variance of $X$.
+  \item Let
+  \[
+  \Pbb(Z_i=1)=\Pbb(Z_i=6)=\frac14
+  \quad\text{and}\quad\Pbb(Z_i=j)=\frac18,
+  \qquad\text{for }i\in\{1,2\},\ j\in\{2,3,4,5\}.
+  \]
+  Find the distribution, expectation and variance of $X$, showing two ways of finding the expectation.
+  \item For standard dice, let $Y=|X-7|$. Find the distribution of $Y$ and $\Ebb Y$.
+  Compare $\Ebb Y$ with $|\Ebb X-7|$, and $\Ebb Y^2$ with $\Var X$.
+\end{enumeratea}
+\end{problembook}
+\begin{problem}
+A box contains 7 light bulbs, 3 of them defective. Four distinct bulbs are chosen
+uniformly. Find the distribution and expectation of the number of defective bulbs
+chosen. Also find the expectation using indicators, without summing over the whole
+distribution. Find the variance using indicators as well. Are these indicators independent?
+\end{problem}
+\begin{problembook}
+Two independent standard dice are rolled five times, with outcomes in different
+rolls also independent. What is the probability that exactly 2 rolls have sum 6?
+Find the expectation and variance of the number of such rolls.
+\end{problembook}
+\begin{problempencil}[Memorylessness; Test 1, SE 2023]
+Let $X\sim\Geom(p)$, meaning $\Pbb(X=k)=p(1-p)^k$ for $k\in\{0,1,2,\dots\}$,
+where $p\in(0,1]$.
+\begin{enumeratea}
+  \item Prove that for all integers $m,n\ge0$ with $\Pbb(X\ge n)>0$,
+  \[ \Pbb(X\ge m+n\mid X\ge n)=\Pbb(X\ge m). \]
+  \item Conversely, let $Y$ take values in $\{0,1,2,\dots\}$ and satisfy the above
+  equality for every pair of integers $m,n\ge0$ with $\Pbb(Y\ge n)>0$.
+  Prove that $Y\sim\Geom(p)$ for some $p\in(0,1]$.
+\end{enumeratea}
+\end{problempencil}
+\begin{problembook}
+Assume that the number of minor earthquakes in a region over $t$ months has a
+Poisson distribution with parameter $2t$. What is the probability of fewer than
+four earthquakes in three months?
+\end{problembook}
+\begin{probleminteresting}[St. Petersburg paradox]
+A casino charges an entry fee of $A$ leva. We toss a fair coin until the first
+heads, with independent outcomes. If heads first occurs on toss $n$, the prize
+is $2^n$ leva. Find the expected prize. For which $A$ would you personally play?
+What changes if the prize is $\min\{2^n,2^{30}\}$ leva? How does this result
+compare with your answer about the values of $A$ for which you would play?
+\end{probleminteresting}
+\subsection*{Additional problems}
+\begin{problem}
+An urn contains 5 white and 3 black balls. We draw until a white ball appears.
+Let $X$ be the number of black balls drawn. Find its distribution, expectation and variance for:
+\begin{enumeratea}
+  \item sampling without replacement;
+  \item sampling with replacement.
+\end{enumeratea}
+\end{problem}
+\begin{problem}
+$80\%$ of home printers work without additional configuration, with independent
+outcomes for different printers and weeks. A company sells 10 printers each week.
+Find the probability that at least 9 work immediately; the probability that this
+happens in five consecutive weeks; and the probability that the first week in
+which fewer than 9 work immediately is week $k$. Calculate the last probability
+for $k=3$ and $k=21$, and find the expected number of weeks until the first such week.
+\end{problem}
+\begin{problempencil}[Test 1, SE 2023]
+\begin{enumeratea}
+  \item Let $X_1,\dots,X_n$ be independent and identically distributed, with
+  $F(m)=\Pbb(X_1\le m)$, and let $X_{\min}=\min\{X_1,\dots,X_n\}$ and
+  $X_{\max}=\max\{X_1,\dots,X_n\}$. Express $\Pbb(X_{\min}\le m)$ and
+  $\Pbb(X_{\max}\le m)$ in terms of $F(m)$ and $n$.
+  \item Five standard dice are rolled. In each round, we roll all remaining dice
+  simultaneously and remove those showing six. All rolls are independent. Let $K$
+  be the number of rounds until all dice have been removed. What is the distribution
+  of the number of rolls of one die? Find $\Pbb(K\le n)$ and $\Pbb(K=n)$ for every integer $n\ge1$.
+\end{enumeratea}
+\end{problempencil}
+\begin{problem}
+Let $X$ take values in $\{0,1,2,\dots\}$ and have finite expectation.
+\begin{enumeratea}
+  \item Prove that
+  \[ \Ebb X=\sum_{k=1}^\infty\Pbb(X\ge k)=\sum_{n=0}^\infty\Pbb(X>n). \]
+  \item Check the formula for $X\sim\Geom(p)$.
+  \item Find $\Ebb K$ for the number of rounds $K$ in the preceding problem and
+  compare it with the expected number of rolls of one die.
+\end{enumeratea}
+\end{problem}
+\begin{problem}
+Independent Bernoulli trials have success probability $p$, where $0<p<1$.
+Find the probability that the $r$th success occurs on exactly trial $k+r$, for
+integers $r\ge1$ and $k\ge0$. Let $X_i$ indicate success on trial $i$. Express
+the event using $X_i$ and the partial sums $S_n=\sum_{i=1}^nX_i$, with $S_0=0$.
+\end{problem}
+\begin{problem}
+A shot hits its target with probability $0.001$. There are 5000 independent shots,
+and at least two hits are required. Find the exact probability and the Poisson
+approximation. How large is the numerical difference?
+\end{problem}
+\begin{problem}
+A submarine fires $n$ times; shots are independent and each torpedo hits with
+probability $p$. On a hit, one of the $m$ compartments is selected uniformly,
+independently of other hits. Find the probability that at least two distinct compartments are flooded.
+\end{problem}
+\begin{problem}[Banach's matchboxes]
+A smoker carries two boxes containing $n$ matches each. Each time, the smoker
+independently chooses one box with probability $1/2$ and takes a match.
+On first reaching for an empty box, what is the probability that the other box
+contains exactly $k\in\{0,\dots,n\}$ matches?
+\end{problem}
+\subsection*{Challenges and independent research}
+\begin{problemstar}
+Let $\pi$ be a uniformly random permutation of $\{1,\dots,n\}$, and let
+\[ I_n=\#\{(i,j):1\le i<j\le n,\ \pi(i)>\pi(j)\}. \]
+Prove that
+\[ \Ebb I_n=\frac{n(n-1)}4\qquad\text{and}\qquad\Var(I_n)=\frac{n(n-1)(2n+5)}{72}. \]
+\end{problemstar}
+\begin{problemstar}[Coupon collector]
+Let $X_1,X_2,\dots$ be independent and identically distributed, uniform on
+$\{1,\dots,m\}$, where $m\ge2$, and let
+\[ T=\inf\{n\ge1:\{X_1,\dots,X_n\}=\{1,\dots,m\}\}. \]
+\begin{enumeratea}
+  \item Find $\Pbb(T\le n)$ for $n\ge1$.
+  \item Prove that
+  \[ \Ebb T=mH_m,\qquad\Var(T)=m^2H_m^{(2)}-mH_m, \]
+  where $H_m=\sum_{j=1}^m\frac1j$ and $H_m^{(2)}=\sum_{j=1}^m\frac1{j^2}$.
+\end{enumeratea}
+Where do you use independence of the waiting times, and where is linearity of expectation alone sufficient?
+\end{problemstar}
+\begin{researchtask}[Generalised coupon collector]
+Let $X_1,X_2,\dots$ be independent and identically distributed random variables
+taking values in $[m]=\{1,\dots,m\}$, where $m\ge2$, with
+\[
+\Pbb(X_n=i)=p_i>0,\qquad\text{for }i\in[m],
+\qquad\text{and }\sum_{i=1}^m p_i=1.
+\]
+Let $T$ be the number of draws until all $m$ values have appeared.
+\begin{enumeratea}
+  \item Prove that
+  \[
+  \Ebb T=\sum_{\emptyset\ne A\subseteq[m]}\frac{(-1)^{|A|+1}}{\sum_{i\in A}p_i}
+  \qquad\text{and}\qquad
+  \Ebb T=\int_0^\infty\left(1-\prod_{i=1}^m\bigl(1-e^{-p_it}\bigr)\right)\,dt.
+  \]
+  Explain why the first formula is unsuitable for direct numerical calculation
+  when $m=30$. Suggest a numerical method for the integral and a way to check its accuracy.
+  \item Compare values from the integral formula with simulations for $m=10,30,100$
+  in the following models:
+  \begin{enumerate}[label=(\roman*)]
+    \item uniform probabilities: $p_i=1/m$ for $i\in[m]$;
+    \item probabilities
+    \[ p_i=\frac{i^{-\alpha}}{\sum_{j=1}^m j^{-\alpha}},\qquad\text{for }i\in[m], \]
+    considering both $\alpha=1$ and $\alpha=2$;
+    \item one rare coupon:
+    \[ p_1=m^{-2}\quad\text{and}\quad p_i=\frac{1-m^{-2}}{m-1},\qquad\text{for }i\in\{2,\dots,m\}. \]
+  \end{enumerate}
+  State the number of simulations and discuss the accuracy of the estimated mean.
+  Explain which mechanism determines the scale of $\Ebb T$ in each model.
+\end{enumeratea}
+You may use AI for the proof and numerical method, provided you check the results
+and explain how you checked them.
+\end{researchtask}
+\noindent\textbf{Lean.} Let $S$ be a finite nonempty set, $X,Y:S\to\mathbb R$,
+and $a,b\in\mathbb R$. On the finite uniform probability space on $S$, define
+\[ \Ebb X=\frac1{|S|}\sum_{s\in S}X(s). \]
+Formalise in Lean 4 with Mathlib and prove linearity:
+\[ \Ebb(aX+bY)=a\,\Ebb X+b\,\Ebb Y. \]
+First prove, by induction on $S$ and without using \texttt{Finset.sum\_add\_distrib}, that
+\[ \sum_{s\in S}\bigl(X(s)+Y(s)\bigr)=\sum_{s\in S}X(s)+\sum_{s\in S}Y(s); \]
+\texttt{Finset.mul\_sum} and \texttt{Finset.sum\_div} are useful for the rest.
+Why is nonemptiness of $S$ needed to define $\Ebb$, but not for the identity for sums?

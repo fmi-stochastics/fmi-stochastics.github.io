@@ -1,0 +1,29 @@
+\documentclass[a4paper]{report}
+\input{tex/en/preamble.tex}
+\begin{document}
+\noindent Probability and Statistics, CS Year 3, 2021/2022 \hfill Test 1
+\hrulefill
+\begin{it}Your grade is 2 + the number of points. Time allowed: 150 minutes. Good luck! Work on $(\Omega,\mathcal F,\P)$. Unless otherwise stated, a random choice is uniform.\end{it}
+\begin{problem} (1 point)
+One box contains an ordinary six-sided die, another a fair eight-sided die labelled 1 through 8. Ivan chooses a box at random, rolls its die and announces the result. As a function of the announced number, what is the probability that it came from the ordinary die?
+\end{problem}
+\begin{problem} (1 point)
+Approximate the numbers of first-, second- and third-year students by 600, 400 and 200, respectively. Their probabilities of attending a class are 80\%, 60\% and 25\%. Choose two random students who attended classes. Given that they are from different years, what is the probability the more senior is in year 3?
+\end{problem}
+\begin{problem}
+An examination has 20 questions, each with four possible answers. A student knows ten answers and answers them correctly, and guesses the other ten at random. Let $X$ count correct answers. Find:
+\begin{enumerate}
+\item (0.3 points) the distribution of $X$;
+\item (0.3 points) $\P(X>15)$;
+\item (0.4 points) $\E X$ and $DX$. Full credit requires explicit answers; calculations can avoid binomial coefficients.
+\end{enumerate}
+\end{problem}
+\begin{problem}
+A message consists of eight bits. Noise between servers causes each bit to be transmitted incorrectly with probability $p$.
+\begin{center}\begin{tikzpicture}[thick,scale=0.6,every node/.style={scale=1.5}]\Byte{0,1,0,0,0,1,1,1}\end{tikzpicture}\end{center}
+\begin{enumerate}
+\item (0.5 points) What is the probability that a message is transmitted correctly between directly connected servers $A,B$? What is the expected number of correct bits in the final message?
+\item (0.5 points) Answer the same questions if the message passes exactly once through each of $n=3$ intermediate servers. Bonus: what happens as $n\to\infty$?
+\end{enumerate}
+\end{problem}
+\end{document}

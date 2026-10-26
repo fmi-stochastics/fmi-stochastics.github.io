@@ -1,0 +1,89 @@
+\documentclass[a4paper]{report}
+\input{tex/en/preamble.tex}
+\newif\ifshowsolutions
+\showsolutionsfalse
+\begin{document}
+\noindent Probability and Statistics, CS Year 3, 2020/2021 \hfill Test 1\ifshowsolutions: solutions\fi
+\hrulefill
+\begin{it}Your grade is 2 + the number of points. Time allowed: 3 hours. Good luck! Work on $(\Omega,\mathcal F,\P)$.\end{it}
+\begin{problem} (1 point)
+At a shooting gallery, a boy pays 2 BGN for three shots. The prizes are 10 BGN for three hits, 5 for two hits, and 1 for one hit. His hit probability per shot is $1/3$. Is the game fair?\footnote{A game is fair if expected net winnings are zero.} For which values of the largest prize is the game favourable to him?
+\ifshowsolutions
+\par\textbf{Solution.} (0.6 points for the main part + 0.1 for $y>12$.) Let the largest prize be $y$. Then
+\begin{align*}
+\E X={}&-2\binom30(2/3)^3-\binom31(1/3)(2/3)^2\\
+&+3\binom32(1/3)^2(2/3)+(y-2)\binom33(1/3)^3=\frac{y-2}{27}.
+\end{align*}
+Thus the game is favourable for $y>12$, unfavourable for $y<12$, and in particular is not fair when $y=10$.
+\fi
+If the boy makes a profit, what is the probability he hit the target on his third shot?
+\ifshowsolutions
+\par\textbf{Solution.} (0.3 points.) Write $Y$ for a hit and $N$ for a miss. The probability of missing the third shot is
+\[\P(YYN\mid\{YYN,YNY,NYY,NNN\})=\frac{2/27}{3\cdot2/27+1/27}=\frac27.\]
+The answer is therefore $1-2/7=5/7$.
+\fi
+\end{problem}
+\begin{problem}
+The first box contains 4 white and 6 black balls; the second 7 white and 3 black. Draw one ball randomly from each, add one white ball, and place all three in a third box.
+\begin{enumerate}
+\item (0.4 points) What is the probability that a random ball from the third box is white?
+\ifshowsolutions
+\par\textbf{Solution.} Let $A$ mean a white draw from the third box, and $B_{xy}$ mean colours $x,y$ from the first two, with $W$ for white and $B$ for black. Total probability gives
+\begin{align*}
+\P(A)&=\P(A\mid B_{WW})\P(B_{WW})+\P(A\mid B_{BW})[\P(B_{BW})+\P(B_{WB})]+\P(A\mid B_{BB})\P(B_{BB})\\
+&=1\cdot\frac{4\cdot7}{100}+\frac23\frac{4\cdot3+6\cdot7}{100}+\frac13\frac{6\cdot3}{100}=\frac7{10}.
+\end{align*}
+\fi
+\item (0.6 points) Draw from the third box with replacement until the first white ball. Let $X$ count draws. Find $\E X$. Is $X$ geometric?
+\ifshowsolutions
+\par\textbf{Solution.} (0.3 points if all calculations are otherwise correct but use a geometric law with the probability from part 1.) With three white balls the first draw succeeds. With two white and one black, $X\sim\mathrm{Ge}(2/3)$ conditionally and its mean is $3/2$. With one white and two black the conditional law is $\mathrm{Ge}(1/3)$, with mean 3. Thus
+\begin{align*}
+\E X&=\E[X\mid B_{WW}]\P(B_{WW})+\E[X\mid B_{BW}][\P(B_{BW})+\P(B_{WB})]+\E[X\mid B_{BB}]\P(B_{BB})\\
+&=\frac{28}{100}+\frac32\frac{54}{100}+3\frac{18}{100}=\frac{163}{100}.
+\end{align*}
+If $X$ were geometric, part 1 would require $\mathrm{Ge}(7/10)$ and mean $10/7$, contrary to this calculation.
+\fi
+\end{enumerate}
+\end{problem}
+\begin{problem} (1 point)
+A bag has $n\in\mathbb N$ coins with values $1,\ldots,n$. A person takes a handful, with each coin selected with probability $p\in(0,1)$. Find the expected sum $S$.
+\ifshowsolutions
+\par\textbf{Solution.} (0.1--0.2 or more for partial reasoning.) Let $X_k$ indicate selection of coin $k$. Then $X_k\sim\mathrm{Ber}(p)$ and $\E X_k=p$. Linearity gives
+\[\E S=\E\left[\sum_{k=1}^nkX_k\right]=\sum_{k=1}^nk\E X_k=\frac{pn(n+1)}2.\]
+\fi
+\end{problem}
+\begin{problem}
+\begin{enumerate}
+\item (0.4 points) State when events $A,B\subset\Omega$ are independent and when they are disjoint. Can they be independent if (a) disjoint, or (b) $A\subset B$? If so, under what conditions?
+\ifshowsolutions
+\par\textbf{Solution.} Award 0.1 for each definition and each example. Disjoint means $A\cap B=\emptyset$; independent means $\P(A\cap B)=\P(A)\P(B)$. Both answers are yes: (a) requires $\P(A)=0$ or $\P(B)=0$; (b) requires $\P(A)=0$ or $\P(B)=1$.
+\fi
+\item (0.6 points) State when discrete random variables $X,Y$ are independent and when identically distributed.
+\ifshowsolutions
+\par\textbf{Marking.} 0.1 per definition, 0.1 for $\P(X<Y)=1/2$, 0.1 for inclusion--exclusion, with at most 0.3 for these first four items; 0.3 for the last part.
+\par\textbf{Solution.} Identical distributions mean $\P(X=a)=\P(Y=a)$ for every $a\in\mathbb R$. Independence means $\P(X=a,Y=b)=\P(X=a)\P(Y=b)$ for all $a,b$.
+\fi
+Let $X,Y,Z$ be identically distributed and pairwise independent. Assume ties have probability zero. Find $\P(X<Y)$, $\P(Y<Z)$ and $\P(Z<X)$.
+\ifshowsolutions
+\par\textbf{Solution.} By independence and identical laws, $\P(X<Y)=\P(X>Y)$. Since ties have probability zero and the three comparison probabilities sum to one, each requested probability is $1/2$.
+\fi
+State inclusion--exclusion for three events.
+\ifshowsolutions
+\begin{align*}
+\P(A\cup B\cup C)={}&\P(A)+\P(B)+\P(C)\\
+&-\P(A\cap B)-\P(A\cap C)-\P(B\cap C)+\P(A\cap B\cap C).
+\end{align*}
+\fi
+Prove $a=\min\{\P(X<Y),\P(Y<Z),\P(Z<X)\}\leq2/3$.\footnote{Can you construct equality? A simple example uses suitable probabilities on events of the form $(X=n_1,Y=n_2,Z=n_3)$.}
+\ifshowsolutions
+\par\textbf{Solution.} Set $A=\{X<Y\}$, $B=\{Y<Z\}$, $C=\{Z<X\}$. Their triple intersection is empty. Their pairwise intersections are disjoint, so
+\[\P(A\cap B)+\P(A\cap C)+\P(B\cap C)=\P((A\cap B)\cup(A\cap C)\cup(B\cap C))\leq1.\]
+Inclusion--exclusion gives $1\geq3a-1$, as required.
+\par\emph{This illustrates how, whichever of three candidates wins, two thirds of voters may prefer another candidate. Three voters can have rankings $A>B>C$, $B>C>A$, $C>A>B$. In probabilistic notation,
+$\P(X=1,Y=2,Z=3)=\P(X=2,Y=3,Z=1)=\P(X=3,Y=1,Z=2)=1/3$.
+A related observation dates to Condorcet in the late eighteenth century; see the Condorcet paradox.}
+\fi
+\end{enumerate}
+\end{problem}
+\end{document}
+

@@ -1,14 +1,12 @@
 site_name: Вероятности СУ
 site_url: https://fmi-stochastics.github.io/
 use_directory_urls: true
-
 nav:
-  - Начало: index.md
-  - Вероятности и статистика:
-      - Компютърни науки, поток 2: prob-stat/computer-science-2.md
-      - Софтуерно инженерство: prob-stat/software-engineering.md
-      - Приложна математика: prob-stat/applied-math.md
-
+- Начало: index.md
+- Вероятности и статистика:
+  - Компютърни науки, поток 2: prob-stat/computer-science-2.md
+  - Софтуерно инженерство: prob-stat/software-engineering.md
+  - Приложна математика: prob-stat/applied-math.md
 theme:
   name: material
   custom_dir: overrides
@@ -23,25 +21,41 @@ theme:
     text: Roboto
     code: Roboto Mono
   features:
-    - navigation.instant
-    - navigation.tabs
-    - navigation.tracking
-    - navigation.sections
-    - navigation.top
-    - toc.follow
-
-plugins: []
-
+  - navigation.tabs
+  - navigation.tracking
+  - navigation.sections
+  - navigation.top
+  - toc.follow
+plugins:
+- i18n:
+    docs_structure: folder
+    reconfigure_search: false
+    languages:
+    - locale: bg
+      name: BG
+      default: true
+      build: true
+    - locale: en
+      name: EN
+      build: true
+      site_name: Probability at Sofia University
+      nav_translations:
+        Начало: Home
+        Вероятности и статистика: Probability and Statistics
+        Компютърни науки, поток 2: Computer Science, Stream 2
+        Софтуерно инженерство: Software Engineering
+        Приложна математика: Applied Mathematics
 markdown_extensions:
-  - attr_list
-  - md_in_html
-  - tables
-  - admonition
-  - pymdownx.details
-  - pymdownx.superfences
-
+- attr_list
+- md_in_html
+- tables
+- admonition
+- pymdownx.details
+- pymdownx.superfences
 extra_css:
-  - assets/stylesheets/custom.css
-
+- assets/stylesheets/custom.css
 extra:
   generator: false
+exclude_docs: '/prob-stat/*/index.html
+
+  '

@@ -1,0 +1,38 @@
+\documentclass[a4paper]{report}
+\input{tex/en/preamble.tex}
+\begin{document}
+\noindent Computer Science, 7 June 2025 \hfill Test 2
+\hrulefill
+\begin{it}The exact grading formula depends on the results. As an approximation, use 2 + the number of points. Time allowed: 3 hours. Good luck!\end{it}
+\begin{problem} (0.5 points)
+A printer costing 100 BGN has an exponentially distributed lifetime with mean 3 years. Under a two-year warranty, the retailer refunds the entire price if it fails in the first year and half if it fails in the second. Let $S_{100}$ be the total refund for 100 sold printers. Find the expectation and variance of $X$.
+\end{problem}
+\begin{problem}
+Two instruments measure a building's height $h$. Both errors are normal with mean 0; their standard deviations are $0.04h$ and $0.05h$. Measurements are independent.
+\begin{enumerate}
+\item (0.25 points) For each instrument, find $\P(|\mathrm{error}|<0.03h)$.
+\item (0.25 points) What is the probability that the average of the two measurements differs from $h$ by no more than $0.03h$?
+\item (0.25 points) With one measurement from each instrument, which linear combination has mean $h$ and the smallest standard deviation?
+\item (0.5 points) Using only instrument 1, approximately how many measurements are needed for error below $0.01h$ with probability at least 95\%?
+\end{enumerate}
+\end{problem}
+\begin{problem}
+Let $(X,Y)$ have joint density $f_{X,Y}(x,y)=cx/y^2$ for $0<x<y<1$, and 0 otherwise.
+\begin{enumerate}
+\item (0.75 points) Find $c$, $\E[X]$ and $\E[X\mid Y=1/3]$.
+\item (0.25 points) Find the distribution of $Z=X/Y$.
+\end{enumerate}
+\end{problem}
+\begin{problem}
+Let $U\sim U(0,1)$ and $V\sim U(-\pi/2,\pi/2)$.
+\begin{enumerate}
+\item (0.5 points) A method of generating a pseudorandom number between 0 and 1 from $U$ is to choose a typically large positive integer $M$ and take the fractional part $X=\{MU\}$. Find $\E X$, $DX$ and $\mathrm{Cor}(U,X)$. What do you think of this method?
+\item (0.25 points) Let $U_1,\ldots,U_{100}$ be iid copies of $U$. What is the expectation of each, and of their maximum and minimum?
+\item (0.5 points) Find the density, expectation and variance of $Y=\tan V$.
+\item (0.25 points) Let $Z\sim\mathrm{Cauchy}(1)$, with density $1/[\pi(1+x^2)]$ on $\mathbb R$. Prove that $1/Z$, $2Z/(1-Z^2)$ and $(3Z-Z^3)/(1-3Z^2)$ have the same distribution.
+\end{enumerate}
+\end{problem}
+\begin{problem} \emph{Bonus} (0.25 points)
+Find $\displaystyle\lim_{n\to\infty}e^{-n}\left(\frac n{1!}+\frac{n^2}{2!}+\cdots+\frac{n^n}{n!}\right)$.
+\end{problem}
+\end{document}

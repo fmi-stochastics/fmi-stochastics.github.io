@@ -1,0 +1,58 @@
+\documentclass[a4paper]{report}
+\input{tex/en/preamble.tex}
+\setlength{\emergencystretch}{3em}
+\allowdisplaybreaks
+\begin{document}
+
+
+\noindent Software Engineering, 18.01.2026 \hfill Test 2
+
+\hrulefill
+
+\begin{it}
+The exact grading formula depends on the results. As an approximation, use 2 plus the points earned. Time allowed: 3 hours. Good luck.
+
+
+
+
+
+\end{it}
+
+\begin{problem}~
+\begin{enumerate}
+    \item (0.25 points) Points $A,B$ are chosen randomly inside a square of side $R$. Find the probability that the circle centred at $A$ with radius $|AB|$ lies inside the square.
+    \item (0.5 points) Let $X\sim\mbox{Unif}(0,1)$ and $Y:=X(1-X)$. Find $f_Y,F_Y,\mathbb E[Y],\mbox{Var}(Y)$.
+    \item (0.5 points) Let $X,Y$ have joint density
+\[f_{XY}(x,y):=\left\{\begin{array}{cc}
+     c(x+y),  & x\geq0, y\geq0, x+y\leq 1 \\
+     0, &\mbox{otherwise}.
+\end{array}\right. \]
+Define the random variables
+\[U:=X+Y,\qquad V:=1-\frac{Y}{U}.\]
+Find $f_{U,V}$, $\mbox{Cov}(U,V)$, $\mathbb E[X|U]$ and $\mathbb E[U|Y]$.
+\end{enumerate}
+\end{problem}
+
+\begin{problem}
+A metro station has an electronic timetable display with $48\times40$ LEDs. Their lifetimes are independent exponential variables with mean 40,000 operating hours. The display operates 18 hours daily. If fewer than $85\%$ of the LEDs work, the text becomes hard to read and the display must be replaced.
+\begin{enumerate}
+    \item (0.25 points) Approximate the probability that the display needs replacement after 365 days.
+    \item (0.5 points) Let $T_{min}$ be the time in operating hours to the first LED failure. Find its distribution and $\mathbb E[T_{min}]$, the probability of the first failure within $k$ calendar days, and its median.
+    \item (0.5 points) After 12 months, exactly 1700 LEDs are found working. What is the distribution of the remaining lifetime of an individual LED at this time? Find the probability that the display becomes unreadable within the next three months.
+\end{enumerate}
+\end{problem}
+
+\begin{problem}
+At a juice-bottling plant, the volume $X$ in one bottle (millilitres) is normally distributed with variance $\sigma^2=12^2$.
+\begin{enumerate}
+    \item (0.25 points) If $20\%$ of bottles contain less than 485 ml, find $\mu$. Find the percentage containing more than 525 ml.
+    \item (0.25 points) After a production change, assume $X\sim\mbox N(505,\sigma^2)$. Find $\sigma$ if $95\%$ of bottles contain between 490 and 520 ml.
+    \item (0.5 points) After the change, with $\sigma$ from the preceding part, use two-stage quality control. First, randomly choose $n=30$ bottles from a batch and measure their volumes. Reject the batch if at least three contain under 490 ml. Otherwise, draw another $m=20$ bottles and calculate the mean volume of all $m+n=50$. Reject if this mean is below 503 ml, and accept otherwise. Find the rejection probability.
+\end{enumerate}
+\end{problem}
+
+\begin{problem} (0.75 points)
+A server's load $Y$ is exponentially distributed with rate $\lambda>0$. Given $Y=y$, a task's processing time $X$ (seconds) is exponential with rate $y$. Find $f_X$, $\mathbb P(X>x)$, $\mathbb E[X]$ and the distribution of $X+Y$. Is $X+Y$ a continuous random variable?
+\end{problem}
+
+\end{document}

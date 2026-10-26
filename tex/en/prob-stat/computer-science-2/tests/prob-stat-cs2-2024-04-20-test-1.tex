@@ -1,0 +1,37 @@
+\documentclass[a4paper]{report}
+\input{tex/en/preamble.tex}
+\begin{document}
+\noindent Computer Science, 20 April 2024 \hfill Test 1
+\hrulefill
+\begin{it}The exact grading formula depends on the results. As an approximation, use 2 + the number of points. Time allowed: 3 hours. Good luck!\end{it}
+\begin{problem}
+\begin{enumerate}
+\item (0.25 points) An urn contains 2 yellow, 3 green and 4 blue pebbles. Draw one pebble, then roll one standard die if it is yellow, two if green, three if blue. Given a sum of 3, what is the probability the pebble was green?
+\item (0.25 points) Roll a standard die five times. Find the probabilities of the events $A$: the maximum result is at least 3; and $B$: the product is divisible by 10.
+\item (0.25 points) Seven balls are independently placed at random in seven boxes. Let $X_i$ count boxes with exactly $i$ balls. Find the distribution of $X_3$, $\E[X_3]$, and $\sum_{i=1}^7i\E[X_i]$.
+\end{enumerate}
+\end{problem}
+\begin{problem}
+An examination contains 15 questions with five answer choices each. A student knows ten answers but, owing to nerves, answers each correctly with probability 90\%. For the other five, the student guesses at random. Let $X$ count all correct answers. Find:
+\begin{enumerate}
+\item (0.5 points) $\P(X>12)$, $\E[X]$ and $\mathrm{Var}(X)$;
+\item (0.5 points) the probability that all correct answers were to known questions, given exactly three correct answers.
+\end{enumerate}
+\end{problem}
+\begin{problem}
+\begin{enumerate}
+\item (0.25 points) Let $X$ be a random number from $\{0,1,2\}$ and let $Y\sim\mathrm{Ber}(2/3)$ be independent. Find the joint distribution and correlation of $X$ and $Z=(X+Y)\pmod3$.
+\item (0.25 points) Let $X$ be uniform on $\{1,\ldots,6\}$. Find its probability generating function and express $\E[X]$ and $DX$ in terms of it.
+\item (0.5 points) For nonnegative integer-valued $X,Y$, does independence imply $g_X(s)g_Y(s)=g_{X+Y}(s)$ for every $s\geq0$? Does the converse hold? Prove your claims.
+\end{enumerate}
+\end{problem}
+\begin{problem}
+Let $n$ be a positive integer. Choose $u_1$ uniformly from $[1,n]$, $u_2$ uniformly from $[1,u_1-1]$, and so on until $u_\ell=1$. Let $E_n=\{u_1,\ldots,u_\ell\}$.
+\begin{enumerate}
+\item (0.5 points) Find $\P(k\in E_n)$ for $k\leq n$.
+\item (0.25 points) Find $\P(2\in E_n\mid3\notin E_n)$.
+\item (0.5 points) Find $\E[|E_n|]$.
+\end{enumerate}
+\end{problem}
+\end{document}
+

@@ -1,0 +1,80 @@
+\documentclass[a4paper]{report}
+\input{tex/en/preamble.tex}
+\setlength{\emergencystretch}{3em}
+\allowdisplaybreaks
+\begin{document}
+
+
+\noindent Probability and Statistics, Software Engineering, Year 3, Groups 4/5, 2020/2021 \hfill Test 2
+
+\hrulefill
+
+\begin{it}
+Your grade is 2 plus the number of points earned. Time allowed: 4 hours. Good luck.
+
+Throughout, we work on a probability space $(\Omega, \cF, \P)$.
+
+\end{it}
+
+\begin{problem} (2 points)
+\begin{enumerate}
+    \item (0.5 points) Two cards are drawn from a standard 52-card deck. Let $X$ be the number of aces and $Y$ the number of hearts. Find the joint distribution and correlation of $X,Y$.
+
+
+
+
+
+\item (1 point)
+Let $X$ be an asset price and $Y$ the average deposit interest rate (both daily and in dimensionless units). Their joint density is
+$f_{X,Y}(x,y)=c(x^2+e^yx)$ for $0<x,y<1$, and zero elsewhere, where $c$ is
+a constant. Find
+$c$ and the covariance of $X,Y$. What is the expected asset price if
+the interest rate
+is $0.5$?
+
+
+
+
+\item (0.5 points) Let $X$ have density $f_X(x)=\frac14xe^{-x/2}$ for $x\geq0$ and
+zero otherwise. Find the density of $Y=-2X+2$.
+
+
+    \end{enumerate}
+\end{problem}
+
+
+\begin{problem}(0.5 points)
+
+According to official data, Sofia's historical average January temperature is $-0.5^\circ C$. Let $X$ be the average January temperature in Sofia in degrees Celsius, assumed normally distributed. The variance is usually estimated
+from data too, but here we consider a different (not recommended) method.
+
+Suppose someone regards a temperature above $20^\circ C$ as an extreme anomaly
+with probability 1 percent. What variance estimate does this imply? What
+is then the probability of a temperature below $-15^\circ C$?
+
+\end{problem}
+
+\begin{problem}(1.5 points)
+A point $A$ is chosen randomly in the disk $k(O,1)$ with centre $O$ and radius $1$. Let
+$X=|OA|$. Can you guess
+the mode and median? Justify your guesses. What would you expect $\E X$ to be?
+\textit{(The mode of a discrete distribution is a value with maximum probability.
+In the continuous case, analogously, we seek a value maximizing $f_X$.
+We call $a$ a median of $X$ if $\P(X\leq a)=\P(X\geq a)=1/2$.)}
+
+    \begin{enumerate}
+
+    \item (0.75 points) Find the distribution function, density, expectation and
+    variance of $X$.
+
+
+    \item (0.75 points) Now let $A_1,A_2,A_3$ be three points chosen randomly
+    and independently in the same disk. What is the expected distance to the point
+    nearest the centre? And to the farthest? \textit{(Bonus: Find the expected
+distance to the middle point. Should it equal $\E X$?)}
+
+
+\end{enumerate}
+\end{problem}
+
+\end{document}

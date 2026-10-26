@@ -1,0 +1,133 @@
+\documentclass[11pt,a4paper]{article}
+\input{tex/en/preamble.tex}
+\pagestyle{fancy}\fancyhf{}\lhead{Probability and Statistics: Resit solutions}\rhead{17 August 2022}
+\setlength{\headheight}{15pt}\pagenumbering{arabic}\cfoot{\thepage}
+\begin{document}
+\noindent\emph{English transcription of the original handwritten solutions. Apparent source inconsistencies are identified in notes.}
+
+\section*{Problem 1}
+Filling the first square takes $\operatorname{Ge}(1)$ trials; filling a second distinct square after the first takes $\operatorname{Ge}(8/9)$, and so on. Hence
+\[
+\E[\text{time}]=\E[\operatorname{Ge}(1)+\cdots+\operatorname{Ge}(1/9)]
+=9\left(1+\frac12+\cdots+\frac19\right)\approx25.46.
+\]
+Let $T_2$ be the first time at which one square contains two darts. Split according to the square where this first repetition occurs. By symmetry,
+\begin{align*}
+\E T_2
+&=9\E[T_2\mathbf1_{\{\text{first repetition occurs in a specified square}\}}]\\
+&=9\left[2\left(\frac19\right)^2
++3\binom81\,2!\left(\frac19\right)^3
++4\binom82\,3!\left(\frac19\right)^4+\cdots\right].
+\end{align*}
+In compact form,
+\[
+\E T_2=9\sum_{k=0}^8(k+2)!\left(\frac19\right)^{k+2}\binom8k
+\approx4.46.
+\]
+For an $n\times n$ grid, the answer to the first question is
+\[
+n^2\left(1+\cdots+\frac1{n^2}\right)\sim n^2\ln(n^2)=2n^2\ln n.
+\]
+For the second question, the handwritten source gives
+\[
+n^2\sum_{k=0}^{n-1}(k+2)!\left(\frac1{n^2}\right)^{k+2}\binom{n-1}k.\tag{Note 1}
+\]
+
+\section*{Problem 2}
+\paragraph{1.} Since $(X_1,\ldots,X_n)$ is a permutation,
+\[
+S=X_1+\cdots+X_n=1+\cdots+n=\frac{n(n+1)}2.
+\]
+Therefore $DS=0$ and $\E S=n(n+1)/2$.
+\paragraph{2.}
+\begin{align*}
+D(X+Y)&=\E[(X+Y)^2]-(\E X+\E Y)^2\\
+&=\E X^2-(\E X)^2+\E Y^2-(\E Y)^2
++2(\E[XY]-\E X\E Y).
+\end{align*}
+\paragraph{3.} By symmetry,
+\[
+\E S=\E(X_1+\cdots+X_n)=n\E X_1,
+\qquad\E X_i=\frac{n+1}2.
+\]
+Similarly,
+\[
+\E(X_1^2+\cdots+X_n^2)=\E(1^2+\cdots+n^2)
+=\frac{n(n+1)(2n+1)}6=n\E X_1^2,
+\]
+so
+\[
+\E X_i^2=\frac{(n+1)(2n+1)}6,
+\]
+\[
+DX_i=\E X_i^2-(\E X_i)^2
+=\frac{n+1}2\left(\frac{2n+1}3-\frac{n+1}2\right)=\frac{n^2-1}{12}.
+\]
+\paragraph{4.}
+\begin{align*}
+0=DS&=nDX_1+\binom n2\,2\operatorname{Cov}(X_1,X_2)\\
+&=n\frac{n^2-1}{12}+n(n-1)\operatorname{Cov}(X_1,X_2).
+\end{align*}
+Hence
+\[
+\operatorname{Cov}(X_i,X_j)=
+\begin{cases}-(n+1)/12,&i\ne j,\\(n^2-1)/12,&i=j.\end{cases}
+\]
+
+\section*{Problem 3}
+\paragraph{1.} Independence gives $D(M_1+\cdots+M_n)=nDM_1$. Let $M=M_1=\max(U_1,V_1)$. For $t\in[0,1]$,
+\[
+\P(M\le t)=\P(U_1\le t)\P(V_1\le t)=t^2,
+\qquad f_M(t)=2t\mathbf1_{[0,1]}(t).
+\]
+Therefore
+\[
+\E M=\int_0^12t\cdot t\d t=\frac23,
+\qquad\E M^2=\int_0^1t^2\cdot2t\d t=\frac12,
+\]
+\[
+DM=\frac12-\frac49=\frac1{18},\qquad
+D(M_1+\cdots+M_n)=\frac n{18}.
+\]
+\paragraph{2.} The source writes the CLT approximation as
+\[
+M_1+\cdots+M_n\approx N\left(n\cdot\frac23,\frac1{18}\right).\tag{Note 2}
+\]
+
+\section*{Problem 4}
+\paragraph{1.} The density normalization requires
+\[
+\int_1^\infty\frac c{x^4}\d x=1,
+\qquad\left[-\frac c3x^{-3}\right]_1^\infty=\frac c3,
+\qquad c=3.
+\]
+Next,
+\[
+\E X_1=\int_1^\infty\frac c{x^3}\d x
+=\left[-\frac c2x^{-2}\right]_1^\infty=\frac c2=\frac32,
+\]
+\[
+\E X_1^2=\int_1^\infty\frac c{x^2}\d x=c=3,
+\qquad DX_1=3-\frac94=\frac34.
+\]
+Since $DX_1<\infty$, the central limit theorem gives
+\[
+\frac{S_n-n\cdot\frac32}{\sqrt{3n/4}}\approx N(0,1),
+\qquad a=\frac{3n}2,\quad b=\frac{\sqrt{3n}}2.
+\]
+\paragraph{2.} Let $S=\sum_{i=1}^{40}X_i$. Here $\E S=DS=400$. Using the CLT with $40>30$,
+\begin{align*}
+99\%&\le\P(S>a)=\P\left(\frac{S-400}{20}>\frac{a-400}{20}\right)\\
+&\approx\P\left(N(0,1)>\frac{a-400}{20}\right).
+\end{align*}
+From the normal table, $(a-400)/20\approx-2.33$, so
+\[
+a=400-46.6=353.4.
+\]
+
+\section*{Transcription notes}
+\begin{enumerate}
+\item For an $n\times n$ grid, the compact expression should use the $n^2-1$ other squares, so both occurrences of $n-1$ in this source formula require review.
+\item The preceding variance calculation gives $n/18$. The normal approximation in the original omits the factor $n$ in its variance parameter.
+\end{enumerate}
+\end{document}

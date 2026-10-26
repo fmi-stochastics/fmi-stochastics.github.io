@@ -1,0 +1,106 @@
+\documentclass[a4paper]{article}
+\input{tex/en/preamble.tex}
+\setlength{\emergencystretch}{3em}
+\pagenumbering{arabic}
+\begin{document}
+\begin{center}\Large Probability and Statistics, Computer Science\par\large Regular exam, 2 July 2023: solutions\end{center}
+\noindent\textit{English transcription of the supplied handwritten workings. The source's numerical conclusions and noted ambiguities are retained.}
+\section*{Problem 1}
+\subsection*{1. Percentage measurement error}
+\[\P(\text{error}>10\%)=\P(N(0,5^2)>10)=\P(N(0,1)>2)=1-\Phi(2)=:p\approx2.28\%.\]
+The expected number of cars until the first such error is $\E[Ge(p)]=1/p$. Among 1000 cars, the expected number with error above 10\% is $\E[Bin(1000,p)]=1000p$.
+For iid $X_i\sim N(0,5^2)$,
+\begin{align*}
+\P\left(\frac{X_1+\cdots+X_{100}}{100}>1\right)
+&=\P(N(0,100\cdot5^2)>100)\\
+&=\P(N(0,1)>2)=1-\Phi(2)\approx2.28\%.
+\end{align*}
+\subsection*{2. Car speed and recorded speed}
+Let $V\sim N(40,5^2)$ be speed and $X\sim N(0,5^2)$ instrument error. Then $\P(V>50)=\P(N(0,1)>2)\approx2.28\%$.
+The notes point out that the actual question asks for the probability that the instrument reports more than 50 km/h:
+\[\P\bigl(V(1+X/100)>50\bigr)=\P\left(N_1(40,5^2)\,N_2\left(1,(1/20)^2\right)>50\right).\]
+It is difficult to evaluate explicitly; either $\P(V>50)$ or the expression above was accepted. A Monte Carlo estimate using $10^6$ simulations is about 3.46\%.
+
+For the mean absolute speed error represented by signed products, the notes seek $\sigma$ from
+\[\P\left(\frac{X_1V_1+\cdots+X_{100}V_{100}}{10000}>1\right)\le0.1\%.\]
+Independence gives
+\[\E(X_1V_1)=\E X_1\E V_1=0,\qquad
+D(X_1V_1)=\E X_1^2\E V_1^2-(\E X_1)^2(\E V_1)^2=\sigma^2(40^2+25).\]
+The CLT approximation is
+\[\P\left(N(0,1)>\frac{10000}{\sigma\sqrt{1625}\sqrt{100}}\right).\]
+The handwritten calculation sets the threshold approximately equal to 3.72 and obtains $\sigma\approx6.67$. It comments that the exam wording was ambiguous and accepts any correct calculation with a comparable interpretation.
+\subsection*{3. Absolute errors}
+For $|N(0,5^2)|$, the notes use $p=2\Phi(-2)$ and repeat the geometric and binomial arguments. For the average absolute error they write
+\[\P\left(\frac{|X_1|+\cdots+|X_{100}|}{100}>1\right)
+\approx\P\left(N(0,1)>\frac{100-100\E|X_1|}{\sqrt{100D|X_1|}}\right).\]
+The displayed moment calculation is
+\[\E|X_1|=5\E|N(0,1)|=5\cdot2\int_0^\infty\frac{x}{\sqrt{2\pi}}e^{-x^2/2}\,dx=\frac5{\sqrt{2\pi}},\]
+followed by $D|X_1|=25-25/(2\pi)$ and ``substitute''.
+\noindent\textit{Transcription note: the last equality for the absolute normal mean drops a factor of 2 in the handwritten source. Its following variance and numerical threshold above are preserved, rather than silently replaced.}
+\section*{Problem 2}
+\subsection*{1. Independence of the counts}
+Let $I=i_1+\cdots+i_n$ and $F_n=f(1)+\cdots+f(n)$. Conditioning on $N$ gives
+\begin{align*}
+&\P(X_1=i_1,\dots,X_n=i_n)\\
+&=\sum_{k=I}^\infty\P(N=k)\P(X_1=i_1,\dots,X_n=i_n\mid N=k)\\
+&=\sum_{k=I}^\infty\frac{e^{-\lambda}\lambda^k}{k!}
+\frac{k!}{i_1!\cdots i_n!(k-I)!}\prod_{j=1}^nf(j)^{i_j}(1-F_n)^{k-I}\\
+&=e^{-\lambda}\prod_{j=1}^n\frac{(\lambda f(j))^{i_j}}{i_j!}
+\sum_{r=0}^\infty\frac{\lambda^r(1-F_n)^r}{r!}\\
+&=\prod_{j=1}^n\frac{e^{-\lambda f(j)}(\lambda f(j))^{i_j}}{i_j!}.
+\end{align*}
+Thus the $X_i$ are independent and $X_i\sim Poi(\lambda f(i))$.
+\subsection*{2. Expected sales until stopping}
+The event $\{T\le n-1\}$ depends only on $X_1,\dots,X_{n-1}$, so it is independent of $X_n,X_{n+1},\dots$. Its complement $\{T\ge n\}$ is therefore independent of $X_n$. Consequently,
+\begin{align*}
+\E S&=\E\sum_{i=1}^\infty X_i\one_{\{T\ge i\}}
+=\sum_{i=1}^\infty\E X_i\P(T\ge i)\\
+&=\sum_{i=1}^\infty\E X_i\sum_{j=i}^\infty\P(T=j)
+=\sum_{j=1}^\infty\P(T=j)\sum_{i=1}^j\E X_i\\
+&=\lambda\sum_{j=1}^\infty\P(T=j)(f(1)+\cdots+f(j))
+=\lambda\E[f(1)+\cdots+f(T)].
+\end{align*}
+\textit{Warning in the source:} starting instead from
+\[\E S=\sum_{k\ge1}\P(T=k)\E[X_1+\cdots+X_k\mid T=k],\]
+one cannot replace the conditional expectation by $\E X_1+\cdots+\E X_k$, since $\{T=k\}$ is an event determined by $X_1,\dots,X_k$ and is not independent of them.
+\section*{Problem 3}
+\subsection*{1. Fractional parts}
+Let $X=\{MU\}$. For $t\in(0,1)$,
+\[\P(X\le t)=\sum_{k=0}^{M-1}\P(MU\in[k,k+t])=M\frac tM=t,\]
+since $MU\sim U(0,M)$. Hence $X\sim U(0,1)$, $\E X=1/2$ and $DX=1/12$.
+To compute correlation,
+\[Cor(X,U)=\frac{\E[XU]-1/4}{1/12}.\]
+Partitioning the unit interval,
+\begin{align*}
+\E[XU]&=\sum_{k=0}^{M-1}\int_{k/M}^{(k+1)/M}(Mt-k)t\,dt\\
+&=M\int_0^1t^2dt-\sum_{k=1}^{M-1}k\int_{k/M}^{(k+1)/M}t\,dt\\
+&=\frac M3-\frac1{2M^2}\sum_{k=1}^{M-1}(2k^2+k)\\
+&=\frac M3-\frac1{2M^2}\left[2\frac{(M-1)M(2M-1)}6+\frac{(M-1)M}2\right]\\
+&=\frac1{12M}\bigl[4M^2-(M-1)(4M+1)\bigr]
+=\frac1{12}\left(3+\frac1M\right).
+\end{align*}
+Thus $Cor(X,U)=1/M$. The larger $M$, the less correlated $\{MU\}$ and $U$ are.
+\subsection*{2. Extremes of 100 uniforms}
+Each $U_i$ has mean $1/2$. For $0<t<1$,
+\[\P(\max(U_1,\dots,U_{100})\le t)=\P(U_1\le t)^{100}=t^{100}.\]
+The maximum has density $100t^{99}$ and expectation $\int_0^1100t^{100}dt=100/101$. Since $1-U_i\overset d=U_i$,
+\[\min(U_1,\dots,U_{100})\overset d=1-\max(U_1,\dots,U_{100}),\]
+so its expectation is $1/101$. Alternatively, derive its distribution function directly.
+\subsection*{3. Tangent of a uniform angle}
+For $V\sim U(-\pi/2,\pi/2)$ and $Y=\tan V$,
+\[\P(Y\le t)=\P(V\le\arctan t)=\int_{-\pi/2}^{\arctan t}\frac1\pi dx=\frac{\arctan t+\pi/2}{\pi}.\]
+Hence $f_Y(t)=1/(\pi(1+t^2))$ for $t\in\R$. The integrand $t/(\pi(1+t^2))$ behaves as $1/(\pi t)$ at infinity and is not integrable, so $\E Y$ and $DY$ are not defined.
+\subsection*{4. Cauchy transformations}
+Write $Z\overset d=\tan V$ as above. Then
+\[1/Z\overset d=1/\tan V=\cot V\overset d=\tan V,\]
+with the instruction ``formalise why!''. Also
+\[\frac{2\tan V}{1-\tan^2V}=\tan(2V)\overset d=\tan V,\qquad
+\frac{3\tan V-\tan^3V}{1-3\tan^2V}=\tan(3V)\overset d=\tan V.\]
+The usual density-transformation method is another option.
+\section*{Bonus}
+\begin{enumerate}
+\item See the law of total variance.
+\item See Wikipedia; by symmetry $\E X=1/2$, and $DX=1/8$.
+\item The derivative is zero almost everywhere, so $X$ has no density. The Cantor function is an example of a continuous increasing function that is not absolutely continuous.
+\end{enumerate}
+\end{document}

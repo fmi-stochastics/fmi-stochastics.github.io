@@ -1,0 +1,244 @@
+\section{Dependence, sums and generating functions}
+\subsection*{Part I. Joint distributions and conditional expectation}
+\begin{problembook}
+We independently roll two red and one blue standard dice. Let $X$ be the number
+of sixes on the red dice, and $Y$ the number of twos on all three dice. Find the
+joint distribution and $\Pbb(X>0\mid Y=1)$. Are $X$ and $Y$ independent?
+Can you answer the last question without calculating the entire joint distribution?
+\end{problembook}
+\begin{problembook}
+A fair coin is tossed independently four times. Let $X$ be the number of heads
+in the first three tosses, and $Y$ the number in the last two.
+\begin{enumeratea}
+  \item Find the joint and conditional distributions, $\Pbb(X=Y)$ and $\Pbb(X>1\mid Y=1)$.
+  \item Find $\Ebb(X\mid Y)$ and $\Ebb(Y\mid X)$ and their distributions.
+  Verify that $\Ebb[\Ebb(X\mid Y)]=\Ebb X$.
+  \item Find $\Cov(X,Y)$ in two ways: from the joint distribution, and by writing
+  $X$ and $Y$ as sums of indicators.
+\end{enumeratea}
+\end{problembook}
+\begin{problembook}
+Let $X$ be uniformly distributed on $\{-1,0,1\}$ and $Y=X^2$.
+\begin{enumeratea}
+  \item Show that $\Cov(X,Y)=0$, but $X$ and $Y$ are dependent.
+  \item Now let $X$ and $Y$ take values in $\{0,1\}$. Prove that $\Cov(X,Y)=0$
+  is equivalent to independence. Why does this not contradict the preceding example?
+  \item For random variables $X,Y$ with finite positive variances, prove that
+  $|\Cor(X,Y)|\le1$. When does equality hold?
+\end{enumeratea}
+\end{problembook}
+\begin{problempencil}
+One box contains 4 white and 6 black balls, and another contains 7 white and
+3 black balls. From each box we draw one ball uniformly, independently of the
+other draw. We add one white ball to the two drawn balls and place all three in a third box.
+\begin{enumeratea}
+  \item What is the probability that a uniformly chosen ball from the third box is white?
+  \item Draw from the third box with replacement until the first white ball.
+  For a fixed box composition, draws are independent and uniform. Let $X$ be the
+  number of draws. Find $\Ebb X$. Does $X$ have a geometric distribution?
+  \item Find $\Pbb(X>k)$ for every integer $k\ge0$, and prove that
+  $\Pbb(X>k+1\mid X>k)$ increases with $k$. What do we learn about the box's
+  composition after a sequence of black balls?
+\end{enumeratea}
+\end{problempencil}
+\subsection*{Additional problems}
+\begin{problembook}
+Choose three numbers uniformly without replacement from $\{1,2,3,4,5\}$.
+Let $X$ be the middle number in order of size, and $Y$ the smallest.
+\begin{enumeratea}
+  \item Find the joint and marginal distributions. Are $X,Y$ independent?
+  \item Find $\Cov(X,Y)$ and $\Cor(X,Y)$.
+  \item Find the distribution, expectation and variance of $X-2Y$.
+\end{enumeratea}
+\end{problembook}
+\begin{problempencil}
+Let $(X_1,\ldots,X_n)$ be a uniformly random permutation of $\{1,\ldots,n\}$,
+where $n\ge2$, and let $S=X_1+\cdots+X_n$.
+\begin{enumeratea}
+  \item Find $\Ebb S$, $\Var S$, $\Ebb X_i$ and $\Var X_i$.
+  \item Prove the variance-of-a-sum formula and use it to find $\Cov(X_i,X_j)$
+  for $i\ne j$. Explain the sign of the covariance.
+  \item For $1\le k\le n$, find $\Var(X_1+\cdots+X_k)$. Compare with the variance
+  of $k$ independent draws with replacement.
+\end{enumeratea}
+\end{problempencil}
+\begin{problempencil}
+On each face of a blank die, independently write a uniformly chosen number from
+1 to 6. Then roll the resulting die $n\ge2$ times. The faces rolled are independent,
+uniformly selected and independent of the labels. Let $T_k$ be the number seen on roll $k$.
+\begin{enumeratea}
+  \item What is the distribution of $T_1$? Find $\Cor(T_1,T_2)$. Are $T_1,T_2$ independent?
+  \item If $X=T_1+\cdots+T_{n-1}$ and $Y=T_2+\cdots+T_n$, find $\Cor(X,Y)$.
+  \item How do the two correlations change if the labels are independent and uniform
+  on $\{199,\ldots,999\}$? What if the labels are independent with an arbitrary
+  common distribution having finite positive variance?
+\end{enumeratea}
+\end{problempencil}
+\begin{problem}[P\'olya's urn]
+An urn contains one red and one black ball. At each step, choose a ball uniformly,
+replace it and add another ball of the same colour. Let $X_n$ indicate a red ball
+on draw $n$, and let $W_n=X_1+\cdots+X_n$. Find $\Pbb(X_n=1)$, $\Cov(X_i,X_j)$
+for $i\ne j$, and the distribution of $W_4$. What distribution do you conjecture for $W_n$?
+\end{problem}
+\subsection*{Challenges}
+\begin{problemstar}[Pairwise independence]
+Let $q$ be prime, and let $A,B$ be independent and uniform on $\{0,\ldots,q-1\}$.
+All subsequent calculations are modulo $q$. For $t\in\{0,\ldots,q-1\}$, define
+\[ X_t=A+tB\pmod q,\qquad X_\infty=B. \]
+\begin{enumeratea}
+  \item Prove that $X_0,\ldots,X_{q-1},X_\infty$ are uniform and pairwise
+  independent, but not mutually independent. What do the values of two distinct coordinates determine?
+  \item Let $N$ be the number of zero coordinates in this family.
+  Find its distribution, expectation and variance.
+  \item Calculate the variance using indicators as well. Is pairwise independence
+  enough for variances to add?
+\end{enumeratea}
+\end{problemstar}
+\begin{problemstar}
+For random variables $X,Y$ with finite second moments and a random variable $Z$, prove that
+\[
+\Cov(X,Y)=\Ebb\!\left[\Cov(X,Y\mid Z)\right]
++\Cov\!\left(\Ebb[X\mid Z],\Ebb[Y\mid Z]\right).
+\]
+What formula results when $Y=X$? Now let $Z\sim\Ber(1/2)$, let $U$ be uniform
+on $\{-1,1\}$, let $Z,U$ be independent, and define
+\[ X=3Z+U,\qquad Y=3Z-U. \]
+\begin{enumeratea}
+  \item Find the conditional covariance and correlation for fixed $Z$.
+  \item Find $\Cov(X,Y)$ and $\Cor(X,Y)$.
+  \item How do you explain the difference in signs? Relate your answer to the two terms in the formula.
+\end{enumeratea}
+\end{problemstar}
+\subsection*{Part II. Generating functions and random sums}
+\begin{problempencil}[Test 1, CS 2024]
+For a nonnegative integer-valued random variable $X$, write $g_X(s)=\Ebb[s^X]$, $0\le s\le1$.
+\begin{enumeratea}
+  \item Let $X$ be uniform on $\{1,\ldots,6\}$. Find $g_X$ and express
+  $\Ebb X$ and $\Var X$ in terms of its derivatives.
+  \item If $X,Y$ are independent nonnegative integer-valued random variables,
+  prove that $g_{X+Y}=g_Xg_Y$.
+  \item[$(\mathrm{c})^\star$] Is the converse true?
+\end{enumeratea}
+\end{problempencil}
+\begin{problembook}
+Let $X,Y$ be independent. Use generating functions to find the distribution of
+$X+Y$ when $X\sim\Bin(n,p)$ and $Y\sim\Bin(m,p)$, and then when
+$X\sim\Poi(\lambda)$ and $Y\sim\Poi(\mu)$. Similarly find the distribution of
+$G_1+\cdots+G_r$, where $G_1,\ldots,G_r$ are independent and $G_i-1\sim\Geom(p)$,
+so each $G_i$ counts the trials up to the first success. Why does equality of
+generating functions determine the distribution uniquely? Can the sum of independent
+$\Bin(n,p)$ and $\Bin(m,q)$ variables be binomial when $n,m\ge1$, $0<p,q<1$ and $p\ne q$?
+\end{problembook}
+\begin{problempencil}
+The number of visitors to a stadium is $N\sim\Poi(\lambda)$. Each visitor selects
+one of ten entrances uniformly, independently of everyone else and of $N$.
+\begin{enumeratea}
+  \item Find the distribution, expectation and variance of the number using the first entrance.
+  \item More generally, let $N,X_1,X_2,\ldots$ be independent nonnegative
+  integer-valued random variables, with $(X_i)$ identically distributed.
+  For $S=X_1+\cdots+X_N$, setting $S=0$ when $N=0$, prove that
+  \[ g_S(s)=g_N\bigl(g_{X_1}(s)\bigr). \]
+  If $N,X_1$ have finite second moments, find $\Ebb S$ and $\Var S$.
+  \item Apply the result to the stadium problem. Also obtain the distribution
+  in (a) using the law of total probability.
+\end{enumeratea}
+\end{problempencil}
+\begin{problembook}
+$A$ and $B$ play independent games. In each game, $A$ wins with probability $2/3$
+and $B$ with probability $1/3$. Play stops when someone wins two consecutive games.
+Let $T$ be the number of games played. Find $\Ebb T$ and the probability that
+$A$ wins the contest. What information about the past suffices to describe future
+play? Also find the generating function of $T$.
+\end{problembook}
+\subsection*{Additional problems}
+\begin{problempencil}
+Two teams each take one penalty in each round. All attempts are independent,
+with scoring probabilities $0.75$ for the first team and $0.80$ for the second.
+All five regular rounds are played. If tied afterwards, play continues until,
+in one round, one team scores and the other does not.
+\begin{enumeratea}
+  \item What is the probability that in each of the first five rounds both teams
+  have the same outcome for their penalty?
+  \item What is the probability that play continues after the fifth round? After the tenth?
+  \item Find the expected total number of penalties taken.
+\end{enumeratea}
+\end{problempencil}
+\begin{problem}
+Lottery tickets are numbered from 000000 to 999999. Find the probability that a uniformly chosen ticket:
+\begin{enumeratea}
+  \item has digit sum 21;
+  \item has equal sums of its first and last three digits;
+  \item has a sum of its first three digits that exceeds that of its last three by 2.
+\end{enumeratea}
+It suffices to express the answers as coefficients of a polynomial.
+\end{problem}
+\begin{problempencil}
+We telephone $N\sim\Poi(\lambda)$ people with an offer. Person $i$ would accept
+on the $K_i$th call, where $K_1,K_2,\ldots$ are independent, identically distributed
+and independent of $N$, with $\Pbb(K_i=n)=f(n)$ for $n\ge1$ and
+$\sum_{n\ge1}f(n)=1$. Let $X_n$ be the number of people who would accept on call $n$.
+\begin{enumeratea}
+  \item Prove that $(X_n)_{n\ge1}$ are independent and $X_n\sim\Poi(\lambda f(n))$.
+  \item We stop at the first round with no new acceptance. If
+  $T=\inf\{n\ge1:X_n=0\}$ and $S=X_1+\cdots+X_T$, prove that
+  \[ \Ebb S=\lambda\Ebb[F(T)],\qquad F(k)=\sum_{j=1}^k f(j). \]
+  Why can we not directly apply the expectation formula for a random sum whose
+  number of summands is independent of the summands?
+\end{enumeratea}
+\end{problempencil}
+\begin{problempencil}
+Two standard dice are rolled independently. Can we label their faces with other
+positive integers so that independent rolls have the same sum distribution?
+Repeated labels are allowed. Find a construction different from the two standard dice.
+\end{problempencil}
+\subsection*{Challenges}
+\begin{problemstar}\label{prob:week4-penney}
+We toss a fair coin independently, recording outcomes as $H,T$. For a word
+$w=w_1w_2w_3$, let $\tau_w$ be the toss number when it first appears as three
+consecutive outcomes. Consider $a=HHT$ and $b=THH$.
+\begin{enumeratea}
+  \item Choose states retaining enough information about the appearance of the
+  two words, and draw the possible transitions.
+  \item Find $\Pbb(\tau_a<\tau_b)$ and $\Ebb(\tau_a\wedge\tau_b)$.
+  \item Prove that $\tau_a\wedge\tau_b<\infty$ almost surely, without using the calculated expectation.
+\end{enumeratea}
+\end{problemstar}
+\begin{problemstar}[Branching process]
+A population starts with one individual. Each individual has 0 children with
+probability $1-p$ and 2 children with probability $p$, where $0<p<1$, independently
+of all other individuals in all generations. Let $Z_n$ be the number of individuals
+in generation $n$, with $Z_0=1$, and let
+\[ f(s)=1-p+ps^2,\qquad T=\inf\{n\ge0:Z_n=0\}. \]
+\begin{enumeratea}
+  \item Prove that $g_{Z_n}=f^{\circ n}$.
+  \item Show that $q_n=\Pbb(T\le n)=f^{\circ n}(0)$ and that $(q_n)$ is increasing.
+  \item Prove that $q=\Pbb(T<\infty)$ is the smallest solution of $f(q)=q$ in
+  $[0,1]$, and find it as a function of $p$.
+  \item Find $\Ebb Z_n$. When $p=1/2$, it is constant, yet extinction occurs almost surely.
+  How do you explain this?
+\end{enumeratea}
+\end{problemstar}
+\subsection*{Independent research}
+\begin{researchtask}[Penney's game]
+Two players each choose a different word from $\{H,T\}^3$. We then toss a fair
+coin independently until one of the words appears. The player whose word appears first wins.
+\begin{enumeratea}
+  \item Generalise the model in Problem~\ref{prob:week4-penney} and write a program
+  that calculates exactly, for each of the 56 ordered pairs $(a,b)$,
+  \[ p(a,b)=\Pbb(\tau_a<\tau_b),\qquad e(a,b)=\Ebb(\tau_a\wedge\tau_b). \]
+  Use rational arithmetic and check at least one pair by hand.
+  \item For each first word $a$, find the best responses $b$ for the second player.
+  Does the player choosing second have an advantage? Formulate a general rule
+  for the best response and prove it.
+  \item Draw a directed graph with edge $a\to b$ when $b$ is a best response to
+  $a$. Find a cycle and explain what it shows about comparisons between words.
+\end{enumeratea}
+\end{researchtask}
+\noindent\textbf{Lean.} Formalise in Lean 4 with Mathlib and prove that, for
+finite sets $S,T$ and functions $a:S\to\mathbb R$ and $b:T\to\mathbb R$,
+\[
+\sum_{s\in S}\sum_{t\in T}a(s)b(t)
+=\left(\sum_{s\in S}a(s)\right)\left(\sum_{t\in T}b(t)\right).
+\]
+Explain how this identity is used in proving $g_{X+Y}=g_Xg_Y$ for independent
+nonnegative integer-valued random variables $X,Y$ with finite ranges.

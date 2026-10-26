@@ -1,0 +1,40 @@
+\documentclass[a4paper]{report}
+\input{tex/en/preamble.tex}
+\begin{document}
+\noindent Probability and Statistics, CS Stream 2, 20 June 2026 \hfill Examination problems
+\hrulefill
+\begin{it}The exact grading formula depends on the results. As an approximation, use 2 + the number of points. Time allowed: 3 hours. Good luck! You may use
+\[\int_0^1p^k(1-p)^{n-k}\,\mathrm dp=\frac{k!(n-k)!}{(n+1)!}.\]
+\end{it}
+\begin{problem} (1.5 points) The following questions are separate.
+\begin{enumerate}
+\item (0.25 points) Roll two fair dice. Let $A$ mean the first result is even, $B$ the second is even, and $C$ the sum is even. Prove that $A,B,C$ are pairwise but not jointly independent. Are $A,B$ conditionally independent given $C$?
+\item (0.5 points) A coin's probability $p$ of heads is chosen uniformly on $[0,1]$. Toss it $n$ times and let $S_n$ count heads. Prove that $S_n$ is uniform on $\{0,1,\ldots,n\}$. Then find the probability of heads on toss $n+1$ given $k$ observed heads.
+\item (0.25 points) A flea jumps between the vertices of an equilateral triangle, each time choosing either other vertex equally likely, independently of the past. Find the probability $p_n$ of being at its starting vertex after $n$ jumps, and $\lim_{n\to\infty}p_n$.
+\item (0.5 points) Let $X_i\overset{iid}{\sim}\mathrm{Exp}(\lambda)$. Calculate $\E[X_1\mid X_1+X_2=t]$ and $\mathrm{Cor}(X_1,X_1+X_2)$.
+\end{enumerate}
+\end{problem}
+\begin{problem} (1.25 points)
+An insect lays $N\sim\mathrm{Poi}(\lambda)$ eggs. Each hatches independently with probability $p$. Let $X$ count hatched eggs and $Y=N-X$ unhatched eggs.
+\begin{enumerate}
+\item (0.25 points) Use generating functions to find the distribution of $X$.
+\item (0.5 points) Prove that $X,Y$ are independent and specify their distributions.
+\item (0.5 points) Find $\mathrm{Cor}(N,X)$ and $\E[N\mid X=k]$.
+\end{enumerate}
+\end{problem}
+\begin{problem} (1 point)
+During an Operating Systems examination, Angel enters an $N$-character password in a remote terminal, pressing one key exactly every $T$ seconds. He then presses \texttt{Enter}, registered instantaneously at $t_E=(N+1)T$. TCP with a reordering buffer preserves character order. Character $i$, $1\leq i\leq N$, reaches the server after a random delay $D_i$.
+\begin{enumerate}
+\item (0.2 points) If $F(x)=P(D<x)$ is the distribution function of each packet's delay, derive the probability $P_{\mathrm{success}}$ that the password is registered correctly: all $N$ characters arrive before \texttt{Enter}.
+\item (0.3 points) Unsure how to solve a question, Angel writes an essay explaining why he deserves points. It has $N=10000$ characters typed at intervals $T=0.2$ seconds. A shared server queue processes a random number $X_k$ of characters each second, independently and identically distributed with mean 4 and variance 2. On pressing \texttt{Enter}, all unprocessed characters are lost. Use the central limit theorem to approximate the mean number of \emph{whole words} lost, assuming six characters per average word.
+\item (0.5 points) Real packet delays are dependent. Model them by $D_i=\rho D_{i-1}+\varepsilon_i$, with $D_1=\varepsilon_1$, memory coefficient $\rho\in(0,1)$, and independent $\varepsilon_i\sim\mathcal N(0,\sigma^2)$ representing white noise. The last character has the least time before \texttt{Enter}. Find:
+\begin{enumerate}
+\item the exact expectation $\E[D_N]$ and variance $\mathrm{Var}(D_N)$;
+\item a formula in terms of $\Phi$ for $P(R_N<t_E)$, the probability that the last character arrives in time.
+\end{enumerate}
+\end{enumerate}
+\end{problem}
+\begin{problem} (0.75 points)
+A rectangular sheet has vertices $A,B,C,D$ and $AD=BC=10$ cm. Points $F,K$ are chosen at random on sides $AD,CD$ so that folding along $FK$ brings $D$ onto side $AB$. Find the expected area of triangle $FKD$.
+\end{problem}
+\end{document}

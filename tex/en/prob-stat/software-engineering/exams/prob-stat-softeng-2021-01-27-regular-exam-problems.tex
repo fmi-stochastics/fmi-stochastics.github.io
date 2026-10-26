@@ -1,0 +1,81 @@
+\documentclass[a4paper]{report}
+\input{tex/en/preamble.tex}
+\setlength{\emergencystretch}{3em}
+\allowdisplaybreaks
+\begin{document}
+
+
+\noindent Probability and Statistics, Software Engineering, Year 3, 2020/2021 \hfill Written exam, 27.01.2021
+
+\hrulefill
+
+\begin{it}
+Your grade is 2 plus the number of points earned. Time allowed: 3 hours. Good luck.
+
+Throughout, we work on a probability space $(\Omega, \cF, \P)$.
+\end{it}
+
+\begin{problem} (1 point)
+An urn contains balls numbered from 1 to 10 inclusive.
+Three balls are drawn without replacement. Define
+the following events concerning the balls drawn:
+\begin{enumerate}
+    \item $A = $\textit{the largest number is 6};
+    \item $B = $\textit{at least two balls have even numbers};
+    \item $C = $\textit{the sum of the numbers is divisible by 3}.
+    \end{enumerate}
+\end{problem}
+Find the probabilities of these events and
+determine whether any are independent. What is $\P(A|B)$?
+What is the expected number of even-numbered balls drawn
+if sampling is with replacement?
+
+\begin{problem}(1 point)
+Two instruments measure the concentration of dust particles
+in the air.
+Suppose the true concentration is $x$ $g/m^3$.
+The reading of the first instrument
+is normally distributed with mean $x$ and standard deviation ($\sigma$) $0.05x$.
+The second reading is also normally distributed,
+with mean $x$ and standard deviation
+$0.1x$. Which instrument would you use?
+For each instrument, what is the probability of an error
+greater than $0.1x$?
+
+Someone decides to use the arithmetic mean of the two readings.
+If the measurements are independent, what is the probability
+of an error greater than $0.1x$ with this procedure?
+\end{problem}
+
+
+
+\begin{problem} (1 point)
+Let $\xi$ and $\eta$ be independent random variables,
+$\xi\sim Exp(2)$ and $\eta\sim U(0,3)$, i.e.
+\[
+f_\xi(x) = \begin{cases}
+2 e^{-2x} & \text{if } x >0\\
+0 & \text{otherwise}
+\end{cases}; \quad
+f_\eta(x) = \begin{cases}
+\frac13 & \text{if } 0<x <3\\
+0 & \text{otherwise.}
+\end{cases}\]
+Find the correlation of $\xi$ and $\eta$, $P(\xi<\eta)$ and the density
+of $\xi/\eta$.
+
+\end{problem}
+
+\begin{problem} (1 point)
+Let $\xi$ and $\eta$ have joint density
+\[
+f_{\xi, \eta}(x, y) = \begin{cases}
+c x^3 y^2 & \text{if } 0<x,y<2\\
+0 & \text{otherwise.}
+\end{cases}
+\]
+Find the constant $c$, the correlation of $\xi$ and $\eta$, and
+$\E(\xi| \eta = 1)$.
+\end{problem}
+
+\end{document}
