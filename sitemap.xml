@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+    <url>
+        <loc>https://fmi-stochastics.github.io/</loc>
+        <lastmod>2026-10-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="bg" href="https://fmi-stochastics.github.io/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://fmi-stochastics.github.io/en/"/>
+    </url>
+    <url>
+        <loc>https://fmi-stochastics.github.io/alternative/</loc>
+        <lastmod>2026-10-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="bg" href="https://fmi-stochastics.github.io/alternative/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://fmi-stochastics.github.io/en/alternative/"/>
+    </url>
+    <url>
+        <loc>https://fmi-stochastics.github.io/prob-stat/</loc>
+        <lastmod>2026-10-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="bg" href="https://fmi-stochastics.github.io/prob-stat/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://fmi-stochastics.github.io/en/prob-stat/"/>
+    </url>
+    <url>
+        <loc>https://fmi-stochastics.github.io/prob-stat/applied-math/</loc>
+        <lastmod>2026-10-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="bg" href="https://fmi-stochastics.github.io/prob-stat/applied-math/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://fmi-stochastics.github.io/en/prob-stat/applied-math/"/>
+    </url>
+    <url>
+        <loc>https://fmi-stochastics.github.io/prob-stat/computer-science-2/</loc>
+        <lastmod>2026-10-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="bg" href="https://fmi-stochastics.github.io/prob-stat/computer-science-2/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://fmi-stochastics.github.io/en/prob-stat/computer-science-2/"/>
+    </url>
+    <url>
+        <loc>https://fmi-stochastics.github.io/prob-stat/software-engineering/</loc>
+        <lastmod>2026-10-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="bg" href="https://fmi-stochastics.github.io/prob-stat/software-engineering/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://fmi-stochastics.github.io/en/prob-stat/software-engineering/"/>
+    </url>
+    <url>
+        <loc>https://fmi-stochastics.github.io/en/</loc>
+        <lastmod>2026-10-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://fmi-stochastics.github.io/en/"/>
+        <xhtml:link rel="alternate" hreflang="bg" href="https://fmi-stochastics.github.io/"/>
+    </url>
+    <url>
+        <loc>https://fmi-stochastics.github.io/en/alternative/</loc>
+        <lastmod>2026-10-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://fmi-stochastics.github.io/en/alternative/"/>
+        <xhtml:link rel="alternate" hreflang="bg" href="https://fmi-stochastics.github.io/alternative/"/>
+    </url>
+    <url>
+        <loc>https://fmi-stochastics.github.io/en/prob-stat/</loc>
+        <lastmod>2026-10-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://fmi-stochastics.github.io/en/prob-stat/"/>
+        <xhtml:link rel="alternate" hreflang="bg" href="https://fmi-stochastics.github.io/prob-stat/"/>
+    </url>
+    <url>
+        <loc>https://fmi-stochastics.github.io/en/prob-stat/applied-math/</loc>
+        <lastmod>2026-10-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://fmi-stochastics.github.io/en/prob-stat/applied-math/"/>
+        <xhtml:link rel="alternate" hreflang="bg" href="https://fmi-stochastics.github.io/prob-stat/applied-math/"/>
+    </url>
+    <url>
+        <loc>https://fmi-stochastics.github.io/en/prob-stat/computer-science-2/</loc>
+        <lastmod>2026-10-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://fmi-stochastics.github.io/en/prob-stat/computer-science-2/"/>
+        <xhtml:link rel="alternate" hreflang="bg" href="https://fmi-stochastics.github.io/prob-stat/computer-science-2/"/>
+    </url>
+    <url>
+        <loc>https://fmi-stochastics.github.io/en/prob-stat/software-engineering/</loc>
+        <lastmod>2026-10-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://fmi-stochastics.github.io/en/prob-stat/software-engineering/"/>
+        <xhtml:link rel="alternate" hreflang="bg" href="https://fmi-stochastics.github.io/prob-stat/software-engineering/"/>
+    </url>
+</urlset>
